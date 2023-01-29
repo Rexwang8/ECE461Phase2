@@ -67,7 +67,11 @@ namespace ECE461ProjectPart1
                 //remove all text after the github url
                 webPageParsed = webPageParsed[1].Split('<', StringSplitOptions.RemoveEmptyEntries);
 
-                githubUrlList.Add("https://" + webPageParsed[0]);
+                if (url.Contains("github.com"))
+                {
+                    githubUrlList.Add("https://" + webPageParsed[0]);
+                }
+                else Console.WriteLine("Error, github url not found on: " + url);
             }
 
             return githubUrlList;
