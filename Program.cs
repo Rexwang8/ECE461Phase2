@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ECE461ProjectPart1
+namespace ECE461Project1
 {
     class Program
     {
