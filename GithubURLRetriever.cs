@@ -57,9 +57,9 @@ namespace ECE461ProjectPart1
             client.DefaultRequestHeaders.Add("User-Agent", "C# console program");
 
             List<string> githubUrlList = new List<string>();
-            foreach (string url in npmjsURLs)
+            foreach (string npmjsURL in npmjsURLs)
             {
-                string webPage = await client.GetStringAsync(url);
+                string webPage = await client.GetStringAsync(npmjsURL);
 
                 //remove all text before the github url
                 string[] webPageParsed = webPage.Split("\"repository-link\">", StringSplitOptions.RemoveEmptyEntries);
@@ -67,11 +67,11 @@ namespace ECE461ProjectPart1
                 //remove all text after the github url
                 webPageParsed = webPageParsed[1].Split('<', StringSplitOptions.RemoveEmptyEntries);
 
-                if (url.Contains("github.com"))
+                if (webPageParsed[0].Contains("github.com"))
                 {
                     githubUrlList.Add("https://" + webPageParsed[0]);
                 }
-                else Console.WriteLine("Error, github url not found on: " + url);
+                else Console.WriteLine("Error, github url not found on: " + npmjsURL);
             }
 
             return githubUrlList;
