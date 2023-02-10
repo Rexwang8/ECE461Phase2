@@ -10,7 +10,7 @@ namespace ECE461Project1
     {
         public float metricWeight { get; } = 0.35f;
 
-        public int GetScore(string githubUrl)
+        public float GetScore(string githubUrl)
         {
             Dictionary<string, int> commit_counts = new Dictionary<string, int>(); //Owner, num commits made
 

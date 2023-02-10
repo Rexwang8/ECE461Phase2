@@ -7,7 +7,7 @@ namespace ECE461Project1
     {
         static void Main(string[] args)
         {
-            List<string> githubUrlList = GithubURLRetriever.GetURLList("/Users/ishaan/Desktop/ECE 461/ECE461TeamRepo/URLTestFile.txt");
+            /*List<string> githubUrlList = GithubURLRetriever.GetURLList("/Users/ishaan/Desktop/ECE 461/ECE461TeamRepo/URLTestFile.txt");
 
             RampUpTime rampUpTime = new RampUpTime();
 
@@ -15,7 +15,10 @@ namespace ECE461Project1
             {
                 Console.WriteLine(url);
                 rampUpTime.GetScore(url);
-            }
+            } */ //<--- FOR TESTING
+
+            //Command Line Inputs Begin Here
+
         }
     }
 }

@@ -9,7 +9,7 @@ namespace ECE461Project1
     {
         public float metricWeight { get; } = 0.25f;
 
-        public int GetScore(string githubUrl)
+        public float GetScore(string githubUrl)
         {
             DeleteDownloadedRepo();
 
