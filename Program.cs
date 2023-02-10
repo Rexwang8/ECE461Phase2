@@ -9,9 +9,12 @@ namespace ECE461Project1
         {
             List<string> githubUrlList = GithubURLRetriever.GetURLList("/Users/ishaan/Desktop/ECE 461/ECE461TeamRepo/URLTestFile.txt");
 
+            RampUpTime rampUpTime = new RampUpTime();
+
             foreach (string url in githubUrlList)
             {
                 Console.WriteLine(url);
+                rampUpTime.GetScore(url);
             }
         }
     }
