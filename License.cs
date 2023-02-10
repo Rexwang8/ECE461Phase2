@@ -4,7 +4,6 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
-using System.Text;
 using System.Net.Http;
 using System.Reflection.Metadata;
 using System.Text.Json.Serialization;
@@ -14,7 +13,7 @@ namespace ECE461Project1
     public class License : IScoreMetric
     {
         public float metricWeight { get; } = 0.40f;
-        public int GetScore(string githubUrl)
+        public float GetScore(string githubUrl)
         {
             string api_url = "https://api.github.com/repos/OWNER/REPO/contents/LICENSE.md";
             api_url = api_url.Replace("OWNER", githubUrl.Split('/')[3]).Replace("REPO", githubUrl.Split('/')[4]);
