@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ECE461ProjectPart1
+namespace ECE461Project1
 {
     public interface IScoreMetric
     {
