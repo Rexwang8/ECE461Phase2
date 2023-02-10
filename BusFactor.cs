@@ -100,7 +100,7 @@ namespace ECE461Project1
     {
         public string name;
     }
-    class File
+    class GitFile
     {
         public string filename;
     }
