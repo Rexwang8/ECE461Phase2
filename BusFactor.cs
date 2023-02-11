@@ -18,12 +18,12 @@
 
             public float GetScore(string githubUrl)
             {
-                Task<float> score = mainCalculation();
+                Task<float> score = mainCalculation(githubUrl);
                 score.Wait();
                 return score.Result;
             }
 
-            static async Task<float> mainCalculation()
+            static async Task<float> mainCalculation(string githubUrl)
             {
                 // Get token
                 var token = System.Environment.GetEnvironmentVariable("$GITHUB_TOKEN");
@@ -32,7 +32,6 @@
                 float finalScore = 0;
 
                 // Get the repository name and owner from the URL
-                string githubUrl = githubUrl;
                 string[] parts = githubUrl.Split('/');
                 string repoOwner = parts[parts.Length - 2];
                 string repoName = parts[parts.Length - 1];
