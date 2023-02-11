@@ -69,27 +69,27 @@ namespace ECE461Project1
             // Create query request
             var graphQLRequest = new GraphQL.GraphQLRequest
             {
-                Query = @"query {
-                    repository(name:""esp-idf"", owner:""espressif"") { 
-                        ref(qualifiedName: ""master"") { 
-                            target { 
-                                ... on Commit { 
-                                    history(first: 100) { 
-                                        edges { 
-                                            node { 
+                Query = @$"query {{
+                    repository(name:""{repoName}"", owner:""{repoOwner}"") {{ 
+                        ref(qualifiedName: ""master"") {{ 
+                            target {{ 
+                                ... on Commit {{ 
+                                    history(first: 100) {{ 
+                                        edges {{ 
+                                            node {{ 
                                                 additions 
                                                 deletions
-                                                author { 
+                                                author {{ 
                                                     name
-                                                } 
-                                            } 
-                                        } 
-                                    } 
-                                } 
-                            } 
-                        } 
-                    }
-                }"
+                                                }} 
+                                            }} 
+                                        }} 
+                                    }} 
+                                }} 
+                            }} 
+                        }} 
+                    }}
+                }}"
             };
 
 			// Add auth token
