@@ -139,6 +139,7 @@
 
                 // This value counts as 70% of the returned BusFactor score
                 double graphScore = 0.7 * (1 - 2 * RSE);
+                if (graphScore < 0) { graphScore = 0; }
                 finalScore += (float) graphScore;
 
                 return finalScore;
