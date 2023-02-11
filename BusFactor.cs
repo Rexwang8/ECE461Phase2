@@ -18,17 +18,17 @@ namespace ECE461Project1
 
         public float GetScore(string githubUrl)
         {
-			Task<float> score = mainCalculation();
-			score.Wait();
-			return score.Result;
-		}
+            Task<float> score = mainCalculation();
+            score.Wait();
+            return score.Result;
+        }
 
-		static async Task<float> mainCalculation()
-		{
+        static async Task<float> mainCalculation()
+        {
             // Get token
             var token = System.Environment.GetEnvironmentVariable("$GITHUB_TOKEN");
-			
-			// Setup score variable
+            
+            // Setup score variable
             float finalScore = 0;
 
             // Get the repository name and owner from the URL
