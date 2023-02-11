@@ -131,9 +131,14 @@
 
                 // Calculate the Relative Standard Error with 0.50 (50%) as the high value
                 // Meaning RSE = 0.5 means a score of 0; RSE = 0.0 a score of 1
-                double average = linesArray.Average();
-                double sumSquDiff = linesArray.Select(val => (val - average) * (val - average)).Sum();
-                double stDev = Math.Sqrt(sumSquDiff / (linesArray.Length - 1));
+                double lineSum = 0;
+                foreach (int lineCount in linesArray) { lineSum += lineCount; }
+                double average = lineSum / linesArray.Length;
+   
+                double squSum = 0;
+                foreach (int lineCount in linesArray) { squSum += Math.Pow((lineCount - average), 2); }
+
+                double stDev = Math.Sqrt(squSum / (linesArray.Length - 1));
                 double RSE = stDev / (Math.Sqrt(linesArray.Length) * average);
 
                 // This value counts as 70% of the returned BusFactor score
