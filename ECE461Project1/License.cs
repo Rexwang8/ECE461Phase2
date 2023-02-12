@@ -9,6 +9,8 @@ namespace ECE461Project1
     public class License : IScoreMetric
     {
         public float metricWeight { get; } = 0.40f;
+        public string metricName { get; } = "License";
+
         public float GetScore(string githubUrl)
         {
             string api_url = "https://api.github.com/repos/OWNER/REPO/contents/LICENSE.md";

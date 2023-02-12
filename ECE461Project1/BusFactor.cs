@@ -15,6 +15,7 @@
         class BusFactor : IScoreMetric
         {
             public float metricWeight { get; } = 0.35f;
+            public string metricName { get; } = "Bus Factor";
 
             public float GetScore(string githubUrl)
             {
