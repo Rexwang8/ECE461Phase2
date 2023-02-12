@@ -23,7 +23,7 @@ namespace UnitTestsProj
             float result = busFactor.GetScore(url);
 
             // 0.186 = health_percentage score, RSE < 0.50 so should be above 0.186
-            Assert.AreEqual(true, result > 0.186);
+            Assert.AreEqual(true, Math.Round(((double)result), 3) > 0.186);
         }
 
         // Single committer run
