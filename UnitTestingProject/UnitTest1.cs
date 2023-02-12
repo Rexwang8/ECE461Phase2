@@ -9,6 +9,15 @@ namespace UnitTestingProject
         [TestMethod]
         public void TestMethod1()
         {
+
+        }
+        [TestMethod]
+        public void License()
+        {
+            string url = "https://github.com/nodejs/node-addon-api";
+            License license= new License();
+            float result = license.GetScore(url);
+            Assert.AreEqual(0,result,"Incorrect Result");
         }
     }
 }
