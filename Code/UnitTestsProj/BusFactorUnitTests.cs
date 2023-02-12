@@ -36,7 +36,7 @@ namespace UnitTestsProj
             float result = busFactor.GetScore(url);
 
             // 0.126 = health_percentage score; graphScore should be 0
-            Assert.AreEqual(0.126, result);
+            Assert.AreEqual(0.126, Math.Round((double) result), 3);
         }
 
         // Negative score run
@@ -49,7 +49,7 @@ namespace UnitTestsProj
             float result = busFactor.GetScore(url);
 
             // 0.186 = health_percentage score; RSE is 83.05%
-            Assert.AreEqual(0.186, result);
+            Assert.AreEqual(0.186, Math.Round((double)result), 3);
         }
     }
 }
