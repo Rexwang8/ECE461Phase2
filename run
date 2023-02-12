@@ -1,1 +1,1 @@
-./dotnet-install.sh --version latest
+dotnet-install.sh --version latest
