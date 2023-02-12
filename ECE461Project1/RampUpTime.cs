@@ -7,7 +7,11 @@ namespace ECE461Project1
 {
     public class RampUpTime : IScoreMetric
     {
+        const int maxNumLines = 100000;
+        const int minNumLines = 100;
+
         public float metricWeight { get; } = 0.25f;
+        public string metricName { get; } = "RAMP_UP";
 
         public float GetScore(string githubUrl)
         {
@@ -20,13 +24,17 @@ namespace ECE461Project1
             gitClone.StartInfo.Arguments = "clone " + githubUrl + " ./githubRepoClone";
             gitClone.Start();
 
-            //Process gitClone = Process.Start("git", "clone " + githubUrl + " ./githubRepoClone");
             while (!gitClone.HasExited) ;
 
-            Console.WriteLine(CountNewLines(GetFilesPaths("./githubRepoClone")));
+            int numLines = CountNewLines(GetFilesPaths("./githubRepoClone"));
 
             DeleteDownloadedRepo();
-            return 1;
+
+            if (numLines > maxNumLines) numLines = maxNumLines;
+            if (numLines <= minNumLines) numLines = 0;
+            float score = 1f - ((float)numLines / maxNumLines);
+
+            return score;
         }
 
         List<string> GetFilesPaths(string parentDir)
