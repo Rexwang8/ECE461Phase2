@@ -4,7 +4,7 @@ using ECE461Project1;
 namespace UnitTestsProj
 {
     [TestClass]
-    public class UnitTest1
+    public class LicenseUnitTests
     {
         [TestMethod]
         public void License()
