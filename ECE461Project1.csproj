@@ -12,6 +12,7 @@
     <None Remove="GraphQL.Common" />
     <None Remove="GraphQL-Parser" />
     <None Remove="GraphQL.Client.Serializer.Newtonsoft" />
+    <None Remove="coverlet.msbuild" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
@@ -20,5 +21,9 @@
     <PackageReference Include="GraphQL.Common" Version="1.0.3" />
     <PackageReference Include="GraphQL-Parser" Version="8.1.0" />
     <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="5.1.1" />
+    <PackageReference Include="coverlet.msbuild" Version="3.2.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 </Project>
