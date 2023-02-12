@@ -18,6 +18,8 @@ namespace ECE461Project1
             } */ //<--- FOR TESTING
 
             //Command Line Inputs Begin Here
+           // License l = new License();
+            //l.GetScore("https://github.com/nodejs/node-addon-api");
 
         }
     }
