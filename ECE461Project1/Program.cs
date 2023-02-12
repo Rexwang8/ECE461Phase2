@@ -13,7 +13,7 @@ namespace ECE461Project1
             if (args[0] == "install")
             {
                 //Install Dependencies
-                
+
                 return 0; //Exit success
             }
             else if (args[0] == "build")
@@ -53,12 +53,9 @@ namespace ECE461Project1
                 Console.WriteLine(url);
                 foreach (IScoreMetric scoreMetric in scoreMetrics)
                 {
-                    if (scoreMetric.metricName != "Bus Factor")
-                    {
-                        float unweightedScore = scoreMetric.GetScore(url);
-                        float weightedScore = unweightedScore * scoreMetric.metricWeight;
-                        Console.WriteLine(scoreMetric.metricName + " score = " + unweightedScore);
-                    }
+                    float unweightedScore = scoreMetric.GetScore(url);
+                    float weightedScore = unweightedScore * scoreMetric.metricWeight;
+                    Console.WriteLine(scoreMetric.metricName + " score = " + unweightedScore);
                 }
             }
         }
