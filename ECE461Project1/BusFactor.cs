@@ -27,7 +27,7 @@ namespace ECE461Project1
         static async Task<float> mainCalculation(string githubUrl)
         {
             // Get token
-            var token = System.Environment.GetEnvironmentVariable("$GITHUB_TOKEN");
+            var token = System.Environment.GetEnvironmentVariable("GITHUB_TOKEN");
 
             // Setup score variable
             float finalScore = 0;
