@@ -8,7 +8,7 @@ namespace UnitTestsProj
     public class RampUpTimeTests
     {
         [TestMethod]
-        public void GitUrlTest()
+        public void GetScoreTest()
         {
             string url = "https://github.com/nodejs/node-addon-api";
             RampUpTime rampUpTime = new RampUpTime();

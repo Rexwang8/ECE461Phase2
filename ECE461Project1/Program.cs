@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ECE461Project1
 {
@@ -25,6 +26,7 @@ namespace ECE461Project1
             else if (args[0] == "test")
             {
                 //run unit tests
+                RunUnitTests();
 
                 return 0; //Exit success
             }
@@ -63,6 +65,21 @@ namespace ECE461Project1
 
                 Console.Write("\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1, \"NET_SCORE\":" + netScore + "}\n");
             }
+        }
+
+        static void RunUnitTests()
+        {
+            Process tests = new Process();
+            tests.StartInfo.RedirectStandardOutput = true;
+            tests.StartInfo.RedirectStandardError = true;
+            tests.StartInfo.FileName = "dotnet";
+            tests.StartInfo.Arguments = "test /p:CollectCoverage=true /p:CoverletOutputFormat=teamcity";
+            tests.StartInfo.WorkingDirectory = "/Users/ishaan/Desktop/ECE 461/ECE461TeamRepo/";
+            tests.Start();
+
+            while (!tests.HasExited) ;
+
+            Console.Write(tests.StandardOutput.ReadToEnd());
         }
     }
 }
