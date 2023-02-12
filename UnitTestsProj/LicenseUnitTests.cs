@@ -33,7 +33,7 @@ namespace UnitTestsProj
             url = "https://github.com/Homebrew/brew"; //BSD 2
             Assert.AreEqual(1, license.GetScore(url), "Incorrect Result");
 
-            url = "https://github.com/quilljs/quilln"; //BSD 3
+            url = "https://github.com/quilljs/quill"; //BSD 3
             Assert.AreEqual(1, license.GetScore(url), "Incorrect Result");/*/
 
 
