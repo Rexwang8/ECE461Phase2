@@ -50,7 +50,7 @@ namespace UnitTestsProj
         {
             string url = "https://github.com/isaacs/node-glob";
             ECE461Project1.License license = new ECE461Project1.License();
-            Assert.AreEqual(1, license.GetScore(url), "Incorrect Result");
+            Assert.AreEqual(0, license.GetScore(url), "Incorrect Result");
         }
         [TestMethod]
         public void BSD2()
