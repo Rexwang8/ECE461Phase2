@@ -2,6 +2,8 @@
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
+using System.Text.RegularExpressions;
+using System.Reactive.Joins;
 //using System.Text.Json.Serialization;
 
 namespace ECE461Project1
@@ -13,7 +15,7 @@ namespace ECE461Project1
 
         public float GetScore(string githubUrl)
         {
-            string api_url = "https://api.github.com/repos/OWNER/REPO/contents/LICENSE.md";
+            string api_url = "https://api.github.com/repos/OWNER/REPO/contents/README.md";
             api_url = api_url.Replace("OWNER", githubUrl.Split('/')[3]).Replace("REPO", githubUrl.Split('/')[4]);
 
             using (var httpClient = new HttpClient())
@@ -28,17 +30,10 @@ namespace ECE461Project1
                     var cleanedEncodedContent = encodedContent.TrimEnd('\r', '\n');
                     var decodedBytes = Convert.FromBase64String(cleanedEncodedContent);
                     string x = Encoding.UTF8.GetString(decodedBytes);
-                    string l1 = "MIT";
-                    string l2 = "X11";
-                    string l3 = "BSD-3-Clause";
-                    string l4 = "BSD-2-Clause";
-                    string l5 = "LGPL-2.1";
-                    if (x.Contains(l1)) { return 1; }
-                    if (x.Contains(l2)) { return 1; }
-                    if (x.Contains(l3)) { return 1; }
-                    if (x.Contains(l4)) { return 1; }
-                    if (x.Contains(l5)) { return 1; }
-                    return 0;
+                    Console.WriteLine(x);
+                    string pattern = @"(?:2-[Cc]lause\sBSD|BSD\s2-[Cc]lause)|(?:3-[Cc]lause\sBSD|BSD\s3-[Cc]lause)|ISC|MIT|LGPL[-\s]2\.1|GNU LESSER GENERAL PUBLIC LICENSE|X11";
+                    Regex regex = new Regex(pattern);
+                    if (regex.IsMatch(x) == true) { return 1; } else { return 0; }
                 }
                 else
                 {
