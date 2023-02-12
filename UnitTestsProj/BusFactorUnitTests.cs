@@ -9,7 +9,10 @@ namespace UnitTestsProj
     public class BusFactorUnitTests
     {
         // Tests based on repo commits as of 2/12/23
-        
+        // Environment Variables for Windows:
+        // Command Prompt -> setx GITHUB_TOKEN <GITHUB_TOKEN value>
+        // Restart Visual Studio / code editor afterwards
+
         // Basic run
         [TestMethod]
         public void BasicRunTest()
