@@ -11,6 +11,8 @@ namespace ECE461Project1
     /// </summary>
     public static class GithubURLRetriever
     {
+        public static Dictionary<string, string> githubUrlToRawURL = new Dictionary<string, string>();
+
         /// <summary>
         /// Returns a list of Github URLs when given an array containing github and npmjs urls
         /// </summary>
@@ -47,6 +49,7 @@ namespace ECE461Project1
                 if (url.Contains("github.com"))
                 {
                     githubURLs.Add(url);
+                    githubUrlToRawURL.Add(url, url);
                 }
                 else if (url.Contains("npmjs.com"))
                 {
@@ -79,7 +82,10 @@ namespace ECE461Project1
 
                 if (webPageParsed[0].Contains("github.com"))
                 {
-                    githubUrlList.Add("https://" + webPageParsed[0]);
+                    string githubUrl = "https://" + webPageParsed[0];
+                    githubUrlList.Add(githubUrl);
+                    if (!githubUrlToRawURL.ContainsKey(githubUrl)) githubUrlToRawURL.Add(githubUrl, npmjsURL);
+                    else githubUrlToRawURL[githubUrl] = npmjsURL;
                 }
                 else Console.WriteLine("Error, github url not found on: " + npmjsURL);
             }

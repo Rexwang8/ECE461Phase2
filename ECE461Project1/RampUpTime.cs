@@ -11,7 +11,7 @@ namespace ECE461Project1
         const int minNumLines = 100;
 
         public float metricWeight { get; } = 0.25f;
-        public string metricName { get; } = "Ramp-up Time";
+        public string metricName { get; } = "RAMP_UP";
 
         public float GetScore(string githubUrl)
         {
@@ -27,8 +27,6 @@ namespace ECE461Project1
             while (!gitClone.HasExited) ;
 
             int numLines = CountNewLines(GetFilesPaths("./githubRepoClone"));
-
-            Console.WriteLine(numLines);
 
             DeleteDownloadedRepo();
 

@@ -9,7 +9,7 @@ namespace ECE461Project1
     public class License : IScoreMetric
     {
         public float metricWeight { get; } = 0.40f;
-        public string metricName { get; } = "License";
+        public string metricName { get; } = "LICENSE";
 
         public float GetScore(string githubUrl)
         {

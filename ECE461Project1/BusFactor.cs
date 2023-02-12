@@ -15,7 +15,7 @@
         class BusFactor : IScoreMetric
         {
             public float metricWeight { get; } = 0.35f;
-            public string metricName { get; } = "Bus Factor";
+            public string metricName { get; } = "BUS_FACTOR";
 
             public float GetScore(string githubUrl)
             {
@@ -27,7 +27,7 @@
             static async Task<float> mainCalculation(string githubUrl)
             {
                 // Get token
-                var token = System.Environment.GetEnvironmentVariable("$GITHUB_TOKEN");
+                var token = System.Environment.GetEnvironmentVariable("GITHUB_TOKEN");
                 
                 // Setup score variable
                 float finalScore = 0;

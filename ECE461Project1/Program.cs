@@ -50,13 +50,18 @@ namespace ECE461Project1
 
             foreach (string url in githubUrlList)
             {
-                Console.WriteLine(url);
+                float netScore = 0;
+                Console.Write("{\"URL\":\"" + GithubURLRetriever.githubUrlToRawURL[url] + "\", ");
                 foreach (IScoreMetric scoreMetric in scoreMetrics)
                 {
                     float unweightedScore = scoreMetric.GetScore(url);
                     float weightedScore = unweightedScore * scoreMetric.metricWeight;
-                    Console.WriteLine(scoreMetric.metricName + " score = " + unweightedScore);
+                    netScore += weightedScore;
+
+                    Console.Write("\"" + scoreMetric.metricName + "_SCORE\":" + weightedScore + ", ");
                 }
+
+                Console.Write("\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1, \"NET_SCORE\":" + netScore + "}\n");
             }
         }
     }
