@@ -12,18 +12,28 @@ namespace ECE461Project1
     public static class GithubURLRetriever
     {
         /// <summary>
-        /// Returns a list of Github URLs when given a text file containing github and npmjs urls
+        /// Returns a list of Github URLs when given an array containing github and npmjs urls
         /// </summary>
-        /// <param name="filePath">path to text file</param>
+        /// <param name="rawUrls">array of raw urls</param>
         /// <returns>A list of Github URLs</returns>
-        public static List<string> GetURLList(string filePath)
+        public static List<string> GetURLList(string[] rawUrls)
         {
-            //Load File
-            string[] urlArray = File.ReadAllLines(@filePath);
-            Task<List<string>> asyncCall = GetGithubURLListAsync(urlArray);
+            Task<List<string>> asyncCall = GetGithubURLListAsync(rawUrls);
             asyncCall.Wait();
 
             return asyncCall.Result;
+        }
+
+
+        /// <summary>
+        /// Returns an array of raw URLs when given a text file containing github and npmjs urls
+        /// </summary>
+        /// <param name="filePath">path to text file</param>
+        /// <returns>A list of Github and npmjs urls</returns>
+        public static string[] GetRawListFromFile(string filePath)
+        {
+            //Load File
+            return File.ReadAllLines(@filePath);
         }
 
         //Returns a list of Github URLs
