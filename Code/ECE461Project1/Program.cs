@@ -32,7 +32,7 @@ namespace ECE461Project1
             }
             else
             {
-                //                    /Users/ishaan/Desktop/ECE\ 461/ECE461TeamRepo/ECE461Project1/URLTestFile.txt
+                //                    /Users/ishaan/Desktop/ECE\ 461/ECE461TeamRepo/Code/ECE461Project1/URLTestFile.txt
                 GetScores(args[0]);
 
                 return 0; //Exit success
