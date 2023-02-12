@@ -74,7 +74,7 @@ namespace ECE461Project1
             tests.StartInfo.RedirectStandardError = true;
             tests.StartInfo.FileName = "dotnet";
             tests.StartInfo.Arguments = "test /p:CollectCoverage=true /p:CoverletOutputFormat=teamcity";
-            tests.StartInfo.WorkingDirectory = "/Users/ishaan/Desktop/ECE 461/ECE461TeamRepo/";
+            tests.StartInfo.WorkingDirectory = "./Code";
             tests.Start();
 
             while (!tests.HasExited) ;
