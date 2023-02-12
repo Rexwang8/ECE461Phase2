@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ECE461Project1
 {
@@ -25,12 +26,13 @@ namespace ECE461Project1
             else if (args[0] == "test")
             {
                 //run unit tests
+                RunUnitTests();
 
                 return 0; //Exit success
             }
             else
             {
-                //                    /Users/ishaan/Desktop/ECE\ 461/ECE461TeamRepo/ECE461Project1/URLTestFile.txt
+                //                    /Users/ishaan/Desktop/ECE\ 461/ECE461TeamRepo/Code/ECE461Project1/URLTestFile.txt
                 GetScores(args[0]);
 
                 return 0; //Exit success
@@ -50,14 +52,34 @@ namespace ECE461Project1
 
             foreach (string url in githubUrlList)
             {
-                Console.WriteLine(url);
+                float netScore = 0;
+                Console.Write("{\"URL\":\"" + GithubURLRetriever.githubUrlToRawURL[url] + "\", ");
                 foreach (IScoreMetric scoreMetric in scoreMetrics)
                 {
                     float unweightedScore = scoreMetric.GetScore(url);
                     float weightedScore = unweightedScore * scoreMetric.metricWeight;
-                    Console.WriteLine(scoreMetric.metricName + " score = " + unweightedScore);
+                    netScore += weightedScore;
+
+                    Console.Write("\"" + scoreMetric.metricName + "_SCORE\":" + weightedScore + ", ");
                 }
+
+                Console.Write("\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1, \"NET_SCORE\":" + netScore + "}\n");
             }
+        }
+
+        static void RunUnitTests()
+        {
+            Process tests = new Process();
+            tests.StartInfo.RedirectStandardOutput = true;
+            tests.StartInfo.RedirectStandardError = true;
+            tests.StartInfo.FileName = "dotnet";
+            tests.StartInfo.Arguments = "test /p:CollectCoverage=true /p:CoverletOutputFormat=teamcity";
+            tests.StartInfo.WorkingDirectory = "./Code";
+            tests.Start();
+
+            while (!tests.HasExited) ;
+
+            Console.Write(tests.StandardOutput.ReadToEnd());
         }
     }
 }

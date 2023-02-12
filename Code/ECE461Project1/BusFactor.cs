@@ -15,7 +15,7 @@ namespace ECE461Project1
     public class BusFactor : IScoreMetric
     {
         public float metricWeight { get; } = 0.35f;
-        public string metricName { get; } = "Bus Factor";
+        public string metricName { get; } = "BUS_FACTOR";
 
         public float GetScore(string githubUrl)
         {
