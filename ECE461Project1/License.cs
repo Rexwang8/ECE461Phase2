@@ -22,7 +22,7 @@ namespace ECE461Project1
 
             using (var httpClient = new HttpClient())
             {
-                httpClient.DefaultRequestHeaders.Add("User-Agent", "C# console program");
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "request");
                 var response = httpClient.GetAsync(api_url).Result;
                 if (response.IsSuccessStatusCode)
                 {
@@ -33,7 +33,7 @@ namespace ECE461Project1
                     var cleanedEncodedContent = encodedContent.TrimEnd('\r', '\n');
                     var decodedBytes = Convert.FromBase64String(cleanedEncodedContent);
                     string x = Encoding.UTF8.GetString(decodedBytes);
-                    Console.WriteLine("\n" + x + "\n");
+                    //Console.WriteLine("\n" + x + "\n");
                     string pattern = @"(?:2-[Cc]lause\sBSD|BSD\s2-[Cc]lause)|(?:3-[Cc]lause\sBSD|BSD\s3-[Cc]lause)|ISC|MIT|LGPL[-\s]2\.1|GNU LESSER GENERAL PUBLIC LICENSE|X11";
                     Regex regex = new Regex(pattern);
                     if (regex.IsMatch(x) == true) { return 1; } else { return 0; }
@@ -41,7 +41,10 @@ namespace ECE461Project1
                 else
                 {
                     unsuccesfullHTTPRequestFlag = true;
-                    Console.WriteLine("\nUnsuccesful attempt");
+                    Console.WriteLine(githubUrl);
+                    Console.WriteLine(api_url);
+                    Console.WriteLine("\nUnsuccesful attempt, Response code: " + response.StatusCode);
+                    Console.WriteLine(response.ReasonPhrase);
                     return 0;
                 }
             }

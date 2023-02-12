@@ -13,6 +13,7 @@ namespace UnitTestsProj
             string url = "https://github.com/nodejs/node-addon-api";
             License license = new License();
             float result = license.GetScore(url);
+            //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, result, "Incorrect Result");
 
             /*url = "https://github.com/cloudinary/cloudinary_npm"; //MIT
@@ -44,6 +45,7 @@ namespace UnitTestsProj
             string url = "https://github.com/cloudinary/cloudinary_npm"; //MIT
             ECE461Project1.License license = new ECE461Project1.License();
             float score = license.GetScore(url);
+            //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, score, "Incorrect Result");
         }
         [TestMethod]
@@ -52,6 +54,7 @@ namespace UnitTestsProj
             string url = "https://github.com/isaacs/node-glob";
             ECE461Project1.License license = new ECE461Project1.License();
             float score = license.GetScore(url);
+            //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(0, score, "Incorrect Result");
         }
         [TestMethod]
@@ -60,6 +63,7 @@ namespace UnitTestsProj
             string url = "https://github.com/Homebrew/brew";
             ECE461Project1.License license = new ECE461Project1.License();
             float score = license.GetScore(url);
+            //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, score, "Incorrect Result");
         }
         [TestMethod]
@@ -68,6 +72,7 @@ namespace UnitTestsProj
             string url = "https://github.com/quilljs/quill";
             ECE461Project1.License license = new ECE461Project1.License();
             float score = license.GetScore(url);
+            //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, score, "Incorrect Result");
         }
 
