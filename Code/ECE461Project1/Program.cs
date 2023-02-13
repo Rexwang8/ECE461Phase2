@@ -75,16 +75,20 @@ namespace ECE461Project1
             while (scoreSheets.Count > 0)
             {
                 float maxScore = -1;
-                string scoreText = string.Empty;
-                foreach (ScoreSheet scoreSheet in scoreSheets)
+                ScoreSheet scoreSheet = null;
+                foreach (ScoreSheet scoreSheetInList in scoreSheets)
                 {
-                    if (scoreSheet.netScore > maxScore)
+                    if (scoreSheetInList.netScore > maxScore)
                     {
-                        maxScore = scoreSheet.netScore;
-                        scoreText = scoreSheet.scoreText;
+                        maxScore = scoreSheetInList.netScore;
+                        scoreSheet = scoreSheetInList;
                     }
                 }
-                Console.WriteLine(scoreText);
+                if (scoreSheet != null)
+                {
+                    Console.WriteLine(scoreSheet.scoreText);
+                    scoreSheets.Remove(scoreSheet);
+                }
             }
         }
 
