@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ECE461Project1
 {
@@ -123,6 +124,9 @@ namespace ECE461Project1
             Console.WriteLine("Coverage: " + totalCodeCoverage + "%");
             Console.WriteLine(passedCases + "/" + totalCases + " test cases passed. " + totalCodeCoverage + "% line coverage achieved.");
 
+            Logger.WriteLine(stdOut, 2);
+            Logger.WriteLine(tests.StandardError.ReadToEnd(), 2);
+
         }
 
         static string StringSplitHelper(string input, string firstSplit, string secondSplit)
@@ -135,12 +139,17 @@ namespace ECE461Project1
         static void CompileCode()
         {
             Process builder = new Process();
+            builder.StartInfo.RedirectStandardOutput = true;
+            builder.StartInfo.RedirectStandardError = true;
             builder.StartInfo.FileName = "dotnet";
             builder.StartInfo.Arguments = "build";
             builder.StartInfo.WorkingDirectory = "./Code";
             builder.Start();
 
             while (!builder.HasExited) ;
+
+            Logger.WriteLine(builder.StandardOutput.ReadToEnd(), 2);
+            Logger.WriteLine(builder.StandardError.ReadToEnd(), 2);
         }
 
         class ScoreSheet
