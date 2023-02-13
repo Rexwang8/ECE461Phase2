@@ -8,7 +8,17 @@ namespace ECE461Project1
     {
         static int Main(string[] args)
         {
-            if (args.Length != 1) return 1; //Exit Failure
+            if(!Logger.CreateFile())
+            {
+                Console.WriteLine("$LOG_FILE environment variable not set");
+                return 1; //Exit Failure
+            }
+
+            if (args.Length != 1)
+            {
+                Console.WriteLine("Incorrect num of input arguments");
+                return 1; //Exit Failure
+            }
 
             //Command Line Inputs Begin Here
             if (args[0] == "install")
@@ -33,7 +43,6 @@ namespace ECE461Project1
             }
             else
             {
-                //                    /Users/ishaan/Desktop/ECE\ 461/ECE461TeamRepo/Code/ECE461Project1/URLTestFile.txt
                 GetScores(args[0]);
 
                 return 0; //Exit success
@@ -64,7 +73,7 @@ namespace ECE461Project1
                     float weightedScore = unweightedScore * scoreMetric.metricWeight;
                     netScore += weightedScore;
 
-                    scoreText += "\"" + scoreMetric.metricName + "_SCORE\":" + weightedScore + ", ";
+                    scoreText += "\"" + scoreMetric.metricName + "_SCORE\":" + unweightedScore + ", ";
                 }
 
                 scoreText += "\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1,  \"NET_SCORE\":" + netScore + "}\n";

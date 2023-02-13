@@ -33,7 +33,7 @@ namespace ECE461Project1
                     var cleanedEncodedContent = encodedContent.TrimEnd('\r', '\n');
                     var decodedBytes = Convert.FromBase64String(cleanedEncodedContent);
                     string x = Encoding.UTF8.GetString(decodedBytes);
-                    //Console.WriteLine("\n" + x + "\n");
+                    Logger.WriteLine("\n" + x + "\n", 2);
                     string pattern = @"(?:2-[Cc]lause\sBSD|BSD\s2-[Cc]lause)|(?:3-[Cc]lause\sBSD|BSD\s3-[Cc]lause)|ISC|MIT|LGPL[-\s]2\.1|GNU LESSER GENERAL PUBLIC LICENSE|X11";
                     Regex regex = new Regex(pattern);
                     if (regex.IsMatch(x) == true) { return 1; } else { return 0; }
@@ -41,10 +41,10 @@ namespace ECE461Project1
                 else
                 {
                     unsuccesfullHTTPRequestFlag = true;
-                    Console.WriteLine(githubUrl);
-                    Console.WriteLine(api_url);
-                    Console.WriteLine("\nUnsuccesful attempt, Response code: " + response.StatusCode);
-                    Console.WriteLine(response.ReasonPhrase);
+                    Logger.WriteLine(githubUrl, 1);
+                    Logger.WriteLine(api_url, 1);
+                    Logger.WriteLine("\nUnsuccesful attempt, Response code: " + response.StatusCode, 1);
+                    Logger.WriteLine(response.ReasonPhrase, 1);
                     return 0;
                 }
             }

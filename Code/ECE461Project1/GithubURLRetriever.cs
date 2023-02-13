@@ -55,7 +55,7 @@ namespace ECE461Project1
                 {
                     npmjsURLs.Add(url);
                 }
-                else Console.WriteLine("Error, invalid URL");
+                else Logger.WriteLine("Error, invalid URL", 1);
             }
 
             githubURLs.AddRange(await ConvertNpmjsToGithubUrlAsync(npmjsURLs));
@@ -67,7 +67,7 @@ namespace ECE461Project1
         static async Task<List<string>> ConvertNpmjsToGithubUrlAsync(List<string> npmjsURLs)
         {
             HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("User-Agent", "C# console program");
+            client.DefaultRequestHeaders.Add("User-Agent", "request");
 
             List<string> githubUrlList = new List<string>();
             foreach (string npmjsURL in npmjsURLs)
@@ -87,7 +87,7 @@ namespace ECE461Project1
                     if (!githubUrlToRawURL.ContainsKey(githubUrl)) githubUrlToRawURL.Add(githubUrl, npmjsURL);
                     else githubUrlToRawURL[githubUrl] = npmjsURL;
                 }
-                else Console.WriteLine("Error, github url not found on: " + npmjsURL);
+                else Logger.WriteLine("Error, github url not found on: " + npmjsURL, 1);
             }
 
             return githubUrlList;
