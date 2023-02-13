@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace ECE461Project1
 {
-    class BusFactor : IScoreMetric
+    public class BusFactor : IScoreMetric
     {
         public float metricWeight { get; } = 0.35f;
         public string metricName { get; } = "BUS_FACTOR";
