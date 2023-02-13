@@ -84,8 +84,11 @@ namespace ECE461Project1
             Console.Write(stdOut);
             int passedCases = int.Parse(stdOut.Split(", Passed:    ")[1].Split(',')[0]);
             int totalCases = int.Parse(stdOut.Split(", Total:    ")[1].Split(',')[0]);
+            int totalCodeCoverageWhole = int.Parse(stdOut.Split("| ECE461Project1 | ")[1].Split('.')[0]);
+            int totalCodeCoverageDecimal = int.Parse(stdOut.Split("| ECE461Project1 | ")[1].Split('.')[1].Split("%")[0]);
 
             Console.WriteLine("\n\n\n\n\n\n\n\nPassed Cases: " + passedCases + "        Total Cases: " + totalCases);
+            Console.WriteLine("Lines Covered: " + totalCodeCoverageWhole + "." + totalCodeCoverageDecimal + "%");
 
         }
 
