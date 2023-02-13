@@ -19,9 +19,13 @@ namespace ECE461Project1
 
         public float GetScore(string githubUrl)
         {
-            Task<float> score = mainCalculation(githubUrl);
-            score.Wait();
-            return score.Result;
+            try
+            {
+                Task<float> score = mainCalculation(githubUrl);
+                score.Wait();
+                return score.Result;
+            }
+            catch { return 0; } //in case rate limit is hit
         }
 
         static async Task<float> mainCalculation(string githubUrl)
