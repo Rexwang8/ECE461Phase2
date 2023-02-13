@@ -95,7 +95,7 @@ namespace ECE461Project1
                 }
                 if (scoreSheet != null)
                 {
-                    Console.WriteLine(scoreSheet.scoreText);
+                    Console.Write(scoreSheet.scoreText);
                     scoreSheets.Remove(scoreSheet);
                 }
             }
@@ -114,15 +114,22 @@ namespace ECE461Project1
             while (!tests.HasExited) ;
 
             string stdOut = tests.StandardOutput.ReadToEnd();
-            string passedCases = stdOut.Split(", Passed:    ")[1].Split(',')[0];
-            string totalCases = stdOut.Split(", Total:    ")[1].Split(',')[0];
-            string totalCodeCoverage = stdOut.Split("| ECE461Project1 | ")[1].Split('%')[0];
+            string passedCases = StringSplitHelper(stdOut, ", Passed:    ", ",");
+            string totalCases = StringSplitHelper(stdOut, ", Total:    ", ",");
+            string totalCodeCoverage = StringSplitHelper(stdOut, "| ECE461Project1 | ", "%");
 
             Console.WriteLine("Total: " + totalCases);
             Console.WriteLine("Passed: " + passedCases);
             Console.WriteLine("Coverage: " + totalCodeCoverage + "%");
             Console.WriteLine(passedCases + "/" + totalCases + " test cases passed. " + totalCodeCoverage + "% line coverage achieved.");
 
+        }
+
+        static string StringSplitHelper(string input, string firstSplit, string secondSplit)
+        {
+            string[] split1Result = input.Split(firstSplit);
+            if (split1Result.Length < 2) return string.Empty;
+            return split1Result[1].Split(secondSplit)[0];
         }
 
         static void CompileCode()

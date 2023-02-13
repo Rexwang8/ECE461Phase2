@@ -43,7 +43,7 @@ namespace ECE461Project1
                     unsuccesfullHTTPRequestFlag = true;
                     Logger.WriteLine(githubUrl, 1);
                     Logger.WriteLine(api_url, 1);
-                    Logger.WriteLine("\nUnsuccesful attempt, Response code: " + response.StatusCode, 1);
+                    Logger.WriteLine("\nUnsuccesful attempt to retreive license metric, Response code: " + response.StatusCode, 1);
                     Logger.WriteLine(response.ReasonPhrase, 1);
                     return 0;
                 }
