@@ -30,7 +30,7 @@ namespace ECE461Project1
             }
             catch 
             {
-                hitRateLimitFlag = false;
+                hitRateLimitFlag = true;
                 return 0; //in case rate limit is hit
             }
         }
