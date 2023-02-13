@@ -71,8 +71,8 @@ namespace ECE461Project1
         static void RunUnitTests()
         {
             Process tests = new Process();
-            tests.StartInfo.RedirectStandardOutput = true;
-            tests.StartInfo.RedirectStandardError = true;
+            //tests.StartInfo.RedirectStandardOutput = true;
+            //tests.StartInfo.RedirectStandardError = true;
             tests.StartInfo.FileName = "dotnet";
             tests.StartInfo.Arguments = "test /p:CollectCoverage=true /p:CoverletOutputFormat=teamcity";
             tests.StartInfo.WorkingDirectory = "./Code";
@@ -80,8 +80,8 @@ namespace ECE461Project1
 
             while (!tests.HasExited) ;
 
-            Console.Write(tests.StandardOutput.ReadToEnd());
-            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + tests.StandardError.ReadToEnd());
+            //Console.Write(tests.StandardOutput.ReadToEnd());
+            //Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + tests.StandardError.ReadToEnd());
         }
 
         static void CompileCode()
