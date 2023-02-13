@@ -51,20 +51,40 @@ namespace ECE461Project1
             scoreMetrics.Add(new License());
             scoreMetrics.Add(new BusFactor());
 
+            List<ScoreSheet> scoreSheets = new();
+
             foreach (string url in githubUrlList)
             {
+                string scoreText = string.Empty;
                 float netScore = 0;
-                Console.Write("{\"URL\":\"" + GithubURLRetriever.githubUrlToRawURL[url] + "\", ");
+                scoreText += "{\"URL\":\"" + GithubURLRetriever.githubUrlToRawURL[url] + "\", ";
                 foreach (IScoreMetric scoreMetric in scoreMetrics)
                 {
                     float unweightedScore = scoreMetric.GetScore(url);
                     float weightedScore = unweightedScore * scoreMetric.metricWeight;
                     netScore += weightedScore;
 
-                    Console.Write("\"" + scoreMetric.metricName + "_SCORE\":" + weightedScore + ", ");
+                    scoreText += "\"" + scoreMetric.metricName + "_SCORE\":" + weightedScore + ", ";
                 }
 
-                Console.Write("\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1,  \"NET_SCORE\":" + netScore + "}\n");
+                scoreText += "\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1,  \"NET_SCORE\":" + netScore + "}\n";
+
+                scoreSheets.Add(new ScoreSheet(netScore, scoreText));
+            }
+
+            while (scoreSheets.Count > 0)
+            {
+                float maxScore = -1;
+                string scoreText = string.Empty;
+                foreach (ScoreSheet scoreSheet in scoreSheets)
+                {
+                    if (scoreSheet.netScore > maxScore)
+                    {
+                        maxScore = scoreSheet.netScore;
+                        scoreText = scoreSheet.scoreText;
+                    }
+                }
+                Console.WriteLine(scoreText);
             }
         }
 
@@ -101,6 +121,18 @@ namespace ECE461Project1
             builder.Start();
 
             while (!builder.HasExited) ;
+        }
+
+        class ScoreSheet
+        {
+            public float netScore;
+            public string scoreText;
+
+            public ScoreSheet(float netScore, string scoreSheet)
+            {
+                this.netScore = netScore;
+                this.scoreText = scoreSheet;
+            }
         }
     }
 }

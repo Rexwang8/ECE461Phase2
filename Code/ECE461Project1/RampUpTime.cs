@@ -7,7 +7,7 @@ namespace ECE461Project1
 {
     public class RampUpTime : IScoreMetric
     {
-        const int maxNumLines = 100000;
+        const int maxNumLines = 400000;
         const int minNumLines = 100;
 
         public float metricWeight { get; } = 0.25f;
