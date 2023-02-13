@@ -17,15 +17,22 @@ namespace ECE461Project1
         public float metricWeight { get; } = 0.35f;
         public string metricName { get; } = "BUS_FACTOR";
 
+        public bool hitRateLimitFlag = false;
+
         public float GetScore(string githubUrl)
         {
             try
             {
                 Task<float> score = mainCalculation(githubUrl);
                 score.Wait();
+                hitRateLimitFlag = false;
                 return score.Result;
             }
-            catch { return 0; } //in case rate limit is hit
+            catch 
+            {
+                hitRateLimitFlag = false;
+                return 0; //in case rate limit is hit
+            }
         }
 
         static async Task<float> mainCalculation(string githubUrl)
