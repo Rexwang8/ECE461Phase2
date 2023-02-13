@@ -20,6 +20,7 @@ namespace ECE461Project1
             else if (args[0] == "build")
             {
                 //compile code
+                CompileCode();
 
                 return 0; //Exit success
             }
@@ -63,7 +64,7 @@ namespace ECE461Project1
                     Console.Write("\"" + scoreMetric.metricName + "_SCORE\":" + weightedScore + ", ");
                 }
 
-                Console.Write("\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1, \"NET_SCORE\":" + netScore + "}\n");
+                Console.Write("\"CORRECTNESS_SCORE\":-1, \"RESPONSIVE_MAINTAINER_SCORE\":-1,  \"NET_SCORE\":" + netScore + "}\n");
             }
         }
 
@@ -80,6 +81,18 @@ namespace ECE461Project1
             while (!tests.HasExited) ;
 
             Console.Write(tests.StandardOutput.ReadToEnd());
+            Console.Write("\n\n\n\n\n\n\n\n\n\n\n\n\n\n" + tests.StandardError.ReadToEnd());
+        }
+
+        static void CompileCode()
+        {
+            Process builder = new Process();
+            builder.StartInfo.FileName = "dotnet";
+            builder.StartInfo.Arguments = "build";
+            builder.StartInfo.WorkingDirectory = "./Code";
+            builder.Start();
+
+            while (!builder.HasExited) ;
         }
     }
 }
