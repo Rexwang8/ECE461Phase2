@@ -1,2 +1,0 @@
-./dotnet-install.sh --version latest
-./ECE461Project1 $0
