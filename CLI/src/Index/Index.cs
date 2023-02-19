@@ -10,46 +10,24 @@ namespace Index
     class Program
     {
         static int Main(string[] args)
-        {
-            if(!Logger.CreateFile())
+        {   
+            if(!Logger.CheckEnvironment())
             {
-                Console.WriteLine("$LOG_FILE environment variable not set");
+                Console.WriteLine("Environment was not set");
                 return 1; //Exit Failure
             }
 
-            if (args.Length != 1)
-            {
-                Console.WriteLine("Incorrect num of input arguments");
-                return 1; //Exit Failure
-            }
-
-            //Command Line Inputs Begin Here
-            if (args[0] == "install")
-            {
-                //Install Dependencies
-
-                return 0; //Exit success
-            }
-            else if (args[0] == "build")
-            {
-                //compile code
-                CompileCode();
-
-                return 0; //Exit success
-            }
-            else if (args[0] == "test")
+            if (args[0] == "test")
             {
                 //run unit tests
                 RunUnitTests();
 
                 return 0; //Exit success
             }
-            else
-            {
-                GetScores(args[0]);
+    
+            GetScores(args[0]);
 
-                return 0; //Exit success
-            }
+            return 0;
         }
 
         static void GetScores(string urlFilePath)
@@ -126,8 +104,8 @@ namespace Index
             Console.WriteLine("Coverage: " + totalCodeCoverage + "%");
             Console.WriteLine(passedCases + "/" + totalCases + " test cases passed. " + totalCodeCoverage + "% line coverage achieved.");
 
-            Logger.WriteLine(stdOut, 2);
-            Logger.WriteLine(tests.StandardError.ReadToEnd(), 2);
+            Logger.WriteLine(stdOut);
+            Logger.WriteLine(tests.StandardError.ReadToEnd());
 
         }
 
@@ -150,8 +128,8 @@ namespace Index
 
             while (!builder.HasExited) ;
 
-            Logger.WriteLine(builder.StandardOutput.ReadToEnd(), 2);
-            Logger.WriteLine(builder.StandardError.ReadToEnd(), 2);
+            Logger.WriteLine(builder.StandardOutput.ReadToEnd());
+            Logger.WriteLine(builder.StandardError.ReadToEnd());
         }
 
         class ScoreSheet
