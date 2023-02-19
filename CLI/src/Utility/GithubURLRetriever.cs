@@ -55,7 +55,7 @@ namespace Utility
                 {
                     npmjsURLs.Add(url);
                 }
-                else Logger.WriteLine("Error, invalid URL", 1);
+                else Logger.WriteLine("Error, invalid URL");
             }
 
             githubURLs.AddRange(await ConvertNpmjsToGithubUrlAsync(npmjsURLs));
@@ -87,7 +87,7 @@ namespace Utility
                     if (!githubUrlToRawURL.ContainsKey(githubUrl)) githubUrlToRawURL.Add(githubUrl, npmjsURL);
                     else githubUrlToRawURL[githubUrl] = npmjsURL;
                 }
-                else Logger.WriteLine("Error, github url not found on: " + npmjsURL, 1);
+                else Logger.WriteLine("Error, github url not found on: " + npmjsURL);
             }
 
             return githubUrlList;

@@ -31,7 +31,7 @@ namespace StaticAnalysis
             catch 
             {
                 hitRateLimitFlag = true;
-                Logger.WriteLine("Bus Factor rate limit reached, all scores will be 0", 1);
+                Logger.WriteLine("Bus Factor rate limit reached, all scores will be 0");
                 return 0; //in case rate limit is hit
             }
         }

@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 namespace Utility;
 public static class Logger
 {
+    /* Useless Code 
     public static bool CreateFile()
     {
+        
         string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE");
         if (logFile != null)
         {
@@ -17,8 +19,30 @@ public static class Logger
         }
         
         return false;
+    } */
+
+    public static bool CheckEnvironment()
+    {
+        if (System.Environment.GetEnvironmentVariable("LOG_FILE") == null)
+        {
+            Logger.WriteLine("LOG_FILE not set...");
+            return false;
+        }
+        if (System.Environment.GetEnvironmentVariable("LOG_LEVEL") == null)
+        {
+            Logger.WriteLine("LOG_LEVEL not set...");
+            return false;
+        }
+        if (System.Environment.GetEnvironmentVariable("GITHUB_TOKEN") == null)
+        {
+            Logger.WriteLine("GITHUB_TOKEN not set...");
+            return false;
+        }
+
+        return true;
     }
-    public static void WriteLine(string logText, int logLevel)
+
+    public static void WriteLine(string logText)
     {
         string systemLogLevelString = System.Environment.GetEnvironmentVariable("LOG_LEVEL");
         string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE");
@@ -26,7 +50,7 @@ public static class Logger
 
         if (systemLogLevelString != null) systemLogLevel = int.Parse(systemLogLevelString);
 
-        if (systemLogLevel == 0 || (logLevel == 2 && systemLogLevel == 1) || logFile == null) return;
+        if (systemLogLevel < 2 || logFile == null) return;
 
         File.WriteAllText(logFile, logText + "\n");
     }

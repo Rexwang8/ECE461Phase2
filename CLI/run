@@ -1,36 +1,59 @@
 #!/bin/bash
 
 #log environment variables $LOG_PATH and $LOG_LEVEL
-loglevel="${LOG_LEVEL:-2}"
+loglevel="${LOG_LEVEL:-1}"
 logfullpath="${LOG_FILE:-/home/shay/a/lin1285/ECE461SoftwareEngineeringProject/cache/log2.txt}"
 ghtoken="${GITHUB_TOKEN:-faketokengithub}"
+#sets up cache folder
+mkdir -p cache
+touch cache/build.txt
 
+function logDebug() {
+    if [ $loglevel -gt 1 ] 
+    then
+    echo -e $1
+    echo "[BUILD|Priority: 2(debug)] $1" | tee -a $logfullpath cache/build.txt >/dev/null
+    fi
+}
 
 case "$1" in 
     "build")
-        dotnet publish src/StaticAnalysis
-        dotnet publish src/Utility
-        dotnet publish src/Index
-        dotnet publish UnitTesting
+        logDebug "Building... \n"
+
+        logDebug "Building StaticAnalysis..."
+        dotnet publish src/StaticAnalysis -r linux-x64 -p:PublishSingleFile=true --self-contained true | tee -a $logfullpath cache/build.txt >/dev/null
+        
+        logDebug "Building Utility..."
+        dotnet publish src/Utility -r linux-x64 -p:PublishSingleFile=true --self-contained true | tee -a $logfullpath cache/build.txt >/dev/null
+        
+        logDebug "Building Index..."
+        dotnet publish src/Index -r linux-x64 -p:PublishSingleFile=true --self-contained true | tee -a $logfullpath cache/build.txt >/dev/null
+
+        #dotnet publish UnitTesting //needs fixing
+        
+        logDebug "\nBuild Complete"
     ;;
     "test")
     
     ;;
     "install")
+        logDebug "Downloading Dependencies...\n"
         cd src/StaticAnalysis
-        dotnet add package Newtonsoft.Json
-        dotnet add package GraphQL
-        dotnet add package GraphQL.Client
-        dotnet add package GraphQL.Client.Serializer.Newtonsoft
-        dotnet add package GraphQL.Common
+        dotnet add package Newtonsoft.Json | tee -a $logfullpath cache/build.txt >/dev/null
+        dotnet add package GraphQL | tee -a $logfullpath cache/build.txt >/dev/null
+        dotnet add package GraphQL.Client | tee -a $logfullpath cache/build.txt >/dev/null
+        dotnet add package GraphQL.Client.Serializer.Newtonsoft | tee -a $logfullpath cache/build.txt >/dev/null
+        dotnet add package GraphQL.Common | tee -a $logfullpath cache/build.txt >/dev/null
         cd ../..
 
         cd UnitTesting
-        dotnet add package coverlet.msbuild
+        dotnet add package coverlet.msbuild | tee -a $logfullpath cache/build.txt >/dev/null
         cd ../..
+
+        logDebug "Dependencies Installed"
     ;;
     "clean")
-    
+        rm -rf cache
     ;;
     *)
 
