@@ -1,7 +1,0 @@
-{"metric":"LICENSE_COMPATIBILITY_SCORE", "api":"rest", "filepath":"Code/ECE461Project1/License.cs", "line":26}
-
-{"metric":"BUS_FACTOR_SCORE", "api":"rest", "filepath":"Code/ECE461Project1/BusFactor.cs", "line":67}
-{"metric":"BUS_FACTOR_SCORE", "api":"rest", "filepath":"Code/ECE461Project1/BusFactor.cs", "line":84}
-{"metric":"BUS_FACTOR_SCORE", "api":"graphql", "filepath":"Code/ECE461Project1/BusFactor.cs", "line":136}
-
-{"metric":"RAMP_UP_SCORE", "api":"clone", "filepath":"Code/ECE461Project1/RampUpTime.cs", "line":29}

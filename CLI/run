@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#log environment variables $LOG_PATH and $LOG_LEVEL
+loglevel="${LOG_LEVEL:-2}"
+logfullpath="${LOG_FILE:-/home/shay/a/lin1285/ECE461SoftwareEngineeringProject/cache/log2.txt}"
+ghtoken="${GITHUB_TOKEN:-faketokengithub}"
+
+
+case "$1" in 
+    "build")
+        dotnet publish src/StaticAnalysis
+        dotnet publish src/Utility
+        dotnet publish src/Index
+        dotnet publish UnitTesting
+    ;;
+    "test")
+    
+    ;;
+    "install")
+        cd src/StaticAnalysis
+        dotnet add package Newtonsoft.Json
+        dotnet add package GraphQL
+        dotnet add package GraphQL.Client
+        dotnet add package GraphQL.Client.Serializer.Newtonsoft
+        dotnet add package GraphQL.Common
+        cd ../..
+
+        cd UnitTesting
+        dotnet add package coverlet.msbuild
+        cd ../..
+    ;;
+    "clean")
+    
+    ;;
+    *)
+
+    ;;
+esac
