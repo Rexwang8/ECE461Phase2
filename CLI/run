@@ -8,6 +8,16 @@ ghtoken="${GITHUB_TOKEN:-faketokengithub}"
 mkdir -p cache
 touch cache/build.txt
 
+function logInfo() {
+    #make cache folder if it doesnt exist
+    makeCaches
+
+    if [ $loglevel -gt 0 ] 
+    then
+    echo "[BUILD|Priority: 1(info)] $1" | tee -a $logfullpath cache/build.txt >/dev/null
+    fi
+}
+
 function logDebug() {
     if [ $loglevel -gt 1 ] 
     then
@@ -56,6 +66,7 @@ case "$1" in
         rm -rf cache
     ;;
     *)
-
+        cd src/Index
+        dotnet run $1
     ;;
 esac

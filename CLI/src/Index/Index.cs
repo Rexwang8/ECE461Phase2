@@ -24,8 +24,12 @@ namespace Index
 
                 return 0; //Exit success
             }
-    
-            GetScores(args[0]);
+            
+            URLClass urlClass = new URLClass();
+
+            urlClass.addURL(args[0]);
+            
+            
 
             return 0;
         }
