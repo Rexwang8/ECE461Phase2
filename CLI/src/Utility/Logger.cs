@@ -25,33 +25,37 @@ public static class Logger
     {
         if (System.Environment.GetEnvironmentVariable("LOG_FILE") == null)
         {
-            Logger.WriteLine("LOG_FILE not set...");
+            Logger.WriteLine("LOG_FILE not set...", 1);
             return false;
         }
         if (System.Environment.GetEnvironmentVariable("LOG_LEVEL") == null)
         {
-            Logger.WriteLine("LOG_LEVEL not set...");
+            Logger.WriteLine("LOG_LEVEL not set...", 1);
             return false;
         }
         if (System.Environment.GetEnvironmentVariable("GITHUB_TOKEN") == null)
         {
-            Logger.WriteLine("GITHUB_TOKEN not set...");
+            Logger.WriteLine("GITHUB_TOKEN not set...",1);
             return false;
         }
 
         return true;
     }
 
-    public static void WriteLine(string logText)
+    public static void WriteLine(string logText, int level)
     {
         string systemLogLevelString = System.Environment.GetEnvironmentVariable("LOG_LEVEL");
         string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE");
         int systemLogLevel = 0;
-
         if (systemLogLevelString != null) systemLogLevel = int.Parse(systemLogLevelString);
 
-        if (systemLogLevel < 2 || logFile == null) return;
+        if (systemLogLevel == 0 || logFile == null) return;
 
-        File.WriteAllText(logFile, logText + "\n");
+        if (systemLogLevel == 1 & level == 2) return;
+
+        using (StreamWriter sr = new StreamWriter(logFile, true))
+        {
+            sr.WriteLine(logText);
+        }
     }
 }

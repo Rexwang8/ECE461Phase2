@@ -1,3 +1,5 @@
+using Utility;
+
 namespace StaticAnalysis
 {
     class URLInfo
@@ -5,10 +7,11 @@ namespace StaticAnalysis
         bool isInvalid = false;
 
         string name { get; set; }
-        string url { get; set; } //todo: change it to a list because npm has npm and github url
+        string githubUrl { get; set; }
+        string npmUrl { get; set; }
         string type { get; set; }
         string path { get; set; }
-
+        
         int license_score { get; set; }
         float rampUp_score { get; set; }
         float busFactor_score { get; set; }
@@ -20,12 +23,37 @@ namespace StaticAnalysis
         {
             name = getName(url);
             type = getType(url);
-            url = url;
-            Console.WriteLine("name: " + name);
-            Console.WriteLine("type: " + type);
+            if (type == "npm")
+            {
+                githubUrl = "none";
+                npmUrl = url;
+            }
+            else if (type == "github")
+            {
+                githubUrl = url;
+                npmUrl = "none";
+            }
+            else
+            {
+                githubUrl = "none";
+                npmUrl = "none";
+            }
         }
 
-        public string getType(string url)
+        //Need function for download github and npm
+
+        public string getInfo()
+        {
+            return "{name: " +  name + ", github url: " + githubUrl + ", npm url: " + npmUrl + ", type: " + type + ", path: " + path + "}"; 
+        }
+
+        string getName(string url)
+        {
+            String[] splitUrl = url.Split("/");
+            return splitUrl[splitUrl.Length - 1];
+        }
+
+        string getType(string url)
         {
             if (url.Contains("github.com"))
             {
@@ -41,15 +69,5 @@ namespace StaticAnalysis
                 return "invalid";
             }
         }
-
-        public string getName(string url)
-        {
-            String[] splitUrl = url.Split("/");
-            return splitUrl[splitUrl.Length - 1];
-        }
-
-    
     }
-
-
 }
