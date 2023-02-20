@@ -5,11 +5,25 @@ namespace StaticAnalysis
         IDictionary<string, URLInfo> urlDic = new Dictionary<string, URLInfo>(); //di
 
         //This functions adds url to the class with everything filled out
-        public void addURL(string url)
-        {
-            URLInfo urlInfo = new URLInfo();
+        public void addUrls(string ori_url)
+        {   
+            string[] urls = File.ReadAllLines(ori_url);
+            foreach (string url in urls)
+            {
+                if (urlDic.ContainsKey(getName(url)))
+                {
+                    continue;
+                }
 
-            urlInfo.addURL(url);
+                URLInfo urlInfo = new URLInfo();
+                urlInfo.addURL(url);
+                urlDic.Add(urlInfo.getName(url), urlInfo);
+            }
+            
+            Console.WriteLine(getUrls());
+            //URLInfo urlInfo = new URLInfo();
+
+            //urlInfo.addURL(url);
 
             //urlDic.Add(getName(url), null);
         }
@@ -18,5 +32,21 @@ namespace StaticAnalysis
         {
 
         } */
+        public string getUrls()
+        {
+            string returnString = string.Empty;
+            foreach (KeyValuePair<string, URLInfo> item in urlDic)
+            {
+                returnString += (item.Value.getInfo() + "\n");               
+            } 
+
+            return returnString;
+        }
+
+        string getName(string url)
+        {
+            String[] splitUrl = url.Split("/");
+            return splitUrl[splitUrl.Length - 1];
+        }
     } 
 }

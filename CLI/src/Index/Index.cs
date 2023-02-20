@@ -27,7 +27,7 @@ namespace Index
             
             URLClass urlClass = new URLClass();
 
-            urlClass.addURL(args[0]);
+            urlClass.addUrls(args[0]);
             
             
 
@@ -108,8 +108,8 @@ namespace Index
             Console.WriteLine("Coverage: " + totalCodeCoverage + "%");
             Console.WriteLine(passedCases + "/" + totalCases + " test cases passed. " + totalCodeCoverage + "% line coverage achieved.");
 
-            Logger.WriteLine(stdOut);
-            Logger.WriteLine(tests.StandardError.ReadToEnd());
+            Logger.WriteLine(stdOut, 2);
+            Logger.WriteLine(tests.StandardError.ReadToEnd(), 2);
 
         }
 
@@ -132,8 +132,8 @@ namespace Index
 
             while (!builder.HasExited) ;
 
-            Logger.WriteLine(builder.StandardOutput.ReadToEnd());
-            Logger.WriteLine(builder.StandardError.ReadToEnd());
+            Logger.WriteLine(builder.StandardOutput.ReadToEnd(), 2);
+            Logger.WriteLine(builder.StandardError.ReadToEnd(), 2);
         }
 
         class ScoreSheet
