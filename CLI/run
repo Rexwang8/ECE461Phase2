@@ -26,6 +26,7 @@ function logDebug() {
     fi
 }
 
+
 case "$1" in 
     "build")
         logDebug "Building... \n"
@@ -44,6 +45,7 @@ case "$1" in
         logDebug "\nBuild Complete"
     ;;
     "test")
+    logInfo "Testing..."
     
     ;;
     "install")
@@ -67,6 +69,6 @@ case "$1" in
     ;;
     *)
         cd src/Index
-        dotnet run $1
+        dotnet run $1 $loglevel $logfullpath $ghtoken
     ;;
 esac
