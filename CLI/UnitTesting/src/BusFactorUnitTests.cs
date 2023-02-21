@@ -1,10 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ECE461Project1;
+using Index;
 using System.Collections.Generic;
 using System;
 using StaticAnalysis;
 
-namespace UnitTesting;
+namespace UnitTesting
 {
     [TestClass]
     public class BusFactorUnitTests

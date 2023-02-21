@@ -10,34 +10,129 @@ namespace Index
     class Program
     {
         static int Main(string[] args)
-        {   
-            if(!Logger.CheckEnvironment())
+        {
+
+            //validate inputs
+            ValidateInputs(args);
+
+            //initialize args
+            string ARGFILEPATH = args[0];
+            int ARGLOGLEVEL = int.Parse(args[1]);
+            string ARGLOGFILE = args[2];
+            string ARGGITHUBTOKEN = args[3];
+
+            //initialize logger
+            Logger logger = new Logger(ARGLOGLEVEL, ARGLOGFILE, "Index: ");
+            logger.Log("Starting program -- All validated", 1);
+
+            //read file
+            logger.Log("Reading file", 1);
+            List<string> rawUrls = GetRawListFromFile(ARGFILEPATH);
+
+            //convert list of strings to list of empty URLinfos
+            List<URLInfo> urlInfos = GetURLList(rawUrls);
+
+            URLClass AllPackages = new URLClass(urlInfos);
+            Console.WriteLine("We have " + AllPackages.GetAllPackages().Count + " packages");
+
+            //get names and type
+            logger.Log("Getting names and types", 1);
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine("Environment was not set");
-                return 1; //Exit Failure
+                Console.WriteLine(pkg.returnName() + " " + pkg.returnType() + " " + pkg.returnURL());
             }
 
-            if (args[0] == "test")
+
+
+            //npm pull
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                //run unit tests
-                RunUnitTests();
+                Console.WriteLine("Getting npm info for " + pkg.returnName());
+                if (pkg.returnType() == "npm" || pkg.returnType() == "both")
+                {
+                    //pkg.PullNpmInfo(logger);
 
-                return 0; //Exit success
+                    //add built in delay to avoid rate limiting
+                    System.Threading.Thread.Sleep(500);
+                }
             }
-            
-            URLClass urlClass = new URLClass();
 
-            urlClass.addUrls(args[0]);
-            
-            
+            //github pull
+
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
+            {
+                Console.WriteLine("Getting github info for " + pkg.returnName());
+                if (pkg.returnType() == "github" || pkg.returnType() == "both")
+                {
+                    //pkg.PullGithubInfo(logger, ARGGITHUBTOKEN);
+
+                    //add built in delay to avoid rate limiting
+                    System.Threading.Thread.Sleep(500);
+                }
+            }
+
+
+            //get each metric
+            logger.Log("Getting each metric", 1);
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
+            {
+                Console.WriteLine("Getting metrics for " + pkg.returnName());
+                //ramptime
+
+                //license
+
+                //busfactor
+
+                //responsive maintainer
+
+                //license compatibility
+
+                //correctness
+
+                //NEW METRICS
+                //code review ratio
+
+                //version ratio
+
+                //net score
+            }
+
+            //write to file
 
             return 0;
         }
 
+        static List<string> GetRawListFromFile(string urlFilePath)
+        {
+            List<string> rawUrls = new();
+            using (StreamReader sr = new StreamReader(urlFilePath))
+            {
+                string? line;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    rawUrls.Add(line);
+                }
+            }
+            return rawUrls;
+        }
+
+
+        static List<URLInfo> GetURLList(List<string> rawUrls)
+        {
+            List<URLInfo> urlInfos = new();
+            foreach (string rawUrl in rawUrls)
+            {
+                urlInfos.Add(new URLInfo(rawUrl));
+            }
+            return urlInfos;
+        }
         static void GetScores(string urlFilePath)
         {
+            
             string[] rawUrls = GithubURLRetriever.GetRawListFromFile(urlFilePath);
             List<string> githubUrlList = GithubURLRetriever.GetURLList(rawUrls);
+            
+
 
             List<IScoreMetric> scoreMetrics = new List<IScoreMetric>();
 
@@ -69,7 +164,7 @@ namespace Index
             while (scoreSheets.Count > 0)
             {
                 float maxScore = -1;
-                ScoreSheet scoreSheet = null;
+                ScoreSheet? scoreSheet = null;
                 foreach (ScoreSheet scoreSheetInList in scoreSheets)
                 {
                     if (scoreSheetInList.netScore > maxScore)
@@ -85,6 +180,66 @@ namespace Index
                 }
             }
         }
+
+        static void ValidateInputs(string[] args)
+        {
+            //we expect 4 arguments: the filepath, the log level, and the log file path, and the github token
+            if (args.Length != 4)
+            {
+                Console.WriteLine("Invalid number of arguments. Expected 5, got " + args.Length);
+                Environment.Exit(1);
+            }
+
+            string ARGFILEPATH = args[0];
+            int ARGLOGLEVEL = 2;
+
+            //check if filepath is an absolute path that exists
+            if (!System.IO.Path.IsPathRooted(ARGFILEPATH))
+            {
+                Console.WriteLine("Filepath is not an absolute path, it is " + ARGFILEPATH);
+                Environment.Exit(1);
+            }
+
+            //check if file exists
+            if (!System.IO.File.Exists(ARGFILEPATH))
+            {
+                Console.WriteLine("File does not exist");
+                Environment.Exit(1);
+            }
+
+            //check if log level is valid
+            bool success = int.TryParse(args[1], out ARGLOGLEVEL);
+            if (!success)
+            {
+                Console.WriteLine("Log level is not an integer");
+                Environment.Exit(1);
+            }
+
+            if (ARGLOGLEVEL < 0 || ARGLOGLEVEL > 2)
+            {
+                Console.WriteLine("Log level is not valid");
+                Environment.Exit(1);
+            }
+
+            string LOGFPATH = args[2];
+            //check if log file path is an absolute path
+            if (!System.IO.Path.IsPathRooted(LOGFPATH))
+            {
+                Console.WriteLine("Log file path is not an absolute path");
+                Environment.Exit(1);
+            }
+
+            //check if github token is valid
+            string GHTOKEN = args[3];
+            if (GHTOKEN.Length != 40)
+            {
+                Console.WriteLine("Github token is not valid");
+                Environment.Exit(1);
+            }
+
+            return;
+        }
+
 
         static void RunUnitTests()
         {
@@ -147,5 +302,21 @@ namespace Index
                 this.scoreText = scoreSheet;
             }
         }
+
+
+    }
+
+    public class License : IScoreMetric
+    {
+        //dummy class to get vscode to stop yelling at me
+        public string metricName { get; set; } = "LICENSE";
+        public float metricWeight { get; set; } = 0.2f;
+
+        public float GetScore(string url)
+        {
+            return 0.5f;
+        }
+
+        public bool unsuccesfullHTTPRequestFlag = true;
     }
 }

@@ -5,47 +5,39 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Utility;
-public static class Logger
+public class Logger
 {
-    /* Useless Code 
-    public static bool CreateFile()
-    {
-        
-        string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE");
-        if (logFile != null)
-        {
-            File.Create(logFile);
-            return true;
-        }
-        
-        return false;
-    } */
+    //store the initialized values
+    private string logFile { get; set; } = "cache/log.txt";
+    private int logLevel { get; set; } = 2;
 
-    public static bool CheckEnvironment()
-    {
-        if (System.Environment.GetEnvironmentVariable("LOG_FILE") == null)
-        {
-            Logger.WriteLine("LOG_FILE not set...", 1);
-            return false;
-        }
-        if (System.Environment.GetEnvironmentVariable("LOG_LEVEL") == null)
-        {
-            Logger.WriteLine("LOG_LEVEL not set...", 1);
-            return false;
-        }
-        if (System.Environment.GetEnvironmentVariable("GITHUB_TOKEN") == null)
-        {
-            Logger.WriteLine("GITHUB_TOKEN not set...",1);
-            return false;
-        }
+    private string prefix { get; set; } = "LOGGERDEFAULT: ";
 
-        return true;
+    public Logger(int logLevel = 2, string logFile = "cache/log.txt", string prefix = "LOGGERDEFAULT: ")
+    {
+        this.logLevel = logLevel;
+        this.logFile = logFile;
+        this.prefix = prefix;
     }
 
+    public void Log(string message, int messagePriority)
+    {
+        if (this.logLevel == 0 || this.logFile == null) return;
+        if(this.logLevel == 1 & messagePriority == 2) return;
+        if(messagePriority <= this.logLevel)
+        {
+            using (StreamWriter sr = new StreamWriter(this.logFile, true))
+            {
+                sr.WriteLine(prefix + " " + message);
+            }
+        }
+    }
+
+    //deprecated
     public static void WriteLine(string logText, int level)
     {
-        string systemLogLevelString = System.Environment.GetEnvironmentVariable("LOG_LEVEL");
-        string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE");
+        string systemLogLevelString = System.Environment.GetEnvironmentVariable("LOG_LEVEL") ?? "0";
+        string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE") ?? "0";
         int systemLogLevel = 0;
         if (systemLogLevelString != null) systemLogLevel = int.Parse(systemLogLevelString);
 

@@ -2,51 +2,60 @@ namespace StaticAnalysis
 {
     public class URLClass
     {
-        IDictionary<string, URLInfo> urlDic = new Dictionary<string, URLInfo>(); //di
+        Dictionary<string, URLInfo> urlDic = new Dictionary<string, URLInfo>(); //dictionary
 
-        //This functions adds url to the class with everything filled out
-        public void addUrls(string ori_url)
-        {   
-            string[] urls = File.ReadAllLines(ori_url);
-            foreach (string url in urls)
+        public URLClass(List<URLInfo> urlInfos)
+        {
+           
+            foreach (var url in urlInfos)
             {
-                if (urlDic.ContainsKey(getName(url)))
+                url.getName();
+                url.getType();
+                if(url.returnName() != "none" && url.returnType() != "none" && url.returnIsInvalid() == false)
                 {
-                    continue;
+                    //checks if the url is already in the dictionary
+                    if(!urlDic.ContainsKey(url.returnName()))
+                    {
+                        urlDic.Add(url.returnName(), url);
+                    }
+                    else
+                    {
+                       // Console.WriteLine("Duplicate URL: " + url.returnName());
+                        //identify duplicate url type and write the new url to the duplicate package if necessary
+                        string type = url.returnType();
+                        //Console.WriteLine("Type: " + type);
+                        if(type == "github")
+                        {
+                            urlDic[url.returnName()].setGithubURL(url.returnURL());
+                            urlDic[url.returnName()].setTypeName("both");
+                        }
+                        else if(type == "npm")
+                        {
+                            urlDic[url.returnName()].setNpmURL(url.returnURL());
+                            urlDic[url.returnName()].setTypeName("both");
+                        }
+                        else if(type == "both")
+                        {
+                          //  Console.WriteLine("Error: Duplicate URL is already both");
+                        }
+                        else
+                        {
+                           // Console.WriteLine("Error: Duplicate URL type not recognized");
+                        }
+
+                    }
                 }
-
-                URLInfo urlInfo = new URLInfo();
-                urlInfo.addURL(url);
-                urlDic.Add(urlInfo.getName(url), urlInfo);
             }
-            
-            Console.WriteLine(getUrls());
-            //URLInfo urlInfo = new URLInfo();
-
-            //urlInfo.addURL(url);
-
-            //urlDic.Add(getName(url), null);
         }
 
-        /* public void downloadURL()
+        public URLInfo returnURLInfo(string name)
         {
-
-        } */
-        public string getUrls()
-        {
-            string returnString = string.Empty;
-            foreach (KeyValuePair<string, URLInfo> item in urlDic)
-            {
-                returnString += (item.Value.getInfo() + "\n");               
-            } 
-
-            return returnString;
+            return urlDic[name];
         }
 
-        string getName(string url)
+        public Dictionary<string, URLInfo> GetAllPackages()
         {
-            String[] splitUrl = url.Split("/");
-            return splitUrl[splitUrl.Length - 1];
+            return urlDic;
         }
     } 
 }

@@ -1,0 +1,64 @@
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric

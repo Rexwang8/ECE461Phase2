@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ECE461Project1;
+using Index;
 using System.Collections.Generic;
 using Utility;
 
-namespace UnitTesting;
+namespace UnitTesting
 {
     [TestClass]
     public class GetGitUrlsUnitTests

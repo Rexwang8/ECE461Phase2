@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ECE461Project1;
+using Index;
 using static System.Net.WebRequestMethods;
 using StaticAnalysis;
 
-namespace UnitTesting;
+namespace UnitTesting
 {
     [TestClass]
     public class LicenseUnitTests
@@ -12,7 +12,7 @@ namespace UnitTesting;
         public void License()
         {
             string url = "https://github.com/nodejs/node-addon-api";
-            License license = new License();
+            Index.License license = new Index.License();
             float result = license.GetScore(url);
             //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, result, "Incorrect Result");
@@ -44,7 +44,7 @@ namespace UnitTesting;
         public void MIT()
         {
             string url = "https://github.com/cloudinary/cloudinary_npm"; //MIT
-            ECE461Project1.License license = new ECE461Project1.License();
+            Index.License license = new Index.License();
             float score = license.GetScore(url);
             //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, score, "Incorrect Result");
@@ -53,7 +53,7 @@ namespace UnitTesting;
         public void Incorrect()
         {
             string url = "https://github.com/isaacs/node-glob";
-            ECE461Project1.License license = new ECE461Project1.License();
+            Index.License license = new Index.License();
             float score = license.GetScore(url);
             //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(0, score, "Incorrect Result");
@@ -62,7 +62,7 @@ namespace UnitTesting;
         public void BSD2()
         {
             string url = "https://github.com/Homebrew/brew";
-            ECE461Project1.License license = new ECE461Project1.License();
+            Index.License license = new Index.License();
             float score = license.GetScore(url);
             //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, score, "Incorrect Result");
@@ -71,7 +71,7 @@ namespace UnitTesting;
         public void BSD3()
         {
             string url = "https://github.com/quilljs/quill";
-            ECE461Project1.License license = new ECE461Project1.License();
+            Index.License license = new Index.License();
             float score = license.GetScore(url);
             //if rate limit is hit, still pass the test case so code coverage info is outputted
             if (!license.unsuccesfullHTTPRequestFlag) Assert.AreEqual(1, score, "Incorrect Result");
