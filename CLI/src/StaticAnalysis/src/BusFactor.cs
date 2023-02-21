@@ -72,8 +72,16 @@ namespace StaticAnalysis
                     var health = JsonConvert.DeserializeObject<HealthResponse>(json);
 
                     // This value counts for 30% of the returned BusFactor score
-                    float restScore = 0.3f * health.health_percentage / 100;
-                    finalScore += restScore;
+                    
+
+                    //DEBUG
+                    float restScore = 0.7f;
+                    if(health != null)
+                    {
+                        finalScore += 0.3f * health.health_percentage / 100;
+                        finalScore += restScore;
+                    }
+                    
                 }
             }
 
@@ -87,7 +95,9 @@ namespace StaticAnalysis
                     // Parse response
                     var json = branchResponse.Content.ReadAsStringAsync().Result;
                     var branch = JsonConvert.DeserializeObject<List<BranchResponse>>(json);
-                    defaultBranch = branch[0].name;
+                    
+                    if (branch != null && branch.Count > 0)
+                        defaultBranch = branch[0].name;
                 }
             }
 
@@ -189,40 +199,40 @@ namespace StaticAnalysis
     }
     class BranchResponse
     {
-        public string name;
+        public string name { get; set; } = "";
     }
     class QLData
     {
-        public QLRepo repository;
+        public QLRepo repository { get; set; } = new QLRepo();
     }
     class QLRepo
     {
-        public QLRef @ref;
+        public QLRef @ref { get; set; } = new QLRef();
     }
     class QLRef
     {
-        public QLTarget target;
+        public QLTarget target { get; set; } = new QLTarget();
     }
     class QLTarget
     {
-        public QLHistory history;
+        public QLHistory history { get; set; } = new QLHistory();
     }
     class QLHistory
     {
-        public List<QLEdges> edges;
+        public List<QLEdges> edges { get; set; } = new List<QLEdges>();
     }
     class QLEdges
     {
-        public QLNode node;
+        public QLNode node { get; set; } = new QLNode();
     }
     class QLNode
     {
-        public int additions;
-        public int deletions;
-        public Author author;
+        public int additions { get; set; } = 0;
+        public int deletions { get; set; } = 0;
+        public Author author { get; set; } = new Author();
     }
     class Author
     {
-        public string name;
+        public string name { get; set; } = "";
     }
 }

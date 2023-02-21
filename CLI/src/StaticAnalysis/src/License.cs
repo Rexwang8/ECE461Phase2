@@ -29,7 +29,7 @@ namespace StaticAnalysis
                 {
                     unsuccesfullHTTPRequestFlag = false;
                     var content = response.Content.ReadAsStringAsync().Result;
-                    dynamic json = JsonConvert.DeserializeObject(content);
+                    dynamic json = JsonConvert.DeserializeObject(content) ?? new { };
                     var encodedContent = json.content.ToString();
                     var cleanedEncodedContent = encodedContent.TrimEnd('\r', '\n');
                     var decodedBytes = Convert.FromBase64String(cleanedEncodedContent);
@@ -45,7 +45,17 @@ namespace StaticAnalysis
                     Logger.WriteLine(githubUrl, 2);
                     Logger.WriteLine(api_url, 2);
                     Logger.WriteLine("\nUnsuccesful attempt to retreive license metric, Response code: " + response.StatusCode, 1);
-                    Logger.WriteLine(response.ReasonPhrase, 2);
+                    
+                    if (response.ReasonPhrase == null)
+                    {
+                        Logger.WriteLine("Response is null", 2);
+                    }
+                    else
+                    {
+                        Logger.WriteLine("Response is not null", 2);
+                        Logger.WriteLine(response.ReasonPhrase, 2);
+                    }
+                    
                     return 0;
                 }
             }

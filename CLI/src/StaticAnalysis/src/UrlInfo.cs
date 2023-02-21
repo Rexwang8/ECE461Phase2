@@ -2,7 +2,7 @@ using Utility;
 
 namespace StaticAnalysis
 {
-    class URLInfo
+    public class URLInfo
     {
         bool isInvalid = false;
 
@@ -18,6 +18,22 @@ namespace StaticAnalysis
         float correctness_score { get; set; }
         float responseMaintainer_score { get; set; }
         float net_score { get; set; }
+
+        public URLInfo()
+        {
+           name = "none";
+             githubUrl = "none";
+                npmUrl = "none";
+                     type = "none";
+                     path = "none";
+            license_score = 0;
+            rampUp_score = 0;
+            busFactor_score = 0;
+            correctness_score = 0;
+            responseMaintainer_score = 0;
+            net_score = 0;
+
+        }
         
         public void addURL(string url)
         {
@@ -47,7 +63,7 @@ namespace StaticAnalysis
             return "{name: " +  name + ", github url: " + githubUrl + ", npm url: " + npmUrl + ", type: " + type + ", path: " + path + "}"; 
         }
 
-        string getName(string url)
+        public string getName(string url)
         {
             String[] splitUrl = url.Split("/");
             return splitUrl[splitUrl.Length - 1];

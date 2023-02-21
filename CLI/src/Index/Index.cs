@@ -69,7 +69,7 @@ namespace Index
             while (scoreSheets.Count > 0)
             {
                 float maxScore = -1;
-                ScoreSheet scoreSheet = null;
+                ScoreSheet? scoreSheet = null;
                 foreach (ScoreSheet scoreSheetInList in scoreSheets)
                 {
                     if (scoreSheetInList.netScore > maxScore)
@@ -147,5 +147,21 @@ namespace Index
                 this.scoreText = scoreSheet;
             }
         }
+
+        
     }
+
+    public class License : IScoreMetric
+        {
+            //dummy class to get vscode to stop yelling at me
+            public string metricName { get; set; } = "LICENSE";
+            public float metricWeight { get; set; } = 0.2f;
+
+            public float GetScore(string url)
+            {
+                return 0.5f;
+            }
+
+            public bool unsuccesfullHTTPRequestFlag = true;
+        }
 }

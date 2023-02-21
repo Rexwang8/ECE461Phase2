@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+         <ProjectReference Include = "..\src\Index\Index.csproj" />
+    </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="coverlet.msbuild" Version="3.2.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>

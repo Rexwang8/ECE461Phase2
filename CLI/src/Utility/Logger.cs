@@ -44,8 +44,8 @@ public static class Logger
 
     public static void WriteLine(string logText, int level)
     {
-        string systemLogLevelString = System.Environment.GetEnvironmentVariable("LOG_LEVEL");
-        string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE");
+        string systemLogLevelString = System.Environment.GetEnvironmentVariable("LOG_LEVEL") ?? "0";
+        string logFile = System.Environment.GetEnvironmentVariable("LOG_FILE") ?? "0";
         int systemLogLevel = 0;
         if (systemLogLevelString != null) systemLogLevel = int.Parse(systemLogLevelString);
 
