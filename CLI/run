@@ -6,6 +6,7 @@ logfullpath="${LOG_FILE:-/home/shay/a/lin1285/ECE461SoftwareEngineeringProject/c
 ghtoken="${GITHUB_TOKEN:-faketokengithub}"
 #sets up cache folder
 mkdir -p cache
+mkdir -p modules
 touch cache/build.txt
 
 function logInfo() {
@@ -50,6 +51,13 @@ case "$1" in
     ;;
     "install")
         logDebug "Downloading Dependencies...\n"
+        
+        pip install GitPython | tee -a $logfullpath cache/build.txt >/dev/null
+        
+        cd src/Index
+        dotnet add package CliWrap --version 3.6.0 | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        cd ../..
+
         cd src/StaticAnalysis
         dotnet add package Newtonsoft.Json | tee -a $logfullpath cache/build.txt >/dev/null
         dotnet add package GraphQL | tee -a $logfullpath cache/build.txt >/dev/null
