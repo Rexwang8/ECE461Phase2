@@ -1,0 +1,121 @@
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+  Determining projects to restore...
+  Writing /tmp/tmpJ7R01I.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 311ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 116 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpeDNjbv.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json 316ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json 72ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json 97ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json 82ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.2.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 110 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpZnPxjf.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json 240ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpC1YdJF.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json 264ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpm35I9Y.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json 299ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 111 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpq4Fox7.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json 243ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj...
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/obj/UnitTesting.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/obj/UnitTesting.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj (in 1.12 sec).
+[BUILD|Priority: 2(debug)] Dependencies Installed
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric

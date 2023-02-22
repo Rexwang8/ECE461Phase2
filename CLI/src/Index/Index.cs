@@ -39,16 +39,15 @@ namespace Index
             logger.Log("Getting names and types", 1);
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine(pkg.returnName() + " " + pkg.returnType() + " " + pkg.returnURL());
+                //Console.WriteLine(pkg.getName() + " " + pkg.getType() + " " + pkg.getURL());
+                Console.WriteLine(pkg.getInfo());
             }
-
-
 
             //npm pull
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine("Getting npm info for " + pkg.returnName());
-                if (pkg.returnType() == "npm" || pkg.returnType() == "both")
+                Console.WriteLine("Getting npm info for " + pkg.getName());
+                if (pkg.getType() == "npm" || pkg.getType() == "both")
                 {
                     //pkg.PullNpmInfo(logger);
 
@@ -61,8 +60,8 @@ namespace Index
 
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine("Getting github info for " + pkg.returnName());
-                if (pkg.returnType() == "github" || pkg.returnType() == "both")
+                Console.WriteLine("Getting github info for " + pkg.getName());
+                if (pkg.getType() == "github" || pkg.getType() == "both")
                 {
                     //pkg.PullGithubInfo(logger, ARGGITHUBTOKEN);
 
@@ -76,7 +75,7 @@ namespace Index
             logger.Log("Getting each metric", 1);
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine("Getting metrics for " + pkg.returnName());
+                Console.WriteLine("Getting metrics for " + pkg.getName());
                 //ramptime
 
                 //license
@@ -126,6 +125,7 @@ namespace Index
             }
             return urlInfos;
         }
+
         static void GetScores(string urlFilePath)
         {
             
