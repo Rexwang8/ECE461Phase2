@@ -1,5 +1,5 @@
 using Utility;
-
+using System.Net.Http.Headers;
 namespace StaticAnalysis
 {
     public class URLInfo
@@ -82,18 +82,39 @@ namespace StaticAnalysis
         }
     
         //API calls
-        public void PullNpmInfo(Logger logger)
+        public async Task PullNpmInfo(Logger logger)
         {
+            HttpClient client = new HttpClient();
+            string currentDirectory = Directory.GetCurrentDirectory();
+
             if ((type != "npm" || type != "both") || isInvalid || npmUrl == "none" || npmUrl == null || npmUrl == "")
             {
                 logger.Log("Invalid URL for npm pull or other issue with type" + " " + baseURL, 1);
             }
-
+            
             //call npm api
-
+            HttpResponseMessage response = await ClientCertificateOption.GetAsync(npmUrl);
+            if(response.IsSuccessStatusCode)
+            {
+                logger.Log("Response from registry.npmjs.org: " + response.StatusCode, 1);
+            }
+            else
+            {
+                logger.Log("Response from registry.npmjs.org: " + response.StatusCode, 1);
+                Environment.Exit(1);
+            }            
+            
             //decode json
-
+            string responseBody = await response.Content.ReadAsStringAsync();
+            var npmpath = Path.Combine(currentDirectory, "data/npm/" + path + ".json");
             //write to object
+            if (!File.Exists(npmpath))
+            {
+                File.Create(npmpath);
+            }
+            File.WriteAllText(@npmpath, responseBody);
+            // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
+            client.Dispose();
         }
 
         public void PullGitInfo(Logger logger, string token)
