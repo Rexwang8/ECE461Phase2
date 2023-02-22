@@ -9,46 +9,56 @@ namespace StaticAnalysis
            
             foreach (var url in urlInfos)
             {
-                url.getName();
-                url.getType();
-                if(url.returnName() != "none" && url.returnType() != "none" && url.returnIsInvalid() == false)
-                {
-                    //checks if the url is already in the dictionary
-                    if(!urlDic.ContainsKey(url.returnName()))
-                    {
-                        urlDic.Add(url.returnName(), url);
-                    }
-                    else
-                    {
-                       // Console.WriteLine("Duplicate URL: " + url.returnName());
-                        //identify duplicate url type and write the new url to the duplicate package if necessary
-                        string type = url.returnType();
-                        //Console.WriteLine("Type: " + type);
-                        if(type == "github")
-                        {
-                            urlDic[url.returnName()].setGithubURL(url.returnURL());
-                            urlDic[url.returnName()].setTypeName("both");
-                        }
-                        else if(type == "npm")
-                        {
-                            urlDic[url.returnName()].setNpmURL(url.returnURL());
-                            urlDic[url.returnName()].setTypeName("both");
-                        }
-                        else if(type == "both")
-                        {
-                          //  Console.WriteLine("Error: Duplicate URL is already both");
-                        }
-                        else
-                        {
-                           // Console.WriteLine("Error: Duplicate URL type not recognized");
-                        }
+                url.initType();
+                url.initName();
 
-                    }
+                if(url.getIsInvalid() == true)
+                {
+                    continue;
                 }
+
+                //checks if the url is already in the dictionary
+                if(urlDic.ContainsKey(url.getName()))
+                {
+                    dealWDuplicate(url);
+                    continue;
+                }
+                
+                //Finally add
+                urlDic.Add(url.getName(), url);
             }
         }
 
-        public URLInfo returnURLInfo(string name)
+        private void dealWDuplicate(URLInfo url)
+        {
+            //If it us the exact url, dont do anything
+            if (url.getURL() == urlDic[url.getName()].getURL())
+            {
+                return;
+            }
+
+            //Different Url
+            string type1 = url.getType();
+            string type2 = urlDic[url.getName()].getType();
+
+            if (type1 == "github" & type2 == "npm")
+            {
+                urlDic[url.getName()].setGithubURL(url.getURL());
+                urlDic[url.getName()].setTypeName("both");
+            }
+            else if (type1 == "npm" & type2 == "github")
+            {
+                urlDic[url.getName()].setNpmURL(url.getURL());
+                urlDic[url.getName()].setTypeName("both");
+            }
+            else
+            {
+                Console.WriteLine("Error: Duplicate URL type not recognized");
+            }
+        } 
+
+
+        public URLInfo getURLInfo(string name)
         {
             return urlDic[name];
         }

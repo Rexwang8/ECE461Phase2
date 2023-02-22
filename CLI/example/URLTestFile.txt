@@ -8,3 +8,4 @@ https://github.com/jonschlinkert/even
 https://github.com/nullivex/nodist
 https://github.com/lodash/lodash
 https://github.com/cloudinary/cloudinary_npm
+https://github.com/lodash/lodash

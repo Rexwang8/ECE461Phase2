@@ -9,8 +9,8 @@ namespace StaticAnalysis
         string baseURL { get; set; } = "none";
 
         string name { get; set; }
-        string githubUrl { get; set; }
-        string npmUrl { get; set; }
+        string githubURL { get; set; }
+        string npmURL { get; set; }
         string type { get; set; }
         string path { get; set; }
 
@@ -21,13 +21,11 @@ namespace StaticAnalysis
         float responseMaintainer_score { get; set; }
         float net_score { get; set; }
 
-
-
         public URLInfo(string url)
         {
             name = "none";
-            githubUrl = "none";
-            npmUrl = "none";
+            githubURL = "none";
+            npmURL = "none";
             type = "none";
             path = "none";
             license_score = 0;
@@ -39,50 +37,8 @@ namespace StaticAnalysis
             baseURL = url.Trim().ToLower();
         }
 
-
-
-        public string getInfo()
-        {
-            return "{name: " + name + ", github url: " + githubUrl + ", npm url: " + npmUrl + ", type: " + type + ", path: " + path + "}";
-        }
-
-        public void getName()
-        {
-            if(isInvalid)
-            {
-                Console.WriteLine("Invalid URL");
-                return;
-            }
-
-            String[] splitUrl = baseURL.Split("/");
-            name = splitUrl[splitUrl.Length - 1];
-            return;
-        }
-
-        public string getType()
-        {
-            if (baseURL.Contains("https://github.com"))
-            {
-                githubUrl = baseURL;
-                type = "github";
-                return "github";
-            }
-            else if (baseURL.Contains("https://www.npmjs.com"))
-            {
-                npmUrl = baseURL;
-                type = "npm";
-                return "npm";
-            }
-            else
-            {
-                isInvalid = true;
-                type = "invalid";
-                return "invalid";
-            }
-        }
-    
         //API calls
-        public async Task PullNpmInfo(Logger logger)
+        /* public async Task PullNpmInfo(Logger logger)
         {
             HttpClient client = new HttpClient();
             string currentDirectory = Directory.GetCurrentDirectory();
@@ -115,11 +71,11 @@ namespace StaticAnalysis
             File.WriteAllText(@npmpath, responseBody);
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
-        }
+        } */
 
         public void PullGitInfo(Logger logger, string token)
         {
-            if ((type != "git" || type != "both") || isInvalid || githubUrl == "none" || githubUrl == null || githubUrl == "")
+            if ((type != "git" || type != "both") || isInvalid || githubURL == "none" || githubURL == null || githubURL == "")
             {
                 logger.Log("Invalid URL for git pull or other issue with type" + " " + baseURL, 1);
             }
@@ -130,57 +86,96 @@ namespace StaticAnalysis
 
             //write to object
         }
+        
+        //-----------------------
 
+        //Initializers
+        public void initName()
+        {
+            if(isInvalid)
+            {
+                Console.WriteLine("Invalid URL");
+                return;
+            }
 
+            String[] splitUrl = baseURL.Split("/");
+            name = splitUrl[splitUrl.Length - 1];
+            return;
+        }
 
-        //setter
+        public string initType()
+        {
+            if (baseURL.Contains("https://github.com"))
+            {
+                githubURL = baseURL;
+                type = "github";
+                return "github";
+            }
+            else if (baseURL.Contains("https://www.npmjs.com"))
+            {
+                npmURL = baseURL;
+                type = "npm";
+                return "npm";
+            }
+            else
+            {
+                isInvalid = true;
+                type = "invalid";
+                return "invalid";
+            }
+        }
+    
+       
+
+        //Setter
         public void setGithubURL(string url)
         {
-            githubUrl = url;
+            githubURL = url;
         }
         public void setNpmURL(string url)
         {
-            npmUrl = url;
+            npmURL = url;
         }
         public void setTypeName(string name)
         {
             type = name;
         }
+        
 
 
         //Getter
-        public string returnURL()
+        public string getInfo()
+        {
+            return "{name: " + name + ", github url: " + githubURL + ", npm url: " + npmURL + ", type: " + type + ", path: " + path + "}";
+        }
+        public string getURL()
         {
             return baseURL;
         }
 
-        public string returnName()
+        public string getName()
         {
             return name;
         }
 
-        public string returnGithubUrl()
+        public string getGithubUrl()
         {
-            return githubUrl;
+            return githubURL;
         }
 
-        public string returnNpmUrl()
+        public string getNpmUrl()
         {
-            return npmUrl;
+            return npmURL;
         }
 
-        public string returnType()
+        public string getType()
         {
             return type;
         }
 
-        public bool returnIsInvalid()
+        public bool getIsInvalid()
         {
             return isInvalid;
         }
     }
-
-
-
-
 }

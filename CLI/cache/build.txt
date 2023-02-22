@@ -1,0 +1,89 @@
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 108 ms).
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 256 ms).
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(52,74): error CS0117: 'ClientCertificateOption' does not contain a definition for 'GetAsync' [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlClass.cs(35,21): error CS1061: 'URLInfo' does not contain a definition for 'getUrl' and no accessible extension method 'getUrl' accepting a first argument of type 'URLInfo' could be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlClass.cs(35,55): error CS1061: 'URLInfo' does not contain a definition for 'getUrl' and no accessible extension method 'getUrl' accepting a first argument of type 'URLInfo' could be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlClass.cs(42,50): error CS0428: Cannot convert method group 'getType' to non-delegate type 'string'. Did you intend to invoke the method? [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 293 ms).
+  2 of 3 projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(52,74): error CS0117: 'ClientCertificateOption' does not contain a definition for 'GetAsync' [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlClass.cs(35,21): error CS1061: 'URLInfo' does not contain a definition for 'getUrl' and no accessible extension method 'getUrl' accepting a first argument of type 'URLInfo' could be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlClass.cs(35,55): error CS1061: 'URLInfo' does not contain a definition for 'getUrl' and no accessible extension method 'getUrl' accepting a first argument of type 'URLInfo' could be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlClass.cs(42,50): error CS0428: Cannot convert method group 'getType' to non-delegate type 'string'. Did you intend to invoke the method? [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 122 ms).
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 242 ms).
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 271 ms).
+  2 of 3 projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n

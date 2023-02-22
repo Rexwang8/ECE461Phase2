@@ -70,5 +70,6 @@ case "$1" in
     *)
         cd src/Index
         dotnet run $1 $loglevel $logfullpath $ghtoken
+        cd ../..
     ;;
 esac
