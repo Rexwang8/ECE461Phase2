@@ -1,0 +1,360 @@
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 112 ms).
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 272 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,26): error CS1514: { expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,26): error CS1513: } expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,27): error CS8124: Tuple must contain at least two elements. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(6,5): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(19,1): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,26): error CS1514: { expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,26): error CS1513: } expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,27): error CS8124: Tuple must contain at least two elements. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(6,5): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(19,1): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 277 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,26): error CS1514: { expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,26): error CS1513: } expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(5,27): error CS8124: Tuple must contain at least two elements. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(6,5): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(19,1): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 124 ms).
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 258 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 279 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Download.cs(1,7): error CS0246: The type or namespace name 'CliWrap' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+  Determining projects to restore...
+  Writing /tmp/tmp0yJ2kH.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 115 ms).
+  Determining projects to restore...
+  Writing /tmp/tmp69ntQU.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.2.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpJNKuLN.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 111 ms).
+  Determining projects to restore...
+  Writing /tmp/tmptAUwdt.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpexcadw.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 109 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpr8XvW1.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpVmzd9K.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.2.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpx0lorn.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 109 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpFRFINb.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 109 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpO2HO7J.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+  Determining projects to restore...
+  Writing /tmp/tmpzNfYUI.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 119 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpWIuX8e.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.2.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 111 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpTfS3MP.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpwDMg8Z.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpJQdW1B.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 109 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpmoq6WL.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj'.
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj...
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 115 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpA8iEBz.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 117 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpMAFDmn.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.2.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpY8GCXp.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+  Determining projects to restore...
+  Writing /tmp/tmprAIZUE.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmprWqsnW.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpQxwrV9.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj'.
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj...
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 115 ms).
