@@ -87,3 +87,44 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
 [BUILD|Priority: 2(debug)] \nBuild Complete
 [BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 124 ms).
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 251 ms).
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 277 ms).
+  2 of 3 projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.cs(245,13): error CS0103: The name 'Cli' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.cs(247,33): error CS0103: The name 'CommandResultValidation' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj]
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: GitPython in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (3.1.30)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (from GitPython) (4.0.10)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.0)
+  Determining projects to restore...
+  Writing /tmp/tmpjHqsBc.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj...
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' added to file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 161 ms).

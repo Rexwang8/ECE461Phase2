@@ -4,6 +4,8 @@ using System.Diagnostics;
 using static System.Net.Mime.MediaTypeNames;
 using Utility;
 using StaticAnalysis;
+using CliWrap;
+using System.Text;
 
 namespace Index
 {
@@ -11,7 +13,6 @@ namespace Index
     {
         static int Main(string[] args)
         {
-
             //validate inputs
             ValidateInputs(args);
 
@@ -70,6 +71,8 @@ namespace Index
                 }
             }
 
+            //Clone repositories
+            CloneUrls(AllPackages);
 
             //get each metric
             logger.Log("Getting each metric", 1);
@@ -240,6 +243,29 @@ namespace Index
             return;
         }
 
+        static private void CloneUrls(URLClass urlInfos)
+        {
+            var stdOutBuffer = new StringBuilder();
+            var stdErrBuffer = new StringBuilder();
+
+            foreach (var urlInfo in urlInfos.GetAllPackages())
+            {
+                if (urlInfo.Value.getGithubUrl() != "none")
+                {
+                    Cli.Wrap("python3")
+                        .WithArguments("../Utility/test.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
+                        .WithValidation(CommandResultValidation.None)
+                        .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
+                        .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
+                        .ExecuteAsync()
+                        .GetAwaiter()
+                        .GetResult();
+                    Logger.WriteLine(stdOutBuffer.ToString(), 2);
+                    Logger.WriteLine(stdErrBuffer.ToString(), 2);
+                }
+                
+            }
+        } 
 
         static void RunUnitTests()
         {
@@ -305,7 +331,7 @@ namespace Index
 
 
     }
-
+    
     public class License : IScoreMetric
     {
         //dummy class to get vscode to stop yelling at me
