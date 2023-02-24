@@ -12,6 +12,7 @@
     <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="5.1.1" />
     <PackageReference Include="GraphQL.Common" Version="1.0.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="System.Net.Http.Formatting.dll" Version="5.2.3" />
     <ProjectReference Include="..\Utility\Utility.csproj" />
   </ItemGroup>
 

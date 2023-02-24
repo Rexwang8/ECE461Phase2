@@ -1,5 +1,6 @@
 using Utility;
-using System.Net.Http.Headers;
+using System.Net.Http;
+
 namespace StaticAnalysis
 {
     public class URLInfo
@@ -38,18 +39,19 @@ namespace StaticAnalysis
         }
 
         //API calls
-        /* public async Task PullNpmInfo(Logger logger)
+        public async Task<int> PullNpmInfo(Logger logger)
         {
             HttpClient client = new HttpClient();
             string currentDirectory = Directory.GetCurrentDirectory();
 
-            if ((type != "npm" || type != "both") || isInvalid || npmUrl == "none" || npmUrl == null || npmUrl == "")
+            if ((type != "npm" || type != "both") || isInvalid || npmURL == "none" || npmURL == null || npmURL == "")
             {
                 logger.Log("Invalid URL for npm pull or other issue with type" + " " + baseURL, 1);
+                return 1;
             }
             
             //call npm api
-            HttpResponseMessage response = await ClientCertificateOption.GetAsync(npmUrl);
+            HttpResponseMessage response = await client.GetAsync(npmURL);
             if(response.IsSuccessStatusCode)
             {
                 logger.Log("Response from registry.npmjs.org: " + response.StatusCode, 1);
@@ -57,7 +59,7 @@ namespace StaticAnalysis
             else
             {
                 logger.Log("Response from registry.npmjs.org: " + response.StatusCode, 1);
-                Environment.Exit(1);
+                return 1;
             }            
             
             //decode json
@@ -71,7 +73,8 @@ namespace StaticAnalysis
             File.WriteAllText(@npmpath, responseBody);
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
-        } */
+            return 0;
+        } 
 
         public void PullGitInfo(Logger logger, string token)
         {
