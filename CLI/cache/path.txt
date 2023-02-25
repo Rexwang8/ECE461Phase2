@@ -143,3 +143,241 @@ Index:  Starting program -- All validated
 Index:  Reading file
 Index:  Getting names and types
 Index:  Getting each metric
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 123 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 248 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(34,16): warning CS8618: Non-nullable property 'licensePath' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(34,16): warning CS8618: Non-nullable property 'readmePath' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(34,16): warning CS8618: Non-nullable property 'license' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 297 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(34,16): warning CS8618: Non-nullable property 'licensePath' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(34,16): warning CS8618: Non-nullable property 'readmePath' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/UrlInfo.cs(34,16): warning CS8618: Non-nullable property 'license' must contain a non-null value when exiting constructor. Consider declaring the property as nullable. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: GitPython in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (3.1.30)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (from GitPython) (4.0.10)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.0)
+  Determining projects to restore...
+  Writing /tmp/tmpMFkozo.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 165 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpJr4Vc6.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 321ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 121 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpt3GCeF.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json 242ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json 20ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json 19ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.2.2.json 19ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.2.2' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 117 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpp43DMh.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json 308ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 121 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpY03fmh.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json 246ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 121 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpP8R7yZ.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json 283ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 113 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpVSeceZ.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json 307ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTesting/UnitTesting.csproj (in 778 ms).
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 119 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 242 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(61,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(65,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(66,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(71,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(75,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(76,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(91,23): error CS0103: The name 'JsonSerializer' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(91,48): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 281 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(61,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(65,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(66,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(71,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(75,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(76,13): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(91,23): error CS0103: The name 'JsonSerializer' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/StaticAnalysis.cs(91,48): error CS0103: The name 'repoInfo' does not exist in the current context [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(198,20): warning CS0649: Field 'HealthResponse.health_percentage' is never assigned to, and will always have its default value 0 [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Getting names and types
+Index:  Getting each metric

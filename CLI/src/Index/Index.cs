@@ -36,14 +36,6 @@ namespace Index
             URLClass AllPackages = new URLClass(urlInfos);
             Console.WriteLine("We have " + AllPackages.GetAllPackages().Count + " packages");
 
-            //get names and type
-            logger.Log("Getting names and types", 1);
-            foreach (var pkg in AllPackages.GetAllPackages().Values)
-            {
-                //Console.WriteLine(pkg.getName() + " " + pkg.getType() + " " + pkg.getURL());
-                Console.WriteLine(pkg.getInfo());
-            }
-
             //npm pull
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
@@ -58,7 +50,6 @@ namespace Index
             }
 
             //github pull
-
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
                 Console.WriteLine("Getting github info for " + pkg.getName());
@@ -73,6 +64,34 @@ namespace Index
 
             //Clone repositories
             CloneUrls(AllPackages);
+
+            //Print Results
+            logger.Log("Getting names and types", 1);
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
+            {
+                Console.WriteLine(pkg.getInfo());
+            }
+            
+            //Perfom Static Analysis
+            StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
+            {
+                Console.WriteLine("Peforming StaticAnalysis for " + pkg.getName());
+                if (pkg.getPath() != "none")
+                {
+                    StaticAnalysis.Analyze(pkg);
+                }
+            }
+
+            //Print Static Analysis Results only for cloned repo
+            logger.Log("Getting names and types", 1);
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
+            {
+                if (pkg.getPath() != "none")
+                {
+                    Console.WriteLine(pkg.getStaticInfo());
+                }
+            }
 
             //get each metric
             logger.Log("Getting each metric", 1);
@@ -252,8 +271,10 @@ namespace Index
             {
                 if (urlInfo.Value.getGithubUrl() != "none")
                 {
+                    //urlInfo.Value.path = "../../modules/" + urlInfo.Value.getName();
+                    urlInfo.Value.setPath("../../modules/" + urlInfo.Value.getName());
                     Cli.Wrap("python3")
-                        .WithArguments("../Utility/test.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
+                        .WithArguments("../Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
                         .WithValidation(CommandResultValidation.None)
                         .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
                         .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
