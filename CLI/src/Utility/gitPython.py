@@ -13,8 +13,7 @@ class pythonGit:
 
 if __name__ == "__main__":
     folderName = sys.argv[1]
-    repoUrl = sys.argv[2]
-    path = os.path.join("../modules", folderName)
+    path = os.path.join("../../modules", folderName)
     os.makedirs(path, exist_ok=True)
-   
-    pythonGit.pyClone("https://github.com/nullivex/nodist", os.getcwd() + "/../../modules/" + folderName)
+    
+    pythonGit.pyClone(sys.argv[2], os.getcwd() + "/../../modules/" + folderName)

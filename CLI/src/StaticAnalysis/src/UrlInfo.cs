@@ -22,6 +22,15 @@ namespace StaticAnalysis
         float responseMaintainer_score { get; set; }
         float net_score { get; set; }
 
+        public int codeLineCount { get; set; } //lines if code
+        public int commentLineCount { get; set; } // lines of comments
+        public int codeCharCount { get; set; } //code characters
+        public int commentCharCount { get; set; }
+        public string licensePath { get; set; }
+        public string readmePath { get; set; }
+        public string license {get; set; }
+        public int licenseCompatibility {get; set; }
+        
         public URLInfo(string url)
         {
             name = "none";
@@ -36,6 +45,14 @@ namespace StaticAnalysis
             responseMaintainer_score = 0;
             net_score = 0;
             baseURL = url.Trim().ToLower();
+
+            codeLineCount = 0; 
+            commentLineCount = 0;
+            codeCharCount = 0;
+            commentCharCount = 0;
+            licensePath = "";
+            readmePath = "";
+            license = "";
         }
 
         //API calls
@@ -143,7 +160,10 @@ namespace StaticAnalysis
         {
             type = name;
         }
-        
+        public void setPath(string pathway)
+        {
+            path = pathway;
+        }
 
 
         //Getter
@@ -151,6 +171,12 @@ namespace StaticAnalysis
         {
             return "{name: " + name + ", github url: " + githubURL + ", npm url: " + npmURL + ", type: " + type + ", path: " + path + "}";
         }
+
+        public string getStaticInfo()
+        {
+            return "{codeLineCount: " + codeLineCount + ", commentLineCount: " + commentLineCount + ", codeCharCount: " + codeCharCount + ", commentCharCount: " + commentCharCount + ", licensePath: " + licensePath + ", readmePath:" + readmePath + "}";
+        }
+
         public string getURL()
         {
             return baseURL;
@@ -179,6 +205,11 @@ namespace StaticAnalysis
         public bool getIsInvalid()
         {
             return isInvalid;
+        }
+
+        public string getPath()
+        {
+            return path;
         }
     }
 }

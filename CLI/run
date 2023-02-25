@@ -3,7 +3,7 @@
 #log environment variables $LOG_PATH and $LOG_LEVEL
 loglevel="${LOG_LEVEL:-1}"
 logfullpath="${LOG_FILE:-/home/shay/a/lin1285/ECE461SoftwareEngineeringProject/cache/log2.txt}"
-ghtoken="${GITHUB_TOKEN:-faketokengithub}"
+ghtoken="${GITHUB_TOKEN:-faketokengithub1111111111111111111111111}"
 #sets up cache folder
 mkdir -p cache
 mkdir -p modules
