@@ -57,22 +57,24 @@ namespace Index
                     Console.WriteLine(pkg.getNPMInfo());
                 }
             }
-            System.Threading.Thread.Sleep(5000);
+            
 
             //github pull
-            /*
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
                 Console.WriteLine("Getting github info for " + pkg.getName());
+                Console.WriteLine("pkg type is " + pkg.getType());
                 if (pkg.getType() == "github" || pkg.getType() == "both")
                 {
-                    //pkg.PullGithubInfo(logger, ARGGITHUBTOKEN);
+                    callGithub(pkg, logger, ARGGITHUBTOKEN);
 
                     //add built in delay to avoid rate limiting
                     System.Threading.Thread.Sleep(500);
                 }
             }
-            */
+
+
+            System.Threading.Thread.Sleep(15000);
 /*
             //Clone repositories
             CloneUrls(AllPackages);
@@ -162,6 +164,27 @@ namespace Index
             {
                 Console.WriteLine("NPM Data Recieved for package: " + urlInfo.getName());
                 logger.Log("NPM Data Recieved for package: " + urlInfo.getName(), 1);
+            }
+
+            else
+            {
+                Console.WriteLine("Error: " + err.ToString());
+                logger.Log("Error: " + err.ToString(), 1);
+            }
+            return;
+        }
+
+
+        //void async to call github api
+        public static async void callGithub(URLInfo urlInfo, Logger logger, string githubToken)
+        {
+            //Execute the task and handle any errors
+            Task<APIError> task = Task.Run(() => urlInfo.PullGithubInfo(logger, githubToken));
+            APIError err = await task;
+            if (err.GetErrType() == APIError.errorType.none)
+            {
+                Console.WriteLine("Github Data Recieved for package: " + urlInfo.getName());
+                logger.Log("Github Data Recieved for package: " + urlInfo.getName(), 1);
             }
 
             else
