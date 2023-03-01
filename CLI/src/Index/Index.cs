@@ -42,14 +42,25 @@ namespace Index
                 Console.WriteLine("Getting npm info for " + pkg.getName());
                 if (pkg.getType() == "npm" || pkg.getType() == "both")
                 {
-                    //pkg.PullNpmInfo(logger);
+                    callNPM(pkg, logger);
 
                     //add built in delay to avoid rate limiting
                     System.Threading.Thread.Sleep(500);
                 }
             }
+            System.Threading.Thread.Sleep(1000);
+            //print results for npm
+            foreach (var pkg in AllPackages.GetAllPackages().Values)
+            {
+                if (pkg.getType() == "npm" || pkg.getType() == "both")
+                {
+                    Console.WriteLine(pkg.getNPMInfo());
+                }
+            }
+            System.Threading.Thread.Sleep(5000);
 
             //github pull
+            /*
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
                 Console.WriteLine("Getting github info for " + pkg.getName());
@@ -61,7 +72,8 @@ namespace Index
                     System.Threading.Thread.Sleep(500);
                 }
             }
-
+            */
+/*
             //Clone repositories
             CloneUrls(AllPackages);
 
@@ -121,6 +133,8 @@ namespace Index
             //write to file
 
             return 0;
+            */
+            return 0;
         }
 
         static List<string> GetRawListFromFile(string urlFilePath)
@@ -137,6 +151,26 @@ namespace Index
             return rawUrls;
         }
 
+
+        //Void async function to call npm api
+        public static async void callNPM(URLInfo urlInfo, Logger logger)
+        {
+            //Execute the task and handle any errors
+            Task<APIError> task = Task.Run(() => urlInfo.PullNpmInfo(logger));
+            APIError err = await task;
+            if(err.GetErrType() == APIError.errorType.none)
+            {
+                Console.WriteLine("NPM Data Recieved for package: " + urlInfo.getName());
+                logger.Log("NPM Data Recieved for package: " + urlInfo.getName(), 1);
+            }
+
+            else
+            {
+                Console.WriteLine("Error: " + err.ToString());
+                logger.Log("Error: " + err.ToString(), 1);
+            }
+            return;
+        }
 
         static List<URLInfo> GetURLList(List<string> rawUrls)
         {

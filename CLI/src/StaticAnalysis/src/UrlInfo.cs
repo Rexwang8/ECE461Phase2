@@ -1,8 +1,51 @@
 using Utility;
 using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace StaticAnalysis
 {
+    public class APIError
+    {
+        public string message { get; set; } = "none";
+        public enum errorType { none, invalidtype, badresponse };
+
+        public errorType typeOfError { get; set; } = errorType.none;
+
+        public APIError()
+        {
+            message = "none";
+            typeOfError = errorType.none;
+        }
+
+        public APIError(string message, errorType type)
+        {
+            this.message = message;
+            typeOfError = type;
+        }
+        public override string ToString()
+        {
+            return "Error: " + message + " Type: " + typeOfError.ToString();
+        }
+
+        public string GetError()
+        {
+            return message;
+        }
+
+
+        public void SetError(string message, errorType type)
+        {
+            this.message = message;
+            typeOfError = type;
+        }
+
+        public errorType GetErrType()
+        {
+            return typeOfError;
+        }
+    }
+
+
     public class URLInfo
     {
         bool isInvalid = false;
@@ -30,6 +73,15 @@ namespace StaticAnalysis
         public string readmePath { get; set; }
         public string license {get; set; }
         public int licenseCompatibility {get; set; }
+
+        //npm specific
+        public string npmDescription { get; set; }
+        public string npmReadme { get; set; }
+        public string npmHomepage { get; set; }
+        public string[] npmMaintainers { get; set; }
+        public string[] npmVersions { get; set; }
+        public string[] npmTimes { get; set; }
+
         
         public URLInfo(string url)
         {
@@ -53,44 +105,110 @@ namespace StaticAnalysis
             licensePath = "";
             readmePath = "";
             license = "";
+
+            //npm specific
+            npmDescription = "";
+            npmReadme = "";
+            npmHomepage = "";
+            npmMaintainers = new string[0];
+            npmVersions = new string[0];
+            npmTimes = new string[0];
         }
 
         //API calls
-        public async Task<int> PullNpmInfo(Logger logger)
+        public async Task<APIError> PullNpmInfo(Logger logger)
         {
+            APIError error = new APIError();
+
             HttpClient client = new HttpClient();
             string currentDirectory = Directory.GetCurrentDirectory();
 
-            if ((type != "npm" || type != "both") || isInvalid || npmURL == "none" || npmURL == null || npmURL == "")
+            if(type != "npm" && type != "both")
             {
-                logger.Log("Invalid URL for npm pull or other issue with type" + " " + baseURL, 1);
-                return 1;
+                error.SetError("Invalid URL for npm pull or other issue with type " + baseURL, APIError.errorType.invalidtype);
+                logger.Log(error.ToString(), 2);
+                return error;
+            }
+
+            if (isInvalid || name == "none" || name == null || name == "")
+            {
+                error.SetError("Empty npm url or invalid package." + baseURL, APIError.errorType.invalidtype);
+                logger.Log(error.ToString(), 2);
+                return error;
             }
             
             //call npm api
-            HttpResponseMessage response = await client.GetAsync(npmURL);
+            string npmURLRegistry = "https://registry.npmjs.org/" + name;
+            logger.Log("Calling npm api with url: " + npmURLRegistry, 1);
+            Console.WriteLine("Calling npm api with url: " + npmURLRegistry);
+            HttpResponseMessage response = await client.GetAsync(npmURLRegistry);
             if(response.IsSuccessStatusCode)
             {
                 logger.Log("Response from registry.npmjs.org: " + response.StatusCode, 1);
+                //Console.WriteLine("Response from registry.npmjs.org: " + response.StatusCode);
             }
             else
             {
-                logger.Log("Response from registry.npmjs.org: " + response.StatusCode, 1);
-                return 1;
+                error.SetError("Response from registry.npmjs.org: " + response.StatusCode, APIError.errorType.badresponse);
+                logger.Log(error.ToString(), 1);
+                //Console.WriteLine("Response from registry.npmjs.org: " + response.StatusCode);
+                return error;
             }            
             
             //decode json
             string responseBody = await response.Content.ReadAsStringAsync();
-            var npmpath = Path.Combine(currentDirectory, "data/npm/" + path + ".json");
-            //write to object
-            if (!File.Exists(npmpath))
+            if (responseBody == null || responseBody == "")
             {
-                File.Create(npmpath);
+                error.SetError("Response from registry.npmjs.org: " + response.StatusCode, APIError.errorType.badresponse);
+                logger.Log(error.ToString(), 1);
+                Console.WriteLine("Response from registry.npmjs.org: " + response.StatusCode);
+                return error;
             }
-            File.WriteAllText(@npmpath, responseBody);
+
+            //null forgiving operator
+            //Console.WriteLine((JsonConvert.DeserializeObject(responseBody)).ToString().Length);
+            //File.WriteAllText(currentDirectory + "/npmresponse.json", (JsonConvert.DeserializeObject(responseBody)).ToString());
+            dynamic jsoncontent = JsonConvert.DeserializeObject(responseBody)!;
+            if(jsoncontent._id == null)
+            {
+                error.SetError("Response from registry.npmjs.org: " + response.StatusCode, APIError.errorType.badresponse);
+                logger.Log(error.ToString(), 1);
+                Console.WriteLine(error.ToString());
+                return error;
+            }
+
+            //break into data
+            string[] times = jsoncontent.time.ToString().Split(',');
+            string[] versions = jsoncontent.versions.ToString().Split(',');
+            string[] maintainers = jsoncontent.maintainers.ToString().Split(',');
+            string description = jsoncontent.description.ToString();
+            string readme = jsoncontent.readme.ToString();
+            string homepage = jsoncontent.homepage.ToString();
+            string repository = jsoncontent.repository.url.ToString().Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");
+            
+            string licensetype = "";
+            try
+            {
+                licensetype = jsoncontent.license.type.ToString();
+            }
+            catch
+            {
+                licensetype = jsoncontent.license.ToString();
+            }
+
+            //write to urlinfo
+            license = licensetype;
+            npmDescription = description;
+            npmReadme = readme;
+            npmHomepage = homepage;
+            npmMaintainers = maintainers;
+            npmVersions = versions;
+            npmTimes = times;
+            
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
-            return 0;
+
+            return error;
         } 
 
         public void PullGitInfo(Logger logger, string token)
@@ -118,9 +236,13 @@ namespace StaticAnalysis
                 return;
             }
 
-            String[] splitUrl = baseURL.Split("/");
-            name = splitUrl[splitUrl.Length - 1];
-            return;
+            //return all text after substring "package/"
+            int ix = baseURL.IndexOf("package/"); 
+            if (ix >= 0)
+            {
+                name = baseURL.Substring(ix + 8);
+                return;
+            }
         }
 
         public string initType()
@@ -170,6 +292,12 @@ namespace StaticAnalysis
         public string getInfo()
         {
             return "{name: " + name + ", github url: " + githubURL + ", npm url: " + npmURL + ", type: " + type + ", path: " + path + "}";
+        }
+
+        public string getNPMInfo()
+        {
+            return "{name: " + name + ", description length: " + npmDescription.Length + ", readme length: " + npmReadme.Length + ", homepage: " + npmHomepage +  ", maintainers: " + npmMaintainers + ", versions: " + npmVersions + ", times: " + npmTimes + ", license: " + license +"}";
+
         }
 
         public string getStaticInfo()

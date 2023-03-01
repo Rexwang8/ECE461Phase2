@@ -62,3 +62,238 @@ Index:  Starting program -- All validated
 Index:  Reading file
 Index:  Getting names and types
 Index:  Getting each metric
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Getting names and types
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/even
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/date-fns
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/s-sortbydistance
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/@gh-conf/gh-conf-constants
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/browserify
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/even
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/date-fns
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/s-sortbydistance
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/@gh-conf/gh-conf-constants
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/browserify
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/even
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/date-fns
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/s-sortbydistance
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/@gh-conf/gh-conf-constants
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/browserify
+Index:  Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/even Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/date-fns Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/s-sortbydistance Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/@gh-conf/gh-conf-constants Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/browserify Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/express Type: invalidtype
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/even Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/date-fns Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/s-sortbydistance Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/@gh-conf/gh-conf-constants Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/browserify Type: invalidtype
+Index:  Error: Invalid URL for npm pull or other issue with type https://www.npmjs.com/package/express Type: invalidtype
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  NPM Data Recieved for package: date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/gh-conf-constants
+Index:  Error: Response from registry.npmjs.org: NotFound Type: badresponse
+Index:  Error: Error: Response from registry.npmjs.org: NotFound Type: badresponse
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/gh-conf-constants
+Index:  Error: Response from registry.npmjs.org: NotFound Type: badresponse
+Index:  Error: Error: Response from registry.npmjs.org: NotFound Type: badresponse
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
