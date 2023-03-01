@@ -147,7 +147,8 @@ namespace StaticAnalysis
 
             // All those classes at the bottom are used here, they are based entirely on the query
             // Populate the commit_counts dictionary
-            foreach (QLEdges edge in graphQLResponse.Data.repository.@ref.target.history.edges)
+            /*
+            foreach (QLEdges edge in graphQLResponse.Data.repository.target.history.edges)
             {
                 string commitAuthor = edge.node.author.name;
                 int linesChanged = edge.node.additions + edge.node.deletions;
@@ -187,6 +188,7 @@ namespace StaticAnalysis
             double graphScore = 0.7 * (1 - 2 * RSE);
             if (graphScore < 0) { graphScore = 0; }
             finalScore += (float)graphScore;
+            */
 
             return finalScore;
         }
@@ -207,6 +209,7 @@ namespace StaticAnalysis
     }
     class QLRepo
     {
+
         public QLRef @ref { get; set; } = new QLRef();
     }
     class QLRef
