@@ -297,3 +297,43 @@ Index:  NPM Data Recieved for package: browserify
 Index:  Calling npm api with url: https://registry.npmjs.org/express
 Index:  Response from registry.npmjs.org: OK
 Index:  NPM Data Recieved for package: express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Starting program -- All validated
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
