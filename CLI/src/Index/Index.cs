@@ -332,8 +332,8 @@ namespace Index
                 {
                     //urlInfo.Value.path = "../../modules/" + urlInfo.Value.getName();
                     urlInfo.Value.setPath("../../modules/" + urlInfo.Value.getName());
-                    Cli.Wrap("python")
-                        .WithArguments("src/Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
+                    Cli.Wrap("python3")
+                        .WithArguments("../Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
                         .WithValidation(CommandResultValidation.None)
                         .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
                         .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))

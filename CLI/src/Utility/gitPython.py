@@ -5,6 +5,7 @@ from git import Repo
 class pythonGit:
     def pyClone(url, path):
         print(f"workingdir {os.getcwd()}")
+        print(f"path {path}")
         try:
             print("um")
             Repo.clone_from(url, path)
@@ -14,7 +15,11 @@ class pythonGit:
 
 if __name__ == "__main__":
     folderName = sys.argv[1]
-    path = os.path.join("modules", folderName)
-    os.makedirs(path, exist_ok=True)
+    cwd = os.getcwd()
+    srcpath = os.path.dirname(cwd)
+    modulespath = os.path.join(os.path.dirname(srcpath), "modules")
+    print(f"modulespath {modulespath}")
+    os.makedirs(modulespath, exist_ok=True)
+    pathforfolder = os.path.join(modulespath, folderName)
     
-    pythonGit.pyClone(sys.argv[2], os.getcwd() + "/modules/" + folderName)
+    pythonGit.pyClone(sys.argv[2], pathforfolder)
