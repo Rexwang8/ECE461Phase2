@@ -362,6 +362,7 @@ namespace StaticAnalysis
             var graphQLResponse = await graphQLClient.SendQueryAsync<QLResponse>(graphQLRequest);
             QLResponse resp = graphQLResponse.Data;
             if(graphQLResponse.Errors != null)
+            /*
             Console.WriteLine("Response from github api: " + graphQLResponse.Errors[0].Message);
             Console.WriteLine("Response from github api: " + resp);
 
@@ -386,6 +387,7 @@ namespace StaticAnalysis
             Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
             Console.WriteLine("Discussions: " + resp.repository.discussions.totalCount);
             Console.WriteLine("Stargazers: " + resp.repository.stargazers.totalCount);
+            */
 
             //load data into urlinfo
             githubDescription = resp.repository.description;
