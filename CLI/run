@@ -47,7 +47,7 @@ case "$1" in
     ;;
     "test")
     logInfo "Testing..."
-    
+    dotnet test UnitTest -l "console;verbosity=detailed"
     ;;
     "install")
         logDebug "Downloading Dependencies...\n"
