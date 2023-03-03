@@ -85,7 +85,7 @@ namespace Index
             {
                 Console.WriteLine(pkg.getInfo());
             }
-            /*
+            
             //Perfom Static Analysis
             StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
             foreach (var pkg in AllPackages.GetAllPackages().Values)
@@ -105,7 +105,7 @@ namespace Index
                 {
                     Console.WriteLine(pkg.getStaticInfo());
                 }
-            }*/
+            }
             System.Threading.Thread.Sleep(15000);
             /*
             //get each metric
@@ -330,8 +330,8 @@ namespace Index
                 Console.WriteLine("Cloning " + urlInfo.Value.getName());
                 if (urlInfo.Value.getGithubUrl() != "none")
                 {
-                    //urlInfo.Value.path = "../../modules/" + urlInfo.Value.getName();
-                    urlInfo.Value.setPath("../../modules/" + urlInfo.Value.getName());
+                    string abspath = System.IO.Path.GetFullPath("../../modules/" + urlInfo.Value.getName());
+                    urlInfo.Value.setPath(abspath);
                     Cli.Wrap("python3")
                         .WithArguments("../Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
                         .WithValidation(CommandResultValidation.None)

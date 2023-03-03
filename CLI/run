@@ -74,6 +74,7 @@ case "$1" in
     ;;
     "clean")
         rm -rf cache
+        rm -rf modules
     ;;
     *)
         cd src/Index
