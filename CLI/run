@@ -59,15 +59,15 @@ case "$1" in
         cd ../..
 
         cd src/StaticAnalysis
-        dotnet add package Newtonsoft.Json | tee -a $logfullpath cache/build.txt >/dev/null
-        dotnet add package GraphQL | tee -a $logfullpath cache/build.txt >/dev/null
-        dotnet add package GraphQL.Client | tee -a $logfullpath cache/build.txt >/dev/null
-        dotnet add package GraphQL.Client.Serializer.Newtonsoft | tee -a $logfullpath cache/build.txt >/dev/null
-        dotnet add package GraphQL.Common | tee -a $logfullpath cache/build.txt >/dev/null
+        dotnet add package Newtonsoft.Json | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package GraphQL | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package GraphQL.Client | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package GraphQL.Client.Serializer.Newtonsoft | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package GraphQL.Common | tee -a $logfullpath ../../cache/build.txt >/dev/null
         cd ../..
 
         cd UnitTesting
-        dotnet add package coverlet.msbuild | tee -a $logfullpath cache/build.txt >/dev/null
+        dotnet add package coverlet.msbuild | tee -a $logfullpath ../../cache/build.txt >/dev/null
         cd ../..
 
         logDebug "Dependencies Installed"
