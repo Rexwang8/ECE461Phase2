@@ -74,8 +74,8 @@ namespace Index
             }
 
 
-            System.Threading.Thread.Sleep(15000);
-/*
+            Console.WriteLine("We have " + AllPackages.GetAllPackages().Count + " packages");
+
             //Clone repositories
             CloneUrls(AllPackages);
 
@@ -85,7 +85,7 @@ namespace Index
             {
                 Console.WriteLine(pkg.getInfo());
             }
-            
+            /*
             //Perfom Static Analysis
             StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
             foreach (var pkg in AllPackages.GetAllPackages().Values)
@@ -105,8 +105,9 @@ namespace Index
                 {
                     Console.WriteLine(pkg.getStaticInfo());
                 }
-            }
-
+            }*/
+            System.Threading.Thread.Sleep(15000);
+            /*
             //get each metric
             logger.Log("Getting each metric", 1);
             foreach (var pkg in AllPackages.GetAllPackages().Values)
@@ -133,9 +134,8 @@ namespace Index
             }
 
             //write to file
-
-            return 0;
             */
+
             return 0;
         }
 
@@ -324,22 +324,26 @@ namespace Index
             var stdOutBuffer = new StringBuilder();
             var stdErrBuffer = new StringBuilder();
 
+            Console.WriteLine("Cloning " + urlInfos.GetAllPackages().Count + " packages");
             foreach (var urlInfo in urlInfos.GetAllPackages())
             {
+                Console.WriteLine("Cloning " + urlInfo.Value.getName());
                 if (urlInfo.Value.getGithubUrl() != "none")
                 {
                     //urlInfo.Value.path = "../../modules/" + urlInfo.Value.getName();
                     urlInfo.Value.setPath("../../modules/" + urlInfo.Value.getName());
-                    Cli.Wrap("python3")
-                        .WithArguments("../Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
+                    Cli.Wrap("python")
+                        .WithArguments("src/Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
                         .WithValidation(CommandResultValidation.None)
                         .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stdOutBuffer))
                         .WithStandardErrorPipe(PipeTarget.ToStringBuilder(stdErrBuffer))
                         .ExecuteAsync()
                         .GetAwaiter()
                         .GetResult();
-                    Logger.WriteLine(stdOutBuffer.ToString(), 2);
-                    Logger.WriteLine(stdErrBuffer.ToString(), 2);
+                    Logger.WriteLine("stdout" + stdOutBuffer.ToString(), 2);
+                    Console.WriteLine("stdout" + stdOutBuffer.ToString());
+                    Logger.WriteLine("stderr" + stdErrBuffer.ToString(), 2);
+                    Console.WriteLine("stderr" + stdErrBuffer.ToString());
                 }
                 
             }
