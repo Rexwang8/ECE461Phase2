@@ -123,7 +123,6 @@ namespace Index
                 //license
 
                 //busfactor
-                Console.WriteLine("Calculating BusFactor");
                 BusFactor.GetScore(pkg);
                 //responsive maintainer
 
