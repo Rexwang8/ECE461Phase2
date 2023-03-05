@@ -94,7 +94,7 @@ namespace Index
             StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine("Peforming StaticAnalysis for " + pkg.getName());
+                Console.WriteLine("Performing StaticAnalysis for " + pkg.getName());
                 if (pkg.getPath() != "none")
                 {
                     StaticAnalysis.Analyze(pkg);
@@ -102,7 +102,8 @@ namespace Index
             }
 
             //Print Static Analysis Results only for cloned repo
-            logger.Log("Getting names and types", 1);
+            /* logger.Log("Getting names and types", 1);
+            Console.WriteLine("Printing out results");
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
                 if (pkg.getPath() != "none")
@@ -110,8 +111,8 @@ namespace Index
                     Console.WriteLine(pkg.getStaticInfo());
                 }
             }
-            System.Threading.Thread.Sleep(15000);
-            /*
+            System.Threading.Thread.Sleep(15000); */
+            
             //get each metric
             logger.Log("Getting each metric", 1);
             foreach (var pkg in AllPackages.GetAllPackages().Values)
@@ -122,7 +123,8 @@ namespace Index
                 //license
 
                 //busfactor
-
+                Console.WriteLine("Calculating BusFactor");
+                BusFactor.GetScore(pkg);
                 //responsive maintainer
 
                 //license compatibility
@@ -138,7 +140,6 @@ namespace Index
             }
 
             //write to file
-            */
 
             return 0;
         }
@@ -208,7 +209,7 @@ namespace Index
             }
             return urlInfos;
         }
-
+/* 
         static void GetScores(string urlFilePath)
         {
             
@@ -262,7 +263,7 @@ namespace Index
                     scoreSheets.Remove(scoreSheet);
                 }
             }
-        }
+        } */
 
         public static bool ValidateInputs(string[] args)
         {
@@ -349,7 +350,6 @@ namespace Index
                     Logger.WriteLine("stderr" + stdErrBuffer.ToString(), 2);
                     Console.WriteLine("stderr" + stdErrBuffer.ToString());
                 }
-                
             }
         } 
 
