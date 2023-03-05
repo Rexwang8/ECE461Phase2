@@ -1,0 +1,38 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+using StaticAnalysis;
+using Utility;
+using System.IO;
+using Index;
+
+namespace UnitTesting;
+
+[TestClass]
+public class GeneralUnitTests
+{
+
+    //Verify environment variables are set
+    [TestMethod]
+    public void TestENVSet()
+    {
+        isLogFileSet = Environment.GetEnvironmentVariable("LOG_FILE") != null;
+        isLevelSet = Environment.GetEnvironmentVariable("LOG_LEVEL") != null;
+        isTokenSet = Environment.GetEnvironmentVariable("GITHUB_TOKEN") != null;
+        Assert.IsTrue(isLogFileSet && isLevelSet && isTokenSet);
+    }
+
+    //Verify Checker for environment variables works
+    [TestMethod]
+    public void TestCheckARGS()
+    {
+        args = new string[4];
+        args[0] = "/home/shay/a/wang5009/461/ECE461Phase2/CLI/examples/git.txt";
+        args[1] = "2";
+        args[2] = "/home/shay/a/wang5009/461/logoutput.log";
+        args[3] = "ghp_123412341234123412341234m123431234";
+        isValid = Index.ValidateInputs(args);
+        Assert.IsTrue(isValid);
+    }
+
+}
+

@@ -9,12 +9,16 @@ using System.Text;
 
 namespace Index
 {
-    class Program
+    public class Program
     {
         static int Main(string[] args)
         {
             //validate inputs
-            ValidateInputs(args);
+            bool isValidated = ValidateInputs(args);
+            if(!isValidated)
+            {
+                Environment.Exit(1);
+            }
 
             //initialize args
             string ARGFILEPATH = args[0];
@@ -85,7 +89,7 @@ namespace Index
             {
                 Console.WriteLine(pkg.getInfo());
             }
-            /*
+            
             //Perfom Static Analysis
             StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
             foreach (var pkg in AllPackages.GetAllPackages().Values)
@@ -105,7 +109,7 @@ namespace Index
                 {
                     Console.WriteLine(pkg.getStaticInfo());
                 }
-            }*/
+            }
             System.Threading.Thread.Sleep(15000);
             /*
             //get each metric
@@ -260,13 +264,13 @@ namespace Index
             }
         }
 
-        static void ValidateInputs(string[] args)
+        public static bool ValidateInputs(string[] args)
         {
             //we expect 4 arguments: the filepath, the log level, and the log file path, and the github token
             if (args.Length != 4)
             {
                 Console.WriteLine("Invalid number of arguments. Expected 5, got " + args.Length);
-                Environment.Exit(1);
+                return false;
             }
 
             string ARGFILEPATH = args[0];
@@ -276,14 +280,14 @@ namespace Index
             if (!System.IO.Path.IsPathRooted(ARGFILEPATH))
             {
                 Console.WriteLine("Filepath is not an absolute path, it is " + ARGFILEPATH);
-                Environment.Exit(1);
+                return false;
             }
 
             //check if file exists
             if (!System.IO.File.Exists(ARGFILEPATH))
             {
                 Console.WriteLine("File does not exist");
-                Environment.Exit(1);
+                return false;
             }
 
             //check if log level is valid
@@ -291,13 +295,13 @@ namespace Index
             if (!success)
             {
                 Console.WriteLine("Log level is not an integer");
-                Environment.Exit(1);
+                return false;
             }
 
             if (ARGLOGLEVEL < 0 || ARGLOGLEVEL > 2)
             {
                 Console.WriteLine("Log level is not valid");
-                Environment.Exit(1);
+                return false;
             }
 
             string LOGFPATH = args[2];
@@ -305,18 +309,18 @@ namespace Index
             if (!System.IO.Path.IsPathRooted(LOGFPATH))
             {
                 Console.WriteLine("Log file path is not an absolute path");
-                Environment.Exit(1);
+                return false;
             }
 
             //check if github token is valid
             string GHTOKEN = args[3];
             if (GHTOKEN.Length != 40)
             {
-                Console.WriteLine("Github token is not valid");
-                Environment.Exit(1);
+                Console.WriteLine("Github token is not valid. Length is " + GHTOKEN.Length);
+                return false;
             }
 
-            return;
+            return true;
         }
 
         static private void CloneUrls(URLClass urlInfos)
@@ -330,8 +334,8 @@ namespace Index
                 Console.WriteLine("Cloning " + urlInfo.Value.getName());
                 if (urlInfo.Value.getGithubUrl() != "none")
                 {
-                    //urlInfo.Value.path = "../../modules/" + urlInfo.Value.getName();
-                    urlInfo.Value.setPath("../../modules/" + urlInfo.Value.getName());
+                    string abspath = System.IO.Path.GetFullPath("../../modules/" + urlInfo.Value.getName());
+                    urlInfo.Value.setPath(abspath);
                     Cli.Wrap("python3")
                         .WithArguments("../Utility/gitPython.py " + urlInfo.Value.getName() + " " + urlInfo.Value.getGithubUrl())
                         .WithValidation(CommandResultValidation.None)

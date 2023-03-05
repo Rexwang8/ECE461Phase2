@@ -67,6 +67,7 @@ namespace StaticAnalysis
         float responseMaintainer_score { get; set; }
         float net_score { get; set; }
 
+        //static analysis
         public int codeLineCount { get; set; } //lines if code
         public int commentLineCount { get; set; } // lines of comments
         public int codeCharCount { get; set; } //code characters
