@@ -17,23 +17,30 @@ public static class BusFactor
         Console.WriteLine("-----\nCalculating BusFactor");
 
         float finalScore = 0;
-        const float ISSUE_WEIGHT = .3;
-        const float HEALTH_WEIGHT = .7;
+        const float ISSUE_WEIGHT = .3f;
+        const float HEALTH_WEIGHT = .7f;
 
         int health_score = 0;
         int fork_score = 0;
 
         //Calculate Issues
-        finalScore += ISSUE_WEIGHT * (urlInfo.githubIssues - urlInfo.githubOpenIssues)/urlInfo.githubIssues;
-        Console.WriteLine($"There are {urlInfo.githubIssues} githubIssues");
-        Console.WriteLine($"There are {urlInfo.githubOpenIssues} githubOpenIssues");
+        if(urlInfo.githubIssues != 0 && urlInfo.githubOpenIssues != 0)
+        {
+            finalScore += ISSUE_WEIGHT * (urlInfo.githubIssues - urlInfo.githubOpenIssues)/urlInfo.githubIssues;
+            Console.WriteLine($"There are {urlInfo.githubIssues} githubIssues");
+            Console.WriteLine($"There are {urlInfo.githubOpenIssues} githubOpenIssues");
+        }
+        else
+        {
+            Console.WriteLine("No Issues");
+        }
         
         //Health Percentage: ReadME or License presence
-        if (licensePath != "")
+        if (urlInfo.licensePath != "")
         {
             health_score += 1;
         }
-        if (readmePath != "")
+        if (urlInfo.readmePath != "")
         {
             health_score += 1;
         }
