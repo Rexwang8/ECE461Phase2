@@ -4,6 +4,12 @@ namespace StaticAnalysis
     {
         Dictionary<string, URLInfo> urlDic = new Dictionary<string, URLInfo>(); //dictionary
 
+        int totalPackages = 0;
+        int totalNpm = 0;
+        int totalNpmPulled = 0;
+        int totalGithub = 0;
+        int totalGithubPulled = 0;
+
         public URLClass(List<URLInfo> urlInfos)
         {
            
@@ -67,6 +73,87 @@ namespace StaticAnalysis
         public Dictionary<string, URLInfo> GetAllPackages()
         {
             return urlDic;
+        }
+
+        public int getTotalPackages()
+        {
+            return totalPackages;
+        }
+
+        public int getTotalNpm()
+        {
+            return totalNpm;
+        }
+
+        public int getTotalGithub()
+        {
+            return totalGithub;
+        }
+
+        public void printNumPackages()
+        {
+            Console.WriteLine("Total Packages: " + totalPackages);
+            Console.WriteLine("Total NPM: " + totalNpm);
+            Console.WriteLine("Total Github: " + totalGithub);
+        }
+
+        public void setTotalPackages(int num)
+        {
+            totalPackages = num;
+        }
+
+        public void countNPM()
+        {
+            foreach (var url in urlDic)
+            {
+                if (url.Value.getType() == "npm" || url.Value.getType() == "both")
+                {
+                    totalNpm++;
+                }
+            }
+        }
+
+        public void countGithub()
+        {
+            foreach (var url in urlDic)
+            {
+                if (url.Value.getType() == "github" || url.Value.getType() == "both")
+                {
+                    totalGithub++;
+                }
+            }
+        }
+
+        public void countNpmPulled()
+        {
+            foreach (var url in urlDic)
+            {
+                if (url.Value.getNPMSuccess() == true)
+                {
+                    totalNpmPulled++;
+                }
+            }
+        }
+
+        public void countGithubPulled()
+        {
+            foreach (var url in urlDic)
+            {
+                if (url.Value.getGHSuccess() == true)
+                {
+                    totalGithubPulled++;
+                }
+            }
+        }
+
+        public int getTotalNpmPulled()
+        {
+            return totalNpmPulled;
+        }
+
+        public int getTotalGithubPulled()
+        {
+            return totalGithubPulled;
         }
     } 
 }

@@ -60,12 +60,15 @@ namespace StaticAnalysis
         string type { get; set; }
         string path { get; set; }
 
-        int license_score { get; set; }
-        float rampUp_score { get; set; }
-        float busFactor_score { get; set; }
-        float correctness_score { get; set; }
-        float responseMaintainer_score { get; set; }
-        float net_score { get; set; }
+        int license_score { get; set; } = -1;
+        float rampUp_score { get; set; } = -1;
+        float busFactor_score { get; set; } = -1;
+        float correctness_score { get; set; } = -1;
+        float responseMaintainer_score { get; set; } = -1;
+        float dependancy_score { get; set; } = -1;
+        float pullReviewScore { get; set; } = -1;
+        float net_score { get; set; } = -1;
+
 
         //static analysis
         public int codeLineCount { get; set; } //lines if code
@@ -115,6 +118,12 @@ namespace StaticAnalysis
         public int githubStargazersCount { get; set; } = -1;
         public int githubDiscussions { get; set; } = -1;
         public int githubOpenPullRequests { get; set; } = -1;
+
+        public bool SuccessGrabGithub { get; set; } = false;
+        public bool SuccessGrabNpm { get; set; } = false;
+        public bool SuccessDoClone { get; set; } = false;
+        public bool SuccessDoStaticAnalysis { get; set; } = false;
+        public bool SuccessDoLicenseAnalysis { get; set; } = false;
         #endregion
 
         #region Constructors
@@ -261,6 +270,9 @@ namespace StaticAnalysis
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
 
+            //mark as npm complete
+            SuccessGrabNpm = true;
+
             return error;
         }
 
@@ -363,8 +375,13 @@ namespace StaticAnalysis
             var graphQLResponse = await graphQLClient.SendQueryAsync<QLResponse>(graphQLRequest);
             QLResponse resp = graphQLResponse.Data;
             if(graphQLResponse.Errors != null)
-            
-            Console.WriteLine("Response from github api: " + graphQLResponse.Errors[0].Message);
+            //check response
+            {
+                error.SetError("Response from github api: " + graphQLResponse.Errors[0].Message, APIError.errorType.badresponse);
+                logger.Log(error.ToString(), 2);
+                Console.WriteLine("Error Graphql response");
+                return error;
+            }
             Console.WriteLine("Response from github api: " + resp);
 
             Console.WriteLine("Name of repo is: " + resp.repository.name);
@@ -423,10 +440,31 @@ namespace StaticAnalysis
 
 
 
-            
+            Console.WriteLine("Finished loading github data");
+
+            //mark as loaded
+            SuccessGrabGithub = true;
 
 
             return error;
+        }
+
+        #endregion
+
+        #region CalcMethods
+
+        public void CalcValidLicense()
+        {
+            //priority is local license, then github license
+            //assuming they are valid
+            if(license == null || license == "")
+            {
+                if(githubLicense != null && githubLicense != "")
+                {
+                    license = githubLicense;
+                }
+
+            }
         }
 
         #endregion
@@ -502,6 +540,15 @@ namespace StaticAnalysis
             path = pathway;
         }
 
+        public void setBusFactor(float busFactor)
+        {
+            this.busFactor_score = busFactor;
+        }
+
+        public void setRampUpTime(float rampUpTime)
+        {
+            this.rampUp_score = rampUpTime;
+        }
         #endregion
         
         #region Getter
@@ -556,6 +603,21 @@ namespace StaticAnalysis
             return path;
         }
     
+        public string getScoreInfo()
+        {
+            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullReviewScore: " + pullReviewScore + " net_score: " + net_score + "}";
+            return response;
+        }
+        
+        public bool getGHSuccess()
+        {
+            return SuccessGrabGithub;
+        }
+
+        public bool getNPMSuccess()
+        {
+            return SuccessGrabNpm;
+        }
         #endregion
     }
 
