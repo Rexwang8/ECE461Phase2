@@ -39,7 +39,6 @@ public class UnitTest1
         Assert.IsTrue(isValid);
     }
 
-    //LICENSE TESTING
     [TestMethod]
     public void GetScore_ReturnsOne_WhenLicenseNoMatch()
     {
@@ -91,3 +90,35 @@ public class ScoreMetricTests
         Assert.AreEqual(expectedScore, actualScore);
     }
 }
+
+[TestClass]
+    public class LoggerTests
+    {
+        [TestMethod]
+        public void Log_WithLogLevelGreaterThanMessagePriority_LogsMessageToFile()
+        {
+            string logFile = "test_log.txt";
+            int logLevel = 2;
+            string prefix = "TESTPREFIX: ";
+            Logger logger = new Logger(logLevel, logFile, prefix);
+
+            string message = "Test log message";
+            int messagePriority = 1;
+
+            logger.Log(message, messagePriority);
+
+            string[] logLines = File.ReadAllLines(logFile);
+
+            Assert.IsTrue(logLines[0].Contains(prefix));
+        }
+
+        [TestCleanup]
+        public void Cleanup()
+        {
+            string logFile = "test_log.txt";
+            if (File.Exists(logFile))
+            {
+                File.Delete(logFile);
+            }
+        }
+    }
