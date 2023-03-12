@@ -33,12 +33,13 @@ public class UnitTest1
         args[0] = "/home/shay/a/ma562/461/CLI/example/git.txt";
         args[1] = "0";
         args[2] = "/home/shay/a/ma562/461/logoutput.log";
-        args[3] = "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";
+        args[3] = "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";       //DON'T EVEN THINK ABOUT STEALING MY TOKEN (i already revoked it)
         Console.WriteLine("TestCheckARGS");
         bool isValid = Index.Program.ValidateInputs(args);
         Assert.IsTrue(isValid);
     }
 
+    //LICENSE TESTING
     [TestMethod]
     public void GetScore_ReturnsOne_WhenLicenseNoMatch()
     {
@@ -59,5 +60,34 @@ public class UnitTest1
         float score = license.GetScore(githubUrl);
 
         Assert.AreEqual(0, score);
+    }
+
+}
+
+[TestClass]
+public class ScoreMetricTests
+{
+    private class MockScoreMetric : IScoreMetric
+    {
+        public float metricWeight => 1f;
+
+        public string metricName => "Mock Score Metric";
+
+        public float GetScore(string githubUrl)
+        {
+            return 0.5f;
+        }
+    }
+
+    [TestMethod]
+    public void MockScoreMetric_GetScore_ReturnsExpectedValue()
+    {
+        var scoreMetric = new MockScoreMetric();
+        var githubUrl = "https://github.com/example/example-repo";
+
+        var actualScore = scoreMetric.GetScore(githubUrl);
+        var expectedScore = 0.5f;
+
+        Assert.AreEqual(expectedScore, actualScore);
     }
 }
