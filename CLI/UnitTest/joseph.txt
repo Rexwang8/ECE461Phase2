@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  Writing /tmp/tmpd08WXh.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/ma562/461/CLI/UnitTest/UnitTest.csproj'.
+info :   CACHE https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info : Restoring packages for /home/shay/a/ma562/461/CLI/UnitTest/UnitTest.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/ma562/461/CLI/UnitTest/UnitTest.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/ma562/461/CLI/UnitTest/UnitTest.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/ma562/461/CLI/UnitTest/obj/project.assets.json
+log  : Restored /home/shay/a/ma562/461/CLI/UnitTest/UnitTest.csproj (in 435 ms).
