@@ -60,11 +60,11 @@ namespace StaticAnalysis
         string type { get; set; }
         string path { get; set; }
 
-        int license_score { get; set; } = -1;
+        public int license_score { get; set; } = -1;
         float rampUp_score { get; set; } = -1;
         float busFactor_score { get; set; } = -1;
         float correctness_score { get; set; } = -1;
-        float responseMaintainer_score { get; set; } = -1;
+        public float responseMaintainer_score { get; set; } = -1;
         float dependancy_score { get; set; } = -1;
         float pullReviewScore { get; set; } = -1;
         float net_score { get; set; } = -1;
