@@ -143,3 +143,1110 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 MSBUILD : error MSB1003: Specify a project or solution file. The current working directory does not contain a project or solution file.
 [BUILD|Priority: 2(debug)] \nBuild Complete
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: GitPython in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (3.1.30)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (from GitPython) (4.0.10)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.0)
+  Determining projects to restore...
+  Writing /tmp/tmpAeddcV.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/Index.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/Index.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 506 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpsk1FNp.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 15ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.3' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/StaticAnalysis.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/StaticAnalysis.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 203 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpdXJbvb.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json 243ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json 92ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json 16ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.0.json 96ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.3.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 133 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpVwRKb5.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json 243ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 132 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpZNhSdf.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json 241ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 131 ms).
+  Determining projects to restore...
+  Writing /tmp/tmp92LFL2.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json 317ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 133 ms).
+  Determining projects to restore...
+  Writing /tmp/tmp63sZKt.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json 245ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/UnitTest.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/UnitTest.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj (in 6.36 sec).
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 123 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 272 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 340 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 145 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 344 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(22,17): error CS0708: 'License.unsuccesfullHTTPRequestFlag': cannot declare instance members in a static class [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 418 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(22,17): error CS0708: 'License.unsuccesfullHTTPRequestFlag': cannot declare instance members in a static class [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 132 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 312 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(47,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(49,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 392 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(47,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(49,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 133 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 320 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(47,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(49,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 386 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(47,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(49,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(47,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(49,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(47,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(49,29): error CS0122: 'URLInfo.license_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,44): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(28,85): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(55,34): error CS0103: The name 'githubUrl' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo, string)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo, string)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo, string)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(36,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(54,17): error CS0120: An object reference is required for the non-static field, method, or property 'License.unsuccesfullHTTPRequestFlag' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(69,17): error CS0127: Since 'License.GetScore(URLInfo, string)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 150 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 324 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(41,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(43,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(45,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(47,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(49,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(51,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(57,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(59,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(61,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(63,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(65,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(71,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(72,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(73,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(74,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(75,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(76,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(77,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(78,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(80,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(86,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(87,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(88,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(89,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(90,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(91,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(92,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(93,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(95,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(99,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(101,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(103,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(105,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(107,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(109,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 372 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(41,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(43,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(45,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(47,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(49,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(51,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(57,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(59,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(61,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(63,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(65,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(71,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(72,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(73,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(74,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(75,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(76,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(77,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(78,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(80,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(86,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(87,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(88,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(89,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(90,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(91,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(92,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(93,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(95,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(99,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(101,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(103,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(105,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(107,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(109,17): error CS0131: The left-hand side of an assignment must be a variable, property or indexer [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(41,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(43,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(45,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(47,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(49,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(61,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(63,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(65,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(71,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(72,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(73,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(74,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(75,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(76,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(77,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(78,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(86,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(87,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(88,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(89,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(90,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(91,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(92,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(93,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(101,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(103,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(105,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(107,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(109,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(41,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(43,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(45,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(47,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(49,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(61,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(63,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(65,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(71,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(72,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(73,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(74,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(75,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(76,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(77,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(78,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(86,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(87,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(88,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(89,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(90,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(91,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(92,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(93,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(101,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(103,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(105,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(107,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(109,17): error CS0266: Cannot implicitly convert type 'double' to 'float'. An explicit conversion exists (are you missing a cast?) [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(71,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(73,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(75,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(77,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(86,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(88,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(90,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(92,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(71,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(73,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(75,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(77,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(86,17): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(88,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(90,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(92,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'TimeSpan' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(98,17): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(100,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(102,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(104,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(106,24): error CS0019: Operator '==' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(108,24): error CS0019: Operator '>=' cannot be applied to operands of type 'string[]' and 'int' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,9): error CS0127: Since 'Maintainer.GetScore(URLInfo)' returns void, a return keyword must not be followed by an object expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,17): error CS0122: 'URLInfo.responseMaintainer_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,17): error CS0122: 'URLInfo.responseMaintainer_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,17): error CS0122: 'URLInfo.responseMaintainer_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(117,17): error CS0122: 'URLInfo.responseMaintainer_score' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
