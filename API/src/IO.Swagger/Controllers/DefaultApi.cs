@@ -96,9 +96,9 @@ namespace IO.Swagger.Controllers
         /// <response code="200">Echo</response>
         [HttpPost]
         [Route("/echo2")]
-        [SwaggerOperation("Echo")]
+        [SwaggerOperation("Echo2")]
         [SwaggerResponse(200, type: typeof(EchoMessage))]
-        public virtual IActionResult Echo([FromBody]EchoMessage message)
+        public virtual IActionResult Echo2([FromBody]EchoMessage message)
         {
             //append a message to the message "echoed" back
             message = new EchoMessage(message.Message + " (echoed)");
