@@ -22,12 +22,15 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      
+    - name: Publish
+      run: dotnet publish API/src/IO.Swagger/IO.Swagger.csproj
 
     - name: Deploy to App Engine
       id: deploy
       uses: google-github-actions/deploy-appengine@v0.2.0
       with:
-        deliverables: API/src/IO.Swagger/bin/Debug/deploytoapp.yaml
+        deliverables: API/src/IO.Swagger/bin/Debug/netcoreapp2.0/publish/app.yaml
         version: v1
         project_id: ${{ secrets.GCP_PROJECT }}
         credentials: ${{ secrets.GCP_CREDENTIALS }}
