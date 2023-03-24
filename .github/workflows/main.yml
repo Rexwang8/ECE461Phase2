@@ -7,8 +7,12 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ Production ]
+    paths:
+      - '**.cs'
   pull_request:
     branches: [ Production ]
+    paths:
+      - '**.cs'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,7 +35,6 @@ jobs:
       uses: google-github-actions/deploy-appengine@v0.2.0
       with:
         deliverables: API/src/IO.Swagger/bin/Debug/netcoreapp2.0/publish/app.yaml
-        version: v1
         project_id: ${{ secrets.GCP_PROJECT }}
         credentials: ${{ secrets.GCP_CREDENTIALS }}
 
