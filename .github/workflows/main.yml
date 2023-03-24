@@ -45,7 +45,7 @@ jobs:
       run: 'gcloud info'
     
     - id: 'deploy'
-      run: gcloud app deploy --verbosity=debug API\src\IO.Swagger\bin\Debug\netcoreapp2.0\publish\app.yaml
+      run: gcloud app deploy --verbosity=debug API/src/IO.Swagger/bin/Debug/netcoreapp2.0/publish/app.yaml
       
     - name: Test
       run: curl "${{ steps.deploy.outputs.url }}"
