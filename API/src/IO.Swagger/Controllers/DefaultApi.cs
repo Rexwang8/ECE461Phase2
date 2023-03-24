@@ -89,6 +89,23 @@ namespace IO.Swagger.Controllers
         }
 
         /// <summary>
+        ///
+        /// </summary>
+        /// <remarks>Echo back a given message.</remarks>
+        /// <param name="message">Message to echo</param>
+        /// <response code="200">Echo</response>
+        [HttpPost]
+        [Route("/echo2")]
+        [SwaggerOperation("Echo")]
+        [SwaggerResponse(200, type: typeof(EchoMessage))]
+        public virtual IActionResult Echo([FromBody]EchoMessage message)
+        {
+            //append a message to the message "echoed" back
+            message = new EchoMessage(message.Message + " (echoed)");
+            return new ObjectResult(message);
+        }
+
+        /// <summary>
         /// GET API for the health checks
         /// </summary>
         /// <returns>200 if health check has passed</returns>
