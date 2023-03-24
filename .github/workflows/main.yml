@@ -29,6 +29,9 @@ jobs:
       
     - name: Publish
       run: dotnet publish API/src/IO.Swagger/IO.Swagger.csproj
+      
+    - name: CopyConfigApp
+      run: cp API/src/IO.Swagger/AppDeploy.yaml API/src/IO.Swagger/bin/Debug/netcoreapp2.0/publish/app.yaml
 
     - name: Deploy to App Engine
       id: deploy
