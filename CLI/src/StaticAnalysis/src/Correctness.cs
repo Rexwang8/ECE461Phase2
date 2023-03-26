@@ -1,5 +1,5 @@
 namespace StaticAnalysis;
-public static class Maintainers
+public class Maintainer
 {
     /*
     Responsive Maintainer
@@ -10,24 +10,24 @@ public static class Maintainers
     ------------------
     Issues                              50%
     Status                              30%
-    Updates                             20%
+    Stargazers                          20%
 
     FOR NPM
     Metric   Weight
     ------------------
-    Issues                              50%
-    Status                              50%
-
+    Maintainers                         50%
+    Version Count                       50%
     */
-    public static void getMScore(URLInfo urlInfo)
+    public static void GetScore(URLInfo urlInfo)
     {   
-        Console.WriteLine("-----\nCalculating Response Maintainer");
+        Console.WriteLine("-----\nCalculating Correctness");
 
         float finalScore = 0;
         float STATUS_WEIGHT = 0;
-        //float UPDATE_WEIGHT = 0;
+        float STARGAZERS_WEIGHT = 0;
         float ISSUES_WEIGHT = 0;
-        float MAINTAINER_WEIGHT = 0;
+        float MAINTAINERS_WEIGHT = 0;
+        float VERSIONS_WEIGHT = 0;
 
 
         //Count issues
@@ -65,55 +65,49 @@ public static class Maintainers
                 STATUS_WEIGHT += .30f;
             }
 
-
-            /*
-            //Checking Updates
-            if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-90)){
-                UPDATE_WEIGHT += .20f;
-            } else if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-80)){
-                UPDATE_WEIGHT += .15f;
-            } else if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-365)){
-                UPDATE_WEIGHT += .10f;
-            } else if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-730)){
-                UPDATE_WEIGHT += .5f;
+            if (urlInfo.githubStargazers <= 10){
+                STARGAZERS_WEIGHT += 0;
+            } else if (urlInfo.githubStargazers <= 50){
+                STARGAZERS_WEIGHT += 10;
+            } else if (urlInfo.githubStargazers <= 100){
+                STARGAZERS_WEIGHT += 20;
             } else {
-                UPDATE_WEIGHT += 0;
-            }*/
+                STARGAZERS_WEIGHT += 20;
+            }
 
         }
         else if (urlInfo.getType() == "npm")
         {
-            /*if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-90)){
-                UPDATE_WEIGHT += .50f;
-            } else if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-80)){
-                UPDATE_WEIGHT += .40f;
-            } else if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-365)){
-                UPDATE_WEIGHT += .30f;
-            } else if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-730)){
-                UPDATE_WEIGHT += .20f;
-            } else {
-                UPDATE_WEIGHT += 0;
-            }
-            */
             if (Convert.ToInt32(urlInfo.npmMaintainers) == 0){
-                MAINTAINER_WEIGHT += 0;
+                MAINTAINERS_WEIGHT += 0;
             } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 10){
-                MAINTAINER_WEIGHT += .10f;
+                MAINTAINERS_WEIGHT += .10f;
             } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 20){
-                MAINTAINER_WEIGHT += .20f;
+                MAINTAINERS_WEIGHT += .20f;
             } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 30){
-                MAINTAINER_WEIGHT += .30f;
+                MAINTAINERS_WEIGHT += .30f;
             } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 50){
-                MAINTAINER_WEIGHT += .40f;
+                MAINTAINERS_WEIGHT += .40f;
             } else if (Convert.ToInt32(urlInfo.npmMaintainers) >= 51){
-                MAINTAINER_WEIGHT += .50f;
+                MAINTAINERS_WEIGHT += .50f;
+            }
+            if (urlInfo.npmVersions.Length == 0){
+                VERSIONS_WEIGHT += 0;
+            } else if (urlInfo.npmVersions.Length <= 10){
+                VERSIONS_WEIGHT += 10;
+            } else if (urlInfo.npmVersions.Length <= 25){
+                VERSIONS_WEIGHT += 20;
+            } else if (urlInfo.npmVersions.Length <= 50){
+                VERSIONS_WEIGHT += 30;
+            } else if (urlInfo.npmVersions.Length >= 80){
+                VERSIONS_WEIGHT += 40;
             }
         }
         else
         {
             Console.WriteLine("No Type, Awarding no points");
         }
-        finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT;
+        finalScore = MAINTAINERS_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT + VERSIONS_WEIGHT + STARGAZERS_WEIGHT;
         urlInfo.responseMaintainer_score = finalScore;
     }
 }
