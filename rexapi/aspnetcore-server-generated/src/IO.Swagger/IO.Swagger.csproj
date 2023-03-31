@@ -8,6 +8,9 @@
     <AssemblyName>IO.Swagger</AssemblyName>
     <PackageId>IO.Swagger</PackageId>
   </PropertyGroup>
+  <PropertyGroup>
+   <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
+</PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1"/>
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1"/>
