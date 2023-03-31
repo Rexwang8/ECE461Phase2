@@ -66,8 +66,10 @@ namespace StaticAnalysis
         public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
         float dependancy_score { get; set; } = -1;
-        float pullReviewScore { get; set; } = -1;
+        float pullreview_score { get; set; } = -1;
         float net_score { get; set; } = -1;
+
+
 
 
         //static analysis
@@ -140,6 +142,9 @@ namespace StaticAnalysis
             busFactor_score = 0;
             correctness_score = 0;
             responseMaintainer_score = 0;
+            dependancy_score = 0;
+            pullreview_score = 0;
+
             net_score = 0;
             baseURL = url.Trim().ToLower();
 
@@ -360,8 +365,7 @@ namespace StaticAnalysis
                             commits(first: 100) {{
                                 nodes {{
                                     commit {{
-                                        additions
-                                        deletions
+                                        number
                                     }}
                                 }}
                             }}
@@ -416,6 +420,8 @@ namespace StaticAnalysis
             Console.WriteLine("Pull requests: " + resp.repository.pullRequests.totalCount);
             if(resp.repository.pullRequests.nodes.Count > 0)
             Console.WriteLine("Pull request comments: " + resp.repository.pullRequests.nodes[0].comments.totalCount);
+            Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+
             Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
             Console.WriteLine("Discussions: " + resp.repository.discussions.totalCount);
             Console.WriteLine("Stargazers: " + resp.repository.stargazers.totalCount);
@@ -451,7 +457,7 @@ namespace StaticAnalysis
             githubOpenPullRequests = resp.repository.openPullRequests.totalCount;
             githubDiscussions = resp.repository.discussions.totalCount;
             githubStargazers = resp.repository.stargazers.totalCount;
-
+            
 
 
             Console.WriteLine("Finished loading github data");
@@ -634,7 +640,7 @@ namespace StaticAnalysis
     
         public string getScoreInfo()
         {
-            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullReviewScore: " + pullReviewScore + " net_score: " + net_score + "}";
+            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullreview_score: " + pullreview_score + " net_score: " + net_score + "}";
             return response;
         }
         
@@ -751,12 +757,18 @@ namespace StaticAnalysis
     public class QLMergedPullRequestNode
     {
         public string title { get; set; } = "";
+        public string name { get; set; } = "";
         public QLMergedPullRequestNodeCommentsCount comments { get; set; } = new QLMergedPullRequestNodeCommentsCount();
+        public QLMergedPullRequestNodeAdditions commits { get; set; } = new QLMergedPullRequestNodeAdditions();
     }
 
     public class QLMergedPullRequestNodeCommentsCount
     {
         public int totalCount { get; set; } = 0;
+    }
+    public class QLMergedPullRequestNodeAdditions
+    {
+        public int number { get; set; } = 0;
     }
 
     class QLMergedPullRequest
