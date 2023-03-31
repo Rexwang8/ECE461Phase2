@@ -63,7 +63,7 @@ namespace StaticAnalysis
         public int license_score { get; set; } = -1;
         float rampUp_score { get; set; } = -1;
         float busFactor_score { get; set; } = -1;
-        float correctness_score { get; set; } = -1;
+        public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
         float dependancy_score { get; set; } = -1;
         float pullReviewScore { get; set; } = -1;
@@ -392,7 +392,7 @@ namespace StaticAnalysis
             Console.WriteLine("URL: " + resp.repository.url);
             Console.WriteLine("Homepage URL: " + resp.repository.homepageUrl);
             Console.WriteLine("Flags: " + resp.repository.isArchived + " " + resp.repository.isDisabled + " " + resp.repository.isFork + " " + resp.repository.isLocked + " " + resp.repository.isPrivate + " " + resp.repository.isEmpty);
-            Console.WriteLine("License: " + resp.repository.licenseInfo.name + " " + resp.repository.licenseInfo.spdxId);
+            //Console.WriteLine("License: " + resp.repository.licenseInfo.name + " " + resp.repository.licenseInfo.spdxId);
             if(resp.repository.releases.nodes.Count > 0)
             Console.WriteLine("Release: " + resp.repository.releases.nodes[0].name + " " + resp.repository.releases.nodes[0].description + " " + resp.repository.releases.nodes[0].url + " " + resp.repository.releases.nodes[0].publishedAt);
             Console.WriteLine("Watchers: " + resp.repository.watchers.totalCount);
@@ -420,7 +420,7 @@ namespace StaticAnalysis
             githubIsLocked = resp.repository.isLocked;
             githubIsPrivate = resp.repository.isPrivate;
             githubIsEmpty = resp.repository.isEmpty;
-            githubLicense = resp.repository.licenseInfo.name;
+            //githubLicense = resp.repository.licenseInfo.name;
             if(resp.repository.releases.nodes.Count > 0)
             {
                 githubReleaseName = resp.repository.releases.nodes[0].name;
@@ -548,6 +548,21 @@ namespace StaticAnalysis
         public void setRampUpTime(float rampUpTime)
         {
             this.rampUp_score = rampUpTime;
+        }
+        
+        public void setCorrectnessScore(float correctnessScore)
+        {
+            this.correctness_score = correctnessScore;
+        }
+
+        public void setResponseMaintainerScore(float responseMaintainerScore)
+        {
+            this.responseMaintainer_score = responseMaintainerScore;
+        }
+
+        public void setLicenseScore(int licenseScore)
+        {
+            this.license_score = licenseScore;
         }
         #endregion
         

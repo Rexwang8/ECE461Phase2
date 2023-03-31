@@ -1,5 +1,5 @@
 namespace StaticAnalysis;
-public class Maintainer
+public static class Correctness
 {
     /*
     Responsive Maintainer
@@ -18,7 +18,7 @@ public class Maintainer
     Maintainers                         50%
     Version Count                       50%
     */
-    public static void GetScore(URLInfo urlInfo)
+    public static float GetScore(URLInfo urlInfo)
     {   
         Console.WriteLine("-----\nCalculating Correctness");
 
@@ -36,7 +36,10 @@ public class Maintainer
             //award less points for more issues
             int numissues = urlInfo.githubIssues;
             int openissues = urlInfo.githubOpenIssues;
-            float issueratio = openissues/numissues;
+            float issueratio = 0;
+            if (numissues != 0){
+                issueratio = openissues/numissues;
+            }
             if (issueratio <= 0.1){
                 ISSUES_WEIGHT += .50f;
             }else if (issueratio <= 0.2){
@@ -68,39 +71,39 @@ public class Maintainer
             if (urlInfo.githubStargazers <= 10){
                 STARGAZERS_WEIGHT += 0;
             } else if (urlInfo.githubStargazers <= 50){
-                STARGAZERS_WEIGHT += 10;
+                STARGAZERS_WEIGHT += .10f;
             } else if (urlInfo.githubStargazers <= 100){
-                STARGAZERS_WEIGHT += 20;
+                STARGAZERS_WEIGHT += .20f;
             } else {
-                STARGAZERS_WEIGHT += 20;
+                STARGAZERS_WEIGHT += .20f;
             }
 
         }
         else if (urlInfo.getType() == "npm")
         {
-            if (Convert.ToInt32(urlInfo.npmMaintainers) == 0){
+            if ((urlInfo.npmMaintainers).Count() == 0){
                 MAINTAINERS_WEIGHT += 0;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 10){
+            } else if ((urlInfo.npmMaintainers).Count() == 10){
                 MAINTAINERS_WEIGHT += .10f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 20){
+            } else if ((urlInfo.npmMaintainers).Count() == 20){
                 MAINTAINERS_WEIGHT += .20f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 30){
+            } else if ((urlInfo.npmMaintainers).Count() == 30){
                 MAINTAINERS_WEIGHT += .30f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 50){
+            } else if ((urlInfo.npmMaintainers).Count() == 50){
                 MAINTAINERS_WEIGHT += .40f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) >= 51){
+            } else if ((urlInfo.npmMaintainers).Count() >= 51){
                 MAINTAINERS_WEIGHT += .50f;
             }
             if (urlInfo.npmVersions.Length == 0){
                 VERSIONS_WEIGHT += 0;
             } else if (urlInfo.npmVersions.Length <= 10){
-                VERSIONS_WEIGHT += 10;
+                VERSIONS_WEIGHT += .10f;
             } else if (urlInfo.npmVersions.Length <= 25){
-                VERSIONS_WEIGHT += 20;
+                VERSIONS_WEIGHT += .20f;
             } else if (urlInfo.npmVersions.Length <= 50){
-                VERSIONS_WEIGHT += 30;
+                VERSIONS_WEIGHT += .30f;
             } else if (urlInfo.npmVersions.Length >= 80){
-                VERSIONS_WEIGHT += 40;
+                VERSIONS_WEIGHT += .40f;
             }
         }
         else
@@ -108,6 +111,7 @@ public class Maintainer
             Console.WriteLine("No Type, Awarding no points");
         }
         finalScore = MAINTAINERS_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT + VERSIONS_WEIGHT + STARGAZERS_WEIGHT;
-        urlInfo.responseMaintainer_score = finalScore;
+        urlInfo.correctness_score = finalScore;
+        return finalScore;
     }
 }
