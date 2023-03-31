@@ -1250,3 +1250,1145 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 MSBUILD : error MSB1009: Project file does not exist.
 Switch: UnitTesting
 [BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: GitPython in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (3.1.30)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (from GitPython) (4.0.10)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.0)
+  Determining projects to restore...
+  Writing /tmp/tmp8kr5rj.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/Index.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/Index.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 411 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpRHssnA.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 19ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.3' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/StaticAnalysis.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/StaticAnalysis.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 294 ms).
+  Determining projects to restore...
+  Writing /tmp/tmptVRTm6.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json 245ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json 22ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json 15ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.0.json 16ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.3.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 154 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpAvkemX.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json 248ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 156 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpRIeJVO.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json 246ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 152 ms).
+  Determining projects to restore...
+  Writing /tmp/tmp8oMLy8.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json 313ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 150 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpgdpye5.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json 253ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/UnitTest.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/UnitTest.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj (in 4.48 sec).
+[BUILD|Priority: 2(debug)] Dependencies Installed
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 115 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 280 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(2,14): error CS0101: The namespace 'StaticAnalysis' already contains a definition for 'Maintainer' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(22,24): error CS0111: Type 'Maintainer' already defines a member called 'GetScore' with the same parameter types [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 356 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(2,14): error CS0101: The namespace 'StaticAnalysis' already contains a definition for 'Maintainer' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(22,24): error CS0111: Type 'Maintainer' already defines a member called 'GetScore' with the same parameter types [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(2,21): error CS0101: The namespace 'StaticAnalysis' already contains a definition for 'Maintainer' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(22,24): error CS0111: Type 'Maintainer' already defines a member called 'GetScore' with the same parameter types [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(2,21): error CS0101: The namespace 'StaticAnalysis' already contains a definition for 'Maintainer' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(22,24): error CS0111: Type 'Maintainer' already defines a member called 'GetScore' with the same parameter types [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(2,21): error CS0101: The namespace 'StaticAnalysis' already contains a definition for 'Maintainer' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Maintainer.cs(2,21): error CS0101: The namespace 'StaticAnalysis' already contains a definition for 'Maintainer' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Correctness.cs(110,22): error CS0103: The name 'MAINTAINER_WEIGHT' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Correctness.cs(110,22): error CS0103: The name 'MAINTAINER_WEIGHT' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: GitPython in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (3.1.30)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (from GitPython) (4.0.10)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/shay/a/zhan4096/.local/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.0)
+  Determining projects to restore...
+  Writing /tmp/tmpKKYxkN.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 251 ms).
+  Determining projects to restore...
+  Writing /tmp/tmplyAuCk.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 18ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.3' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 184 ms).
+  Determining projects to restore...
+  Writing /tmp/tmplFED0E.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json 250ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json 15ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json 27ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.0.json 16ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.3.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 177 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpdmjcf1.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json 291ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 181 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpH8WUsb.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json 247ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 183 ms).
+  Determining projects to restore...
+  Writing /tmp/tmp1Z7L58.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json 242ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 187 ms).
+  Determining projects to restore...
+  Writing /tmp/tmptC8x3Q.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json 256ms
+info : Restoring packages for /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/obj/project.assets.json
+log  : Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/UnitTest/UnitTest.csproj (in 1.2 sec).
+[BUILD|Priority: 2(debug)] Dependencies Installed
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 152 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 338 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 396 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 131 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 307 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 358 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 140 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 329 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(24,5): error CS0106: The modifier 'public' is not valid for this item [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(73,1): error CS1022: Type or namespace definition, or end-of-file expected [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(73,3): error CS1525: Invalid expression term '/' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(73,4): error CS1733: Expected expression [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(73,4): error CS1002: ; expected [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 380 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 133 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 304 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 360 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 131 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 312 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 390 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 131 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 309 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 379 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(186,59): error CS0117: 'Maintainer' does not contain a definition for 'GetMScore' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(190,41): error CS0103: The name 'Correctness' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(186,59): error CS0117: 'Maintainer' does not contain a definition for 'GetMScore' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(190,41): error CS0103: The name 'Correctness' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(190,41): error CS0103: The name 'Correctness' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(186,48): error CS0103: The name 'Maintainer' does not exist in the current context [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/BusFactor.cs(12,15): warning CS0219: The variable 'DISCUSSION_WEIGHT' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 130 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 299 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(26,36): error CS0122: 'URLInfo.githubURL' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 359 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/License.cs(26,36): error CS0122: 'URLInfo.githubURL' is inaccessible due to its protection level [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/Index.dll
+  Index -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/bin/Debug/net6.0/linux-x64/publish/
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 138 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 328 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 370 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(188,54): error CS1503: Argument 1: cannot convert from 'StaticAnalysis.URLInfo' to 'string' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(188,54): error CS1503: Argument 1: cannot convert from 'StaticAnalysis.URLInfo' to 'string' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 133 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 307 ms).
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj (in 365 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(189,54): error CS1503: Argument 1: cannot convert from 'StaticAnalysis.URLInfo' to 'string' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/linux-x64/StaticAnalysis.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+  All projects are up-to-date for restore.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/src/Rampup.cs(35,13): warning CS0219: The variable 'fork_score' is assigned but its value is never used [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+  StaticAnalysis -> /home/shay/a/zhan4096/ECE461Phase2/CLI/src/StaticAnalysis/bin/Debug/net6.0/StaticAnalysis.dll
+/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.cs(189,54): error CS1503: Argument 1: cannot convert from 'StaticAnalysis.URLInfo' to 'string' [/home/shay/a/zhan4096/ECE461Phase2/CLI/src/Index/Index.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete

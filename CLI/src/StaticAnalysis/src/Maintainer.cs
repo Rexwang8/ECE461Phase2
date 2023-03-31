@@ -1,5 +1,5 @@
 namespace StaticAnalysis;
-public static class Maintainers
+public static class Maintainer
 {
     /*
     Responsive Maintainer
@@ -19,7 +19,7 @@ public static class Maintainers
     Status                              50%
 
     */
-    public static void getMScore(URLInfo urlInfo)
+    public static float GetScore(URLInfo urlInfo)
     {   
         Console.WriteLine("-----\nCalculating Response Maintainer");
 
@@ -36,7 +36,10 @@ public static class Maintainers
             //award less points for more issues
             int numissues = urlInfo.githubIssues;
             int openissues = urlInfo.githubOpenIssues;
-            float issueratio = openissues/numissues;
+            float issueratio = 0;
+            if (numissues != 0){
+                issueratio = openissues/numissues;
+            }
             if (issueratio <= 0.1){
                 ISSUES_WEIGHT += .50f;
             }else if (issueratio <= 0.2){
@@ -93,19 +96,19 @@ public static class Maintainers
                 UPDATE_WEIGHT += .20f;
             } else {
                 UPDATE_WEIGHT += 0;
-            }
-            */
-            if (Convert.ToInt32(urlInfo.npmMaintainers) == 0){
+            }*/
+        
+            if ((urlInfo.npmMaintainers).Count() == 0){
                 MAINTAINER_WEIGHT += 0;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 10){
+            } else if ((urlInfo.npmMaintainers).Count() == 10){
                 MAINTAINER_WEIGHT += .10f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 20){
+            } else if ((urlInfo.npmMaintainers).Count() == 20){
                 MAINTAINER_WEIGHT += .20f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 30){
+            } else if ((urlInfo.npmMaintainers).Count()== 30){
                 MAINTAINER_WEIGHT += .30f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) == 50){
+            } else if ((urlInfo.npmMaintainers).Count() == 50){
                 MAINTAINER_WEIGHT += .40f;
-            } else if (Convert.ToInt32(urlInfo.npmMaintainers) >= 51){
+            } else if ((urlInfo.npmMaintainers).Count() >= 51){
                 MAINTAINER_WEIGHT += .50f;
             }
         }
@@ -115,5 +118,6 @@ public static class Maintainers
         }
         finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT;
         urlInfo.responseMaintainer_score = finalScore;
+        return finalScore;
     }
 }

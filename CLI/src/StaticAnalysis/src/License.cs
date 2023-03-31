@@ -8,7 +8,7 @@ using Utility;
 //using System.Text.Json.Serialization;
 
 namespace StaticAnalysis;
-public class License
+public static class License
 {
                 /*
         License
@@ -21,9 +21,9 @@ public class License
         */
     //public bool unsuccesfullHTTPRequestFlag = false;
 
-    public static void GetScore(URLInfo urlInfo, string githubUrl)
+    public static int GetScore(URLInfo urlInfo)
     {
-
+        string githubUrl = urlInfo.githubURL2;
         string api_url = "https://api.github.com/repos/OWNER/REPO/contents/LICENSE.md";
         api_url = api_url.Replace("OWNER", githubUrl.Split('/')[3]).Replace("REPO", githubUrl.Split('/')[4]);
 
@@ -45,8 +45,10 @@ public class License
                 Regex regex = new Regex(pattern);
                 if (regex.IsMatch(x) == true) { 
                     urlInfo.license_score = 1; 
+                    return 1;
                 } else { 
                     urlInfo.license_score = 0; 
+                    return 0;
                 }
             }
             else
@@ -67,6 +69,7 @@ public class License
                 }
                 
                 urlInfo.license_score = 0;
+                return 0;
             }
         }
     }
