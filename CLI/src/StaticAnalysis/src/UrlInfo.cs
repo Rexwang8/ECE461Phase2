@@ -347,11 +347,22 @@ namespace StaticAnalysis
                     }}
                     pullRequests(states: MERGED, first: 100) {{
                         totalCount
-                        nodes {{
+                        nodes {{    
                             title
                             comments {{
                                 totalCount
                             }}
+                            
+                            number
+                            commits(first: 100) {{
+                                nodes {{
+                                    commit {{
+                                        additions
+                                        deletions
+                                    }}
+                                }}
+                            }}
+
                         }}
                     }}
                     openPullRequests: pullRequests(states: OPEN) {{
