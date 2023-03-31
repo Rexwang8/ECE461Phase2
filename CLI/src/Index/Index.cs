@@ -174,7 +174,7 @@ namespace Index
                 Console.WriteLine("Getting metrics for " + pkg.getName());
 
                 //license
-                pkg.CalcValidLicense();
+                //pkg.CalcValidLicense();
 
                 //busfactor
                 pkg.setBusFactor(BusFactor.GetScore(pkg));
@@ -183,10 +183,13 @@ namespace Index
                 pkg.setRampUpTime(RampUp.GetScore(pkg));
 
                 //responsive maintainer
+                pkg.setResponseMaintainerScore(Maintainer.GetScore(pkg));
 
                 //license compatibility
-
+                //pkg.setLicenseScore(License.GetScore(pkg));
+                
                 //correctness
+                pkg.setCorrectnessScore(Correctness.GetScore(pkg));
 
                 //NEW METRICS
                 //code review ratio
@@ -492,17 +495,4 @@ namespace Index
 
     }
 
-    public class License : IScoreMetric
-    {
-        //dummy class to get vscode to stop yelling at me
-        public string metricName { get; set; } = "LICENSE";
-        public float metricWeight { get; set; } = 0.2f;
-
-        public float GetScore(string url)
-        {
-            return 0.5f;
-        }
-
-        public bool unsuccesfullHTTPRequestFlag = true;
-    }
 }

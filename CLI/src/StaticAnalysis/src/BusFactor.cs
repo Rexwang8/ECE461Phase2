@@ -75,7 +75,7 @@ public static class BusFactor
         {
             discussion_score += 20;
         }
-        finalScore += discussion_score * discussion_score/20;
+        finalScore += DISCUSSION_WEIGHT * discussion_score/20;
 
         //Health Percentage: ReadME or License presence
         if (urlInfo.licensePath != "")

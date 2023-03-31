@@ -63,11 +63,13 @@ namespace StaticAnalysis
         public int license_score { get; set; } = -1;
         float rampUp_score { get; set; } = -1;
         float busFactor_score { get; set; } = -1;
-        float correctness_score { get; set; } = -1;
+        public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
         float dependancy_score { get; set; } = -1;
-        float pullReviewScore { get; set; } = -1;
+        float pullreview_score { get; set; } = -1;
         float net_score { get; set; } = -1;
+
+
 
 
         //static analysis
@@ -77,6 +79,7 @@ namespace StaticAnalysis
         public int commentCharCount { get; set; }
         public string licensePath { get; set; }
         public string readmePath { get; set; }
+        public string packageJsonPath {get; set; }
         public string license { get; set; }
         public int licenseCompatibility { get; set; }
 
@@ -139,6 +142,9 @@ namespace StaticAnalysis
             busFactor_score = 0;
             correctness_score = 0;
             responseMaintainer_score = 0;
+            dependancy_score = 0;
+            pullreview_score = 0;
+
             net_score = 0;
             baseURL = url.Trim().ToLower();
 
@@ -147,8 +153,10 @@ namespace StaticAnalysis
             codeCharCount = 0;
             commentCharCount = 0;
             licensePath = "";
+            packageJsonPath = "";
             readmePath = "";
             license = "";
+
 
             //npm specific
             npmDescription = "";
@@ -347,11 +355,21 @@ namespace StaticAnalysis
                     }}
                     pullRequests(states: MERGED, first: 100) {{
                         totalCount
-                        nodes {{
+                        nodes {{    
                             title
                             comments {{
                                 totalCount
                             }}
+
+                            number
+                            commits(first: 100) {{
+                                nodes {{
+                                    commit {{
+                                        number
+                                    }}
+                                }}
+                            }}
+
                         }}
                     }}
                     openPullRequests: pullRequests(states: OPEN) {{
@@ -392,7 +410,7 @@ namespace StaticAnalysis
             Console.WriteLine("URL: " + resp.repository.url);
             Console.WriteLine("Homepage URL: " + resp.repository.homepageUrl);
             Console.WriteLine("Flags: " + resp.repository.isArchived + " " + resp.repository.isDisabled + " " + resp.repository.isFork + " " + resp.repository.isLocked + " " + resp.repository.isPrivate + " " + resp.repository.isEmpty);
-            Console.WriteLine("License: " + resp.repository.licenseInfo.name + " " + resp.repository.licenseInfo.spdxId);
+            //Console.WriteLine("License: " + resp.repository.licenseInfo.name + " " + resp.repository.licenseInfo.spdxId);
             if(resp.repository.releases.nodes.Count > 0)
             Console.WriteLine("Release: " + resp.repository.releases.nodes[0].name + " " + resp.repository.releases.nodes[0].description + " " + resp.repository.releases.nodes[0].url + " " + resp.repository.releases.nodes[0].publishedAt);
             Console.WriteLine("Watchers: " + resp.repository.watchers.totalCount);
@@ -402,6 +420,8 @@ namespace StaticAnalysis
             Console.WriteLine("Pull requests: " + resp.repository.pullRequests.totalCount);
             if(resp.repository.pullRequests.nodes.Count > 0)
             Console.WriteLine("Pull request comments: " + resp.repository.pullRequests.nodes[0].comments.totalCount);
+            Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+
             Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
             Console.WriteLine("Discussions: " + resp.repository.discussions.totalCount);
             Console.WriteLine("Stargazers: " + resp.repository.stargazers.totalCount);
@@ -420,7 +440,7 @@ namespace StaticAnalysis
             githubIsLocked = resp.repository.isLocked;
             githubIsPrivate = resp.repository.isPrivate;
             githubIsEmpty = resp.repository.isEmpty;
-            githubLicense = resp.repository.licenseInfo.name;
+            //githubLicense = resp.repository.licenseInfo.name;
             if(resp.repository.releases.nodes.Count > 0)
             {
                 githubReleaseName = resp.repository.releases.nodes[0].name;
@@ -437,7 +457,7 @@ namespace StaticAnalysis
             githubOpenPullRequests = resp.repository.openPullRequests.totalCount;
             githubDiscussions = resp.repository.discussions.totalCount;
             githubStargazers = resp.repository.stargazers.totalCount;
-
+            
 
 
             Console.WriteLine("Finished loading github data");
@@ -549,6 +569,21 @@ namespace StaticAnalysis
         {
             this.rampUp_score = rampUpTime;
         }
+        
+        public void setCorrectnessScore(float correctnessScore)
+        {
+            this.correctness_score = correctnessScore;
+        }
+
+        public void setResponseMaintainerScore(float responseMaintainerScore)
+        {
+            this.responseMaintainer_score = responseMaintainerScore;
+        }
+
+        public void setLicenseScore(int licenseScore)
+        {
+            this.license_score = licenseScore;
+        }
         #endregion
         
         #region Getter
@@ -605,7 +640,7 @@ namespace StaticAnalysis
     
         public string getScoreInfo()
         {
-            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullReviewScore: " + pullReviewScore + " net_score: " + net_score + "}";
+            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullreview_score: " + pullreview_score + " net_score: " + net_score + "}";
             return response;
         }
         
@@ -722,12 +757,18 @@ namespace StaticAnalysis
     public class QLMergedPullRequestNode
     {
         public string title { get; set; } = "";
+        public string name { get; set; } = "";
         public QLMergedPullRequestNodeCommentsCount comments { get; set; } = new QLMergedPullRequestNodeCommentsCount();
+        public QLMergedPullRequestNodeAdditions commits { get; set; } = new QLMergedPullRequestNodeAdditions();
     }
 
     public class QLMergedPullRequestNodeCommentsCount
     {
         public int totalCount { get; set; } = 0;
+    }
+    public class QLMergedPullRequestNodeAdditions
+    {
+        public int number { get; set; } = 0;
     }
 
     class QLMergedPullRequest
