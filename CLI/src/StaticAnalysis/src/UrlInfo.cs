@@ -77,6 +77,7 @@ namespace StaticAnalysis
         public int commentCharCount { get; set; }
         public string licensePath { get; set; }
         public string readmePath { get; set; }
+        public string packageJsonPath {get; set; }
         public string license { get; set; }
         public int licenseCompatibility { get; set; }
 
@@ -147,8 +148,10 @@ namespace StaticAnalysis
             codeCharCount = 0;
             commentCharCount = 0;
             licensePath = "";
+            packageJsonPath = "";
             readmePath = "";
             license = "";
+
 
             //npm specific
             npmDescription = "";
@@ -352,7 +355,7 @@ namespace StaticAnalysis
                             comments {{
                                 totalCount
                             }}
-                            
+
                             number
                             commits(first: 100) {{
                                 nodes {{
