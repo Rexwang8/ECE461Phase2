@@ -11,6 +11,7 @@ public class StaticAnalysisLibrary
         DirectoryTool.getFiles(repoPath);
         urlInfo.licensePath = DirectoryTool.licensePath;
         urlInfo.readmePath = DirectoryTool.readmePath;
+        urlInfo.packageJsonPath = DirectoryTool.packageJsonPath;
 
         foreach(string file in DirectoryTool.sourceCodeEntries)
         {

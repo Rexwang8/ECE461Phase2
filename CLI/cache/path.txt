@@ -178,3 +178,172 @@ stderr
 Index:  Getting names and types
 Index:  Getting each metric
 Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+stdout
+stderr
+Index:  Getting names and types
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: cli
+stdout
+stderr
+Index:  Getting names and types
+Index:  Github Data Recieved for package: cli
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: cli
+stdout
+stderr
+Index:  Getting names and types
+Index:  Github Data Recieved for package: cli
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: cli
+Index:  Github Data Recieved for package: cli
+stdout
+stderr
+Index:  Getting names and types
+Index:  Github Data Recieved for package: cli
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: cli
+stdout
+stderr
+Index:  Getting names and types
+Index:  Github Data Recieved for package: cli
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: even
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Github Data Recieved for package: cli
+stdout
+stderr
+Index:  Getting names and types
+Index:  Github Data Recieved for package: cli
+Index:  Getting each metric
+Index:  Printing out results

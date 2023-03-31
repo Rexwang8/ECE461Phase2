@@ -5,6 +5,7 @@ public class DirectoryTool
     public List<string> mdEntries = new List<string>(); //List of all .md files 
     public string licensePath = "none";
     public string readmePath = "none";
+    public string packageJsonPath = "none"; 
 
     public string[] jsFileExt = {".css", ".sass", ".scss", ".less", ".styl", ".html", ".htmls", ".htm", ".js", ".jsx", ".ts", ".tsx", ".cjs", ".mjs", ".iced", ".liticed", ".ls", ".es", ".es6", ".sjs", ".php", ".jsp", ".asp", ".aspx"};
     
@@ -48,7 +49,13 @@ public class DirectoryTool
             {
                 mdEntries.Add(filePath);
             }
-            
+            else if (fileName.ToLower() == "package.json")
+            {
+                if (packageJsonPath == "none")
+                {
+                    packageJsonPath = filePath;
+                }
+            }
         }
 
         string[] dirs = Directory.GetDirectories(directoryPath, "*", SearchOption.TopDirectoryOnly);

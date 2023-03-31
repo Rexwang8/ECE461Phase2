@@ -195,7 +195,7 @@ namespace Index
                 //code review ratio
 
                 //version ratio
-
+                Console.WriteLine($"VERSION RATO: {Dependency.GetScore(pkg)}");
                 //net score
             }
 
