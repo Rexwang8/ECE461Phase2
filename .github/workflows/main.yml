@@ -22,7 +22,7 @@ jobs:
       run: dotnet publish rexapi/aspnetcore-server-generated/src/IO.Swagger/IO.Swagger.csproj
       
     - name: CopyConfigApp
-      run: cp rexapi/aspnetcore-server-generated/src/IO.Swagger/AppDeploy.yaml rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp2.0/publish/app.yaml
+      run: cp rexapi/aspnetcore-server-generated/src/IO.Swagger/AppDeploy.yaml rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp3.1/publish/app.yaml
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
@@ -36,7 +36,7 @@ jobs:
       run: 'gcloud info'
     
     - id: 'deploy'
-      run: gcloud app deploy --verbosity=debug rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp2.0/publish/app.yaml
+      run: gcloud app deploy --verbosity=debug rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp3.1/publish/app.yaml
       
     - name: Test
       run: curl "${{ steps.deploy.outputs.url }}"
