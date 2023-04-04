@@ -85,14 +85,24 @@ namespace IO.Swagger.Controllers
             token = "bearer " + token;
 
             //query database to see if user exists
+            Console.WriteLine("Querying database to see if user exists...");
             string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}'";
             BigQueryFactory factory = new BigQueryFactory();
             factory.SetQuery(query);
             BigQueryResults result = factory.ExecuteQuery();
             factory.PrintResults(result);
 
+            if (result.TotalRows > 0)
+            {
+                //user exists, return token
+                Console.WriteLine("User exists, returning token...");
+                Response.Headers.Add("X-Authorization", token);
+                return new ObjectResult(token);
+            }
+
             //if user does not exist, add user to database
-            query = $"INSERT INTO `package-registry-461.userData.users` (token, username, password, admin) VALUES ('{token}', '{SanitizedUsername}', '{SanitizedPassword}', '{admin}')";
+            Console.WriteLine("Adding user to database...");
+            query = $"INSERT INTO `package-registry-461.userData.users` (token, username, password, perms, admin) VALUES ('{token}', '{SanitizedUsername}', '{SanitizedPassword}', '', '{admin}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             factory.PrintResults(result);
