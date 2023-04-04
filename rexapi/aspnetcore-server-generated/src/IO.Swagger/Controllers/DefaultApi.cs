@@ -19,6 +19,8 @@ using IO.Swagger.Security;
 using Microsoft.AspNetCore.Authorization;
 using IO.Swagger.Models;
 using System.Security.Cryptography;
+using Google.Apis.Auth.OAuth2;
+using Google.Cloud.BigQuery.V2;
 
 namespace IO.Swagger.Controllers
 {
@@ -81,6 +83,20 @@ namespace IO.Swagger.Controllers
             //hash debug string to get token
             string token = Hasher.HashString(debug);
             token = "bearer " + token;
+
+            //query database to see if user exists
+            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}'";
+            BigQueryFactory factory = new BigQueryFactory();
+            factory.SetQuery(query);
+            BigQueryResults result = factory.ExecuteQuery();
+            factory.PrintResults(result);
+
+            //if user does not exist, add user to database
+            query = $"INSERT INTO `package-registry-461.userData.users` (token, username, password, admin) VALUES ('{token}', '{SanitizedUsername}', '{SanitizedPassword}', '{admin}')";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            factory.PrintResults(result);
+
 
             //add the token to the header of the response in the X-Authorization field
             Response.Headers.Add("X-Authorization", token);

@@ -66,6 +66,7 @@ case "$1" in
         dotnet add package GraphQL.Client.Serializer.Newtonsoft | tee -a $logfullpath ../../cache/build.txt >/dev/null
         dotnet add package GraphQL.Common | tee -a $logfullpath ../../cache/build.txt >/dev/null
         cd ../..
+        
 
         cd UnitTest
         dotnet add package coverlet.msbuild | tee -a $logfullpath ../cache/build.txt >/dev/null
