@@ -86,7 +86,7 @@ namespace IO.Swagger.Controllers
 
             //query database to see if user exists
             Console.WriteLine("Querying database to see if user exists...");
-            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}'";
+            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 20";
             BigQueryFactory factory = new BigQueryFactory();
             factory.SetQuery(query);
             BigQueryResults result = factory.ExecuteQuery();
@@ -100,9 +100,11 @@ namespace IO.Swagger.Controllers
                 return new ObjectResult(token);
             }
 
+            //query to delete all schemas in the database is "DELETE FROM `package-registry-461.userData.schemas`"
+
             //if user does not exist, add user to database
             Console.WriteLine("Adding user to database...");
-            query = $"INSERT INTO `package-registry-461.userData.users` (token, username, password, perms, admin) VALUES ('{token}', '{SanitizedUsername}', '{SanitizedPassword}', '', '{admin}')";
+            query = $"INSERT INTO `package-registry-461.userData.users` (token, username, password, perms, admin) VALUES ('{token}', '{SanitizedUsername}', '{SanitizedPassword}', '', {admin})";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             factory.PrintResults(result);
