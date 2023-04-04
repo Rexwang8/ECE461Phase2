@@ -29,7 +29,17 @@ namespace IO.Swagger.Controllers
         public BigQueryResults ExecuteQuery()
         {
             //execute query
-            BigQueryResults results = client.ExecuteQuery(query, parameters: null);
+            try
+            {
+                //execute query
+                BigQueryResults results = client.ExecuteQuery(query, parameters: null);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error executing query: " + e.Message);
+                return null;
+            }
+
 
             //return results
             return results;
@@ -50,13 +60,20 @@ namespace IO.Swagger.Controllers
         //print results
         public void PrintResults(BigQueryResults results)
         {
-            //print results
-            foreach (var row in results)
+            try
             {
-                foreach (var field in row.Schema.Fields)
+                //print results
+                foreach (BigQueryRow row in results)
                 {
-                    Console.WriteLine("{0}: {1}", field.Name, row[field.Name]);
+                    foreach (var field in row.Schema.Fields)
+                    {
+                        Console.WriteLine("{0}: {1}", field.Name, row[field.Name]);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error printing results: " + e.Message);
             }
         }
 }
