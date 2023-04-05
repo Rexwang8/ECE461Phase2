@@ -43,18 +43,40 @@ def FormResetRequest(token):
 
 def FormPackageHistoryRequest(token, packageid):
     url = f"http://package-registry-461.appspot.com/package/byName/{packageid}"
-    Header = {'xAuthorization': token, 'Accept': 'application/json'}
+    Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
+
+
+def CheckToken(token):
+    print(f"len of token: {len(token)}")
+    tokensub = token[7:]
+    print(f"len of token sub: {len(tokensub)}")
+    for i in tokensub:
+        if (i.isalpha() or i.isdigit()):
+            pass
+        else:
+            print(f"invalid at {i}")
+        
+        if (i.isupper()):
+            print(f"upper at {i}")
+            
+    #check if bearer string is there
+    if (token[:7] == "bearer "):
+        pass
+    else:
+        print("invalid bearer string")
 
 def PrintResponse(response, isjson=True):
     if response.status_code == 200:
         print("Success!")
         print(response.status_code)
-        print(response.json())
+        if isjson:
+            print(response.json())
         print(response.headers)
     else:
         print("Failed!")
         print(response.status_code)
+        print(response.headers)
     print("---------------------------------\n")
 
 def main():
@@ -65,24 +87,26 @@ def main():
     username = "rex"
     password = "123"
     isadmin = True
-    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    token = 'bearer 2284hh7l20418b074i87h3631qfbff99i4mo10pd88f31i20710mb0dfef2j8mk02284gg7k20418n074h87g3631praee99h4ln10op88e31h20710ln0cede2i8lj02284ff7j20418m074g87f3631oq'
+    CheckToken(token)
     #bearer 2284hh7l20418b074i87h3631qfbff99i4mo10pd88f31i20710mb0dfef2j8mk02284gg7k20418n074h87g3631praee99h4ln10op88e31h20710ln0cede2i8lj02284ff7j20418m074g87f3631oq
     #request
     '''
     print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response)'''
+    PrintResponse(response)
     
-    token = 'bearer 2284hh7l20418b074i87h3631qfbff99i4mo10pd88f31i20710mb0dfef2j8mk02284gg7k20418n074h87g3631praee99h4ln10op88e31h20710ln0cede2i8lj02284ff7j20418m074g87f3631oq'
-    #url, header = FormResetRequest(token)
-    #print(f"DELETE: {url} WITH HEADER: {header}")
-    #response = requests.delete(url, headers=header)
-    #PrintResponse(response, False)
     
-    url, header = FormPackageHistoryRequest(token, "packagename")
-    print(f"History GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    url, header = FormResetRequest(token)
+    print(f"DELETE: {url} WITH HEADER: {header}")
+    response = requests.delete(url, headers=header)
+    PrintResponse(response, False)
+    '''
+    #url, header = FormPackageHistoryRequest(token, "packagename")
+    #print(f"History GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
     
 
 

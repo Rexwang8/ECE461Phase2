@@ -38,11 +38,13 @@ namespace IO.Swagger.Controllers
             {
                 return false;
             }
-            if (token.Any(c => !char.IsLetterOrDigit(c)))
+            tokenmain = token.Substring(7);
+
+            if (tokenmain.Any(c => !char.IsLetterOrDigit(c)))
             {
                 return false;
             }
-            if (token.Any(c => char.IsUpper(c)))
+            if (tokenmain.Any(c => char.IsUpper(c)))
             {
                 return false;
             }
