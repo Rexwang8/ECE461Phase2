@@ -160,19 +160,23 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageByNameGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageHistoryEntry>), description: "Return the package history.")]
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
-        public virtual IActionResult PackageByNameGet([FromRoute][Required] string name, [FromHeader][Required()] string xAuthorization)
+        public virtual IActionResult PackageByNameGet([FromRoute][Required] string name, [FromHeader(Name="X-Authorization")][Required()] string xAuthorization)
         {
             string token = xAuthorization;
             //Validate token
             bool isSanitized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSanitized)
             {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
             string packagename = name;
             bool isSanitizedName = Sanitizer.VerifyPackageNameSafe(packagename);
             if (!isSanitizedName)
             {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Package name is not sanitized");
                 return StatusCode(400);
             }
 
@@ -183,6 +187,8 @@ namespace IO.Swagger.Controllers
             BigQueryResults result = factory.ExecuteQuery();
             if (result.TotalRows == 0)
             {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "User does not exist");
                 return StatusCode(400);
             }
 
@@ -192,6 +198,8 @@ namespace IO.Swagger.Controllers
             result = factory.ExecuteQuery();
             if (result.TotalRows == 0)
             {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
 
@@ -200,6 +208,7 @@ namespace IO.Swagger.Controllers
             packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
 
             //return list of package history entries in response body, formatted as ndjson [{},{}]
+            Response.Headers.Add("X-Debug", "Package history returned");
             return StatusCode(200, packageHistoryEntries);
 
 
@@ -471,12 +480,14 @@ namespace IO.Swagger.Controllers
         [Route("/reset")]
         [ValidateModelState]
         [SwaggerOperation("RegistryReset")]
-        public virtual IActionResult RegistryReset([FromHeader][Required()] string xAuthorization)
+        public virtual IActionResult RegistryReset([FromHeader(Name="X-Authorization")][Required()] string xAuthorization)
         {
             //use this for testing.
             string token = xAuthorization;
-            if (token == null)
+            bool isSantized = Sanitizer.VerifyTokenSanitized(token);
+            if (!isSantized)
             {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
 
@@ -489,6 +500,7 @@ namespace IO.Swagger.Controllers
             //if no rows returned, return 401
             if (response.TotalRows == 0)
             {
+                Response.Headers.Add("X-Debug", "User not found");
                 return StatusCode(401);
             }
             //get first row
@@ -497,12 +509,15 @@ namespace IO.Swagger.Controllers
                 //if user is not admin, return 401
                 if (row["admin"].ToString() != "True")
                 {
+                    Response.Headers.Add("X-Debug", "User is not admin");
                     return StatusCode(401);
                 }
 
                 // we are an admin, so reset the registry of all packages: TODO
+                response.Headers.Add("X-Debug", "User is admin - resetting registry");
                 return StatusCode(200);
             }
+            response.Headers.Add("X-Debug", "Should not get here");
             return StatusCode(401);
             
 
