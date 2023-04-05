@@ -514,10 +514,10 @@ namespace IO.Swagger.Controllers
                 }
 
                 // we are an admin, so reset the registry of all packages: TODO
-                response.Headers.Add("X-Debug", "User is admin - resetting registry");
+                Response.Headers.Add("X-Debug", "User is admin - resetting registry");
                 return StatusCode(200);
             }
-            response.Headers.Add("X-Debug", "Should not get here");
+            Response.Headers.Add("X-Debug", "Should not get here");
             return StatusCode(401);
             
 
