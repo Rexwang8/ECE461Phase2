@@ -38,7 +38,7 @@ namespace IO.Swagger.Controllers
             {
                 return false;
             }
-            tokenmain = token.Substring(7);
+            string tokenmain = token.Substring(7);
 
             if (tokenmain.Any(c => !char.IsLetterOrDigit(c)))
             {
