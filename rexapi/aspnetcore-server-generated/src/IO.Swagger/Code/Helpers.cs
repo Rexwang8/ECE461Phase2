@@ -27,6 +27,53 @@ namespace IO.Swagger.Controllers
             string Lowercase = NoLeadingTrailingDashes.ToLower();
             return Lowercase;
         }
+
+        public static bool VerifyTokenSanitized(string token)
+        {
+            if (token == null)
+            {
+                return false;
+            }
+            if (token.Length != 162)
+            {
+                return false;
+            }
+            if (token.Any(c => !char.IsLetterOrDigit(c)))
+            {
+                return false;
+            }
+            if (token.Any(c => char.IsUpper(c)))
+            {
+                return false;
+            }
+            //contains no "bearer " at the beginning
+            if (!token.StartsWith("bearer "))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool VerifyPackageNameSafe(string name)
+        {
+            //check for null
+            if (name == null)
+            {
+                return false;
+            }
+            //check blank
+            if (name == "")
+            {
+                return false;
+            }
+
+            //check for invalid characters
+            if (name.Any(c => !char.IsLetterOrDigit(c)))
+            {
+                return false;
+            }
+            return true;
+        }
     }
 
     public static class Hasher

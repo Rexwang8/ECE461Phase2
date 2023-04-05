@@ -5,6 +5,8 @@ using System.Text.RegularExpressions;
 using System.Text;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
+using Newtonsoft.Json;
+using IO.Swagger.Models;
 
 
 namespace IO.Swagger.Controllers
@@ -29,10 +31,11 @@ namespace IO.Swagger.Controllers
         public BigQueryResults ExecuteQuery()
         {
             //execute query
+            BigQueryResults results = null;
             try
             {
                 //execute query
-                BigQueryResults results = client.ExecuteQuery(query, parameters: null);
+                results = client.ExecuteQuery(query, parameters: null);
             }
             catch (Exception e)
             {
@@ -76,6 +79,43 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Error printing results: " + e.Message);
             }
         }
+
+        public List<PackageHistoryEntry> GetPackageHistoryFromResults(BigQueryResults results)
+        {
+            //init list
+            List<PackageHistoryEntry> packageHistory = new List<PackageHistoryEntry>();
+
+            //loop through results
+            foreach (BigQueryRow row in results)
+            {
+                //init package history entry
+                PackageHistoryEntry packageHistoryEntry = new PackageHistoryEntry();
+
+                //set user
+                packageHistoryEntry.User = new User();
+                packageHistoryEntry.User.Name = row["user.name"].ToString();
+                packageHistoryEntry.User.IsAdmin = bool.Parse(row["user.isadmin"].ToString());
+
+                //set date
+                packageHistoryEntry.Date = DateTime.Parse(row["date"].ToString());
+
+                //set package metadata
+                packageHistoryEntry.PackageMetadata = new PackageMetadata();
+                packageHistoryEntry.PackageMetadata.Name = row["packagemetadata.name"].ToString();
+                packageHistoryEntry.PackageMetadata.Version = row["packagemetadata.version"].ToString();
+                packageHistoryEntry.PackageMetadata.ID = row["packagemetadata.id"].ToString();
+
+                //set action
+                packageHistoryEntry.Action = (PackageHistoryEntry.ActionEnum)Enum.Parse(typeof(PackageHistoryEntry.ActionEnum), row["action"].ToString());
+
+                //add to list
+                packageHistory.Add(packageHistoryEntry);
+            }
+
+            //return list
+            return packageHistory;
+        }
+
 }
 
 }
