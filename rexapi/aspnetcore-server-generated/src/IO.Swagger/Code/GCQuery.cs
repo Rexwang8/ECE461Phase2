@@ -143,7 +143,25 @@ namespace IO.Swagger.Controllers
                 //set action
                 if (row["action"] != null)
                 {
-                    packageHistoryEntry.Action = (PackageHistoryEntry.ActionEnum)Enum.Parse(typeof(PackageHistoryEntry.ActionEnum), row["action"].ToString());
+                    switch (row["action"].ToString())
+                    {
+                        case "CREATE":
+                            packageHistoryEntry.Action = PackageHistoryEntry.ActionEnum.CREATEEnum;
+                            break;
+                        case "UPDATE":
+                            packageHistoryEntry.Action = PackageHistoryEntry.ActionEnum.UPDATEEnum;
+                            break;
+                        case "DOWNLOAD":
+                            packageHistoryEntry.Action = PackageHistoryEntry.ActionEnum.DOWNLOADEnum;
+                            break;
+                        case "RATE":
+                            packageHistoryEntry.Action = PackageHistoryEntry.ActionEnum.RATEEnum;
+                            break;
+                        default:
+                            packageHistoryEntry.Action = PackageHistoryEntry.ActionEnum.CREATEEnum;
+                            break;
+                    }
+                    
                 }
                 else
                 {

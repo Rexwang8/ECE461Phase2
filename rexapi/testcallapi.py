@@ -108,10 +108,10 @@ def main():
     '''
     
     
-    #url, header = FormPackageHistoryRequest(token, "packagename")
-    #print(f"History GET: {url} WITH HEADER: {header}")
-    #response = requests.get(url, headers=header)
-    #PrintResponse(response, True)
+    url, header = FormPackageHistoryRequest(token, "packagename")
+    print(f"History GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
 
 
