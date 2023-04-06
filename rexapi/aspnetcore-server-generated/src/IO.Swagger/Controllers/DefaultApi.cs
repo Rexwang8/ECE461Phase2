@@ -236,7 +236,7 @@ namespace IO.Swagger.Controllers
             catch (Exception e)
             {
                 //append debug message to header
-                Response.Headers.Add("X-Debug", "Package History error + " + e.Message);
+                Response.Headers.Add("X-Debug", "Package History error + " + e);
                 return StatusCode(400);
             }
             //return list of package history entries in response body, formatted as ndjson [{},{}]
