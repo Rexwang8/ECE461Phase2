@@ -93,17 +93,20 @@ namespace IO.Swagger.Controllers
 
                 //set user
                 packageHistoryEntry.User = new User();
-                packageHistoryEntry.User.Name = row["user.name"].ToString();
-                packageHistoryEntry.User.IsAdmin = bool.Parse(row["user.isadmin"].ToString());
+                BigQueryRow userRecord = row["user"] as BigQueryRow;
+                packageHistoryEntry.User.Name = userRecord["name"].ToString();
+                packageHistoryEntry.User.IsAdmin = bool.Parse(userRecord["isadmin"].ToString());
+
 
                 //set date
                 packageHistoryEntry.Date = DateTime.Parse(row["date"].ToString());
 
                 //set package metadata
                 packageHistoryEntry.PackageMetadata = new PackageMetadata();
-                packageHistoryEntry.PackageMetadata.Name = row["packagemetadata.name"].ToString();
-                packageHistoryEntry.PackageMetadata.Version = row["packagemetadata.version"].ToString();
-                packageHistoryEntry.PackageMetadata.ID = row["packagemetadata.id"].ToString();
+                BigQueryRow packageMetadataRecord = row["packagemetadata"] as BigQueryRow;
+                packageHistoryEntry.PackageMetadata.Name = packageMetadataRecord["name"].ToString();
+                packageHistoryEntry.PackageMetadata.Version = packageMetadataRecord["version"].ToString();
+                packageHistoryEntry.PackageMetadata.ID = packageMetadataRecord["id"].ToString();
 
                 //set action
                 packageHistoryEntry.Action = (PackageHistoryEntry.ActionEnum)Enum.Parse(typeof(PackageHistoryEntry.ActionEnum), row["action"].ToString());

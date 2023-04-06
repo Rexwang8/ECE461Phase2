@@ -89,7 +89,7 @@ def main():
     isadmin = True
     #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
     token = 'bearer 2284hh7l20418b074i87h3631qfbff99i4mo10pd88f31i20710mb0dfef2j8mk02284gg7k20418n074h87g3631praee99h4ln10op88e31h20710ln0cede2i8lj02284ff7j20418m074g87f3631oq'
-    CheckToken(token)
+    #CheckToken(token)
     #bearer 2284hh7l20418b074i87h3631qfbff99i4mo10pd88f31i20710mb0dfef2j8mk02284gg7k20418n074h87g3631praee99h4ln10op88e31h20710ln0cede2i8lj02284ff7j20418m074g87f3631oq
     #request
     '''
@@ -97,16 +97,20 @@ def main():
     response = requests.put(Authurl, data=Authbody, headers=Authheader)
     PrintResponse(response)
     
+    '''
     
+    '''
     url, header = FormResetRequest(token)
     print(f"DELETE: {url} WITH HEADER: {header}")
     response = requests.delete(url, headers=header)
     PrintResponse(response, False)
     '''
-    #url, header = FormPackageHistoryRequest(token, "packagename")
-    #print(f"History GET: {url} WITH HEADER: {header}")
-    #response = requests.get(url, headers=header)
-    #PrintResponse(response, True)
+    
+    
+    url, header = FormPackageHistoryRequest(token, "packagename")
+    print(f"History GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
 
 
