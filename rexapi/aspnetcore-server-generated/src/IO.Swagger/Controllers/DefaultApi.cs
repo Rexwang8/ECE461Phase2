@@ -21,6 +21,7 @@ using IO.Swagger.Models;
 using System.Security.Cryptography;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
+using Google.Apis.Bigquery.v2.Data;
 using Newtonsoft.Json;
 
 namespace IO.Swagger.Controllers
@@ -204,7 +205,16 @@ namespace IO.Swagger.Controllers
             query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata.name = '{packagename}' ORDER BY date LIMIT 100";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            Response.Headers.Add("X-DebugSchema", result.Schema.ToString());
+
+            TableSchema schema = result.Schema;
+
+            // Print out the name and type of each column
+            string Buffer = "Schema: ";
+            foreach (var field in schema.Fields)
+            {
+                Buffer += field.Name + " " + field.Type + ", ";
+            }
+            Response.Headers.Add("X-DebugSchema", Buffer);
             if (result.TotalRows == 0)
             {
                 //append debug message to header
