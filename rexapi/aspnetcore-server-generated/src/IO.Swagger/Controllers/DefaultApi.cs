@@ -204,6 +204,7 @@ namespace IO.Swagger.Controllers
             query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata.name = '{packagename}' ORDER BY date LIMIT 100";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
+            Response.Headers.Add("X-DebugSchema", result.Schema.ToString());
             if (result.TotalRows == 0)
             {
                 //append debug message to header
