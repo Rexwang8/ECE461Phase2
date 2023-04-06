@@ -29,11 +29,21 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+.about-us {
+/*  top: 100px;
+  position: relative;*/
+  margin-top: 100px;
+  margin-left: auto; /* Set left margin to auto for center alignment */
+  margin-right: auto; /* Set right margin to auto for center alignment */
+  max-width: 70%; /* Set a maximum width for the section */
 }
 
 button {

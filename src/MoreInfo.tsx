@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
 
-function App() {
+function MoreInfo() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -46,7 +46,7 @@ function App() {
         </div>
       </nav>
       <section className="about-us">
-        <h1>About Us</h1>
+        <h1>More Info</h1>
         <p>
           My ECE 461 group consists of Joseph, Kevin, Alan, and Rex. We are all dedicated computer engineering students at Purdue University. Despite the challenging coursework, we work hard to excel in our studies and pursue our goals in the field.
           In our free time, we enjoy exploring our culinary skills and cooking up delicious meals. However, we also like to engage in friendly debates about who should attend ECE 461 lectures, always trying to outsmart one another with witty arguments.
@@ -57,6 +57,4 @@ function App() {
   )
 }
 
-export default App
-
-
+export default MoreInfo
