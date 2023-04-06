@@ -160,9 +160,12 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageByNameGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageHistoryEntry>), description: "Return the package history.")]
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
-        public virtual IActionResult PackageByNameGet([FromRoute][Required] string name, [FromHeader(Name="X-Authorization")][Required()] string xAuthorization)
+        public virtual IActionResult PackageByNameGet([FromRoute][Required] string name, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            //Get Variables
             string token = xAuthorization;
+            string packagename = name;
+
             //Validate token
             bool isSanitized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSanitized)
@@ -171,7 +174,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
-            string packagename = name;
+
             bool isSanitizedName = Sanitizer.VerifyPackageNameSafe(packagename);
             if (!isSanitizedName)
             {
@@ -180,56 +183,65 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            //query database to see if user exists
-            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 20";
+
             BigQueryFactory factory = new BigQueryFactory();
-            factory.SetQuery(query);
-            BigQueryResults result = factory.ExecuteQuery();
-            if (result.TotalRows == 0)
+
+            //query database to see if user exists
+            try
+            {
+                string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 20";
+                factory.SetQuery(query);
+                BigQueryResults result = factory.ExecuteQuery();
+                if (result.TotalRows == 0)
+                {
+                    //append debug message to header
+                    Response.Headers.Add("X-Debug", "User does not exist");
+                    return StatusCode(400);
+                }
+            }
+            catch (Exception e)
             {
                 //append debug message to header
-                Response.Headers.Add("X-Debug", "User does not exist");
+                Response.Headers.Add("X-Debug", "Database error + " + e.Message);
                 return StatusCode(400);
             }
 
-            //query database get all rows with the package name and return them
-            query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata.name = '{packagename}' ORDER BY date LIMIT 100";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery();
-            if (result.TotalRows == 0)
+            try
+            {
+                //query database get all rows with the package name and return them
+                string query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata.name = '{packagename}' ORDER BY date LIMIT 100";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+                if (result.TotalRows == 0)
+                {
+                    //append debug message to header
+                    Response.Headers.Add("X-Debug", "Package does not exist");
+                    return StatusCode(404);
+                }
+            }
+            catch (Exception e)
             {
                 //append debug message to header
-                Response.Headers.Add("X-Debug", "Package does not exist");
-                return StatusCode(404);
+                Response.Headers.Add("X-Debug", "Database error + " + e.Message);
+                return StatusCode(400);
             }
 
-            //create list of PackageHistoryEntry objects
             List<PackageHistoryEntry> packageHistoryEntries = new List<PackageHistoryEntry>();
-            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+            try
+            {
+                //create list of PackageHistoryEntry objects
+                packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
 
+            }
+            catch (Exception e)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Package History error + " + e.Message);
+                return StatusCode(400);
+            }
             //return list of package history entries in response body, formatted as ndjson [{},{}]
             Response.Headers.Add("X-Debug", "Package history returned");
             return StatusCode(200, packageHistoryEntries);
-
-
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<PackageHistoryEntry>));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
-            string exampleJson = null;
-            exampleJson = "[ {\n  \"Action\" : \"CREATE\",\n  \"User\" : {\n    \"name\" : \"Alfalfa\",\n    \"isAdmin\" : true\n  },\n  \"PackageMetadata\" : {\n    \"Version\" : \"1.2.3\",\n    \"ID\" : \"ID\",\n    \"Name\" : \"Name\"\n  },\n  \"Date\" : \"2023-03-23T23:11:15Z\"\n}, {\n  \"Action\" : \"CREATE\",\n  \"User\" : {\n    \"name\" : \"Alfalfa\",\n    \"isAdmin\" : true\n  },\n  \"PackageMetadata\" : {\n    \"Version\" : \"1.2.3\",\n    \"ID\" : \"ID\",\n    \"Name\" : \"Name\"\n  },\n  \"Date\" : \"2023-03-23T23:11:15Z\"\n} ]";
-
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<PackageHistoryEntry>>(exampleJson)
-            : default(List<PackageHistoryEntry>);            //TODO: Change the data returned
-            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -480,7 +492,7 @@ namespace IO.Swagger.Controllers
         [Route("/reset")]
         [ValidateModelState]
         [SwaggerOperation("RegistryReset")]
-        public virtual IActionResult RegistryReset([FromHeader(Name="X-Authorization")][Required()] string xAuthorization)
+        public virtual IActionResult RegistryReset([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
             //use this for testing.
             string token = xAuthorization;
@@ -495,8 +507,18 @@ namespace IO.Swagger.Controllers
             string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 1";
 
             BigQueryFactory factory = new BigQueryFactory();
-            factory.SetQuery(query);
-            var response = factory.ExecuteQuery();
+
+            var response = null;
+            try
+            {
+                factory.SetQuery(query);
+                var response = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-Debug", "Error Executing query");
+                return StatusCode(400);
+            }
             //if no rows returned, return 401
             if (response.TotalRows == 0)
             {
@@ -519,7 +541,7 @@ namespace IO.Swagger.Controllers
             }
             Response.Headers.Add("X-Debug", "Should not get here");
             return StatusCode(401);
-            
+
 
         }
     }
