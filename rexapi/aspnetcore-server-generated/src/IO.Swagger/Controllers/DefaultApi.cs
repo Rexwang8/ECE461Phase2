@@ -185,13 +185,13 @@ namespace IO.Swagger.Controllers
 
 
             BigQueryFactory factory = new BigQueryFactory();
-
+            BigQueryResults result = null;
             //query database to see if user exists
             try
             {
                 string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 20";
                 factory.SetQuery(query);
-                BigQueryResults result = factory.ExecuteQuery();
+                result = factory.ExecuteQuery();
                 if (result.TotalRows == 0)
                 {
                     //append debug message to header
@@ -508,11 +508,11 @@ namespace IO.Swagger.Controllers
 
             BigQueryFactory factory = new BigQueryFactory();
 
-            var response = null;
+            BigQueryResults response = null;
             try
             {
                 factory.SetQuery(query);
-                var response = factory.ExecuteQuery();
+                response = factory.ExecuteQuery();
             }
             catch (Exception e)
             {
