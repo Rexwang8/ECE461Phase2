@@ -104,7 +104,7 @@ namespace IO.Swagger.Controllers
 
                 //set user
                 packageHistoryEntry.User = new User();
-                BigQueryRow userRecord = row["user"]as BigQueryRow;
+                BigQueryRow userRecord = (BigQueryRow)row["user"];
                 if (userRecord != null)
                 {
                     packageHistoryEntry.User.Name = userRecord["name"].ToString();
@@ -123,7 +123,7 @@ namespace IO.Swagger.Controllers
 
                 //set package metadata
                 packageHistoryEntry.PackageMetadata = new PackageMetadata();
-                BigQueryRow packageMetadataRecord = row["packagemetadata"] as BigQueryRow;
+                BigQueryRow packageMetadataRecord = (BigQueryRow)row["packagemetadata"];
 
                 if (packageMetadataRecord != null)
                 {

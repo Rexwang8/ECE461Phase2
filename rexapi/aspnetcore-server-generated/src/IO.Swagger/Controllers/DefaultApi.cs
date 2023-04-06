@@ -208,6 +208,8 @@ namespace IO.Swagger.Controllers
 
             TableSchema schema = result.Schema;
 
+            
+
             // Print out the name and type of each column
             string Buffer = "Schema: ";
             foreach (var field in schema.Fields)
