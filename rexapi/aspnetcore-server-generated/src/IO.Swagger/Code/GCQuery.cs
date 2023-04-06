@@ -91,27 +91,64 @@ namespace IO.Swagger.Controllers
                 //init package history entry
                 PackageHistoryEntry packageHistoryEntry = new PackageHistoryEntry();
 
+                //set date
+                if (row["date"] != null)
+                {
+                    packageHistoryEntry.Date = DateTime.Parse(row["date"].ToString());
+                }
+                else
+                {
+                    packageHistoryEntry.Date = DateTime.Now;
+                }
+
+
                 //set user
                 packageHistoryEntry.User = new User();
-                BigQueryRow userRecord = row["user"] as BigQueryRow;
+                BigQueryRow userRecord = row["user"].ToBigQueryRow();
+                if (userRecord != null)
+                {
+                    packageHistoryEntry.User.Name = userRecord["name"].ToString();
+                    packageHistoryEntry.User.IsAdmin = bool.Parse(userRecord["isadmin"].ToString());
+                }
+                else
+                {
+                    packageHistoryEntry.User.Name = "Unknown";
+                    packageHistoryEntry.User.IsAdmin = false;
+                }
 
-                packageHistoryEntry.User.Name = userRecord["name"].ToString();
-                packageHistoryEntry.User.IsAdmin = bool.Parse(userRecord["isadmin"].ToString());
+                
 
 
-                //set date
-                packageHistoryEntry.Date = DateTime.Parse(row["date"].ToString());
+                
 
                 //set package metadata
                 packageHistoryEntry.PackageMetadata = new PackageMetadata();
                 BigQueryRow packageMetadataRecord = row["packagemetadata"] as BigQueryRow;
+
+                if (packageMetadataRecord != null)
+                {
+                    packageHistoryEntry.PackageMetadata.Name = packageMetadataRecord["name"].ToString();
+                    packageHistoryEntry.PackageMetadata.Version = packageMetadataRecord["version"].ToString();
+                    packageHistoryEntry.PackageMetadata.ID = packageMetadataRecord["id"].ToString();
+                }
+                else
+                {
+                    packageHistoryEntry.PackageMetadata.Name = "Unknown";
+                    packageHistoryEntry.PackageMetadata.Version = "Unknown";
+                    packageHistoryEntry.PackageMetadata.ID = "Unknown";
+                }
+
                 
-                packageHistoryEntry.PackageMetadata.Name = packageMetadataRecord["name"].ToString();
-                packageHistoryEntry.PackageMetadata.Version = packageMetadataRecord["version"].ToString();
-                packageHistoryEntry.PackageMetadata.ID = packageMetadataRecord["id"].ToString();
 
                 //set action
-                packageHistoryEntry.Action = (PackageHistoryEntry.ActionEnum)Enum.Parse(typeof(PackageHistoryEntry.ActionEnum), row["action"].ToString());
+                if (row["action"] != null)
+                {
+                    packageHistoryEntry.Action = (PackageHistoryEntry.ActionEnum)Enum.Parse(typeof(PackageHistoryEntry.ActionEnum), row["action"].ToString());
+                }
+                else
+                {
+                    packageHistoryEntry.Action = PackageHistoryEntry.ActionEnum.CREATEEnum;
+                }
 
                 //add to list
                 packageHistory.Add(packageHistoryEntry);
