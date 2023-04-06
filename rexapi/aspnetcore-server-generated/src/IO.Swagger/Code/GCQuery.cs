@@ -104,7 +104,7 @@ namespace IO.Swagger.Controllers
 
                 //set user
                 packageHistoryEntry.User = new User();
-                BigQueryRow userRecord = row["user"].ToBigQueryRow();
+                BigQueryRow userRecord = row["user"]as BigQueryRow;
                 if (userRecord != null)
                 {
                     packageHistoryEntry.User.Name = userRecord["name"].ToString();
