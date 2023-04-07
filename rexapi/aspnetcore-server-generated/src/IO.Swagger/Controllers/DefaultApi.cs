@@ -202,7 +202,7 @@ namespace IO.Swagger.Controllers
 
 
             //query database get all rows with the package name and return them
-            query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata.name = '{packagename}' ORDER BY date LIMIT 100";
+            query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata_name = '{packagename}' ORDER BY date LIMIT 100";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
