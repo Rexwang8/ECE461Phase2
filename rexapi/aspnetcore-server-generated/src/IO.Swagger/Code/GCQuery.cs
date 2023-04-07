@@ -101,50 +101,56 @@ namespace IO.Swagger.Controllers
                     packageHistoryEntry.Date = DateTime.Now;
                 }
 
+                //set user
+                User user = new User();
                 if (row["user_name"] != null)
                 {
-                    packageHistoryEntry.User.Name = row["user_name"].ToString();
+                    user.Name = row["user_name"].ToString();
                 }
                 else
                 {
-                    packageHistoryEntry.User.Name = "Unknown";
+                    user.Name = "Unknown";
                 }
 
                 if (row["user_isadmin"] != null)
                 {
-                    packageHistoryEntry.User.IsAdmin = bool.Parse(row["user_isadmin"].ToString());
+                    user.IsAdmin = bool.Parse(row["user_isadmin"].ToString());
                 }
                 else
                 {
-                    packageHistoryEntry.User.IsAdmin = false;
+                    user.IsAdmin = false;
                 }
 
+                PackageMetadata packageMetadata = new PackageMetadata();
                 if (row["packagemetadata_name"] != null)
                 {
-                    packageHistoryEntry.PackageMetadata.Name = row["packagemetadata_name"].ToString();
+                    packageMetadata.Name = row["packagemetadata_name"].ToString();
                 }
                 else
                 {
-                    packageHistoryEntry.PackageMetadata.Name = "Unknown";
+                    packageMetadata.Name = "Unknown";
                 }
 
                 if (row["packagemetadata_version"] != null)
                 {
-                    packageHistoryEntry.PackageMetadata.Version = row["packagemetadata_version"].ToString();
+                    packageMetadata.Version = row["packagemetadata_version"].ToString();
                 }
                 else
                 {
-                    packageHistoryEntry.PackageMetadata.Version = "Unknown";
+                    packageMetadata.Version = "Unknown";
                 }
 
                 if (row["packagemetadata_id"] != null)
                 {
-                    packageHistoryEntry.PackageMetadata.ID = row["packagemetadata_id"].ToString();
+                    packageMetadata.ID = row["packagemetadata_id"].ToString();
                 }
                 else
                 {
-                    packageHistoryEntry.PackageMetadata.ID = "Unknown";
+                    packageMetadata.ID = "Unknown";
                 }
+
+                packageHistoryEntry.User = user;
+                packageHistoryEntry.PackageMetadata = packageMetadata;
 
                 
 
