@@ -23,6 +23,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
 using Google.Apis.Bigquery.v2.Data;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace IO.Swagger.Controllers
 {
@@ -248,6 +249,17 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageMetadata>), description: "Return a list of packages.")]
         public virtual IActionResult PackageByRegExGet([FromBody] string body, [FromHeader][Required()] string xAuthorization)
         {
+            string token = xAuthorization;
+            bool isSantized = Sanitizer.VerifyTokenSanitized(token);
+            if (!isSantized)
+            {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+
+            string unsanitizedregex = body;
+
+            Regex pattern = Sanitizer.SanitizedCompiledRegex(unsanitizedregex);
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<PackageMetadata>));
 

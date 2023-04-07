@@ -76,6 +76,13 @@ namespace IO.Swagger.Controllers
             }
             return true;
         }
+    
+        public static Regex SanitizedCompiledRegex(string input)
+        {
+            String sanitized = Regex.Escape(input);
+            Regex InputRegex = new Regex(sanitized);
+            return InputRegex;
+        }
     }
 
     public static class Hasher
