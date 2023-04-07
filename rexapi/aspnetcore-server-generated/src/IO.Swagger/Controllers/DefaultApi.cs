@@ -260,6 +260,11 @@ namespace IO.Swagger.Controllers
             string unsanitizedregex = body;
 
             Regex pattern = Sanitizer.SanitizedCompiledRegex(unsanitizedregex);
+
+            //add debug message to header
+            Response.Headers.Add("X-Debug", "Regex is sanitized" + pattern.ToString());
+
+
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<PackageMetadata>));
 
