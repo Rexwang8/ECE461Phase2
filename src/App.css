@@ -109,3 +109,28 @@
   font-size: 1.2rem;
   line-height: 1.5;
 }
+
+.list-container {
+  display: flex;
+  justify-content: center;
+}
+
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.list-item {
+  margin: 5px;
+}
+
+.list-item-box {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100px;
+}
+

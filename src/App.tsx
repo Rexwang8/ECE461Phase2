@@ -48,9 +48,15 @@ function App() {
       <section className="about-us">
         <h1>About Us</h1>
         <p>
-          My ECE 461 group consists of Joseph, Kevin, Alan, and Rex. We are all dedicated computer engineering students at Purdue University. Despite the challenging coursework, we work hard to excel in our studies and pursue our goals in the field.
-          In our free time, we enjoy exploring our culinary skills and cooking up delicious meals. However, we also like to engage in friendly debates about who should attend ECE 461 lectures, always trying to outsmart one another with witty arguments.
-          Our group dynamic is strong, and we support each other through thick and thin. We strive to learn from one another and grow both academically and personally. I feel lucky to be part of such a great group of friends and colleagues, and I am excited to see what the future holds for all of us.
+          Kevin, the notorious ECE student, has gained quite the reputation as a rat on a boat. 
+          Always finding himself in precarious situations, he's known for missing ECE 404 lectures due to his uncanny ability to lock his key in his house. 
+          His clumsiness knows no bounds, and his peers often find themselves amused by his misadventures. 
+          However, despite his mishaps, Kevin managed to excel on exam 2 of ECE 404, showcasing his aptitude for the subject. 
+          His ability to bounce back from setbacks and perform well in academics is truly commendable, even if he occasionally resembles a rat navigating choppy waters.
+          In addition to his infamous mishaps, Kevin is also known for being a selfless and supportive fellow student. 
+          Despite his own challenges, he is always willing to lend a hand to his peers, even if it means putting himself at a disadvantage. 
+          Kevin's willingness to help others, even at his own expense, speaks volumes about his character and dedication to his classmates. 
+          His commitment to academic excellence, despite his occasional clumsy antics, makes him a truly outstanding student who is highly regarded by both his professors and fellow students alike.
         </p>
       </section>
     </div>
