@@ -101,40 +101,48 @@ namespace IO.Swagger.Controllers
                     packageHistoryEntry.Date = DateTime.Now;
                 }
 
-
-                //set user
-                packageHistoryEntry.User = new User();
-                BigQueryRow userRecord = (BigQueryRow)row["user"];
-                if (userRecord != null)
+                if (row["user_name"] != null)
                 {
-                    packageHistoryEntry.User.Name = userRecord["name"].ToString();
-                    packageHistoryEntry.User.IsAdmin = bool.Parse(userRecord["isadmin"].ToString());
+                    packageHistoryEntry.User.Name = row["user_name"].ToString();
                 }
                 else
                 {
                     packageHistoryEntry.User.Name = "Unknown";
+                }
+
+                if (row["user_isadmin"] != null)
+                {
+                    packageHistoryEntry.User.IsAdmin = bool.Parse(row["user_isadmin"].ToString());
+                }
+                else
+                {
                     packageHistoryEntry.User.IsAdmin = false;
                 }
 
-                
-
-
-                
-
-                //set package metadata
-                packageHistoryEntry.PackageMetadata = new PackageMetadata();
-                BigQueryRow packageMetadataRecord = (BigQueryRow)row["packagemetadata"];
-
-                if (packageMetadataRecord != null)
+                if (row["packagemetadata_name"] != null)
                 {
-                    packageHistoryEntry.PackageMetadata.Name = packageMetadataRecord["name"].ToString();
-                    packageHistoryEntry.PackageMetadata.Version = packageMetadataRecord["version"].ToString();
-                    packageHistoryEntry.PackageMetadata.ID = packageMetadataRecord["id"].ToString();
+                    packageHistoryEntry.PackageMetadata.Name = row["packagemetadata_name"].ToString();
                 }
                 else
                 {
                     packageHistoryEntry.PackageMetadata.Name = "Unknown";
+                }
+
+                if (row["packagemetadata_version"] != null)
+                {
+                    packageHistoryEntry.PackageMetadata.Version = row["packagemetadata_version"].ToString();
+                }
+                else
+                {
                     packageHistoryEntry.PackageMetadata.Version = "Unknown";
+                }
+
+                if (row["packagemetadata_id"] != null)
+                {
+                    packageHistoryEntry.PackageMetadata.ID = row["packagemetadata_id"].ToString();
+                }
+                else
+                {
                     packageHistoryEntry.PackageMetadata.ID = "Unknown";
                 }
 
