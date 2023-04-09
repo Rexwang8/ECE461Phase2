@@ -64,12 +64,10 @@ namespace Index
                     if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
                     {
                         callNPM(pkg, logger);
-
+                        
                         //add built in delay to avoid rate limiting
                         System.Threading.Thread.Sleep(500);
                     }
-
-
                 }
                 //update total npm pulled
                 AllPackages.countNpmPulled();
@@ -99,7 +97,7 @@ namespace Index
                 }
             }
 
-            Console.WriteLine("------ GITHUB -------");
+            /* Console.WriteLine("------ GITHUB -------");
             //github pull
             for (int i = 0; i < 3; i++)
             {
@@ -137,11 +135,12 @@ namespace Index
 
             Console.WriteLine("We have " + AllPackages.getTotalPackages() + " packages, " + AllPackages.getTotalNpm() + " npm, " + AllPackages.getTotalGithub() + " github");
             Console.WriteLine(AllPackages.getTotalGithubPulled() + " github packages pulled successfully out of " + AllPackages.getTotalGithub() + " github packages");
-
-
+ */
+            
+            //Clone repositories
             Console.WriteLine("--- CLONE --- We have " + AllPackages.GetAllPackages().Count + " packages");
 
-            //Clone repositories
+            
             CloneUrls(AllPackages);
 
             //Print Results
@@ -208,7 +207,7 @@ namespace Index
             {
                 Console.WriteLine(pkg.getScoreInfo());
             }
-
+            AllPackages.printAllPackages();
             return 0;
         }
 
@@ -242,7 +241,6 @@ namespace Index
                 Console.WriteLine("NPM Data Recieved for package: " + urlInfo.getName());
                 logger.Log("NPM Data Recieved for package: " + urlInfo.getName(), 1);
             }
-
             else
             {
                 Console.WriteLine("Error: " + err.ToString());

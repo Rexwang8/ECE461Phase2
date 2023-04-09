@@ -27,7 +27,10 @@ public static class Dependency
             {
                 if (line.Contains(" \"dependencies\":"))
                 {
-                    dependency = true;
+                    if (!line.Contains("}"))
+                    {
+                        dependency = true;
+                    }
                     line = sr.ReadLine();
                     break;
                 }
@@ -38,8 +41,9 @@ public static class Dependency
             //If there are dependencies, check them
             if (dependency == true)
             {
-                while (!line.Contains("},"))
+                while (!line.Contains("}"))
                 {
+                    Console.WriteLine(line);
                     lineArr = line.Split('"');
 
                     pinnedDependencies += CheckPinned(lineArr[3]);

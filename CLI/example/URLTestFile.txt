@@ -3,7 +3,6 @@ https://www.npmjs.com/package/date-fns
 https://www.npmjs.com/package/s-sortbydistance
 https://www.npmjs.com/package/@gh-conf/gh-conf-constants
 https://www.npmjs.com/package/browserify
-
 https://www.npmjs.com/package/express
 https://github.com/jonschlinkert/even
 https://github.com/nullivex/nodist

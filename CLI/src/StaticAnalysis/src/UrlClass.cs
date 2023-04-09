@@ -155,5 +155,13 @@ namespace StaticAnalysis
         {
             return totalGithubPulled;
         }
+
+        public void printAllPackages()
+        {
+            foreach (var pkg in urlDic.Values)
+            {
+                Console.WriteLine($"[Name: {pkg.name}, Type: {pkg.type}, Base Url: {pkg.baseURL}, Github Url: {pkg.githubURL}, Npm Url: {pkg.npmURL}, Package Path: {pkg.path}]");
+            }
+        }
     } 
 }

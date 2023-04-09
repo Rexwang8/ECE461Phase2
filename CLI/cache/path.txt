@@ -1366,3 +1366,666 @@ stderr
 Index:  Getting names and types
 Index:  Getting each metric
 Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results

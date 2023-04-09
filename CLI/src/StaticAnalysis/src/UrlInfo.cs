@@ -52,13 +52,13 @@ namespace StaticAnalysis
         #region Variables
         bool isInvalid = false;
 
-        string baseURL { get; set; } = "none";
+        public string baseURL { get; set; } = "none";
 
-        string name { get; set; }
-        string githubURL { get; set; }
-        string npmURL { get; set; }
-        string type { get; set; }
-        string path { get; set; }
+        public string name { get; set; }
+        public string githubURL { get; set; }
+        public string npmURL { get; set; }
+        public  string type { get; set; }
+        public  string path { get; set; }
 
         public int license_score { get; set; } = -1;
         float rampUp_score { get; set; } = -1;
@@ -255,7 +255,6 @@ namespace StaticAnalysis
             string readme = jsoncontent.readme.ToString();
             string homepage = jsoncontent.homepage.ToString();
             string repository = jsoncontent.repository.url.ToString().Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");
-
             string licensetype = "";
             try
             {
@@ -274,6 +273,7 @@ namespace StaticAnalysis
             npmMaintainers = maintainers;
             npmVersions = versions;
             npmTimes = times;
+            githubURL = repository;
 
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
