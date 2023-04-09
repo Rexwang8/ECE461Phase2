@@ -107,7 +107,10 @@ namespace IO.Swagger.Controllers
             else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_OVERLIMIT || UserStatus == TokenAuthenticator.AuthResults.TOKEN_EXPIRED)
             {
                 //Refresh token
-                Response.Headers.Add("X-Debug", "Token overlimit or expired, refreshing token");
+                if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_OVERLIMIT)
+                    Response.Headers.Add("X-Debug", "Token overlimit, refreshing token");
+                else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_EXPIRED)
+                    Response.Headers.Add("X-Debug", "Token expired, refreshing token");
                 authenticator.UpdateUserDateRefreshToken();
             }
 

@@ -298,6 +298,7 @@ namespace IO.Swagger.Controllers
             if (row["dateissued"] != null)
             {
                 foreignTokenExpiration = DateTime.Parse(row["dateissued"].ToString());
+                Console.WriteLine(foreignTokenExpiration.ToShortTimeString());
             }
             else
             {
