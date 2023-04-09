@@ -352,7 +352,7 @@ namespace IO.Swagger.Controllers
         public AuthRefreshResults AddUserToDatabaseIfNotExists(string token)
         {
             //if token is valid, update token expiration and uses (now-10 hours, 1000)
-            string query = $"INSERT INTO `package-registry-461.userData.users` (token, Username, Password, perms, dateexpired, numuses, Admin) VALUES ('token', '{Username}', '{Password}', '', TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 10 HOUR), 1000, {IsAdmin})";
+            string query = $"INSERT INTO `package-registry-461.userData.users` (token, Username, Password, perms, dateexpired, numuses, Admin) VALUES ('{token}', '{Username}', '{Password}', '', TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 10 HOUR), 1000, {IsAdmin})";
             factory.SetQuery(query);
             BigQueryResults result = factory.ExecuteQuery();
             if (result.TotalRows == 0)
