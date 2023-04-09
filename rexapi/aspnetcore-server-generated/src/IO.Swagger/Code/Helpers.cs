@@ -284,13 +284,25 @@ namespace IO.Swagger.Controllers
 
             //check if token matches
             string foreignToken = row["token"].ToString();
+            if (foreignToken == null)
+            {
+                return AuthResults.TOKEN_INVALID;
+            }
             if (foreignToken != Token)
             {
                 return AuthResults.TOKEN_INVALID;
             }
 
             //check if token is expired
-            DateTime foreignTokenExpiration = DateTime.Parse(row["dateissued"].ToString());
+            DateTime foreignTokenExpiration = null;
+            if (row["dateissued"] != null)
+            {
+                foreignTokenExpiration = DateTime.Parse(row["dateissued"].ToString());
+            }
+            else
+            {
+                return AuthResults.TOKEN_EXPIRED;
+            }
             if (foreignTokenExpiration < DateTime.Now)
             {
                 return AuthResults.TOKEN_EXPIRED;
@@ -298,6 +310,10 @@ namespace IO.Swagger.Controllers
 
             //check if token is over limit
             int foreignTokenUses = int.Parse(row["numuses"].ToString());
+            if (foreignTokenUses == null)
+            {
+                return AuthResults.TOKEN_OVERLIMIT;
+            }
             if (foreignTokenUses <= 0)
             {
                 return AuthResults.TOKEN_OVERLIMIT;
@@ -305,6 +321,10 @@ namespace IO.Swagger.Controllers
 
             //check if admin
             bool foreignAdmin = bool.Parse(row["admin"].ToString());
+            if (foreignAdmin == null)
+            {
+                AuthResults.SUCCESS_USER;
+            }
             if (foreignAdmin)
             {
                 return AuthResults.SUCCESS_ADMIN;
