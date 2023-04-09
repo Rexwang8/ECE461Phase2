@@ -91,7 +91,7 @@ def main():
     
     #test authenticate
     #data
-    username = "rex4"
+    username = "rex5"
     password = "123"
     isadmin = True
     

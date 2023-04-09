@@ -314,6 +314,7 @@ namespace IO.Swagger.Controllers
             {
                 return AuthResults.TOKEN_OVERLIMIT;
             }
+            Console.WriteLine(foreignTokenUses);
             if (foreignTokenUses <= 0)
             {
                 return AuthResults.TOKEN_OVERLIMIT;
@@ -339,9 +340,14 @@ namespace IO.Swagger.Controllers
         public AuthRefreshResults UpdateUserDateRefreshToken()
         {
             //if token is valid, update token expiration and uses (now-10 hours, 1000)
-            string query = $"UPDATE `package-registry-461.userData.users` SET dateissued = TIMESTAMP_SUB(CURRENT_TIMESTAMP(), INTERVAL 10 HOUR), numuses = 1000 WHERE Username = '{Username}'";
+            string query = $"UPDATE `package-registry-461.userData.users` SET dateexpired = TIMESTAMP_ADD(CURRENT_TIMESTAMP(), INTERVAL 10 HOUR), numuses = 1000 WHERE Username = '{Username}'";
             factory.SetQuery(query);
             BigQueryResults result = factory.ExecuteQuery();
+            if (result == null)
+            {
+                Console.Debug.Log("UpdateUserDateRefreshToken result is null");
+                return AuthRefreshResults.FAILURE;
+            }
             if (result.TotalRows == 0)
             {
                 return AuthRefreshResults.FAILURE;
