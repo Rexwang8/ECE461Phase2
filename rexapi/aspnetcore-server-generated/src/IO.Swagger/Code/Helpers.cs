@@ -345,7 +345,7 @@ namespace IO.Swagger.Controllers
             BigQueryResults result = factory.ExecuteQuery();
             if (result == null)
             {
-                Console.Debug.Log("UpdateUserDateRefreshToken result is null");
+                Console.WriteLine("UpdateUserDateRefreshToken result is null");
                 return AuthRefreshResults.FAILURE;
             }
             if (result.TotalRows == 0)
