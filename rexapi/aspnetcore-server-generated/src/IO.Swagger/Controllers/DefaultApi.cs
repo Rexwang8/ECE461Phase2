@@ -98,7 +98,10 @@ namespace IO.Swagger.Controllers
             else if (UserStatus == TokenAuthenticator.AuthResults.WRONG_PASSWORD || UserStatus == TokenAuthenticator.AuthResults.TOKEN_INVALID)
             {
                 //wrong password, return error
-                Response.Headers.Add("X-Debug", "Wrong password or token, returning error");
+                if (UserStatus == TokenAuthenticator.AuthResults.WRONG_PASSWORD)
+                    Response.Headers.Add("X-Debug", "Wrong password, returning error");
+                else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_INVALID)
+                    Response.Headers.Add("X-Debug", "Wrong password or token, returning error");
                 return StatusCode(401);
             }
             else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_OVERLIMIT || UserStatus == TokenAuthenticator.AuthResults.TOKEN_EXPIRED)
@@ -533,7 +536,7 @@ namespace IO.Swagger.Controllers
             //pretend to reset the registry
             Response.Headers.Add("X-Debug", "Registry reset");
             return StatusCode(200);
-            
+
 
 
         }

@@ -91,8 +91,8 @@ def main():
     
     #test authenticate
     #data
-    username = "u123"
-    password = "p123"
+    username = "rex"
+    password = "123"
     isadmin = True
     
     #token that wont set off the token checker on github

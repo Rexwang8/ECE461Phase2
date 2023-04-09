@@ -284,7 +284,7 @@ namespace IO.Swagger.Controllers
 
             //check if token matches
             string foreignToken = row["token"].ToString();
-            if (foreignToken != Token_NoBearer)
+            if (foreignToken != Token)
             {
                 return AuthResults.TOKEN_INVALID;
             }
