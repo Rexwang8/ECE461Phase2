@@ -80,7 +80,7 @@ namespace IO.Swagger.Controllers
             }
             return true;
         }
-    
+
         public static Regex SanitizedCompiledRegex(string input)
         {
             String sanitized = Regex.Escape(input);
@@ -151,7 +151,7 @@ namespace IO.Swagger.Controllers
 
         public BigQueryFactory factory { get; set; }
 
-        public enum AuthResults 
+        public enum AuthResults
         {
             NO_RESULTS,
             WRONG_PASSWORD,
@@ -167,7 +167,7 @@ namespace IO.Swagger.Controllers
             FAILURE,
             SUCCESS
         }
-    
+
 
 
         public TokenAuthenticator()
@@ -279,7 +279,7 @@ namespace IO.Swagger.Controllers
             {
                 return AuthResults.NO_RESULTS;
             }
-            
+
             //check if password matches
             string foreignPassword = row["password"].ToString();
             if (foreignPassword != Password)
@@ -374,6 +374,21 @@ namespace IO.Swagger.Controllers
             }
             return AuthRefreshResults.SUCCESS;
         }
+
+        public AuthRefreshResults DecrementNumUsesForToken(string token)
+        {
+
+            string query = $"UPDATE `package-registry-461.userData.users` SET numuses = numuses - 1 WHERE token = '{token}'";
+            factory.SetQuery(query);
+            BigQueryResults result = factory.ExecuteQuery();
+            if (result.TotalRows == 0)
+            {
+                Console.WriteLine("DecrementNumUsesForToken result is null");
+                return AuthRefreshResults.FAILURE;
+            }
+            return AuthRefreshResults.SUCCESS;
+        }
+
 
         public bool VerifyToken()
         {

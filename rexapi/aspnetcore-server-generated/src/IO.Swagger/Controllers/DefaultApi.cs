@@ -186,6 +186,14 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
+
 
 
 
@@ -274,6 +282,14 @@ namespace IO.Swagger.Controllers
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
 
@@ -529,12 +545,14 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            //check token against bigquery
-            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 1";
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
 
-            BigQueryFactory factory = new BigQueryFactory();
-
-            BigQueryResults response = null;
             //pretend to reset the registry
             Response.Headers.Add("X-Debug", "Registry reset");
             return StatusCode(200);
