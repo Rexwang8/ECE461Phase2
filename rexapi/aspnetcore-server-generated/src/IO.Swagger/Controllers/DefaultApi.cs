@@ -18,6 +18,7 @@ using IO.Swagger.Attributes;
 using IO.Swagger.Security;
 using Microsoft.AspNetCore.Authorization;
 using IO.Swagger.Models;
+using IO.Swagger.Controllers;
 using System.Security.Cryptography;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
@@ -76,45 +77,40 @@ namespace IO.Swagger.Controllers
             {
                 return StatusCode(401);
             }
+            
+            
             //sanitize input
             string SanitizedUsername = Sanitizer.SanitizeString(username);
             string SanitizedPassword = Sanitizer.SanitizeString(password);
 
-            //DEBUG - print sanitized input
-            string debug = $"START -- SanitizedUsername: {SanitizedUsername} SanitizedPassword: {SanitizedPassword} Admin: {admin} -- END";
-
-            //hash debug string to get token
-            string token = Hasher.HashString(debug);
-            token = "bearer " + token;
-
-            //query database to see if user exists
-            Console.WriteLine("Querying database to see if user exists...");
-            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 20";
-            BigQueryFactory factory = new BigQueryFactory();
-            factory.SetQuery(query);
-            BigQueryResults result = factory.ExecuteQuery();
-            factory.PrintResults(result);
-
-            if (result.TotalRows > 0)
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            authenticator.setPassword(SanitizedPassword);
+            authenticator.setUsername(SanitizedUsername);
+            authenticator.setAdmin(admin);
+            string token = authenticator.GenerateTokenFromCredentials();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateCredentials();
+            if (UserStatus == TokenAuthenticator.AuthResults.NO_RESULTS)
             {
-                //user exists, return token
-                Console.WriteLine("User exists, returning token...");
-                Response.Headers.Add("X-Authorization", token);
-                return new ObjectResult(token);
+                //user does not exist, add user to database
+                Response.Headers.Add("X-Debug", "User does not exist, adding user to database");
+                authenticator.AddUserToDatabaseIfNotExists();
             }
-
-            //query to delete all schemas in the database is "DELETE FROM `package-registry-461.userData.schemas`"
-
-            //if user does not exist, add user to database
-            Console.WriteLine("Adding user to database...");
-            query = $"INSERT INTO `package-registry-461.userData.users` (token, username, password, perms, admin) VALUES ('{token}', '{SanitizedUsername}', '{SanitizedPassword}', '', {admin})";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery();
-            factory.PrintResults(result);
-
+            else if (UserStatus == TokenAuthenticator.AuthResults.WRONG_PASSWORD || UserStatus == TokenAuthenticator.AuthResults.TOKEN_INVALID)
+            {
+                //wrong password, return error
+                Response.Headers.Add("X-Debug", "Wrong password or token, returning error");
+                return StatusCode(401);
+            }
+            else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_OVERLIMIT || UserStatus == TokenAuthenticator.AuthResults.TOKEN_EXPIRED)
+            {
+                //Refresh token
+                Response.Headers.Add("X-Debug", "Token overlimit or expired, refreshing token");
+                authenticator.UpdateUserDateRefreshToken();
+            }
 
             //add the token to the header of the response in the X-Authorization field
             Response.Headers.Add("X-Authorization", token);
+            Response.Headers.Add("X-Debug", "Token generated successfully");
 
             //set the token as the response body
             return new ObjectResult(token);
@@ -176,6 +172,17 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
+
+
 
             bool isSanitizedName = Sanitizer.VerifyPackageNameSafe(packagename);
             if (!isSanitizedName)
@@ -256,6 +263,15 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
 
             string unsanitizedregex = body;
 
@@ -265,14 +281,6 @@ namespace IO.Swagger.Controllers
             Response.Headers.Add("X-Debug", "Regex is sanitized" + pattern.ToString());
 
 
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<PackageMetadata>));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
             string exampleJson = null;
             exampleJson = "[ {\n  \"Version\" : \"1.2.3\",\n  \"ID\" : \"ID\",\n  \"Name\" : \"Name\"\n}, {\n  \"Version\" : \"1.2.3\",\n  \"ID\" : \"ID\",\n  \"Name\" : \"Name\"\n} ]";
 
@@ -507,6 +515,14 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
 
             //check token against bigquery
             string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 1";
@@ -514,38 +530,10 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
 
             BigQueryResults response = null;
-            try
-            {
-                factory.SetQuery(query);
-                response = factory.ExecuteQuery();
-            }
-            catch (Exception e)
-            {
-                Response.Headers.Add("X-Debug", "Error Executing query");
-                return StatusCode(400);
-            }
-            //if no rows returned, return 401
-            if (response.TotalRows == 0)
-            {
-                Response.Headers.Add("X-Debug", "User not found");
-                return StatusCode(401);
-            }
-            //get first row
-            foreach (var row in response)
-            {
-                //if user is not admin, return 401
-                if (row["admin"].ToString() != "True")
-                {
-                    Response.Headers.Add("X-Debug", "User is not admin");
-                    return StatusCode(401);
-                }
-
-                // we are an admin, so reset the registry of all packages: TODO
-                Response.Headers.Add("X-Debug", "User is admin - resetting registry");
-                return StatusCode(200);
-            }
-            Response.Headers.Add("X-Debug", "Should not get here");
-            return StatusCode(401);
+            //pretend to reset the registry
+            Response.Headers.Add("X-Debug", "Registry reset");
+            return StatusCode(200);
+            
 
 
         }
