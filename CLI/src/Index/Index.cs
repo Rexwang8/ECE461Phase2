@@ -166,12 +166,11 @@ namespace Index
 
             Console.WriteLine("------ METRICS -------");
 
-
             //get each metric
             logger.Log("Getting each metric", 1);
             foreach (var pkg in AllPackages.GetAllPackages().Values)
             {
-                Console.WriteLine("Getting metrics for " + pkg.getName());
+                Console.WriteLine("!!!!!!Getting metrics for " + pkg.getName());
 
                 //license
                 //pkg.CalcValidLicense();
@@ -195,7 +194,7 @@ namespace Index
                 //code review ratio
 
                 //version ratio
-
+                pkg.setDependencyScore(Dependency.GetScore(pkg));
                 //net score
             }
 

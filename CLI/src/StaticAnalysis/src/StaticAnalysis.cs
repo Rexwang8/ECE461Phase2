@@ -11,6 +11,7 @@ public class StaticAnalysisLibrary
         DirectoryTool.getFiles(repoPath);
         urlInfo.licensePath = DirectoryTool.licensePath;
         urlInfo.readmePath = DirectoryTool.readmePath;
+        urlInfo.packageJsonPath = DirectoryTool.packageJsonPath;
 
         foreach(string file in DirectoryTool.sourceCodeEntries)
         {
@@ -22,7 +23,7 @@ public class StaticAnalysisLibrary
             urlInfo.commentCharCount += File.ReadAllLines(file).Sum(s => s.Length);
         }
 
-        DirectoryTool.sourceCodeEntries.Clear();
+        DirectoryTool.Clear();
     }
 
     //Reads the file and does the static analysis on the file

@@ -178,3 +178,1191 @@ stderr
 Index:  Getting names and types
 Index:  Getting each metric
 Index:  Printing out results
+[BUILD|Priority: 2(debug)] Downloading Dependencies...\n
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: GitPython in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (3.1.30)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (from GitPython) (4.0.10)
+Requirement already satisfied: smmap<6,>=3.0.1 in /home/shay/a/lin1285/.local/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.0)
+  Determining projects to restore...
+  Writing /tmp/tmpu2aTtd.tmp
+info : Adding PackageReference for package 'CliWrap' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'CliWrap' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : PackageReference for package 'CliWrap' version '3.6.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/obj/Index.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/obj/Index.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 206 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpbhyPq0.tmp
+info : Adding PackageReference for package 'Newtonsoft.Json' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/newtonsoft.json/index.json 16ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'Newtonsoft.Json' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'Newtonsoft.Json' version '13.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/StaticAnalysis.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/StaticAnalysis.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 116 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpOosVLZ.tmp
+info : Adding PackageReference for package 'GraphQL' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/index.json 312ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/0.1.0/2.0.0-alpha-839.json 105ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/2.0.0-alpha-851/5.0.0.json 94ms
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.1.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql/page/5.1.0/7.3.1.json 16ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL' version '7.3.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 111 ms).
+  Determining projects to restore...
+  Writing /tmp/tmputfTXB.tmp
+info : Adding PackageReference for package 'GraphQL.Client' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client/index.json 235ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 109 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpXLwpPD.tmp
+info : Adding PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.client.serializer.newtonsoft/index.json 234ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Client.Serializer.Newtonsoft' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Client.Serializer.Newtonsoft' version '5.1.1' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 112 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpDMsNTD.tmp
+info : Adding PackageReference for package 'GraphQL.Common' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/graphql.common/index.json 294ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'GraphQL.Common' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : PackageReference for package 'GraphQL.Common' version '1.0.3' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj'.
+info : Committing restore...
+info : Assets file has not changed. Skipping assets file writing. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 109 ms).
+  Determining projects to restore...
+  Writing /tmp/tmpaQ9Ng0.tmp
+info : Adding PackageReference for package 'coverlet.msbuild' into project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info :   GET https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json
+info :   OK https://api.nuget.org/v3/registration5-gz-semver2/coverlet.msbuild/index.json 237ms
+info : Restoring packages for /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/UnitTest.csproj...
+warn : NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+info : Package 'coverlet.msbuild' is compatible with all the specified frameworks in project '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : PackageReference for package 'coverlet.msbuild' version '3.2.0' updated in file '/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/UnitTest.csproj'.
+info : Committing restore...
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/obj/UnitTest.csproj.nuget.g.props.
+info : Generating MSBuild file /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/obj/UnitTest.csproj.nuget.g.targets.
+info : Writing assets file to disk. Path: /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/obj/project.assets.json
+log  : Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/UnitTest/UnitTest.csproj (in 1.43 sec).
+[BUILD|Priority: 2(debug)] Dependencies Installed
+[BUILD|Priority: 2(debug)] Building... \n
+[BUILD|Priority: 2(debug)] Building StaticAnalysis...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj (in 102 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj (in 218 ms).
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/Debloat.cs(7,17): error CS0234: The type or namespace name 'AspNetCore' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/Debloat.cs(8,17): error CS0234: The type or namespace name 'Extensions' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/Debloat.cs(9,7): error CS0246: The type or namespace name 'NUglify' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building Utility...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/linux-x64/Utility.dll
+/usr/lib/dotnet/sdk/6.0.113/Sdks/Microsoft.NET.Sdk/targets/Microsoft.NET.Publish.targets(94,5): error NETSDK1099: Publishing to a single-file is only supported for executable applications. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/Utility.csproj]
+[BUILD|Priority: 2(debug)] Building Index...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+  Determining projects to restore...
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project. [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Restored /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj (in 279 ms).
+  2 of 3 projects are up-to-date for restore.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Index/Index.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj : warning NU1701: Package 'System.Net.Http.Formatting.dll 5.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net6.0'. This package may not be fully compatible with your project.
+  Utility -> /home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/Utility/bin/Debug/net6.0/Utility.dll
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/Debloat.cs(7,17): error CS0234: The type or namespace name 'AspNetCore' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/Debloat.cs(8,17): error CS0234: The type or namespace name 'Extensions' does not exist in the namespace 'Microsoft' (are you missing an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/src/Debloat.cs(9,7): error CS0246: The type or namespace name 'NUglify' could not be found (are you missing a using directive or an assembly reference?) [/home/shay/a/lin1285/ece461/ECE461Phase2/CLI/src/StaticAnalysis/StaticAnalysis.csproj]
+[BUILD|Priority: 2(debug)] Building UnitTest...
+Microsoft (R) Build Engine version 17.0.1+b177f8fa7 for .NET
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+MSBUILD : error MSB1009: Project file does not exist.
+Switch: UnitTesting
+[BUILD|Priority: 2(debug)] \nBuild Complete
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results
+Index:  ---Starting program -- All validated---
+Index:  Reading file
+Index:  Calling npm api with url: https://registry.npmjs.org/even
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: even
+Index:  Calling npm api with url: https://registry.npmjs.org/date-fns
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: date-fns
+Index:  Calling npm api with url: https://registry.npmjs.org/s-sortbydistance
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: s-sortbydistance
+Index:  Calling npm api with url: https://registry.npmjs.org/@gh-conf/gh-conf-constants
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: @gh-conf/gh-conf-constants
+Index:  Calling npm api with url: https://registry.npmjs.org/browserify
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: browserify
+Index:  Calling npm api with url: https://registry.npmjs.org/express
+Index:  Response from registry.npmjs.org: OK
+Index:  NPM Data Recieved for package: express
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+Index:  Error: Error: Response from github api: Field 'number' doesn't exist on type 'Commit' Type: badresponse
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+stdout
+stderr
+Index:  Getting names and types
+Index:  Getting each metric
+Index:  Printing out results

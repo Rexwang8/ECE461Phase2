@@ -65,7 +65,7 @@ namespace StaticAnalysis
         float busFactor_score { get; set; } = -1;
         public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
-        float dependancy_score { get; set; } = -1;
+        float dependency_score { get; set; } = -1;
         float pullreview_score { get; set; } = -1;
         float net_score { get; set; } = -1;
 
@@ -142,7 +142,7 @@ namespace StaticAnalysis
             busFactor_score = 0;
             correctness_score = 0;
             responseMaintainer_score = 0;
-            dependancy_score = 0;
+            dependency_score = 0;
             pullreview_score = 0;
 
             net_score = 0;
@@ -483,7 +483,6 @@ namespace StaticAnalysis
                 {
                     license = githubLicense;
                 }
-
             }
         }
 
@@ -570,6 +569,11 @@ namespace StaticAnalysis
             this.rampUp_score = rampUpTime;
         }
         
+        public void setDependencyScore(float dependency)
+        {
+            this.dependency_score = dependency;
+        }
+
         public void setCorrectnessScore(float correctnessScore)
         {
             this.correctness_score = correctnessScore;
@@ -640,7 +644,7 @@ namespace StaticAnalysis
     
         public string getScoreInfo()
         {
-            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullreview_score: " + pullreview_score + " net_score: " + net_score + "}";
+            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependency_score + ", pullreview_score: " + pullreview_score + " net_score: " + net_score + "}";
             return response;
         }
         

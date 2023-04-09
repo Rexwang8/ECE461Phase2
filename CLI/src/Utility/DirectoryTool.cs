@@ -22,6 +22,15 @@ public class DirectoryTool
         }
     }
 
+    public void Clear()
+    {
+        sourceCodeEntries.Clear();
+        mdEntries.Clear();
+        licensePath = "none";
+        readmePath = "none";
+        packageJsonPath = "none";
+    }
+
     //recursive call for getFiles
     public void getAllFiles(string directoryPath)
     {
@@ -51,6 +60,7 @@ public class DirectoryTool
             }
             else if (fileName.ToLower() == "package.json")
             {
+                
                 if (packageJsonPath == "none")
                 {
                     packageJsonPath = filePath;

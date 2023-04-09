@@ -22,8 +22,8 @@ public static class BusFactor
         //Check Repo State
         if (urlInfo.githubIsArchived || urlInfo.githubIsDisabled || urlInfo.githubIsEmpty || urlInfo.githubIsLocked)
         {
-            ISSUE_WEIGHT = .20f;
-            HEALTH_WEIGHT = .05f;
+            ISSUE_WEIGHT = .22f;
+            HEALTH_WEIGHT = .03f;
             FORK_WEIGHT = .22f;
             STATE_WEIGHT = .3f;
             DISCUSSION_WEIGHT = .1f;
@@ -53,7 +53,7 @@ public static class BusFactor
         {
             finalScore += ISSUE_WEIGHT * 1;
         }
-        
+        Console.WriteLine("Final Score [56]: " + finalScore);
         //Check if Discussions
         if (urlInfo.githubDiscussions == 0)
         {
@@ -77,6 +77,7 @@ public static class BusFactor
         }
         finalScore += DISCUSSION_WEIGHT * discussion_score/20;
 
+        Console.WriteLine("Final Score [80]: " + finalScore);
         //Health Percentage: ReadME or License presence
         if (urlInfo.licensePath != "")
         {
@@ -88,6 +89,7 @@ public static class BusFactor
         }
         finalScore += HEALTH_WEIGHT * health_score/2;
 
+        Console.WriteLine("Final Score [92]: " + finalScore);
         //Forks
         if (urlInfo.githubForks == 0)
         {
@@ -114,7 +116,7 @@ public static class BusFactor
             fork_score += 20;
         }
         finalScore += fork_score/20 * FORK_WEIGHT;
-        
+        Console.WriteLine("Final Score [119]: " + finalScore);
         //Watchers
         if (urlInfo.githubWatchers == 0)
         {
