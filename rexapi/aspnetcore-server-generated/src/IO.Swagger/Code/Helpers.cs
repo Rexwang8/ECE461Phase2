@@ -240,7 +240,7 @@ namespace IO.Swagger.Controllers
             }
 
             //check if token is expired or overlimit
-            if (Int64.Parse(row["tokenoverlimit"].ToString()) < 0)
+            if (Int64.Parse(row["numuses"].ToString()) < 0)
             {
                 return AuthResults.TOKEN_OVERLIMIT;
             }
@@ -276,14 +276,14 @@ namespace IO.Swagger.Controllers
             }
             
             //check if password matches
-            string foreignPassword = row["Password"].ToString();
+            string foreignPassword = row["password"].ToString();
             if (foreignPassword != Password)
             {
                 return AuthResults.WRONG_PASSWORD;
             }
 
             //check if token matches
-            string foreignToken = row["Token"].ToString();
+            string foreignToken = row["token"].ToString();
             if (foreignToken != Token_NoBearer)
             {
                 return AuthResults.TOKEN_INVALID;
@@ -304,7 +304,7 @@ namespace IO.Swagger.Controllers
             }
 
             //check if admin
-            bool foreignAdmin = bool.Parse(row["Admin"].ToString());
+            bool foreignAdmin = bool.Parse(row["admin"].ToString());
             if (foreignAdmin)
             {
                 return AuthResults.SUCCESS_ADMIN;

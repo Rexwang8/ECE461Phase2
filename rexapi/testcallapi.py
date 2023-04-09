@@ -91,8 +91,8 @@ def main():
     
     #test authenticate
     #data
-    username = "rex"
-    password = "123"
+    username = "u123"
+    password = "p123"
     isadmin = True
     
     #token that wont set off the token checker on github
@@ -100,10 +100,10 @@ def main():
     CheckToken(token)
     print(token)
     #request
-    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response)
+    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response)
     
     
     
@@ -122,10 +122,10 @@ def main():
     
     #example regex
     
-    url, header, body = FormPackageRegexSearchRequest(token, ".*")
-    print(f"Regex GET: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.post(url, headers=header, data=body)
-    PrintResponse(response, True)
+    #url, header, body = FormPackageRegexSearchRequest(token, ".*")
+    #print(f"Regex GET: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.post(url, headers=header, data=body)
+    #PrintResponse(response, True)
     
 
 
