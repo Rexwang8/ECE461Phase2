@@ -244,7 +244,12 @@ namespace IO.Swagger.Controllers
             {
                 return AuthResults.TOKEN_OVERLIMIT;
             }
-            DateTime foreignTokenExpiration = DateTime.Parse(row["dateissued"].ToString());
+            DateTime foreignTokenExpiration = DateTime.Parse(row["dateexpired"].ToString());
+            if (foreignTokenExpiration == null)
+            {
+                Console.WriteLine("ERROR ValidateToken: Token expiration date is null");
+                return AuthResults.TOKEN_INVALID;
+            }
             if (foreignTokenExpiration < DateTime.Now)
             {
                 return AuthResults.TOKEN_EXPIRED;
@@ -295,13 +300,14 @@ namespace IO.Swagger.Controllers
 
             //check if token is expired
             DateTime foreignTokenExpiration = default(DateTime);
-            if (row["dateissued"] != null)
+            if (row["dateexpired"] != null)
             {
-                foreignTokenExpiration = DateTime.Parse(row["dateissued"].ToString());
+                foreignTokenExpiration = DateTime.Parse(row["dateexpired"].ToString());
                 Console.WriteLine(foreignTokenExpiration.ToShortTimeString());
             }
             else
             {
+                Console.WriteLine("ERROR ValidateCredentials: Token expiration date is null");
                 return AuthResults.TOKEN_EXPIRED;
             }
             if (foreignTokenExpiration < DateTime.Now)
