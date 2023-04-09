@@ -294,7 +294,7 @@ namespace IO.Swagger.Controllers
             }
 
             //check if token is expired
-            DateTime foreignTokenExpiration = null;
+            DateTime foreignTokenExpiration = default(DateTime);
             if (row["dateissued"] != null)
             {
                 foreignTokenExpiration = DateTime.Parse(row["dateissued"].ToString());
@@ -323,7 +323,7 @@ namespace IO.Swagger.Controllers
             bool foreignAdmin = bool.Parse(row["admin"].ToString());
             if (foreignAdmin == null)
             {
-                AuthResults.SUCCESS_USER;
+                return AuthResults.SUCCESS_USER;
             }
             if (foreignAdmin)
             {
