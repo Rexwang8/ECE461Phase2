@@ -93,7 +93,7 @@ namespace IO.Swagger.Controllers
             {
                 //user does not exist, add user to database
                 Response.Headers.Add("X-Debug", "User does not exist, adding user to database");
-                authenticator.AddUserToDatabaseIfNotExists();
+                authenticator.AddUserToDatabaseIfNotExists(token);
             }
             else if (UserStatus == TokenAuthenticator.AuthResults.WRONG_PASSWORD || UserStatus == TokenAuthenticator.AuthResults.TOKEN_INVALID)
             {
