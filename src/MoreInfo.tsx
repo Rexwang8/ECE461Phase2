@@ -9,7 +9,8 @@ function MoreInfo() {
     'Item 2',
     'Item 3',
     'Item 4',
-    'Item 5'
+    'Item 5',
+    'Item 6'
   ]);
 
   const handleSearchInputChange = (event) => {
@@ -23,10 +24,6 @@ function MoreInfo() {
   function redirectToGoogle() {
     window.location.href = '/MoreInfo';
   }
-
-  const filteredListItems = listItems.filter(item =>
-    item.toLowerCase().includes(searchQuery.toLowerCase())
-  );
 
   return (
     <div className="App">
@@ -55,15 +52,29 @@ function MoreInfo() {
           )}
         </div>
       </nav>
-      <section className="about-us">
-        <h1>More Info</h1>
+      <h1 className="title">More Info</h1>
+      <section className="more-info">
         <div className="list-container">
           <ul className="list">
-            {filteredListItems.map((item, index) => (
-              <li key={index} className="list-item">
-                <div className="list-item-box">{item}</div>
-              </li>
-            ))}
+            {listItems
+              .sort((a, b) => {
+                // Sort by visibility status (invisible items at the bottom)
+                if (!a.toLowerCase().includes(searchQuery.toLowerCase())) {
+                  return 1;
+                } else if (!b.toLowerCase().includes(searchQuery.toLowerCase())) {
+                  return -1;
+                } else {
+                  return 0;
+                }
+              })
+              .map((item, index) => (
+                <li
+                  key={index}
+                  className={`list-item ${!item.toLowerCase().includes(searchQuery.toLowerCase()) ? 'invisible' : ''}`}
+                >
+                  <div className="list-item-box">{item}</div>
+                </li>
+              ))}
           </ul>
         </div>
       </section>
@@ -72,3 +83,5 @@ function MoreInfo() {
 }
 
 export default MoreInfo;
+
+

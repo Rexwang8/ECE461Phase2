@@ -134,3 +134,32 @@
   min-width: 100px;
 }
 
+.more-info {
+  padding: 10px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title {
+  position: fixed;
+  /*top: -3%;*/
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+/*.about-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.about-us-title {
+  text-align: center;
+}
+*/
