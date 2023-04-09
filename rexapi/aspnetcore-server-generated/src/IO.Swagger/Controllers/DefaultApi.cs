@@ -113,7 +113,6 @@ namespace IO.Swagger.Controllers
 
             //add the token to the header of the response in the X-Authorization field
             Response.Headers.Add("X-Authorization", token);
-            Response.Headers.Add("X-Debug", "Token generated successfully");
 
             //set the token as the response body
             return new ObjectResult(token);
