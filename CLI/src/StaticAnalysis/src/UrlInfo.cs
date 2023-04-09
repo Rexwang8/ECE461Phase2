@@ -52,20 +52,20 @@ namespace StaticAnalysis
         #region Variables
         bool isInvalid = false;
 
-        string baseURL { get; set; } = "none";
+        public string baseURL { get; set; } = "none";
 
-        string name { get; set; }
-        string githubURL { get; set; }
-        string npmURL { get; set; }
-        string type { get; set; }
-        string path { get; set; }
+        public string name { get; set; }
+        public string githubURL { get; set; }
+        public string npmURL { get; set; }
+        public  string type { get; set; }
+        public  string path { get; set; }
 
         public int license_score { get; set; } = -1;
         float rampUp_score { get; set; } = -1;
         float busFactor_score { get; set; } = -1;
         public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
-        float dependancy_score { get; set; } = -1;
+        float dependency_score { get; set; } = -1;
         float pullreview_score { get; set; } = -1;
         float net_score { get; set; } = -1;
 
@@ -142,7 +142,7 @@ namespace StaticAnalysis
             busFactor_score = 0;
             correctness_score = 0;
             responseMaintainer_score = 0;
-            dependancy_score = 0;
+            dependency_score = 0;
             pullreview_score = 0;
 
             net_score = 0;
@@ -255,7 +255,6 @@ namespace StaticAnalysis
             string readme = jsoncontent.readme.ToString();
             string homepage = jsoncontent.homepage.ToString();
             string repository = jsoncontent.repository.url.ToString().Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");
-
             string licensetype = "";
             try
             {
@@ -274,6 +273,7 @@ namespace StaticAnalysis
             npmMaintainers = maintainers;
             npmVersions = versions;
             npmTimes = times;
+            githubURL = repository;
 
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
@@ -483,7 +483,6 @@ namespace StaticAnalysis
                 {
                     license = githubLicense;
                 }
-
             }
         }
 
@@ -570,6 +569,11 @@ namespace StaticAnalysis
             this.rampUp_score = rampUpTime;
         }
         
+        public void setDependencyScore(float dependency)
+        {
+            this.dependency_score = dependency;
+        }
+
         public void setCorrectnessScore(float correctnessScore)
         {
             this.correctness_score = correctnessScore;
@@ -640,7 +644,7 @@ namespace StaticAnalysis
     
         public string getScoreInfo()
         {
-            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependancy_score + ", pullreview_score: " + pullreview_score + " net_score: " + net_score + "}";
+            string response = "{license: " + license + " license_score: " + license_score + ", rampUp_score: " + rampUp_score + ", busFactor_score: " + busFactor_score + ", correctness_score: " + correctness_score + ", responseMaintainer_score: " + responseMaintainer_score + ", dependancy_score: " + dependency_score + ", pullreview_score: " + pullreview_score + " net_score: " + net_score + "}";
             return response;
         }
         

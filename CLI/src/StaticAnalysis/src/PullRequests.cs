@@ -19,9 +19,9 @@ public static class PullRequests
     Status                              50%
 
     */
-    public static float GetScore(URLInfo urlInfo)
+   /*  public static float GetScore(URLInfo urlInfo)
     {   
-        Console.WriteLine("-----\nCalculating Pull Request Ratio");
+         Console.WriteLine("-----\nCalculating Pull Request Ratio");
         int githubPRCount = urlInfo.githubMergedPullRequestsCount;
 
         float finalScore = 0;
@@ -30,6 +30,6 @@ public static class PullRequests
 
 
         finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT;
-        return finalScore;
-    }
+        return finalScore; 
+    } */
 }
