@@ -259,12 +259,13 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageMetadata>), description: "Return a list of packages.")]
         public virtual IActionResult PackageByRegExGet([FromBody] string body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            return StatusCode(403);
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSantized)
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
-                return StatusCode(400);
+                return StatusCode(400, "");
             }
             TokenAuthenticator authenticator = new TokenAuthenticator();
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
@@ -290,6 +291,7 @@ namespace IO.Swagger.Controllers
 
             //add debug message to header
             Response.Headers.Add("X-Debug", "Regex is sanitized" + pattern.ToString());
+            return StatusCode(401);
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;

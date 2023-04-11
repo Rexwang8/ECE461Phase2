@@ -48,7 +48,7 @@ def FormPackageHistoryRequest(token, packageid):
 
 def FormPackageRegexSearchRequest(token, regex):
     url = f"http://package-registry-461.appspot.com/package/byRegEx"
-    Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
+    Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'text/plain'}
     #regex in body 
     body = regex
     return url, Header, body
@@ -117,17 +117,17 @@ def main():
     
     
     
-    url, header = FormPackageHistoryRequest(token, "packagename")
-    print(f"History GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    #url, header = FormPackageHistoryRequest(token, "packagename")
+    #print(f"History GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
     
     #example regex
     
-    #url, header, body = FormPackageRegexSearchRequest(token, ".*")
-    #print(f"Regex GET: {url} WITH HEADER: {header} AND BODY: {body}")
-    #response = requests.post(url, headers=header, data=body)
-    #PrintResponse(response, True)
+    url, header, body = FormPackageRegexSearchRequest(token, ".*")
+    print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    response = requests.post(url, headers=header, data=body)
+    PrintResponse(response, True)
     
 
 
