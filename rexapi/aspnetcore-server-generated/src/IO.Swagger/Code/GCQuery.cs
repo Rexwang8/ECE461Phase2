@@ -80,6 +80,44 @@ namespace IO.Swagger.Controllers
             }
         }
 
+        public List<PackageMetadata> GetPackageMetadataFromResults(BigQueryResults results)
+        {
+            List<PackageMetadata> packageMetadataList = new List<PackageMetadata>();
+            foreach (BigQueryRow row in results)
+            {
+                PackageMetadata packageMetadata = new PackageMetadata();
+                if (row["name"] != null)
+                {
+                    packageMetadata.Name = row["name"].ToString();
+                }
+                else
+                {
+                    packageMetadata.Name = "Unknown";
+                }
+
+                if (row["version"] != null)
+                {
+                    packageMetadata.Version = row["version"].ToString();
+                }
+                else
+                {
+                    packageMetadata.Version = "Unknown";
+                }
+
+                if (row["id"] != null)
+                {
+                    packageMetadata.ID = row["id"].ToString();
+                }
+                else
+                {
+                    packageMetadata.ID = "Unknown";
+                }
+
+                packageMetadataList.Add(packageMetadata);
+            }
+            return packageMetadataList;
+        }
+
         public List<PackageHistoryEntry> GetPackageHistoryFromResults(BigQueryResults results)
         {
             //init list

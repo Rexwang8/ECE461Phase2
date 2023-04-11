@@ -91,14 +91,16 @@ def main():
     
     #test authenticate
     #data
-    username = "rex7"
+    username = "rex"
     password = "123"
     isadmin = True
     
     #token that wont set off the token checker on github
-    token = 'bearer////a3gf2h8580l659f57g8hm12lln9e195h4ml71346bgf3gil0l9537111444m39k8m3fe2g8580k659e57f8gl12kkm9d195g4lk71346afe3fhk0k9537111444l39j8l3ed2f8580j659q57e8fk12jjl9'.replace('////', ' ')
+    token = 'bearer////2284hh7l20418b074i87h3631qfbff99i4mo10pd88f31i20710mb0dfef2j8mk02284gg7k20418n074h87g3631praee99h4ln10op88e31h20710ln0cede2i8lj02284ff7j20418m074g87f3631oq'.replace('////', ' ')
     CheckToken(token)
     print(token)
+    
+    
     #request
     #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
     #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
@@ -108,17 +110,17 @@ def main():
     
     
     
-    url, header = FormResetRequest(token)
-    print(f"DELETE: {url} WITH HEADER: {header}")
-    response = requests.delete(url, headers=header)
-    PrintResponse(response, False)
+    #url, header = FormResetRequest(token)
+    #print(f"DELETE: {url} WITH HEADER: {header}")
+    #response = requests.delete(url, headers=header)
+    #PrintResponse(response, False)
     
     
     
-    #url, header = FormPackageHistoryRequest(token, "packagename")
-    #print(f"History GET: {url} WITH HEADER: {header}")
-    #response = requests.get(url, headers=header)
-    #PrintResponse(response, True)
+    url, header = FormPackageHistoryRequest(token, "packagename")
+    print(f"History GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
     #example regex
     

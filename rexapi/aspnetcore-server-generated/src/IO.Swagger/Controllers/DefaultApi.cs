@@ -208,22 +208,12 @@ namespace IO.Swagger.Controllers
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-            //query database to see if user exists
 
-            string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE token = '{token}' LIMIT 20";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery();
-            if (result.TotalRows == 0)
-            {
-                //append debug message to header
-                Response.Headers.Add("X-Debug", "User does not exist");
-                return StatusCode(400);
-            }
 
 
 
             //query database get all rows with the package name and return them
-            query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata_name = '{packagename}' ORDER BY date LIMIT 100";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata_name = '{packagename}' ORDER BY date LIMIT 100";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
@@ -301,14 +291,26 @@ namespace IO.Swagger.Controllers
             //add debug message to header
             Response.Headers.Add("X-Debug", "Regex is sanitized" + pattern.ToString());
 
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(packagemetadata_name, r'{pattern}') LIMIT 100";
+            factory.SetQuery(query);
 
-            string exampleJson = null;
-            exampleJson = "[ {\n  \"Version\" : \"1.2.3\",\n  \"ID\" : \"ID\",\n  \"Name\" : \"Name\"\n}, {\n  \"Version\" : \"1.2.3\",\n  \"ID\" : \"ID\",\n  \"Name\" : \"Name\"\n} ]";
+            result = factory.ExecuteQuery();
 
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<PackageMetadata>>(exampleJson)
-            : default(List<PackageMetadata>);            //TODO: Change the data returned
-            return new ObjectResult(example);
+            if (result.TotalRows == 0)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "No packages found");
+                return StatusCode(404);
+            }
+
+            List<PackageMetadata> packageMetadata = new List<PackageMetadata>();
+            packageMetadata = factory.GetPackageMetadataFromResults(result);
+
+            //return list of package metadata in response body, formatted as ndjson [{},{}]
+            Response.Headers.Add("X-Debug", "Package metadata returned");
+            return StatusCode(200, packageMetadata);
         }
 
         /// <summary>

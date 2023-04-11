@@ -97,7 +97,7 @@ namespace Index
                 }
             }
 
-            /* Console.WriteLine("------ GITHUB -------");
+             Console.WriteLine("------ GITHUB -------");
             //github pull
             for (int i = 0; i < 3; i++)
             {
@@ -135,7 +135,7 @@ namespace Index
 
             Console.WriteLine("We have " + AllPackages.getTotalPackages() + " packages, " + AllPackages.getTotalNpm() + " npm, " + AllPackages.getTotalGithub() + " github");
             Console.WriteLine(AllPackages.getTotalGithubPulled() + " github packages pulled successfully out of " + AllPackages.getTotalGithub() + " github packages");
- */
+ 
             
             //Clone repositories
             Console.WriteLine("--- CLONE --- We have " + AllPackages.GetAllPackages().Count + " packages");
