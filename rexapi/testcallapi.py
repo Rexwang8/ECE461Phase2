@@ -48,9 +48,13 @@ def FormPackageHistoryRequest(token, packageid):
 
 def FormPackageRegexSearchRequest(token, regex):
     url = f"http://package-registry-461.appspot.com/package/byRegEx"
-    Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'text/plain'}
+    Header = {'X-Authorization': token, 'Accept': 'text/plain', 'Content-Type': 'application/json'}
     #regex in body 
-    body = regex
+    body = '123'
+    #userObj = user('rex', True)
+    #secObj = secret('123')
+    #AuthOBJ = AuthenticateRequest(userObj, secObj)
+    #body = json.dumps(AuthOBJ.__dict__, default=lambda o: o.__dict__, indent=4)
     return url, Header, body
 
 
