@@ -48,11 +48,13 @@ def FormPackageHistoryRequest(token, packageid):
 
 def FormPackageRegexSearchRequest(token, regex):
     url = f"http://package-registry-461.appspot.com/package/byRegEx"
-    Header = {'X-Authorization': token, 'Accept': 'text/plain', 'Content-Type': 'text/plain'}
+    Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'plain/text'}
     #regex in body 
     #escape the regex
     #123.\\*\\?Underscore.\\*
-    body = "123"
+    body = "{\"regex\": \"123\"}"
+    UserObj = user('123', True)
+    body = json.dumps(UserObj.__dict__, default=lambda o: o.__dict__, indent=4)
     
     
     #userObj = user('rex', True)

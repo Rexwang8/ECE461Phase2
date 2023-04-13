@@ -471,7 +471,7 @@ paths:
     post:
       requestBody:
         content:
-          text/plain:
+          application/json:
             schema:
               $ref: '#/components/schemas/PackageRegEx'
         required: true
