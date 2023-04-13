@@ -48,9 +48,13 @@ def FormPackageHistoryRequest(token, packageid):
 
 def FormPackageRegexSearchRequest(token, regex):
     url = f"http://package-registry-461.appspot.com/package/byRegEx"
-    Header = {'X-Authorization': token, 'Accept': 'text/plain', 'Content-Type': 'application/json'}
+    Header = {'X-Authorization': token, 'Accept': 'text/plain', 'Content-Type': 'text/plain'}
     #regex in body 
-    body = '123'
+    #escape the regex
+    #123.\\*\\?Underscore.\\*
+    body = "5237849087689"
+    
+    
     #userObj = user('rex', True)
     #secObj = secret('123')
     #AuthOBJ = AuthenticateRequest(userObj, secObj)
@@ -128,7 +132,7 @@ def main():
     
     #example regex
     
-    url, header, body = FormPackageRegexSearchRequest(token, ".*")
+    url, header, body = FormPackageRegexSearchRequest(token, ".*?Underscore.*")
     print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
     response = requests.post(url, headers=header, data=body)
     PrintResponse(response, True)

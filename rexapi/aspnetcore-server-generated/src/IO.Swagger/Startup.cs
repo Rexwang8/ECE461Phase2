@@ -114,10 +114,10 @@ namespace IO.Swagger
             app.UseSwaggerUI(c =>
             {
                 //TODO: Either use the SwaggerGen generated Swagger contract (generated from C# classes)
-                c.SwaggerEndpoint("/swagger/2.0.0/swagger.json", "ECE 461 - Spring 2023 - Project 2");
+                //c.SwaggerEndpoint("/swagger/2.0.0/swagger.json", "ECE 461 - Spring 2023 - Project 2");
 
                 //TODO: Or alternatively use the original Swagger contract that's included in the static files
-                // c.SwaggerEndpoint("/swagger-original.json", "ECE 461 - Spring 2023 - Project 2 Original");
+                 c.SwaggerEndpoint("/swagger-original.json", "ECE 461 - Spring 2023 - Project 2 Original");
             });
 
             //TODO: Use Https Redirection
