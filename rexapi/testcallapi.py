@@ -52,7 +52,7 @@ def FormPackageRegexSearchRequest(token, regex):
     #regex in body 
     #escape the regex
     #123.\\*\\?Underscore.\\*
-    body = "5237849087689"
+    body = "123"
     
     
     #userObj = user('rex', True)
