@@ -27,7 +27,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import MoreInfo from './MoreInfo';
+import Packages from './Packages';
 import './index.css';
 
 // Get the current URL path
@@ -36,7 +36,7 @@ const path = window.location.pathname;
 // Render the appropriate component based on the URL path
 ReactDOM.render(
   <React.StrictMode>
-    {path === '/MoreInfo' ? <MoreInfo /> : <App />}
+    {path === '/Packages' ? <Packages /> : <App />}
   </React.StrictMode>,
   document.getElementById('root')
 );

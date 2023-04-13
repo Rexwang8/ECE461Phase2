@@ -14,7 +14,7 @@ function App() {
   };
 
   function redirectToGoogle() {
-    window.location.href = '/MoreInfo';
+    window.location.href = '/Packages';
   }
 
 
@@ -38,8 +38,8 @@ function App() {
               <button>Sign up</button>
               <button>Sign in</button>
               <button>About-us</button>
-              <button>Packages</button>
-              <button onClick={redirectToGoogle}>More info</button>
+              <button onClick={redirectToGoogle}>Packages</button>
+              <button>More info</button>
               <button>Other</button>
             </div>
           )}

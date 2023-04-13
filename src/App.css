@@ -113,6 +113,8 @@
 .list-container {
   display: flex;
   justify-content: center;
+  overflow-y: auto;
+  max-height: 55vh;
 }
 
 .list {
@@ -131,14 +133,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 100px;
+  min-width: 800px;
 }
 
 .more-info {
   padding: 10px;
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 55%;
   transform: translate(-50%, -50%);
 }
 

@@ -87,7 +87,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-function MoreInfo() {
+function Packages() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [listItems, setListItems] = useState([
@@ -96,7 +96,12 @@ function MoreInfo() {
     { name: 'Package 3', indicator: 'green', score: 75 },
     { name: 'Package 4', indicator: 'red', score: 40 },
     { name: 'Package 5', indicator: 'green', score: 85 },
-    { name: 'Package 6', indicator: 'red', score: 55 }
+    { name: 'Package 6', indicator: 'red', score: 55 },
+    { name: 'Package 7', indicator: 'red', score: 55 },
+    { name: 'Package 8', indicator: 'red', score: 55 },
+    { name: 'Package 9', indicator: 'red', score: 55 },
+    { name: 'Package 10', indicator: 'red', score: 55 },
+    { name: 'Package 11', indicator: 'red', score: 55 }
   ]);
 
   const handleSearchInputChange = (event) => {
@@ -108,7 +113,11 @@ function MoreInfo() {
   };
 
   function redirectToGoogle() {
-    window.location.href = '/MoreInfo';
+    window.location.href = '/Packages';
+  }
+
+  function redirectToAbout() {
+    window.location.href = '/App';
   }
 
   return (
@@ -130,7 +139,7 @@ function MoreInfo() {
             <div className="profile-dropdown">
               <button>Sign up</button>
               <button>Sign in</button>
-              <button>About-us</button>
+              <button onClick={redirectToAbout}>About us</button>
               <button>Packages</button>
               <button onClick={redirectToGoogle}>More info</button>
               <button>Other</button>
@@ -138,7 +147,7 @@ function MoreInfo() {
           )}
         </div>
       </nav>
-      <h1 className="title">More Info</h1>
+      <h1 className="title">Packages</h1>
       <section className="more-info">
         <div className="list-container">
           <ul className="list">
@@ -150,7 +159,7 @@ function MoreInfo() {
                     <span className={`indicator ${item.indicator}`}></span>
                     {item.name}
                     <span className="score">{`Score: ${item.score}/100`}</span>
-                    <button className="button">Button</button>
+                    <button className="button">Download</button>
                   </div>
                 </li>
               ))}
@@ -161,6 +170,6 @@ function MoreInfo() {
   );
 }
 
-export default MoreInfo;
+export default Packages;
 
 
