@@ -6,6 +6,7 @@ using System.Text;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
 using Google.Apis.Bigquery.v2.Data;
+using System.Diagnostics;
 
 
 namespace IO.Swagger.Controllers
@@ -95,6 +96,13 @@ namespace IO.Swagger.Controllers
             escaped = escaped.Replace("DROP TABLES", "");
             escaped = escaped.Replace(";", "");
             return escaped;
+        }
+    
+        public static string GenerateNewID()
+        {
+            //generate a new ID
+            string id = Guid.NewGuid().ToString();
+            return id;
         }
     }
 
