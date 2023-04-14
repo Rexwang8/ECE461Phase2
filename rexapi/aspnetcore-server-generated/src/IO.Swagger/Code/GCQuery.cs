@@ -48,6 +48,25 @@ namespace IO.Swagger.Controllers
             return results;
         }
 
+        //execute query
+        public BigQueryResults ExecuteQueryParameterized(List<BigQueryParameter> parameters)
+        {
+            //execute query
+            BigQueryResults results = null;
+            try
+            {
+                //execute query
+                results = client.ExecuteQuery(query, parameters: parameters);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error executing query: " + e.Message);
+                return null;
+            }
+
+        }
+
+
         //set query
         public void SetQuery(string query)
         {

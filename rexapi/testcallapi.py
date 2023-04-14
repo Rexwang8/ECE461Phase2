@@ -9,6 +9,13 @@ class user:
     def __init__(self, name, isAdmin):
         self.name = name
         self.isAdmin = isAdmin
+        
+class Regex:
+    RegEx: str
+    
+    def __init__(self, RegEx):
+        self.RegEx = RegEx
+    
 
 class secret:
     password: str
@@ -49,10 +56,8 @@ def FormPackageHistoryRequest(token, packageid):
 def FormPackageRegexSearchRequest(token, regex):
     url = f"http://package-registry-461.appspot.com/package/byRegEx"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
-    #regex in body 
-    #escape the regex
-    #123.\\*\\?Underscore.\\*
-    body = "\"" + regex + "\""
+    regexobj = Regex(regex)
+    body = json.dumps(regexobj.__dict__, default=lambda o: o.__dict__, indent=4)
     
     #userObj = user('rex', True)
     #secObj = secret('123')

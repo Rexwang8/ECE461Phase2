@@ -287,17 +287,22 @@ namespace IO.Swagger.Controllers
             string unsanitizedregex = body.Regex;
 
             Regex pattern = Sanitizer.SanitizedCompiledRegex(unsanitizedregex);
-
-            //add debug message to header
-            Response.Headers.Add("X-Debug", "Regex is sanitized" + pattern.ToString());
-            return StatusCode(401);
+            if (pattern == null)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Regex is null");
+                return StatusCode(400);
+            }
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(packagemetadata_name, r'{pattern}') LIMIT 100";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(packagemetadata_name, r'@regexpattern') LIMIT 100";
             factory.SetQuery(query);
+            List<BigQueryParameter> parameters = new List<BigQueryParameter>();
+            parameters.Add(new BigQueryParameter("regexpattern", BigQueryDbType.String, pattern.ToString()));
 
-            result = factory.ExecuteQuery();
+
+            result = factory.ExecuteQueryParameterized(parameters);
 
             if (result.TotalRows == 0)
             {

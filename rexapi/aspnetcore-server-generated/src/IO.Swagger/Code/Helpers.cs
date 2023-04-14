@@ -83,9 +83,10 @@ namespace IO.Swagger.Controllers
 
         public static Regex SanitizedCompiledRegex(string input)
         {
-            String sanitized = Regex.Escape(input);
-            Regex InputRegex = new Regex(sanitized);
-            return InputRegex;
+            //replace \' and ' with ''
+            string escaped = input.Replace(@"\'", @"''");
+            escaped = escaped.Replace("'", "''");
+            return new Regex(escaped, RegexOptions.Compiled);
         }
     }
 
