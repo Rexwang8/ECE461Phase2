@@ -22,16 +22,6 @@ definitions:
     description: Offset in pagination.
     example: '1'
     type: string
-  Error:
-    properties:
-      code:
-        format: int32
-        type: integer
-      message:
-        type: string
-    required:
-      - code
-      - message
   Package:
     properties:
       data:
@@ -247,7 +237,7 @@ info:
     url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
   termsOfService: 'http://swagger.io/terms/'
   title: ECE 461 - Spring 2023 - Project 2
-  version: 2.0.0
+  version: 2.3.1
 paths:
   "/authenticate":
     put:
@@ -361,10 +351,6 @@ paths:
             it is formed improperly, or the AuthenticationToken is invalid.
         404:
           description: No such package.
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
     parameters:
       - description: |-
           Name of a package.
@@ -463,10 +449,6 @@ paths:
             is formed improperly, or the AuthenticationToken is invalid.
         404:
           description: Package does not exist.
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
       summary: Interact with the package with this ID
     parameters:
       - description: Package ID
@@ -612,10 +594,6 @@ paths:
             it is formed improperly, or the AuthenticationToken is invalid.
         413:
           description: Too many packages returned.
-        default:
-          description: unexpected error
-          schema:
-            $ref: '#/definitions/Error'
       summary: Get the packages from the registry.
   "/reset":
     delete:

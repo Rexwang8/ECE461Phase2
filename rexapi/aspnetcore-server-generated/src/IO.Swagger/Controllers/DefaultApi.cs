@@ -257,7 +257,7 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("PackageByRegExGet")]
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageMetadata>), description: "Return a list of packages.")]
-        public virtual IActionResult PackageByRegExGet([FromBody] string body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
+        public virtual IActionResult PackageByRegExGet([FromBody] PackageRegex body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
@@ -284,7 +284,7 @@ namespace IO.Swagger.Controllers
             }
 
 
-            string unsanitizedregex = body;
+            string unsanitizedregex = body.Regex;
 
             Regex pattern = Sanitizer.SanitizedCompiledRegex(unsanitizedregex);
 
