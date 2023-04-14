@@ -52,12 +52,12 @@ namespace IO.Swagger.Models
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            return obj.GetType() == GetType() && Equals((PackageRating)obj);
+            return obj.GetType() == GetType() && Equals((PackageRegex)obj);
         }
 
 
         /// <returns>Boolean</returns>
-        public bool Equals(PackageRating other)
+        public bool Equals(PackageRegex other)
         {
             if (ReferenceEquals(null, other)) return false;
             if (ReferenceEquals(this, other)) return true;
@@ -86,12 +86,12 @@ namespace IO.Swagger.Models
         #region Operators
         #pragma warning disable 1591
 
-        public static bool operator ==(PackageRating left, PackageRating right)
+        public static bool operator ==(PackageRegex left, PackageRegex right)
         {
             return Equals(left, right);
         }
 
-        public static bool operator !=(PackageRating left, PackageRating right)
+        public static bool operator !=(PackageRegex left, PackageRegex right)
         {
             return !Equals(left, right);
         }
