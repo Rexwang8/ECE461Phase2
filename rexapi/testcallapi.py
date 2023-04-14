@@ -58,12 +58,12 @@ def FormPackageRegexSearchRequest(token, regex):
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
     regexobj = Regex(regex)
     body = json.dumps(regexobj.__dict__, default=lambda o: o.__dict__, indent=4)
-    
-    #userObj = user('rex', True)
-    #secObj = secret('123')
-    #AuthOBJ = AuthenticateRequest(userObj, secObj)
-    #body = json.dumps(AuthOBJ.__dict__, default=lambda o: o.__dict__, indent=4)
     return url, Header, body
+
+def FormRateRequest(token, packageid):
+    url = f"http://package-registry-461.appspot.com/package/{packageid}/rate"
+    Header = {'X-Authorization': token, 'Accept': 'application/json'}
+    return url, Header
 
 
 def CheckToken(token):
@@ -135,10 +135,15 @@ def main():
     #PrintResponse(response, True)
     
     #example regex
+    #url, header, body = FormPackageRegexSearchRequest(token, "(NAMEKEVIN)")
+    #print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.post(url, headers=header, data=body)
+    #PrintResponse(response, True)
     
-    url, header, body = FormPackageRegexSearchRequest(token, "(NAMEKEVIN)")
-    print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.post(url, headers=header, data=body)
+    #rating
+    url, header = FormRateRequest(token, "packageid123")
+    print(f"Rating GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
     PrintResponse(response, True)
     
 
