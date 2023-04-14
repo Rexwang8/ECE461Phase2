@@ -67,7 +67,7 @@ def FormRateRequest(token, packageid):
 
 def DeletePackageRequest(token, packageid):
     url = f"http://package-registry-461.appspot.com/package/{packageid}"
-    Header = {'xAuthorization': token, 'Accept': 'application/json'}
+    Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
 
 def CheckToken(token):

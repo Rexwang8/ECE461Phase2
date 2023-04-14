@@ -366,12 +366,17 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageDelete")]
         public virtual IActionResult PackageDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-            Response.Headers.Add("Kev", "HELLLLLLLO");
             string token = xAuthorization;
 
-            if (Sanitizer.VerifyTokenSanitized(token))
+            if (!Sanitizer.VerifyTokenSanitized(token))
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+
+            if (!Guid.TryParse(id, out _))
+            {
+                Response.Headers.Add("X-Debug", "ID is not sanitized");
                 return StatusCode(400);
             }
 
@@ -390,19 +395,19 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
-            
+
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
 
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id= '{id}' LIMIT 1";
+            //Delete from Meta Data Query
+            string query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE id= '{id}' LIMIT 1";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            
-            foreach (var row in result)
-            {
-                Console.WriteLine("{0}, {1}, {2}", row["id"], row["name"], row["version"]);
-            }
 
+            //Delete from Packages Data Query
+
+            //Add to History Query 
+            
             return StatusCode(200);
         }
 
