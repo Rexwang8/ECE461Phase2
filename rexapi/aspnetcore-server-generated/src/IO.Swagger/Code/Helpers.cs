@@ -86,6 +86,14 @@ namespace IO.Swagger.Controllers
             //replace \' and ' with ''
             string escaped = input.Replace(@"\'", @"''");
             escaped = escaped.Replace("'", "''");
+            //remove all SQL keywords
+            string[] keywords = {"DROP", "DELETE", "INSERT", "UPDATE", "SELECT", "CREATE", "ALTER", "TRUNCATE", "EXEC", "EXECUTE", "GRANT", "REVOKE", "COMMIT", "ROLLBACK", "SAVE", "RESTORE", "BACKUP", "MERGE", "OPEN", "CLOSE", "FETCH", "PRINT", "RAISERROR", "READTEXT", "WRITETEXT", "DBCC", "USE", "WITH", "SET", "DECLARE", "GO", "IF", "ELSE", "WHILE", "BREAK", "CONTINUE", "TRY", "CATCH", "THROW", "WAITFOR", "PRINT", "RAISERROR", "READTEXT", "WRITETEXT", "DBCC", "USE", "WITH", "SET", "DECLARE", "GO", "IF", "ELSE", "WHILE", "BREAK", "CONTINUE", "TRY", "CATCH", "THROW", "WAITFOR", "PRINT", "RAISERROR", "READTEXT", "WRITETEXT", "DBCC", "USE", "WITH", "SET", "DECLARE", "GO", "IF", "ELSE", "WHILE", "BREAK", "CONTINUE", "TRY", "CATCH", "THROW", "WAITFOR", "PRINT", "RAISERROR", "READTEXT", "WRITETEXT", "DBCC", "USE", "WITH", "SET", "DECLARE", "GO", "IF", "ELSE", "WHILE", "BREAK", "CONTINUE", "TRY", "CATCH", "THROW", "WAITFOR", "PRINT", "RAISERROR", "READTEXT", "WRITETEXT", "DBCC", "USE", "WITH", "SET", "DECLARE", "GO", "IF", "ELSE", "WHILE", "BREAK", "CONTINUE", "TRY", "CATCH", "THROW", "WAITFOR", "PRINT", "RAISERROR", "READTEXT", "WRITETEXT", "DBCC", "USE", "WITH", "SET", "DECLARE", "GO", "IF", "ELSE", "WHILE", "BREAK", "CONTINUE", "TRY", "CATCH", "THROW", "WAITFOR", "PRINT", "RAISERROR", "READTEXT"};
+            for (int i = 0; i < keywords.Length; i++)
+            {
+                escaped = escaped.Replace(keywords[i], "");
+            }
+            escaped = escaped.Replace("DROP TABLES", "");
+            escaped = escaped.Replace(";", "");
             return escaped;
         }
     }
