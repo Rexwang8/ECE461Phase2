@@ -366,16 +366,44 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageDelete")]
         public virtual IActionResult PackageDelete([FromHeader][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200);
+            Response.Headers.Add("X-Debug", "HELLLLLLLO");
+            string token = xAuthorization;
 
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
+            if (Sanitizer.VerifyTokenSanitized(token))
+            {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
 
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
 
-            throw new NotImplementedException();
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                Response.Headers.Add("X-Debug", "User has no perms");
+                return StatusCode(400);
+            }
+
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
+            
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id= '{id}' LIMIT 1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            
+            foreach (var row in result)
+            {
+                Console.WriteLine("{0}, {1}, {2}", row["id"], row["name"], row["version"]);
+            }
+
+            return StatusCode(200);
         }
 
         /// <summary>
