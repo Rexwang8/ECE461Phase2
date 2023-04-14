@@ -296,19 +296,15 @@ namespace IO.Swagger.Controllers
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(name, r'@regexpattern') LIMIT 100";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(name, r'{pattern}') LIMIT 100";
             factory.SetQuery(query);
-            var parameters = new BigQueryParameter[]
-            {
-                new BigQueryParameter("regexpattern", BigQueryDbType.String, pattern),
-            };
 
-            result = factory.ExecuteQueryParameterized(parameters);
+            result = factory.ExecuteQuery();
 
             if (result.TotalRows == 0)
             {
                 //append debug message to header
-                Response.Headers.Add("X-Debug", "No packages found for regex + " + pattern + "" + factory.GetQuery());
+                Response.Headers.Add("X-Debug", "No packages found for regex + " + pattern + "  " + factory.GetQuery());
                 return StatusCode(404);
             }
 
