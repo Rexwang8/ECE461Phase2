@@ -63,6 +63,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Error executing query: " + e.Message);
                 return null;
             }
+            return results;
 
         }
 
