@@ -392,8 +392,55 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("PackageRate")]
         [SwaggerResponse(statusCode: 200, type: typeof(PackageRating), description: "Return the rating. Only use this if each metric was computed successfully.")]
-        public virtual IActionResult PackageRate([FromRoute][Required] string id, [FromHeader][Required()] string xAuthorization)
+        public virtual IActionResult PackageRate([FromRoute][Required] string id, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            //VERIFY TOKEN
+            string token = xAuthorization;
+            bool isSantized = Sanitizer.VerifyTokenSanitized(token);
+            if (!isSantized)
+            {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
+
+
+            //Form NotImplemented JSON
+            PackageRating rating = new PackageRating();
+            rating.BusFactor = 2;
+            rating.Correctness = 3;
+            rating.RampUp = 2;
+            rating.ResponsiveMaintainer = 3;
+            rating.LicenseScore = 2;
+            rating.GoodPinningPractice = 2;
+            rating.PullRequest = 2;
+            rating.NetScore = 2;
+
+            Response.Headers.Add("X-Debug", "Token is valid --- " + id);
+
+
+            return StatusCode(200, rating);
+
+
+
+
+
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(PackageRating));
 
