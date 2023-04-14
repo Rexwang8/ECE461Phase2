@@ -49,7 +49,7 @@ namespace IO.Swagger.Controllers
         }
 
         //execute query
-        public BigQueryResults ExecuteQueryParameterized(List<BigQueryParameter> parameters)
+        public BigQueryResults ExecuteQueryParameterized(BigQueryParameter[] parameters)
         {
             //execute query
             BigQueryResults results = null;

@@ -81,12 +81,12 @@ namespace IO.Swagger.Controllers
             return true;
         }
 
-        public static Regex SanitizedCompiledRegex(string input)
+        public static string SantizeRegex(string input)
         {
             //replace \' and ' with ''
             string escaped = input.Replace(@"\'", @"''");
             escaped = escaped.Replace("'", "''");
-            return new Regex(escaped, RegexOptions.Compiled);
+            return escaped;
         }
     }
 

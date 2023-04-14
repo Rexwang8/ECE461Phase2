@@ -286,7 +286,7 @@ namespace IO.Swagger.Controllers
 
             string unsanitizedregex = body.Regex;
 
-            Regex pattern = Sanitizer.SanitizedCompiledRegex(unsanitizedregex);
+            string  pattern = Sanitizer.SantizeRegex(unsanitizedregex);
             if (pattern == null)
             {
                 //append debug message to header
@@ -296,11 +296,12 @@ namespace IO.Swagger.Controllers
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(packagemetadata_name, r'@regexpattern') LIMIT 100";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(name, r'@regexpattern') LIMIT 100";
             factory.SetQuery(query);
-            List<BigQueryParameter> parameters = new List<BigQueryParameter>();
-            parameters.Add(new BigQueryParameter("regexpattern", BigQueryDbType.String, pattern.ToString()));
-
+            var parameters = new BigQueryParameter[]
+            {
+                new BigQueryParameter("regexpattern", BigQueryDbType.String, pattern),
+            };
 
             result = factory.ExecuteQueryParameterized(parameters);
 
