@@ -65,6 +65,10 @@ def FormRateRequest(token, packageid):
     Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
 
+def DeletePackageRequest(token, packageid):
+    url = f"http://package-registry-461.appspot.com/package/{packageid}"
+    Header = {'xAuthorization': token, 'Accept': 'application/json'}
+    return url, Header
 
 def CheckToken(token):
     print(f"len of token: {len(token)}")
@@ -119,7 +123,11 @@ def main():
     #response = requests.put(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response)
     
-    
+    #delete
+    Authurl, Authheader = DeletePackageRequest(token, "123123")
+    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    response = requests.delete(Authurl, headers=Authheader)
+    PrintResponse(response, False)
     
     
     #url, header = FormResetRequest(token)
@@ -141,10 +149,10 @@ def main():
     #PrintResponse(response, True)
     
     #rating
-    url, header = FormRateRequest(token, "packageid123")
-    print(f"Rating GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    # url, header = FormRateRequest(token, "packageid123")
+    # print(f"Rating GET: {url} WITH HEADER: {header}")
+    # response = requests.get(url, headers=header)
+    # PrintResponse(response, True)
     
 
 

@@ -364,9 +364,9 @@ namespace IO.Swagger.Controllers
         [Route("/package/{id}")]
         [ValidateModelState]
         [SwaggerOperation("PackageDelete")]
-        public virtual IActionResult PackageDelete([FromHeader][Required()] string xAuthorization, [FromRoute][Required] string id)
+        public virtual IActionResult PackageDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-            Response.Headers.Add("X-Debug", "HELLLLLLLO");
+            Response.Headers.Add("Kev", "HELLLLLLLO");
             string token = xAuthorization;
 
             if (Sanitizer.VerifyTokenSanitized(token))
