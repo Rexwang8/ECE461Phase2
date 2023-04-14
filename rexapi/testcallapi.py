@@ -136,7 +136,7 @@ def main():
     
     #example regex
     
-    url, header, body = FormPackageRegexSearchRequest(token, ".*?Underscore.*")
+    url, header, body = FormPackageRegexSearchRequest(token, "(NAMEKEVIN)")
     print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
     response = requests.post(url, headers=header, data=body)
     PrintResponse(response, True)

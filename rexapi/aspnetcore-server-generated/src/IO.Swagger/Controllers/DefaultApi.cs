@@ -308,7 +308,7 @@ namespace IO.Swagger.Controllers
             if (result.TotalRows == 0)
             {
                 //append debug message to header
-                Response.Headers.Add("X-Debug", "No packages found");
+                Response.Headers.Add("X-Debug", "No packages found for regex + " + pattern + "" + factory.GetQuery());
                 return StatusCode(404);
             }
 
