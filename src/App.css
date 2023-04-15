@@ -133,7 +133,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-width: 800px;
+  min-width: 1000px;
 }
 
 .more-info {
