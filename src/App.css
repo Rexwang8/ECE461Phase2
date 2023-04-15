@@ -184,3 +184,19 @@
   cursor: pointer;
   margin-left: 1rem;
 }
+
+.item-details {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: bold;
+}
+
+.item-version,
+.item-updated,
+.item-score {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #777;
+}

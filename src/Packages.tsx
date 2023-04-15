@@ -4,30 +4,27 @@ import './App.css';
 function Packages() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   const [listItems, setListItems] = useState([
-    { name: 'Package 1', indicator: 'green', score: 90 },
-    { name: 'Package 2', indicator: 'red', score: 60 },
-    { name: 'Package 3', indicator: 'green', score: 75 },
-    { name: 'Package 4', indicator: 'red', score: 40 },
-    { name: 'Package 5', indicator: 'green', score: 85 },
-    { name: 'Package 6', indicator: 'red', score: 55 },
-    { name: 'Package 7', indicator: 'red', score: 55 },
-    { name: 'Package 8', indicator: 'red', score: 55 },
-    { name: 'Package 9', indicator: 'red', score: 55 },
-    { name: 'Package 10', indicator: 'red', score: 55 },
-    { name: 'Package 11', indicator: 'red', score: 55 },
-    { name: 'Package 12', indicator: 'green', score: 69 }
-  ]);
+  { name: 'Package 1', indicator: 'green', score: 90, latestVersion: '1.0.0', lastUpdated: '2022-12-01' },
+  { name: 'Package 2', indicator: 'red', score: 60, latestVersion: '2.3.1', lastUpdated: '2022-11-15' },
+  { name: 'Package 3', indicator: 'green', score: 75, latestVersion: '3.5.2', lastUpdated: '2022-10-20' },
+  { name: 'Package 4', indicator: 'red', score: 40, latestVersion: '4.2.0', lastUpdated: '2022-09-30' },
+  { name: 'Package 5', indicator: 'green', score: 85, latestVersion: '5.1.3', lastUpdated: '2022-08-25' },
+  { name: 'Package 6', indicator: 'red', score: 55, latestVersion: '6.0.1', lastUpdated: '2022-07-10' },
+  { name: 'Package 7', indicator: 'red', score: 55, latestVersion: '7.2.2', lastUpdated: '2022-06-20' },
+  { name: 'Package 8', indicator: 'red', score: 55, latestVersion: '8.3.0', lastUpdated: '2022-05-15' },
+  { name: 'Package 9', indicator: 'red', score: 55, latestVersion: '9.1.1', lastUpdated: '2022-04-30' },
+  { name: 'Package 10', indicator: 'red', score: 55, latestVersion: '10.0.2', lastUpdated: '2022-03-25' },
+  { name: 'Package 11', indicator: 'red', score: 55, latestVersion: '11.5.3', lastUpdated: '2022-02-15' },
+  { name: 'Package 12', indicator: 'green', score: 69, latestVersion: '12.2.1', lastUpdated: '2022-01-10' }
+]);
 
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Function implementation here
     setSearchQuery(event.target.value);
   };
-
-  // function handleSearchChange() {
-  //   setSearchQuery(value);
-  // }
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -90,12 +87,16 @@ function Packages() {
                   key={index}
                   className={`list-item ${!item.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'invisible' : ''}`}
                 >
-                  <div className="list-item-box">
-                    <span className={`indicator ${item.indicator}`}></span>
-                    {item.name}
-                    <span className="score">{`Score: ${item.score}/100`}</span>
-                    <button className="button">Download</button>
+                <div className="list-item-box">
+                  <span className={`indicator ${item.indicator}`}></span>
+                  <div className="item-details">
+                    <div className="item-name">{item.name}</div>
+                    <div className="item-version">{`Latest Version: ${item.latestVersion}`}</div>
+                    <div className="item-updated">{`Last Updated: ${item.lastUpdated}`}</div>
+                    <div className="item-score">{`Score: ${item.score}`}</div>
                   </div>
+                  <button className="button">Download</button>
+                </div>
                 </li>
               ))}
           </ul>
@@ -106,7 +107,5 @@ function Packages() {
 }
 
 export default Packages;
-
-
 
 
