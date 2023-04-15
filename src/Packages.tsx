@@ -101,18 +101,28 @@ function Packages() {
     { name: 'Package 8', indicator: 'red', score: 55 },
     { name: 'Package 9', indicator: 'red', score: 55 },
     { name: 'Package 10', indicator: 'red', score: 55 },
-    { name: 'Package 11', indicator: 'red', score: 55 }
+    { name: 'Package 11', indicator: 'red', score: 55 },
+    { name: 'Package 12', indicator: 'green', score: 69 }
   ]);
 
-  const handleSearchInputChange = (event) => {
+  // const handleSearchInputChange = (event) => {
+  //   setSearchQuery(event.target.value);
+  // };
+
+  const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    // Function implementation here
     setSearchQuery(event.target.value);
   };
+
+  // function handleSearchChange() {
+  //   setSearchQuery(value);
+  // }
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
   };
 
-  function redirectToGoogle() {
+  function redirectToPackages() {
     window.location.href = '/Packages';
   }
 
@@ -128,6 +138,7 @@ function Packages() {
             type="text"
             placeholder="Search"
             value={searchQuery}
+
             onChange={handleSearchInputChange}
           />
         </div>
@@ -140,8 +151,7 @@ function Packages() {
               <button>Sign up</button>
               <button>Sign in</button>
               <button onClick={redirectToAbout}>About us</button>
-              <button>Packages</button>
-              <button onClick={redirectToGoogle}>More info</button>
+              <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>
             </div>
           )}

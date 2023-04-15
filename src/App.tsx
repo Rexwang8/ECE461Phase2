@@ -2,18 +2,18 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  // const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const handleSearchInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
+  // const handleSearchInputChange = (event) => {
+  //   setSearchQuery(event.target.value);
+  // };
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
   };
 
-  function redirectToGoogle() {
+  function redirectToPackages() {
     window.location.href = '/Packages';
   }
 
@@ -22,12 +22,12 @@ function App() {
     <div className="App">
       <nav className="navbar">
         <div className="navbar-left">
-          <input
+{/*          <input
             type="text"
             placeholder="Search"
             value={searchQuery}
-            onChange={handleSearchInputChange}
-          />
+            // onChange={handleSearchInputChange}
+          />*/}
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
@@ -38,8 +38,7 @@ function App() {
               <button>Sign up</button>
               <button>Sign in</button>
               <button>About-us</button>
-              <button onClick={redirectToGoogle}>Packages</button>
-              <button>More info</button>
+              <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>
             </div>
           )}
