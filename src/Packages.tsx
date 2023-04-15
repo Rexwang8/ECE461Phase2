@@ -95,7 +95,9 @@ function Packages() {
                     <div className="item-updated">{`Last Updated: ${item.lastUpdated}`}</div>
                     <div className="item-score">{`Score: ${item.score}`}</div>
                   </div>
-                  <button className="button">Download</button>
+                  <button className="button" onClick={redirectToPackages}>
+                    {item.indicator === 'red' ? 'Request Ingest' : 'Download'}
+                  </button>
                 </div>
                 </li>
               ))}
