@@ -29,6 +29,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Packages from './Packages';
 import Signup from './Signup';
+import Signin from './Signin';
 import './index.css';
 
 // Get the current URL path
@@ -42,11 +43,26 @@ const path = window.location.pathname;
 //   document.getElementById('root')
 // );
 
+// ReactDOM.render(
+//   <React.StrictMode>
+//     {path === '/Packages' ? <Packages /> : (path === '/Signup' ? <Signup /> : <App />)}
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
 ReactDOM.render(
   <React.StrictMode>
-    {path === '/Packages' ? <Packages /> : (path === '/Signup' ? <Signup /> : <App />)}
+    {path === '/Packages' ? (
+      <Packages />
+    ) : path === '/Signup' ? (
+      <Signup />
+    ) : path === '/Signin' ? (
+      <Signin />
+    ) : (
+      <App />
+    )}
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root') // make sure you have an element with id 'root' in your HTML file
 );
 
 

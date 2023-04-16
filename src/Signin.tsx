@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import './Signup.css';
 
-function Signup() {
+function Signin() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isAdmin, setIsAdmin] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
 
@@ -16,13 +15,13 @@ function Signup() {
     setPassword(event.target.value);
   };
 
-  const handleAdminCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsAdmin(event.target.checked);
-  };
+  // const handleAdminCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setIsAdmin(event.target.checked);
+  // };
 
   const handleFormSubmit = () => {
     // event.preventDefault();
-    alert(`Username: ${username}, Password: ${password}, isAdmin: ${isAdmin}`);
+    alert(`Username: ${username}, Password: ${password}`);
     // You can perform further actions with the submitted data here
   };
 
@@ -75,7 +74,7 @@ function Signup() {
       </nav>
       <div className="signup-page">
         <div className="signup-box">
-          <h1>Sign Up</h1>
+          <h1>Sign In</h1>
           <form onSubmit={handleFormSubmit}>
             <input
               type="text"
@@ -89,15 +88,15 @@ function Signup() {
               value={password}
               onChange={handlePasswordChange}
             />
-            <label>
+{/*            <label>
               <input
                 type="checkbox"
                 checked={isAdmin}
                 onChange={handleAdminCheckboxChange}
               />
               Are you an admin?
-            </label>
-            <button type="submit">Sign Up</button>
+            </label>*/}
+            <button type="submit">Sign In</button>
           </form>
         </div>
       </div>
@@ -105,5 +104,5 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default Signin;
 

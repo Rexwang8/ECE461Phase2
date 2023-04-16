@@ -42,6 +42,10 @@ function Packages() {
     window.location.href = '/Signup';
   }
 
+  function redirectToSignIn() {
+    window.location.href = '/Signin';
+  }
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -61,7 +65,7 @@ function Packages() {
           {isProfileOpen && (
             <div className="profile-dropdown">
               <button onClick={redirectToSignUp}>Sign up</button>
-              <button>Sign in</button>
+              <button onClick = {redirectToSignIn}>Sign in</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>
