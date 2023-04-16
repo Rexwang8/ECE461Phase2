@@ -28,16 +28,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Packages from './Packages';
+import Signup from './Signup';
 import './index.css';
 
 // Get the current URL path
 const path = window.location.pathname;
 
 // Render the appropriate component based on the URL path
+// ReactDOM.render(
+//   <React.StrictMode>
+//     {path === '/Packages' ? <Packages /> : <App />}
+//   </React.StrictMode>,
+//   document.getElementById('root')
+// );
+
 ReactDOM.render(
   <React.StrictMode>
-    {path === '/Packages' ? <Packages /> : <App />}
+    {path === '/Packages' ? <Packages /> : (path === '/Signup' ? <Signup /> : <App />)}
   </React.StrictMode>,
   document.getElementById('root')
 );
+
 

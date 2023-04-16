@@ -17,6 +17,14 @@ function App() {
     window.location.href = '/Packages';
   }
 
+  function redirectToAbout() {
+    window.location.href = '/App';
+  }
+
+  function redirectToSignUp() {
+    window.location.href = '/Signup';
+  }
+
 
   return (
     <div className="App">
@@ -35,9 +43,9 @@ function App() {
           </button>
           {isProfileOpen && (
             <div className="profile-dropdown">
-              <button>Sign up</button>
+              <button onClick = {redirectToSignUp}>Sign up</button>
               <button>Sign in</button>
-              <button>About-us</button>
+              <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>
             </div>
