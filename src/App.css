@@ -136,6 +136,17 @@
   min-width: 1000px;
 }
 
+.description {
+  position: relative;
+  right: 100px;
+  /*postion: fixed;*/
+  /*left: 1000px;*/
+  text-align: left;
+  font-size: 16px;
+  color: #777;
+  text-align: center;
+}
+
 .more-info {
   padding: 10px;
   position: fixed;
@@ -183,6 +194,7 @@
   padding: 0.5rem;
   cursor: pointer;
   margin-left: 1rem;
+  width: 20%;
 }
 
 .item-details {

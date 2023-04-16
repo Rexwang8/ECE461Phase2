@@ -99,6 +99,9 @@ function Packages() {
                     <div className="item-updated">{`Last Updated: ${item.lastUpdated}`}</div>
                     <div className="item-score">{`Score: ${item.score}`}</div>
                   </div>
+                  <div className = "description">
+                  Kevin is a rat on a boat who misses ECE 404 lecture
+                  </div>
                   <button className="button" onClick={redirectToPackages}>
                     {item.indicator === 'red' ? 'Request Ingest' : 'Download'}
                   </button>
