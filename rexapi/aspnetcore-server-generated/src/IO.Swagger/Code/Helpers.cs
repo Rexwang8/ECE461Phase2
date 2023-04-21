@@ -448,4 +448,25 @@ namespace IO.Swagger.Controllers
             this.IsAdmin = admin ?? false;
         }
     }
+
+    public class Base64Encoder
+    {
+        //convert between base 64 string and zip file
+        public static string Encode(string filename)
+        {
+            var plainTextBytes = System.IO.File.ReadAllBytes(filename);
+            var encoded = System.Convert.ToBase64String(plainTextBytes);
+            return encoded.Replace(" ", "").Replace("\n", "").Replace("\r", "");
+        }
+
+        public static void Decode(string base64String, string filename)
+        {
+            var base64EncodedBytes = System.Convert.FromBase64String(base64String);
+            System.IO.File.WriteAllBytes(filename, base64EncodedBytes);
+            return;
+        }
+
+
+
+    }
 }
