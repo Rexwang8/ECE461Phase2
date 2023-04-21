@@ -153,12 +153,20 @@ namespace IO.Swagger.Controllers
 
             string token = xAuthorization;
 
+            //Sanitize Inputs
             if (!Sanitizer.VerifyTokenSanitized(token))
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
 
+            if (!Sanitizer.VerifyPackageNameSafe(name))
+            {
+                Response.Headers.Add("X-Debug", "Name is not sanitized");
+                return StatusCode(400);
+            }
+
+            //Check Token Permissions
             TokenAuthenticator authenticator = new TokenAuthenticator();
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
 
@@ -168,6 +176,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //Decrement Token uses
             TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
@@ -175,18 +184,43 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
 
-            //Delete from Meta Data Query
-            string query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE name='{name}' LIMIT 20";
+            //-----------------------Delete from Meta Data Query------------------------------------
+            string query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' LIMIT 20";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
-            //Delete from Packages Data Query
+            if (result.TotalRows == 0)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "No packages found for name: + " + name + "  " + factory.GetQuery());
+                return StatusCode(404);
+            }
 
-            //Add to History Query 
-            
+            List<PackageHistoryEntry> packageHistoryEntries = new List<PackageHistoryEntry>();
+            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+
+            //--------------------Delete from Packages Data Query------------------------------------
+            foreach (BigQueryRow row in result)
+            {
+                string id = row["id"].ToString();
+                query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE metaid='{id}' LIMIT 1";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+
+                if (result.TotalRows == 0)
+                {
+                    //append debug message to header
+                    Response.Headers.Add("X-Debug", "No packages found for id: + " + id + "  " + factory.GetQuery());
+                    return StatusCode(404);
+                }
+
+                packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+            }
+
             return StatusCode(200);
         }
 
@@ -377,13 +411,46 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 424 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(424);
-            string exampleJson = null;
-            exampleJson = "{\n  \"metadata\" : {\n    \"Version\" : \"1.2.3\",\n    \"ID\" : \"ID\",\n    \"Name\" : \"Name\"\n  },\n  \"data\" : {\n    \"Content\" : \"Content\",\n    \"JSProgram\" : \"JSProgram\",\n    \"URL\" : \"URL\"\n  }\n}";
+            string token = xAuthorization;
 
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Package>(exampleJson)
-            : default(Package);            //TODO: Change the data returned
-            return new ObjectResult(example);
+            //verify token
+            if (!Sanitizer.VerifyTokenSanitized(token))
+            {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
+            //-------------Add package to metadata table ----------------
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+            
+            //sanitize package name, version, and id
+            string Name = Sanitizer.SanitizeString(body.Name);
+            string Version = body.Version;
+            string ID = Guid.NewGuid();
+
+            string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ({ID}, {Name}, {Version})";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            
+            if (results.affectRows == 0)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "No packages are added + " + factory.GetQuery());
+                return StatusCode(404);
+            }
+
+            return StatusCode(201);
         }
 
         /// <summary>
@@ -449,13 +516,23 @@ namespace IO.Swagger.Controllers
                 return StatusCode(404);
             }
 
-            //Delete from Packages Data Query
-            /* string query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE id= '{id}' LIMIT 1";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery(); */
+            List<PackageHistoryEntry> packageHistoryEntries = new List<PackageHistoryEntry>();
+            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
 
-            //Add to History Query 
-            
+            //Delete from Packages Data Query
+            string query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE metaid= '{id}' LIMIT 1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+
+            if (result.TotalRows == 0)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "No packages found for id: + " + id + "  " + factory.GetQuery());
+                return StatusCode(404);
+            }
+
+            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+
             return StatusCode(200);
         }
 
@@ -500,7 +577,6 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
-
 
             //Form NotImplemented JSON
             PackageRating rating = new PackageRating();
@@ -604,6 +680,7 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404);
+            
 
             throw new NotImplementedException();
         }
