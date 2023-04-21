@@ -26,6 +26,9 @@ using Google.Apis.Bigquery.v2.Data;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using Google.Cloud.SecretManager.V1;
+using Google.Protobuf;
+using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 
 
 namespace IO.Swagger.Controllers
@@ -145,6 +148,8 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404);
+
+            string id = name;
 
             string token = xAuthorization;
 
@@ -690,14 +695,11 @@ namespace IO.Swagger.Controllers
             //pretend to reset the registry
             //get github token from secrets in gcp
             SecretManagerServiceClient client = SecretManagerServiceClient.Create();
-            //get the gh token
-            AccessSecretVersionResponse response = client.AccessSecretVersion(new AccessSecretVersionRequest
-            {
-                SecretVersionName = SecretVersionName.FromProjectSecretVersion("package-registry-461", "github-token", "latest"),
-            });
-
-            string githubToken = response.Payload.Data.ToStringUtf8();
-
+            // Get the secret value
+            var secretName = new SecretName("package-registry-461", "githubtoken");
+            var secretVersion = new SecretVersionName(secretName.ProjectId, secretName.SecretId, "latest");
+            var secret = client.AccessSecretVersion(secretVersion);
+            string githubToken =  secret.Payload.Data.ToStringUtf8();
             Response.Headers.Add("X-Debug", "Registry reset + github token: " + githubToken);
             return StatusCode(200);
 

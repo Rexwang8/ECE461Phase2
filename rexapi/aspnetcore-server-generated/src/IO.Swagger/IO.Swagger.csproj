@@ -12,9 +12,12 @@
    <IsTransformWebConfigDisabled>true</IsTransformWebConfigDisabled>
 </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Google.Api.Gax" Version="4.3.1" />
     <PackageReference Include="Google.Apis.Auth" Version="1.60.0" />
     <PackageReference Include="Google.Apis.Bigquery.v2" Version="1.60.0.2998" />
     <PackageReference Include="Google.Cloud.BigQuery.V2" Version="3.2.0" />
+    <PackageReference Include="Google.Cloud.SecretManager.V1" Version="2.1.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.22.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.5.1" />
