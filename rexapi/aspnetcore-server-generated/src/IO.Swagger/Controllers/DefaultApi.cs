@@ -25,6 +25,8 @@ using Google.Cloud.BigQuery.V2;
 using Google.Apis.Bigquery.v2.Data;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
+using Google.Cloud.SecretManager.V1;
+
 
 namespace IO.Swagger.Controllers
 {
@@ -686,7 +688,17 @@ namespace IO.Swagger.Controllers
             }
 
             //pretend to reset the registry
-            Response.Headers.Add("X-Debug", "Registry reset");
+            //get github token from secrets in gcp
+            SecretManagerServiceClient client = SecretManagerServiceClient.Create();
+            //get the gh token
+            AccessSecretVersionResponse response = client.AccessSecretVersion(new AccessSecretVersionRequest
+            {
+                SecretVersionName = SecretVersionName.FromProjectSecretVersion("package-registry-461", "github-token", "latest"),
+            });
+
+            string githubToken = response.Payload.Data.ToStringUtf8();
+
+            Response.Headers.Add("X-Debug", "Registry reset + github token: " + githubToken);
             return StatusCode(200);
 
 
