@@ -185,38 +185,72 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
 
-            //-----------------------Delete from Meta Data Query------------------------------------
-            string query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' LIMIT 20";
+            //get metadata for package, most recent version
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' ORDER BY version DESC LIMIT 1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            if (result.TotalRows == 0)
+            {
+                Response.Headers.Add("X-Debug", "Package does not exist");
+                return StatusCode(404);
+            }
+            PackageMetadata metadata = new PackageMetadata();
+            foreach (BigQueryRow row in result)
+            {
+                //Name
+                if (row["name"] != null)
+                {
+                    metadata.Name = row["name"].ToString();
+                }
+                else 
+                {
+                    metadata.Name = "invalid";
+                }
+
+                //Version
+                if (row["version"] != null)
+                {
+                    metadata.Version = row["version"].ToString();
+                }
+                else
+                {
+                    metadata.Version = "invalid";
+                }
+
+                //ID
+                if (row["id"] != null)
+                {
+                    metadata.ID = row["id"].ToString();
+                }
+                else
+                {
+                    metadata.ID = "invalid";
+                }
+                    
+            }
+
+
+            //--------------------Add to History Query------------------------------------
+
+            //
+            query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('DELETE', CURRENT_TIMESTAMP(), true, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
-            if (result.TotalRows == 0)
-            {
-                //append debug message to header
-                Response.Headers.Add("X-Debug", "No packages found for name: + " + name + "  " + factory.GetQuery());
-                return StatusCode(404);
-            }
-
-            List<PackageHistoryEntry> packageHistoryEntries = new List<PackageHistoryEntry>();
-            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+            //-----------------------Delete from Meta Data Query------------------------------------
+            query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' LIMIT 20";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
 
             //--------------------Delete from Packages Data Query------------------------------------
-            foreach (BigQueryRow row in result)
-            {
-                string id = row["id"].ToString();
-                query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE metaid='{id}' LIMIT 1";
-                factory.SetQuery(query);
-                result = factory.ExecuteQuery();
+            query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE name='{name}' LIMIT 1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            //--------------------Delete from cloud store------------------------------------
+            
 
-                if (result.TotalRows == 0)
-                {
-                    //append debug message to header
-                    Response.Headers.Add("X-Debug", "No packages found for id: + " + id + "  " + factory.GetQuery());
-                    return StatusCode(404);
-                }
 
-                packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
-            }
+            
 
             return StatusCode(200);
         }

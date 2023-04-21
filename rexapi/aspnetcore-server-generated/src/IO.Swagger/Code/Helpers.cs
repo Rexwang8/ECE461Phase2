@@ -165,6 +165,7 @@ namespace IO.Swagger.Controllers
         public string Password { get; set; }
         public bool IsAdmin { get; set; }
         public string Token_NoBearer { get; set; }
+        public bool IsTokenValid { get; set; }
 
         public BigQueryFactory factory { get; set; }
 
@@ -253,32 +254,51 @@ namespace IO.Swagger.Controllers
 
             if (result.TotalRows == 0)
             {
+                IsTokenValid = false;
                 return AuthResults.NO_RESULTS;
             }
 
             //check if token is expired or overlimit
             if (Int64.Parse(row["numuses"].ToString()) < 0)
             {
+                IsTokenValid = false;
                 return AuthResults.TOKEN_OVERLIMIT;
             }
             DateTime foreignTokenExpiration = DateTime.Parse(row["dateexpired"].ToString());
             if (foreignTokenExpiration == null)
             {
                 Console.WriteLine("ERROR ValidateToken: Token expiration date is null");
+                IsTokenValid = false;
                 return AuthResults.TOKEN_INVALID;
             }
             if (foreignTokenExpiration < DateTime.Now)
             {
+                IsTokenValid = false;
                 return AuthResults.TOKEN_EXPIRED;
             }
 
+            IsTokenValid = true;
+            //get username
+
+            if (row["username"].ToString() == null)
+            {
+                Console.WriteLine("ERROR ValidateToken: Username is null");
+                IsTokenValid = false;
+                return AuthResults.TOKEN_INVALID;
+            } 
+            else
+            {
+                Username = row["username"].ToString();
+            }
             //check if admin or user
             if (row["admin"].ToString() == "True")
             {
+                IsAdmin = true;
                 return AuthResults.SUCCESS_ADMIN;
             }
             else
             {
+                IsAdmin = false;
                 return AuthResults.SUCCESS_USER;
             }
         }
@@ -446,6 +466,21 @@ namespace IO.Swagger.Controllers
         public void setAdmin(bool? admin)
         {
             this.IsAdmin = admin ?? false;
+        }
+    
+        public string getUsername()
+        {
+            return this.Username;
+        }
+
+        public string getPassword()
+        {
+            return this.Password;
+        }
+
+        public bool getAdmin()
+        {
+            return this.IsAdmin;
         }
     }
 
