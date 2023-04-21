@@ -189,11 +189,17 @@ namespace IO.Swagger.Controllers
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' ORDER BY version DESC LIMIT 1";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
+            if (result == null)
+            {
+                Response.Headers.Add("X-Debug", "Query failed");
+                return StatusCode(400);
+            }
             if (result.TotalRows == 0)
             {
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
+
             PackageMetadata metadata = new PackageMetadata();
             foreach (BigQueryRow row in result)
             {

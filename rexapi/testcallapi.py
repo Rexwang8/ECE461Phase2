@@ -124,7 +124,7 @@ def main():
     #PrintResponse(response)
     
     #delete
-    Authurl, Authheader = DeletePackageRequestByName(token, "namekevin")
+    Authurl, Authheader = DeletePackageRequestByName(token, "kevin")
     print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
     response = requests.delete(Authurl, headers=Authheader)
     PrintResponse(response, False)
