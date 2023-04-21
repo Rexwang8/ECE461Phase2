@@ -13,39 +13,25 @@ namespace PackageSearch
 
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Enter search query:");
-            string query = Console.ReadLine();
-
             Console.WriteLine("Enter regular expression:");
             string regexPattern = Console.ReadLine();
 
             Regex regex = new Regex(regexPattern, RegexOptions.IgnoreCase);
 
-            List<Package> gitHubPackages = await SearchPackages("https://ourapi.com/github", query);
-            List<Package> npmPackages = await SearchPackages("https://ourapi.com/npm", query);
+            List<Package> packages = await FetchPackages("url");
 
-            Console.WriteLine("Filtered GitHub Packages:");
-            foreach (var package in gitHubPackages)
+            Console.WriteLine("Filtered Packages:");
+            foreach (var package in packages)
             {
-                if (regex.IsMatch(package.Name) || regex.IsMatch(package.Description))
+                if (regex.IsMatch(package.Name) || regex.IsMatch(package.Readme))
                 {
-                    Console.WriteLine($"Name: {package.Name}, Description: {package.Description}");
-                }
-            }
-
-            Console.WriteLine("Filtered NPM Packages:");
-            foreach (var package in npmPackages)
-            {
-                if (regex.IsMatch(package.Name) || regex.IsMatch(package.Description))
-                {
-                    Console.WriteLine($"Name: {package.Name}, Description: {package.Description}");
+                    Console.WriteLine($"Name: {package.Name}, Readme: {package.Readme}");
                 }
             }
         }
 
-        private static async Task<List<Package>> SearchPackages(string apiUrl, string query)
+        private static async Task<List<Package>> FetchPackages(string apiUrl)
         {
-            apiUrl = $"{apiUrl}?q={query}";
             HttpResponseMessage response;
 
             try
@@ -73,7 +59,7 @@ namespace PackageSearch
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonProperty("description")]
-        public string Description { get; set; }
+        [JsonProperty("readme")]
+        public string Readme { get; set; }
     }
 }
