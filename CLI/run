@@ -62,9 +62,16 @@ case "$1" in
         cd src/StaticAnalysis
         dotnet add package Newtonsoft.Json | tee -a $logfullpath ../../cache/build.txt >/dev/null
         dotnet add package GraphQL | tee -a $logfullpath ../../cache/build.txt >/dev/null
-        dotnet add package GraphQL.Client | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package GraphQL.Client --version 5.1.1 | tee -a $logfullpath ../../cache/build.txt >/dev/null
         dotnet add package GraphQL.Client.Serializer.Newtonsoft | tee -a $logfullpath ../../cache/build.txt >/dev/null
         dotnet add package GraphQL.Common | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package Newtonsoft.Json | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package Microsoft.AspNet.WebApi.Client --version 5.2.9 | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package Microsoft.Extensions.DependencyInjection --version 7.0.0 | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package NUglify --version 1.20.6 | tee -a $logfullpath ../../cache/build.txt >/dev/null
+        dotnet add package Microsoft.AspNetCore.Hosting --version 2.2.7 | tee -a $logfullpath ../../cache/build.txt >/dev/null
+
+
         cd ../..
         
 
