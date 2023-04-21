@@ -159,12 +159,6 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if (!Guid.TryParse(id, out _))
-            {
-                Response.Headers.Add("X-Debug", "ID is not sanitized");
-                return StatusCode(400);
-            }
-
             TokenAuthenticator authenticator = new TokenAuthenticator();
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
 
