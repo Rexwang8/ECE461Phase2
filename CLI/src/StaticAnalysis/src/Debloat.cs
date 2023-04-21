@@ -14,10 +14,10 @@ public class Debloater
     public async Task Debloat(string filepath)
     {
         //FINDING JS FILES
-        var builder = new WebHostBuilder()
-            .UseContentRoot(Directory.GetCurrentDirectory())
+        /*var builder = new WebHostBuilder();
+            .UseContentRoot(Directory.GetCurrentDirectory());
             .ConfigureServices(services => services.AddNodeServices());
-
+        
         using (var host = builder.Build())
         {
             var env = host.Services.GetService<IWebHostEnvironment>();
@@ -25,7 +25,7 @@ public class Debloater
 
             await MinifyJsFilesAsync(path);
             Console.WriteLine("Minification complete.");
-        }
+        }*/
         //DELETING README AND LICENSE
         DirectoryInfo dir = new DirectoryInfo(@filepath);
         foreach (FileInfo file in dir.GetFiles())
