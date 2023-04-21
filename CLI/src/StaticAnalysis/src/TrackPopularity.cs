@@ -1,48 +1,31 @@
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace PackagePopularityTracker
+namespace PackagePopularity
 {
     class Program
     {
         private static readonly HttpClient httpClient = new HttpClient();
+        private const double EMA_ALPHA = 0.1; // Adjust this value to control the weight of recent activity
 
         static async Task Main(string[] args)
         {
-            Console.WriteLine("Enter GitHub Repository (format: owner/repo):");
-            string? githubRepo = Console.ReadLine();
+            Console.WriteLine("Enter package name:");
+            string packageName = Console.ReadLine();
 
-            Console.WriteLine("Enter NPM Package Name:");
-            string? npmPackageName = Console.ReadLine();
+            PackageData packageData = await FetchPackageData("https://your-custom-api.com/package", packageName);
 
-            if (githubRepo != null && npmPackageName != null)
-            {
-                int? stars = await GetGitHubStars(githubRepo);
-                int? downloads = await GetNpmDownloads(npmPackageName);
+            double popularityScore = CalculatePopularityScore(packageData);
 
-                if (stars.HasValue && downloads.HasValue)
-                {
-                    Console.WriteLine($"GitHub Stars: {stars}");
-                    Console.WriteLine($"NPM Downloads: {downloads}");
-                }
-                else
-                {
-                    Console.WriteLine("Error fetching data. Please try again.");
-                }
-            }
-            else
-            {
-                Console.WriteLine("Invalid input. Please try again.");
-            }
+            Console.WriteLine($"Popularity Score: {popularityScore}");
         }
 
-        private static async Task<int?> GetGitHubStars(string repo)
+        private static async Task<PackageData> FetchPackageData(string apiUrl, string packageName)
         {
-            string apiUrl = $"https://api.github.com/repos/{repo}";
-            httpClient.DefaultRequestHeaders.UserAgent.TryParseAdd("request");
-
+            apiUrl = $"{apiUrl}?name={packageName}";
             HttpResponseMessage response;
 
             try
@@ -57,47 +40,48 @@ namespace PackagePopularityTracker
             if (response.IsSuccessStatusCode)
             {
                 string jsonString = await response.Content.ReadAsStringAsync();
-                var json = JsonConvert.DeserializeObject<GitHubRepoResponse>(jsonString);
-                return json?.StargazersCount;
+                var packageData = JsonConvert.DeserializeObject<PackageData>(jsonString);
+                return packageData;
             }
 
             return null;
         }
 
-        private static async Task<int?> GetNpmDownloads(string packageName)
+        private static double CalculatePopularityScore(PackageData packageData)
         {
-            string apiUrl = $"https://api.npmjs.org/downloads/point/last-month/{packageName}";
-            HttpResponseMessage response;
-
-            try
+            if (packageData == null)
             {
-                response = await httpClient.GetAsync(apiUrl);
-            }
-            catch (Exception)
-            {
-                return null;
+                return 0.0;
             }
 
-            if (response.IsSuccessStatusCode)
+            double emaStars = CalculateEMA(packageData.Stars, EMA_ALPHA);
+            double emaDownloads = CalculateEMA(packageData.Downloads, EMA_ALPHA);
+
+            // You can adjust the weights for stars and downloads based on your preference
+            double popularityScore = (0.5 * emaStars) + (0.5 * emaDownloads);
+
+            return popularityScore;
+        }
+
+        private static double CalculateEMA(List<int> data, double alpha)
+        {
+            double ema = data[0];
+
+            for (int i = 1; i < data.Count; i++)
             {
-                string jsonString = await response.Content.ReadAsStringAsync();
-                var json = JsonConvert.DeserializeObject<NpmDownloadsResponse>(jsonString);
-                return json?.Downloads;
+                ema = (alpha * data[i]) + ((1 - alpha) * ema);
             }
 
-            return null;
+            return ema;
         }
     }
 
-    public class GitHubRepoResponse
+    public class PackageData
     {
-        [JsonProperty("stargazers_count")]
-        public int StargazersCount { get; set; }
-    }
+        [JsonProperty("stars")]
+        public List<int> Stars { get; set; }
 
-    public class NpmDownloadsResponse
-    {
         [JsonProperty("downloads")]
-        public int Downloads { get; set; }
+        public List<int> Downloads { get; set; }
     }
 }
