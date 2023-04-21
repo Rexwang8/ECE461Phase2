@@ -144,7 +144,49 @@ namespace IO.Swagger.Controllers
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404);
 
-            throw new NotImplementedException();
+            string token = xAuthorization;
+
+            if (!Sanitizer.VerifyTokenSanitized(token))
+            {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+
+            if (!Guid.TryParse(id, out _))
+            {
+                Response.Headers.Add("X-Debug", "ID is not sanitized");
+                return StatusCode(400);
+            }
+
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                Response.Headers.Add("X-Debug", "User has no perms");
+                return StatusCode(400);
+            }
+
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
+
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+
+            //Delete from Meta Data Query
+            string query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE name='{name}' LIMIT 20";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+
+            //Delete from Packages Data Query
+
+            //Add to History Query 
+            
+            return StatusCode(200);
         }
 
         /// <summary>
@@ -194,9 +236,6 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-
-
-
             bool isSanitizedName = Sanitizer.VerifyPackageNameSafe(packagename);
             if (!isSanitizedName)
             {
@@ -205,12 +244,8 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-
-
-
 
             //query database get all rows with the package name and return them
             string query = $"SELECT * FROM `package-registry-461.packages.packagesHistory` WHERE packagemetadata_name = '{packagename}' ORDER BY date LIMIT 100";
@@ -230,8 +265,6 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
-
-
 
             List<PackageHistoryEntry> packageHistoryEntries = new List<PackageHistoryEntry>();
 
@@ -368,6 +401,7 @@ namespace IO.Swagger.Controllers
         {
             string token = xAuthorization;
 
+            //Sanitize Inputs
             if (!Sanitizer.VerifyTokenSanitized(token))
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
@@ -380,6 +414,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //Check Token Permissions
             TokenAuthenticator authenticator = new TokenAuthenticator();
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
 
@@ -389,12 +424,14 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //Decrement Token uses
             TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
+
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
@@ -404,7 +441,17 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
+            if (result.TotalRows == 0)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "No packages found for id: + " + id + "  " + factory.GetQuery());
+                return StatusCode(404);
+            }
+
             //Delete from Packages Data Query
+            /* string query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE id= '{id}' LIMIT 1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery(); */
 
             //Add to History Query 
             
