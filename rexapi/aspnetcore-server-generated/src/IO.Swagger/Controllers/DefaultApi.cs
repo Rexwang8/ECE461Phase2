@@ -148,9 +148,6 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404);
-
-            string id = name;
-
             string token = xAuthorization;
 
             //Sanitize Inputs
@@ -435,15 +432,15 @@ namespace IO.Swagger.Controllers
             BigQueryResults result = null;
             
             //sanitize package name, version, and id
-            string Name = Sanitizer.SanitizeString(body.Name);
-            string Version = body.Version;
-            string ID = Guid.NewGuid();
+            string Name = "Rex";
+            string Version = "1.1.1";
+            string ID = Guid.NewGuid().ToString();
 
             string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ({ID}, {Name}, {Version})";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             
-            if (results.affectRows == 0)
+            if (result.TotalRows == 0)
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "No packages are added + " + factory.GetQuery());
@@ -520,7 +517,7 @@ namespace IO.Swagger.Controllers
             packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
 
             //Delete from Packages Data Query
-            string query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE metaid= '{id}' LIMIT 1";
+            query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE metaid= '{id}' LIMIT 1";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
@@ -764,8 +761,9 @@ namespace IO.Swagger.Controllers
             }
 
             //get bigquery
-            var ghtoken = GetGithubTokenStoredInBQ(); 
-            Response.Headers.Add("X-Debug", "Registry reset + github token: " + githubToken);
+            BigQueryFactory factory = new BigQueryFactory();
+            var ghtoken = factory.GetGithubTokenStoredInBQ(); 
+            Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
             return StatusCode(200);
 
 
