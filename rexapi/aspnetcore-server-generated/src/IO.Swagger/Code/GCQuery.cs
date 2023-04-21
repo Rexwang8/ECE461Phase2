@@ -248,6 +248,28 @@ namespace IO.Swagger.Controllers
             return packageHistory;
         }
 
+
+        public string GetGithubTokenStoredInBQ()
+        {
+            //init query
+            string query = "SELECT * FROM `package-registry-461.userData.secrets WHERE key = 'github_token'";
+
+            //set query
+            SetQuery(query);
+
+            //execute query
+            BigQueryResults results = ExecuteQuery();
+
+            //get token
+            string token = "";
+            foreach (BigQueryRow row in results)
+            {
+                token = row["value"].ToString();
+            }
+
+            //return token
+            return token;
+        }
 }
 
 }

@@ -763,14 +763,8 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            //pretend to reset the registry
-            //get github token from secrets in gcp
-            SecretManagerServiceClient client = SecretManagerServiceClient.Create();
-            // Get the secret value
-            var secretName = new SecretName("package-registry-461", "githubtoken");
-            var secretVersion = new SecretVersionName(secretName.ProjectId, secretName.SecretId, "latest");
-            var secret = client.AccessSecretVersion(secretVersion);
-            string githubToken =  secret.Payload.Data.ToStringUtf8();
+            //get bigquery
+            var ghtoken = GetGithubTokenStoredInBQ(); 
             Response.Headers.Add("X-Debug", "Registry reset + github token: " + githubToken);
             return StatusCode(200);
 
