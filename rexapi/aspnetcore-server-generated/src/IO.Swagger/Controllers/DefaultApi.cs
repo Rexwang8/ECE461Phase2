@@ -138,7 +138,7 @@ namespace IO.Swagger.Controllers
         [Route("/package/byName/{name}")]
         [ValidateModelState]
         [SwaggerOperation("PackageByNameDelete")]
-        public virtual IActionResult PackageByNameDelete([FromHeader][Required()] string xAuthorization, [FromRoute][Required] string name)
+        public virtual IActionResult PackageByNameDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string name)
         {
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200);

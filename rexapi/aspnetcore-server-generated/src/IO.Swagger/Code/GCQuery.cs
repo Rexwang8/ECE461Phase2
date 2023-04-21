@@ -252,7 +252,7 @@ namespace IO.Swagger.Controllers
         public string GetGithubTokenStoredInBQ()
         {
             //init query
-            string query = "SELECT * FROM `package-registry-461.userData.secrets WHERE key = 'github_token'";
+            string query = "SELECT * FROM `package-registry-461.userData.secrets` WHERE key = 'github_token'";
 
             //set query
             SetQuery(query);

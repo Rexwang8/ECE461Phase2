@@ -65,8 +65,8 @@ def FormRateRequest(token, packageid):
     Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
 
-def DeletePackageRequest(token, packageid):
-    url = f"http://package-registry-461.appspot.com/package/{packageid}"
+def DeletePackageRequestByName(token, packagename):
+    url = f"http://package-registry-461.appspot.com/package/byName/{packagename}"
     Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
 
@@ -124,7 +124,7 @@ def main():
     #PrintResponse(response)
     
     #delete
-    Authurl, Authheader = DeletePackageRequest(token, "123123")
+    Authurl, Authheader = DeletePackageRequestByName(token, "namekevin")
     print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
     response = requests.delete(Authurl, headers=Authheader)
     PrintResponse(response, False)
