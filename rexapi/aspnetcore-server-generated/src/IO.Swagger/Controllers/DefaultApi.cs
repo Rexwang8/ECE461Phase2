@@ -238,14 +238,15 @@ namespace IO.Swagger.Controllers
                     
             }
 
-            Response.Headers.Add("X-DebugStatus", "Package exists, deleting");
-            return StatusCode(200);
+            Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID + "Auth: " + authenticator.getUsername() + " " + authenticator.getAdmin());
             //--------------------Add to History Query------------------------------------
 
             //
             query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('DELETE', CURRENT_TIMESTAMP(), true, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
+            Response.Headers.Add("X-DebugQuery", "Query success: Result: " + result.ToString());
+            return StatusCode(200);
 
             //-----------------------Delete from Meta Data Query------------------------------------
             query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' LIMIT 20";
