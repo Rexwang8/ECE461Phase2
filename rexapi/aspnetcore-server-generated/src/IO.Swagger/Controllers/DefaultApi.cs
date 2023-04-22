@@ -181,6 +181,8 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            
+
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
@@ -188,6 +190,7 @@ namespace IO.Swagger.Controllers
             //get metadata for package, most recent version
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' ORDER BY version DESC LIMIT 1";
             factory.SetQuery(query);
+            Response.Headers.Add("X-Debugquery", "query: " + query);
             result = factory.ExecuteQuery();
             if (result == null)
             {
@@ -235,7 +238,8 @@ namespace IO.Swagger.Controllers
                     
             }
 
-
+            Response.Headers.Add("X-DebugStatus", "Package exists, deleting");
+            return StatusCode(200);
             //--------------------Add to History Query------------------------------------
 
             //
