@@ -187,7 +187,7 @@ namespace IO.Swagger.Controllers
             }
             catch (Exception e)
             {
-                Response.Headers.Add("X-DebugUser", "User: " + "null" + " Admin: " + "null");
+                Response.Headers.Add("X-DebugUser", "User: " + "null" + " Admin: " + "null" + "error" + e.ToString());
             }
 
             BigQueryFactory factory = new BigQueryFactory();
@@ -201,7 +201,7 @@ namespace IO.Swagger.Controllers
             }
             catch (Exception e)
             {
-                Response.Headers.Add("X-Debug", "Query failed");
+                Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
                 return StatusCode(400);
             }
 
@@ -218,9 +218,10 @@ namespace IO.Swagger.Controllers
                 return StatusCode(404);
             }
 
+            PackageMetadata metadata = new PackageMetadata();
             try
             {
-                PackageMetadata metadata = new PackageMetadata();
+                
                 foreach (BigQueryRow row in result)
                 {
                     //Name
@@ -259,7 +260,7 @@ namespace IO.Swagger.Controllers
             }
             catch (Exception e)
             {
-                Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid");
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid" + "error" + e.ToString());
             }
 
 
