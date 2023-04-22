@@ -23,7 +23,6 @@ using System.Security.Cryptography;
 using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
 using Google.Apis.Bigquery.v2.Data;
-using Newtonsoft.Json;
 using System.Text.RegularExpressions;
 using Google.Cloud.SecretManager.V1;
 using Google.Protobuf;
@@ -82,8 +81,8 @@ namespace IO.Swagger.Controllers
             {
                 return StatusCode(401);
             }
-            
-            
+
+
             //sanitize input
             string SanitizedUsername = Sanitizer.SanitizeString(username);
             string SanitizedPassword = Sanitizer.SanitizeString(password);
@@ -181,17 +180,33 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            
 
+            try
+            {
+                Response.Headers.Add("X-DebugUser", "User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugUser", "User: " + "null" + " Admin: " + "null");
+            }
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-
-            //get metadata for package, most recent version
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' ORDER BY version DESC LIMIT 1";
             factory.SetQuery(query);
-            Response.Headers.Add("X-Debugquery", "query: " + query);
-            result = factory.ExecuteQuery();
+            try
+            {
+                Response.Headers.Add("X-Debugquery", "query: " + query);
+                result = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-Debug", "Query failed");
+                return StatusCode(400);
+            }
+
+
+            //get metadata for package, most recent version
             if (result == null)
             {
                 Response.Headers.Add("X-Debug", "Query failed");
@@ -203,42 +218,53 @@ namespace IO.Swagger.Controllers
                 return StatusCode(404);
             }
 
-            PackageMetadata metadata = new PackageMetadata();
-            foreach (BigQueryRow row in result)
+            try
             {
-                //Name
-                if (row["name"] != null)
+                PackageMetadata metadata = new PackageMetadata();
+                foreach (BigQueryRow row in result)
                 {
-                    metadata.Name = row["name"].ToString();
-                }
-                else 
-                {
-                    metadata.Name = "invalid";
+                    //Name
+                    if (row["name"] != null)
+                    {
+                        metadata.Name = row["name"].ToString();
+                    }
+                    else
+                    {
+                        metadata.Name = "invalid";
+                    }
+
+                    //Version
+                    if (row["version"] != null)
+                    {
+                        metadata.Version = row["version"].ToString();
+                    }
+                    else
+                    {
+                        metadata.Version = "invalid";
+                    }
+
+                    //ID
+                    if (row["id"] != null)
+                    {
+                        metadata.ID = row["id"].ToString();
+                    }
+                    else
+                    {
+                        metadata.ID = "invalid";
+                    }
+
                 }
 
-                //Version
-                if (row["version"] != null)
-                {
-                    metadata.Version = row["version"].ToString();
-                }
-                else
-                {
-                    metadata.Version = "invalid";
-                }
-
-                //ID
-                if (row["id"] != null)
-                {
-                    metadata.ID = row["id"].ToString();
-                }
-                else
-                {
-                    metadata.ID = "invalid";
-                }
-                    
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid");
             }
 
-            Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID + "Auth: " + authenticator.getUsername() + " " + authenticator.getAdmin());
+
+            return StatusCode(200);
+
             //--------------------Add to History Query------------------------------------
 
             //
@@ -258,10 +284,10 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //--------------------Delete from cloud store------------------------------------
-            
 
 
-            
+
+
 
             return StatusCode(200);
         }
@@ -396,7 +422,7 @@ namespace IO.Swagger.Controllers
 
             string unsanitizedregex = body.Regex;
 
-            string  pattern = Sanitizer.SantizeRegex(unsanitizedregex);
+            string pattern = Sanitizer.SantizeRegex(unsanitizedregex);
             if (pattern == null)
             {
                 //append debug message to header
@@ -475,7 +501,7 @@ namespace IO.Swagger.Controllers
             //-------------Add package to metadata table ----------------
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-            
+
             //sanitize package name, version, and id
             string Name = "Rex";
             string Version = "1.1.1";
@@ -484,7 +510,7 @@ namespace IO.Swagger.Controllers
             string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ({ID}, {Name}, {Version})";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            
+
             if (result.TotalRows == 0)
             {
                 //append debug message to header
@@ -638,26 +664,14 @@ namespace IO.Swagger.Controllers
 
 
 
-
-
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(PackageRating));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
-
-            //TODO: Uncomment the next line to return response 500 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(500);
+            /*
             string exampleJson = null;
             exampleJson = "{\n  \"GoodPinningPractice\" : 2.3021358869347655,\n  \"NetScore\" : 9.301444243932576,\n  \"PullRequest\" : 7.061401241503109,\n  \"ResponsiveMaintainer\" : 5.962133916683182,\n  \"LicenseScore\" : 5.637376656633329,\n  \"RampUp\" : 1.4658129805029452,\n  \"BusFactor\" : 0.8008281904610115,\n  \"Correctness\" : 6.027456183070403\n}";
 
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<PackageRating>(exampleJson)
             : default(PackageRating);            //TODO: Change the data returned
-            return new ObjectResult(example);
+            return new ObjectResult(example);*/
         }
 
         /// <summary>
@@ -722,7 +736,7 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(404);
-            
+
 
             throw new NotImplementedException();
         }
@@ -807,7 +821,7 @@ namespace IO.Swagger.Controllers
 
             //get bigquery
             BigQueryFactory factory = new BigQueryFactory();
-            var ghtoken = factory.GetGithubTokenStoredInBQ(); 
+            var ghtoken = factory.GetGithubTokenStoredInBQ();
             Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
             return StatusCode(200);
 

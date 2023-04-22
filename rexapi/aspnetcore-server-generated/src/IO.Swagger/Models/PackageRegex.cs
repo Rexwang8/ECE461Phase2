@@ -17,10 +17,11 @@ namespace IO.Swagger.Models
     [DataContract]
     public partial class PackageRegex : IEquatable<PackageRegex>
     { 
+        #nullable enable
         [Required]
         [DataMember(Name="Regex")]
         public string? Regex { get; set; }
-
+        #nullable disable
     
         /// <summary>
         /// Returns the string presentation of the object

@@ -353,7 +353,7 @@ namespace IO.Swagger.Controllers
             }
 
             //check if token is over limit
-            int foreignTokenUses = int.Parse(row["numuses"].ToString());
+            int? foreignTokenUses = int.Parse(row["numuses"].ToString());
             if (foreignTokenUses == null)
             {
                 return AuthResults.TOKEN_OVERLIMIT;
@@ -366,10 +366,6 @@ namespace IO.Swagger.Controllers
 
             //check if admin
             bool foreignAdmin = bool.Parse(row["admin"].ToString());
-            if (foreignAdmin == null)
-            {
-                return AuthResults.SUCCESS_USER;
-            }
             if (foreignAdmin)
             {
                 return AuthResults.SUCCESS_ADMIN;
