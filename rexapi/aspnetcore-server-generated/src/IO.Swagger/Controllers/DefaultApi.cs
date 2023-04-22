@@ -276,7 +276,6 @@ namespace IO.Swagger.Controllers
             {
                 Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
             }
-            return StatusCode(200);
 
             //-----------------------Delete from Meta Data Query------------------------------------
             query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' LIMIT 20";
