@@ -21,5 +21,5 @@ build.bat
 ```
 cd src/IO.Swagger
 docker build -t io.swagger .
-docker run -p 5000:5000 io.swagger
+docker run -p 8080:8080 io.swagger
 ```
