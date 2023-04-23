@@ -28,7 +28,9 @@ using Google.Cloud.SecretManager.V1;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-
+using LibGit2Sharp;
+using System.Threading;
+using System.IO;
 
 namespace IO.Swagger.Controllers
 {
@@ -820,6 +822,23 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
             var ghtoken = factory.GetGithubTokenStoredInBQ();
             Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
+
+            var co = new CloneOptions();
+            co.CredentialsProvider = (_url, _user, _cred) =>
+                new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
+
+            Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./", co);
+
+            //wait 2s
+            Thread.Sleep(2000);
+            //check if repo exists
+            if (!Directory.Exists("./fast-epubtotxt"))
+            {
+                Response.Headers.Add("X-Debug", "Repo does not exist");
+                return StatusCode(400);
+            }
+
+
             return StatusCode(200);
 
 
