@@ -1,5 +1,8 @@
 runtime: custom
 env: flex
+network:
+  forwarded_ports:
+    - 5000/tcp
 
 # [START configuration]
 endpoints_api_service:
