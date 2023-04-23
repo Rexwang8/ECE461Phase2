@@ -24,6 +24,9 @@ jobs:
     - name: CopyConfigApp
       run: cp rexapi/aspnetcore-server-generated/src/IO.Swagger/AppDeploy.yaml rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp3.1/publish/app.yaml
 
+    - name: CopyDocker
+      run: cp rexapi/aspnetcore-server-generated/src/IO.Swagger/Dockerfile rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp3.1/publish/Dockerfile
+
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
       with:
