@@ -39,7 +39,7 @@ jobs:
       run: 'gcloud info'
     
     - id: 'deploy'
-      run: gcloud app deploy --verbosity=debug rexapi/aspnetcore-server-generated/src/IO.Swagger/bin/Debug/netcoreapp3.1/publish/app.yaml
+      run: gcloud app deploy --verbosity=debug AppDeploy.yaml
       
     - name: Test
       run: curl "package-registry-461.appspot.com"
