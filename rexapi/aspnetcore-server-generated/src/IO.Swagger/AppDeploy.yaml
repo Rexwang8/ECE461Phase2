@@ -1,4 +1,5 @@
 runtime: aspnetcore
+env: flex
 
 # [START configuration]
 endpoints_api_service:
