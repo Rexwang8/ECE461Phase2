@@ -139,14 +139,6 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageByNameDelete")]
         public virtual IActionResult PackageByNameDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string name)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200);
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
             string token = xAuthorization;
 
             //Sanitize Inputs
@@ -196,7 +188,7 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             try
             {
-                Response.Headers.Add("X-Debugquery", "query: " + query);
+                //Response.Headers.Add("X-Debugquery", "query: " + query);
                 result = factory.ExecuteQuery();
             }
             catch (Exception e)
@@ -261,6 +253,7 @@ namespace IO.Swagger.Controllers
             catch (Exception e)
             {
                 Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid" + "error" + e.ToString());
+                return StatusCode(400);
             }
 
 
@@ -275,6 +268,7 @@ namespace IO.Swagger.Controllers
             catch (Exception e)
             {
                 Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
+                return StatusCode(400);
             }
 
             //-----------------------Delete from Meta Data Query------------------------------------

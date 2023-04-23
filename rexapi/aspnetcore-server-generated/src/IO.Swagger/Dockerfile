@@ -3,6 +3,9 @@ WORKDIR /app
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
 
+# Download pip and python
+RUN apt-get update && apt-get install -y python3 python3-pip
+
 # copy csproj and restore as distinct layers
 COPY *.csproj ./
 RUN dotnet restore
