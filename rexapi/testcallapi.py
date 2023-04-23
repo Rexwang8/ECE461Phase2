@@ -118,16 +118,16 @@ def main():
     
     
     #request
-    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response)
+    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response)
     
     #delete
-    Authurl, Authheader = DeletePackageRequestByName(token, "kevin")
-    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    response = requests.delete(Authurl, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader = DeletePackageRequestByName(token, "kevin")
+    #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    #response = requests.delete(Authurl, headers=Authheader)
+    #PrintResponse(response, False)
     
     
     #url, header = FormResetRequest(token)
