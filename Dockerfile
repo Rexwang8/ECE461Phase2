@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
 WORKDIR /app
 
 ENV DOTNET_CLI_TELEMETRY_OPTOUT 1
@@ -31,8 +31,5 @@ RUN dotnet add package GraphQL.Client.Serializer.Newtonsoft
 COPY rexapi/aspnetcore-server-generated/ ./
 RUN dotnet publish -c Release -o out
 # build runtime image
-#FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
-#WORKDIR /app
-COPY --from=build-env /app/out .
 
 ENTRYPOINT ["dotnet", "run"]
