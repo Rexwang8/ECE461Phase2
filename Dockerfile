@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 # copy everything else and build
 COPY rexapi/aspnetcore-server-generated/ ./
 RUN dotnet publish -c Release -o out
+RUN ls -la
+
 
 #C# Dependencies
 RUN dotnet add package Google.Api.Gax --version 4.3.1
@@ -30,4 +32,4 @@ RUN dotnet add package GraphQL.Client.Serializer.Newtonsoft
 
 # build runtime image
 
-ENTRYPOINT ["dotnet", "run"]
+ENTRYPOINT ["dotnet", "run --project IO.Swagger/IO.Swagger.csproj"]
