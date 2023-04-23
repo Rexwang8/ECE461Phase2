@@ -36,4 +36,4 @@ RUN dotnet publish -c Release -o out
 
 # build runtime image
 
-ENTRYPOINT ["dotnet", "IO.Swagger.dll"]
+ENTRYPOINT ["dotnet", "out/IO.Swagger.dll"]
