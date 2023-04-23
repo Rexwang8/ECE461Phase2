@@ -8,9 +8,9 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 
 
 
-# copy csproj and restore as distinct layers
-COPY rexapi/aspnetcore-server-generated/src/IO.Swagger/*.csproj ./
-RUN dotnet restore
+# copy everything else and build
+COPY rexapi/aspnetcore-server-generated/ ./
+RUN dotnet publish -c Release -o out
 
 #C# Dependencies
 RUN dotnet add package Google.Api.Gax --version 4.3.1
@@ -27,9 +27,7 @@ RUN dotnet add package Swashbuckle.AspNetCore.SwaggerUI        --version 5.5.1
 RUN dotnet add package GraphQL.Client --version 5.1.1
 RUN dotnet add package GraphQL.Client.Serializer.Newtonsoft
 
-# copy everything else and build
-COPY rexapi/aspnetcore-server-generated/ ./
-RUN dotnet publish -c Release -o out
+
 # build runtime image
 
 ENTRYPOINT ["dotnet", "run"]
