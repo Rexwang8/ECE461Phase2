@@ -24,6 +24,10 @@ function Packages() {
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Function implementation here
     setSearchQuery(event.target.value);
+    const listContainer = document.querySelector(".list-container");
+      if (listContainer) {
+        listContainer.scrollTop = 0;
+      }
   };
 
   const handleProfileButtonClick = () => {

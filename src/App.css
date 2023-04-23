@@ -58,6 +58,7 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 100;
 }
 
 .navbar input[type="text"] {
@@ -114,7 +115,9 @@
   display: flex;
   justify-content: center;
   overflow-y: auto;
-  max-height: 55vh;
+  border: 3px solid lightgrey;
+  max-height: 60vh;
+  border-radius: 10px;
 }
 
 .list {
