@@ -28,9 +28,12 @@ using Google.Cloud.SecretManager.V1;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
+using System.Linq;
+using IO.Swagger.CLI;
 using LibGit2Sharp;
 using System.Threading;
 using System.IO;
+
 
 namespace IO.Swagger.Controllers
 {
@@ -503,8 +506,45 @@ namespace IO.Swagger.Controllers
             BigQueryResults result = null;
 
             //sanitize package name, version, and id
-            string Name = "Rex";
-            string Version = "1.1.1";
+            string Name = "";
+            string Version = "";
+            if (body.URL != null)
+            {
+                Name = (body.URL).Split('/').Last();
+
+                URLInfo urlInfo = new URLInfo(body.URL);
+                //Download Package
+                
+
+                //Get Json file
+                
+                //Get the version
+
+                //Delete the Package
+
+            }
+            else if (body.Content != null)
+            {
+                //convert base64 into zip
+                
+                //unzip the zip file
+
+                //get Json file
+
+                //get name
+                
+                //get version
+                
+            }
+            else 
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Package is missing both content and url");
+                return StatusCode(400);
+            }
+
+            //Add to metadata table
+            Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
 
             string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ({ID}, {Name}, {Version})";
@@ -517,6 +557,8 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "No packages are added + " + factory.GetQuery());
                 return StatusCode(404);
             }
+
+            //Add to package table
 
             return StatusCode(201);
         }

@@ -7,7 +7,7 @@ using Google.Apis.Auth.OAuth2;
 using Google.Cloud.BigQuery.V2;
 using Google.Apis.Bigquery.v2.Data;
 using System.Diagnostics;
-
+using static System.IO.Directory;
 
 namespace IO.Swagger.Controllers
 {
@@ -635,9 +635,6 @@ namespace IO.Swagger.Controllers
             System.IO.File.WriteAllBytes(filename, base64EncodedBytes);
             return;
         }
-
-
-
     }
 
     /// <summary>

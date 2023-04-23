@@ -18,7 +18,15 @@
     <PackageReference Include="Google.Cloud.BigQuery.V2" Version="3.2.0" />
     <PackageReference Include="Google.Cloud.SecretManager.V1" Version="2.1.0" />
     <PackageReference Include="Google.Protobuf" Version="3.22.3" />
+    <PackageReference Include="GraphQL" Version="7.4.1" />
+    <PackageReference Include="GraphQL.Client" Version="6.0.0" />
+    <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="6.0.0" />
+    <PackageReference Include="GraphQL.Common" Version="1.0.3" />
     <PackageReference Include="libgit2sharp" Version="0.27.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="5.5.1" />
