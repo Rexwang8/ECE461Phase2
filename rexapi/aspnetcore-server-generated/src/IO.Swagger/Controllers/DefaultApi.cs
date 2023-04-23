@@ -823,16 +823,20 @@ namespace IO.Swagger.Controllers
             var ghtoken = factory.GetGithubTokenStoredInBQ();
             Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
 
+
+            //make directory
+
+
             var co = new CloneOptions();
             co.CredentialsProvider = (_url, _user, _cred) =>
                 new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
 
-            Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./", co);
+            Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./test", co);
 
             //wait 2s
             Thread.Sleep(2000);
-            //check if repo exists
-            if (!Directory.Exists("./fast-epubtotxt"))
+            //check if repo file exists
+            if (!System.IO.File.Exists("./test/README.md"))
             {
                 Response.Headers.Add("X-Debug", "Repo does not exist");
                 return StatusCode(400);
