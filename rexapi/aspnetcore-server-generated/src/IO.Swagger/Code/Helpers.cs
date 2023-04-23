@@ -639,4 +639,342 @@ namespace IO.Swagger.Controllers
 
 
     }
+
+    /// <summary>
+    /// Class for Version number control
+    /// </summary>
+    public class Version
+    {
+        /// <summary>
+        /// Major version number
+        /// </summary>
+        public int Major { get; set; }
+
+        /// <summary>
+        /// Minor version number
+        /// </summary>
+        public int Minor { get; set; }
+
+        /// <summary>
+        /// Patch version number
+        /// </summary>
+        public int Patch { get; set; }
+
+        /// <summary>
+        /// if version is a range of versions (parent range is max version, min version is in MinVersion)
+        /// </summary>
+        public bool IsRange { get; set; }
+
+        /// <summary>
+        /// if version is a sub version in a range (1.0.0-1.1.0)
+        /// </summary>
+        public bool IsSubRange { get; set; }
+
+        /// <summary>
+        /// (only used if IsRange is true) the minimum version in the range
+        /// </summary>
+        public Version MinVersion { get; set; }
+
+        /// <summary>
+        /// if version is a major range (^1.0.0)
+        /// </summary>
+        public bool IsMajorRange { get; set; }
+
+        /// <summary>
+        /// if version is a minor range (~1.0.0)
+        /// </summary>
+        public bool IsMinorRange { get; set; }
+
+        
+
+        /// <summary>
+        /// Constructor for Version
+        /// </summary>
+        public Version(int major, int minor, int patch, bool isRange = false, bool isSubRange = false, Version minVersion = null, bool isMajorRange = false, bool isMinorRange = false)
+        {
+            Major = major;
+            Minor = minor;
+            Patch = patch;
+            IsRange = isRange;
+            IsSubRange = IsSubRange;
+            MinVersion = minVersion;
+            IsMajorRange = isMajorRange;
+            IsMinorRange = isMinorRange;
+        }
+
+        /// <summary>
+        /// Constructor for Version
+        /// </summary>
+        public Version(string version)
+        {
+            Parse(version);
+        }
+
+        /// <summary>
+        ///parses a version string into a version object
+        /// </summary>
+        public void Parse(string version)
+        {
+            //detect if range, and if so, parse min version and max version
+            if (version.StartsWith("^"))
+            {
+                //major range
+                IsMajorRange = true;
+                IsMinorRange = false;
+                IsRange = false;
+                version = version.Replace("^", "");
+                string[] versionSplit = version.Split('.');
+                if (versionSplit.Length == 3)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = int.Parse(versionSplit[2]);
+                }
+                else if (versionSplit.Length == 2)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = 0;
+                }
+                else
+                {
+                    throw new Exception("Invalid version string");
+                }
+
+            }
+            else if (version.StartsWith("~"))
+            {
+                //minor range
+                IsMajorRange = false;
+                IsMinorRange = true;
+                IsRange = false;
+                version = version.Replace("~", "");
+                string[] versionSplit = version.Split('.');
+                if (versionSplit.Length == 3)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = int.Parse(versionSplit[2]);
+                }
+                else if (versionSplit.Length == 2)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = 0;
+                }
+                else
+                {
+                    throw new Exception("Invalid version string");
+                }
+            }
+            else if (version.Contains("-"))
+            {
+                //range
+                string[] versionRangeSplit = version.Split('-');
+                //max version
+                string maxVersion = versionRangeSplit[1];
+                //min version
+                string minVersion = versionRangeSplit[0];
+
+                //parse max version
+                string[] versionSplit = maxVersion.Split('.');
+                if (versionSplit.Length == 3)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = int.Parse(versionSplit[2]);
+                }
+                else if (versionSplit.Length == 2)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = 0;
+                }
+                else
+                {
+                    throw new Exception("Invalid version string");
+                }
+
+                //parse min version
+                string[] minVersionSplit = minVersion.Split('.');
+                if (minVersionSplit.Length == 3)
+                {
+                    MinVersion = new Version(int.Parse(minVersionSplit[0]), int.Parse(minVersionSplit[1]), int.Parse(minVersionSplit[2]));
+                }
+                else if (minVersionSplit.Length == 2)
+                {
+                    MinVersion = new Version(int.Parse(minVersionSplit[0]), int.Parse(minVersionSplit[1]), 0, isSubRange: true);
+                }
+                else
+                {
+                    throw new Exception("Invalid version string");
+                }
+            }
+            else
+            {
+                //normal version
+                IsMajorRange = false;
+                IsMinorRange = false;
+                IsRange = false;
+                string[] versionSplit = version.Split('.');
+                if (versionSplit.Length == 3)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = int.Parse(versionSplit[2]);
+                }
+                else if (versionSplit.Length == 2)
+                {
+                    Major = int.Parse(versionSplit[0]);
+                    Minor = int.Parse(versionSplit[1]);
+                    Patch = 0;
+                }
+                else
+                {
+                    throw new Exception("Invalid version string");
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Returns the string representation with the periods replaced with underscores
+        /// </summary>
+        public string ToUnderscoreString()
+        {
+            return this.ToString().Replace(".", "_");
+        }
+
+        /// <summary>
+        /// Returns a string representation of the version
+        /// </summary>
+        public override string ToString()
+        {
+            if (IsMajorRange)
+            {
+                return "^" + Major + "." + Minor + "." + Patch;
+            }
+            else if (IsMinorRange)
+            {
+                return "~" + Major + "." + Minor + "." + Patch;
+            }
+            else if (IsRange)
+            {
+                return MinVersion.ToString() + "-" + Major + "." + Minor + "." + Patch;
+            }
+            else if (IsSubRange)
+            {
+                return Major + "." + Minor + "." + Patch;
+            }
+            else
+            {
+                return Major + "." + Minor + "." + Patch;
+            }
+        }
+
+        /// <summary>
+        /// Returns true if the version is newer than the other version (uses max version if range)
+        /// </summary>
+        public bool IsNewerThan(Version other)
+        {
+            if (Major > other.Major)
+            {
+                return true;
+            }
+            else if (Major == other.Major)
+            {
+                if (Minor > other.Minor)
+                {
+                    return true;
+                }
+                else if (Minor == other.Minor)
+                {
+                    if (Patch > other.Patch)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true if the version is older than the other version
+        /// </summary>
+        public bool IsOlderThan(Version other)
+        {
+            if (Major < other.Major)
+            {
+                return true;
+            }
+            else if (Major == other.Major)
+            {
+                if (Minor < other.Minor)
+                {
+                    return true;
+                }
+                else if (Minor == other.Minor)
+                {
+                    if (Patch < other.Patch)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true if the version is equal to the other version
+        /// </summary>
+        public bool IsEqualTo(Version other)
+        {
+            if (Major == other.Major && Minor == other.Minor && Patch == other.Patch)
+            {
+                if (IsRange && other.IsRange)
+                {
+                    if (MinVersion.IsEqualTo(other.MinVersion))
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    if (IsMajorRange == other.IsMajorRange && IsMinorRange == other.IsMinorRange && IsRange == other.IsRange)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns a regex string that matches the version
+        /// Major and minor ranges will use the \d+ regex
+        /// </summary>
+        public string ToRegexString()
+        {
+            if (IsMajorRange)
+            {
+                return "(\\d+)\\_" + Minor + "\\_" + Patch;
+            }
+            else if (IsMinorRange)
+            {
+                return Major + "\\_(\\d+)\\_" + Patch;
+            }
+            else if (IsRange)
+            {
+                return MinVersion.ToRegexString() + "-" + Major + "\\_" + Minor + "\\_" + Patch;
+            }
+            else if (IsSubRange)
+            {
+                return Major + "\\_" + Minor + "\\_" + Patch;
+            }
+            else
+            {
+                return Major + "\\_" + Minor + "\\_" + Patch;
+            }
+        }
+    }
 }

@@ -20,6 +20,9 @@ namespace IO.Swagger.Security
         /// </summary>
         public const string SchemeName = "ApiKey";
 
+        /// <summary>
+        /// constructor for ApiKeyAuthenticationHandler.
+        /// </summary>
         public ApiKeyAuthenticationHandler(IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock) : base(options, logger, encoder, clock)
         {
         }

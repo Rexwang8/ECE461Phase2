@@ -30,6 +30,14 @@ class AuthenticateRequest:
     def __init__(self, User, Secret):
         self.User = User
         self.Secret = Secret
+        
+class QueryRequest:
+    Name: str
+    Version: str
+    
+    def __init__(self, name, version):
+        self.Name = name
+        self.Version = version
 
 
 #https://www.geeksforgeeks.org/serialize-and-deserialize-complex-json-in-python/
@@ -69,6 +77,12 @@ def DeletePackageRequestByName(token, packagename):
     url = f"http://package-registry-461.appspot.com/package/byName/{packagename}"
     Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
+
+def PackagesListRequest(token, querys):
+    url = "http://package-registry-461.appspot.com/packages"
+    Header = {'X-Authorization': token, 'Accept': 'application/json'}
+    body = json.dumps(querys.__dict__, default=lambda o: o.__dict__, indent=4)
+    return url, Header, body
 
 def CheckToken(token):
     print(f"len of token: {len(token)}")
@@ -130,10 +144,10 @@ def main():
     #PrintResponse(response, False)
     
     
-    url, header = FormResetRequest(token)
-    print(f"DELETE: {url} WITH HEADER: {header}")
-    response = requests.delete(url, headers=header)
-    PrintResponse(response, False)
+    #url, header = FormResetRequest(token)
+    #print(f"DELETE: {url} WITH HEADER: {header}")
+    #response = requests.delete(url, headers=header)
+    #PrintResponse(response, False)
     
     
     
@@ -153,6 +167,13 @@ def main():
     # print(f"Rating GET: {url} WITH HEADER: {header}")
     # response = requests.get(url, headers=header)
     # PrintResponse(response, True)
+    
+    
+    #packages list
+    QueryRequestObj = QueryRequest("kevin", "")
+    url, header, body = PackagesListRequest(token, QueryRequestObj)
+    response = requests.post(url, headers=header, data=body)
+    PrintResponse(response, True)
     
 
 

@@ -215,7 +215,7 @@ namespace IO.Swagger.Controllers
             PackageMetadata metadata = new PackageMetadata();
             try
             {
-                
+
                 foreach (BigQueryRow row in result)
                 {
                     //Name
@@ -262,7 +262,8 @@ namespace IO.Swagger.Controllers
 
             //--------------------Add to History Query------------------------------------
 
-            try {
+            try
+            {
                 query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('DELETE', DATETIME(CURRENT_TIMESTAMP()), true, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
@@ -534,7 +535,7 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageDelete")]
         public virtual IActionResult PackageDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-           string token = xAuthorization;
+            string token = xAuthorization;
 
 
 
@@ -612,7 +613,7 @@ namespace IO.Swagger.Controllers
             PackageMetadata metadata = new PackageMetadata();
             try
             {
-                
+
                 foreach (BigQueryRow row in result)
                 {
                     //Name
@@ -659,7 +660,8 @@ namespace IO.Swagger.Controllers
 
             //--------------------Add to History Query------------------------------------
 
-            try {
+            try
+            {
                 query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('DELETE', DATETIME(CURRENT_TIMESTAMP()), true, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
@@ -841,8 +843,128 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackagesList")]
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageMetadata>), description: "List of packages")]
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
-        public virtual IActionResult PackagesList([FromBody] List<PackageQuery> body, [FromHeader][Required()] string xAuthorization, [FromQuery] string offset)
+        public virtual IActionResult PackagesList([FromBody] List<PackageQuery> body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromQuery] string offset)
         {
+            //VERIFY TOKEN
+            string token = xAuthorization;
+            bool isSantized = Sanitizer.VerifyTokenSanitized(token);
+            if (!isSantized)
+            {
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER)
+            {
+                //append debug message to header
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
+
+            //-----------------END TOKEN VERIFICATION-----------------//
+
+            //get offset
+            int offsetInt = 0;
+            try
+            {
+                int.TryParse(offset, out offsetInt);
+            }
+            catch (Exception _)
+            {
+                offsetInt = 0;
+            }
+
+            //create bigquery factory
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+
+            //query for packages
+            List<BigQueryResults> results = new List<BigQueryResults>();
+            foreach (PackageQuery queryobj in body)
+            {
+                //determine if query is invalid (both null)
+                if (queryobj.Name == null && queryobj.Version == null)
+                {
+                    Response.Headers.Add("X-Debug", "Query is invalid");
+                    return StatusCode(400);
+                }
+                if(queryobj.Name == null)
+                {
+                    queryobj.Name = "*";
+                }
+                if(queryobj.Version == null)
+                {
+                    queryobj.Version = ".*";
+                }
+
+
+                Version ver = new Version(queryobj.Version);
+                string verregex = ver.ToRegexString();
+                //search matching metadata
+                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND version REGEXP '{verregex}' LIMIT 101 OFFSET {offsetInt}";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+
+                results.Add(result);
+                if (result.TotalRows > 100)
+                {
+                    //too many packages
+                    return StatusCode(413);
+                }
+            }
+            List<PackageMetadata> metadataList = new List<PackageMetadata>();
+            //get a list of metadata from the results
+            for (int i = 0; i < results.Count; i++)
+            {
+                result = results[i];
+                foreach (BigQueryRow row in result)
+                {
+                    PackageMetadata metadata = new PackageMetadata();
+                    metadata.Name = row["name"].ToString();
+                    metadata.Version = row["version"].ToString();
+                    metadata.ID = row["id"].ToString();
+                    metadataList.Add(metadata);
+                }
+            }
+
+            //format response
+            //[
+            //{
+                //"Version": "1.2.3",
+                //"Name": "Underscore"
+            //}, ]
+
+            string response = "[";
+            for (int i = 0; i < metadataList.Count; i++)
+            {
+                PackageMetadata metadata = metadataList[i];
+                response += "{\n";
+                response += $"\"Version\": \"{metadata.Version}\",\n";
+                response += $"\"Name\": \"{metadata.Name}\"\n";
+                response += "}";
+                if (i != metadataList.Count - 1)
+                {
+                    response += ", ";
+                }
+            }
+            response += "]";
+            return Content(response, "application/json");
+
+
+
+
+
+
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(List<PackageMetadata>));
 
@@ -914,9 +1036,9 @@ namespace IO.Swagger.Controllers
             //var co = new CloneOptions();
             //co.CredentialsProvider = (_url, _user, _cred) =>
             //    new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-//
+            //
             //Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./test", co);
-//
+            //
             ////wait 2s
             //Thread.Sleep(2000);
             ////check if repo file exists
