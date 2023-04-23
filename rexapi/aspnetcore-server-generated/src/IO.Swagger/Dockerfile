@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y python3 python3-pip
 
 
 # copy csproj and restore as distinct layers
-COPY /rexapi/aspnetcore-server-generated/src/IO.Swagger/*.csproj ./
+COPY ../../../../*.csproj ./
 RUN dotnet restore
 
 #C# Dependencies
@@ -28,9 +28,8 @@ RUN dotnet add package GraphQL.Client --version 5.1.1
 RUN dotnet add package GraphQL.Client.Serializer.Newtonsoft
 
 # copy everything else and build
-COPY /rexapi/aspnetcore-server-generated/. ./
+COPY ../../../../../../. ./
 RUN dotnet publish -c Release -o out
-
 # build runtime image
 #FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 #WORKDIR /app
