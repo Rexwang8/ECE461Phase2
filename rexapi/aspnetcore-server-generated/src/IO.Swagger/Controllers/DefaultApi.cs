@@ -278,12 +278,12 @@ namespace IO.Swagger.Controllers
             }
 
             //-----------------------Delete from Meta Data Query------------------------------------
-            query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE name='{name}' LIMIT 20";
+            query = $"DELETE `package-registry-461.packages.packagesMetadata` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesMetadata WHERE name = {name}` LIMIT 100)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
             //--------------------Delete from Packages Data Query------------------------------------
-            query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE name='{name}' LIMIT 1";
+            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData WHERE name = {name}` LIMIT 1";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //--------------------Delete from cloud store------------------------------------
