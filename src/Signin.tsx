@@ -15,9 +15,6 @@ function Signin() {
     setPassword(event.target.value);
   };
 
-  // const handleAdminCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   setIsAdmin(event.target.checked);
-  // };
 
   const handleFormSubmit = () => {
     // event.preventDefault();

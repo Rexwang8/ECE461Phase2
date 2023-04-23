@@ -1,35 +1,10 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom/client'
-// import App from './App'
-// import MoreInfo from './MoreInfo'
-// import './index.css'
-
-// ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-//   <React.StrictMode>
-//     {/*<App />*/}
-//     <MoreInfo />
-//   </React.StrictMode>,
-// )
-
-// import React from 'react';
-// import ReactDOM from 'react-dom';
-// import App from './App';
-// import MoreInfo from './MoreInfo';
-// import './index.css';
-
-// ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-//   <React.StrictMode>
-//     <App />
-//     <MoreInfo />
-//   </React.StrictMode>,
-// );
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import Packages from './Packages';
 import Signup from './Signup';
 import Signin from './Signin';
+import Package_info from './Package_info';
 import './index.css';
 
 // Get the current URL path
@@ -58,6 +33,8 @@ ReactDOM.render(
       <Signup />
     ) : path === '/Signin' ? (
       <Signin />
+    ) : path === '/Package_info' ? (
+      <Package_info />
     ) : (
       <App />
     )}

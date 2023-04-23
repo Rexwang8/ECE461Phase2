@@ -46,6 +46,10 @@ function Packages() {
     window.location.href = '/Signin';
   }
 
+  function redirectToPackageInfo() {
+    window.location.href = '/Package_info';
+  }
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -104,8 +108,16 @@ function Packages() {
                     <div className="item-score">{`Score: ${item.score}`}</div>
                   </div>
                   <div className = "description">
-                  Kevin is a rat on a boat who misses ECE 404 lecture
+                    <ul>
+                      <li><b>Kevin the rat on the boat that misses ECE 404 Lecture;</b></li>
+                      <li><b>Kevin the rat on the boat that misses ECE 404 Lecture;</b></li>
+                      <li><b>Kevin the rat on the boat that misses ECE 404 Lecture;</b></li>
+                      <li><b>Kevin the rat on the boat that misses ECE 404 Lecture;</b></li>
+                    </ul>
                   </div>
+                  <button className="button2" onClick={redirectToPackageInfo}>
+                    More info
+                  </button>
                   <button className="button" onClick={redirectToPackages}>
                     {item.indicator === 'red' ? 'Request Ingest' : 'Download'}
                   </button>
