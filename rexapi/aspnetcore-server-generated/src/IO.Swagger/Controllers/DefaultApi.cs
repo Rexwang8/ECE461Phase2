@@ -279,7 +279,7 @@ namespace IO.Swagger.Controllers
             result = factory.ExecuteQuery();
 
             //--------------------Delete from Packages Data Query------------------------------------
-            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData WHERE name = {name}` LIMIT 1";
+            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData WHERE name = {name}` LIMIT 100";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //--------------------Delete from cloud store------------------------------------
@@ -534,7 +534,9 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageDelete")]
         public virtual IActionResult PackageDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-            string token = xAuthorization;
+           string token = xAuthorization;
+
+
 
             //Sanitize Inputs
             if (!Sanitizer.VerifyTokenSanitized(token))
@@ -543,9 +545,11 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if (!Guid.TryParse(id, out _))
+            //verify guid
+            bool isGuid = Guid.TryParse(id, out Guid guid);
+            if (!isGuid)
             {
-                Response.Headers.Add("X-Debug", "ID is not sanitized");
+                Response.Headers.Add("X-Debug", "ID is not valid GUID");
                 return StatusCode(400);
             }
 
@@ -568,39 +572,119 @@ namespace IO.Swagger.Controllers
             }
 
 
+            try
+            {
+                Response.Headers.Add("X-DebugUser", "User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugUser", "User: " + "null" + " Admin: " + "null" + "error" + e.ToString());
+            }
+
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-
-            //Delete from Meta Data Query
-            string query = $"DELETE * FROM `package-registry-461.packages.packagesMetadata` WHERE id= '{id}' LIMIT 1";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id='{id}' ORDER BY version DESC LIMIT 1";
             factory.SetQuery(query);
-            result = factory.ExecuteQuery();
+            try
+            {
+                //Response.Headers.Add("X-Debugquery", "query: " + query);
+                result = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
+                return StatusCode(400);
+            }
 
+
+            //get metadata for package, most recent version
+            if (result == null)
+            {
+                Response.Headers.Add("X-Debug", "Query failed");
+                return StatusCode(400);
+            }
             if (result.TotalRows == 0)
             {
-                //append debug message to header
-                Response.Headers.Add("X-Debug", "No packages found for id: + " + id + "  " + factory.GetQuery());
+                Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
 
-            List<PackageHistoryEntry> packageHistoryEntries = new List<PackageHistoryEntry>();
-            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+            PackageMetadata metadata = new PackageMetadata();
+            try
+            {
+                
+                foreach (BigQueryRow row in result)
+                {
+                    //Name
+                    if (row["name"] != null)
+                    {
+                        metadata.Name = row["name"].ToString();
+                    }
+                    else
+                    {
+                        metadata.Name = "invalid";
+                    }
 
-            //Delete from Packages Data Query
-            query = $"DELETE * FROM `package-registry-461.packages.packagesData` WHERE metaid= '{id}' LIMIT 1";
+                    //Version
+                    if (row["version"] != null)
+                    {
+                        metadata.Version = row["version"].ToString();
+                    }
+                    else
+                    {
+                        metadata.Version = "invalid";
+                    }
+
+                    //ID
+                    if (row["id"] != null)
+                    {
+                        metadata.ID = row["id"].ToString();
+                    }
+                    else
+                    {
+                        metadata.ID = "invalid";
+                    }
+
+                }
+
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid" + "error" + e.ToString());
+                return StatusCode(400);
+            }
+
+
+
+            //--------------------Add to History Query------------------------------------
+
+            try {
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('DELETE', DATETIME(CURRENT_TIMESTAMP()), true, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
+                return StatusCode(400);
+            }
+
+            //-----------------------Delete from Meta Data Query------------------------------------
+            query = $"DELETE `package-registry-461.packages.packagesMetadata` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesMetadata WHERE id = {id}` LIMIT 1)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
-            if (result.TotalRows == 0)
-            {
-                //append debug message to header
-                Response.Headers.Add("X-Debug", "No packages found for id: + " + id + "  " + factory.GetQuery());
-                return StatusCode(404);
-            }
-
-            packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
+            //--------------------Delete from Packages Data Query------------------------------------
+            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData WHERE metaid = {id}` LIMIT 1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            //--------------------Delete from cloud store------------------------------------
 
             return StatusCode(200);
+
+
+
         }
 
         /// <summary>
@@ -827,20 +911,20 @@ namespace IO.Swagger.Controllers
             //make directory
 
 
-            var co = new CloneOptions();
-            co.CredentialsProvider = (_url, _user, _cred) =>
-                new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-
-            Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./test", co);
-
-            //wait 2s
-            Thread.Sleep(2000);
-            //check if repo file exists
-            if (!System.IO.File.Exists("./test/README.md"))
-            {
-                Response.Headers.Add("X-Debug", "Repo does not exist");
-                return StatusCode(400);
-            }
+            //var co = new CloneOptions();
+            //co.CredentialsProvider = (_url, _user, _cred) =>
+            //    new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
+//
+            //Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./test", co);
+//
+            ////wait 2s
+            //Thread.Sleep(2000);
+            ////check if repo file exists
+            //if (!System.IO.File.Exists("./test/README.md"))
+            //{
+            //    Response.Headers.Add("X-Debug", "Repo does not exist");
+            //    return StatusCode(400);
+            //}
 
 
             return StatusCode(200);

@@ -14,9 +14,15 @@ using Newtonsoft.Json;
 
 namespace IO.Swagger.Models
 { 
+    /// <summary>
+    /// Regex pattern
+    /// </summary>
     [DataContract]
     public partial class PackageRegex : IEquatable<PackageRegex>
     { 
+        /// <summary>
+        /// Gets or Sets Regex
+        /// </summary>
         #nullable enable
         [Required]
         [DataMember(Name="Regex")]

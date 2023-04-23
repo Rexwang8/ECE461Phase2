@@ -11,6 +11,9 @@ using IO.Swagger.Models;
 
 namespace IO.Swagger.Controllers
 {
+    /// <summary>
+    /// class to handle bigquery queries.
+    /// </summary>
     public class BigQueryFactory
     {
         //client
@@ -19,15 +22,19 @@ namespace IO.Swagger.Controllers
         //query
         private string query;
 
-        //init 
+        /// <summary>
+        /// constructor for BigQueryFactory.
+        /// </summary>
         public BigQueryFactory()
         {
             //init from default service account
             var credentials = GoogleCredential.GetApplicationDefault();
             client = BigQueryClient.Create("package-registry-461", credentials);
         }
-
-        //execute query
+        
+        /// <summary>
+        /// Execute query and return results.
+        /// </summary>
         public BigQueryResults ExecuteQuery()
         {
             //execute query
@@ -48,7 +55,9 @@ namespace IO.Swagger.Controllers
             return results;
         }
 
-        //execute query
+        /// <summary>
+        /// Execute query with parameters and return results.
+        /// </summary>
         public BigQueryResults ExecuteQueryParameterized(BigQueryParameter[] parameters)
         {
             //execute query
@@ -68,19 +77,25 @@ namespace IO.Swagger.Controllers
         }
 
 
-        //set query
+        /// <summary>
+        /// Set query.
+        /// </summary>
         public void SetQuery(string query)
         {
             this.query = query;
         }
 
-        //get query
+        /// <summary>
+        /// Get query.
+        /// </summary>
         public string GetQuery()
         {
             return this.query;
         }
 
-        //print results
+        /// <summary>
+        /// Print results.
+        /// </summary>
         public void PrintResults(BigQueryResults results)
         {
             try
@@ -100,6 +115,9 @@ namespace IO.Swagger.Controllers
             }
         }
 
+        /// <summary>
+        /// Get package metadata from results.
+        /// </summary>
         public List<PackageMetadata> GetPackageMetadataFromResults(BigQueryResults results)
         {
             List<PackageMetadata> packageMetadataList = new List<PackageMetadata>();
@@ -138,6 +156,9 @@ namespace IO.Swagger.Controllers
             return packageMetadataList;
         }
 
+        /// <summary>
+        /// Get package history from results.
+        /// </summary>
         public List<PackageHistoryEntry> GetPackageHistoryFromResults(BigQueryResults results)
         {
             //init list
@@ -248,7 +269,9 @@ namespace IO.Swagger.Controllers
             return packageHistory;
         }
 
-
+        /// <summary>
+        /// Get Github token stored in BQ.
+        /// </summary>
         public string GetGithubTokenStoredInBQ()
         {
             //init query

@@ -11,9 +11,14 @@ using System.Diagnostics;
 
 namespace IO.Swagger.Controllers
 {
-
+    /// <summary>
+    /// class to handle Sanitization.
+    /// </summary>
     public static class Sanitizer
     {
+        /// <summary>
+        /// Sanitize a string to be used as a package name.
+        /// </summary>
         public static string SanitizeString(string input)
         {
             if (input == null)
@@ -33,6 +38,9 @@ namespace IO.Swagger.Controllers
             return Lowercase;
         }
 
+        /// <summary>
+        /// Sanitize a string to be used as a package name.
+        /// </summary>
         public static bool VerifyTokenSanitized(string token)
         {
             if (token == null)
@@ -61,6 +69,9 @@ namespace IO.Swagger.Controllers
             return true;
         }
 
+        /// <summary>
+        /// Sanitize a string to be used as a package name.
+        /// </summary>
         public static bool VerifyPackageNameSafe(string name)
         {
             //check for null
@@ -82,6 +93,9 @@ namespace IO.Swagger.Controllers
             return true;
         }
 
+        /// <summary>
+        /// Sanitize a regex string to be used as a query.
+        /// </summary>
         public static string SantizeRegex(string input)
         {
             //replace \' and ' with ''
@@ -97,7 +111,10 @@ namespace IO.Swagger.Controllers
             escaped = escaped.Replace(";", "");
             return escaped;
         }
-    
+
+        /// <summary>
+        /// Generate a new ID.
+        /// </summary>
         public static string GenerateNewID()
         {
             //generate a new ID
@@ -106,8 +123,14 @@ namespace IO.Swagger.Controllers
         }
     }
 
+    /// <summary>
+    /// class to handle hashing.
+    /// </summary>
     public static class Hasher
     {
+        /// <summary>
+        /// Hash a string.
+        /// </summary>
         public static string HashString(string input)
         {
             if (input == null)
@@ -158,41 +181,110 @@ namespace IO.Swagger.Controllers
         }
     }
 
+
+    /// <summary>
+    /// The class to authenticate a user with a token
+    /// </summary>
     public class TokenAuthenticator
     {
+        /// <summary>
+        /// The token of the user
+        /// </summary>
         public string Token { get; set; }
+
+        /// <summary>
+        /// The username of the user
+        /// </summary>
         public string Username { get; set; }
+
+        /// <summary>
+        /// The constructor for the TokenAuthenticator class
+        /// </summary>
         public string Password { get; set; }
+
+        /// <summary>
+        /// The boolean to determine if the user is an admin
+        /// </summary>
         public bool IsAdmin { get; set; }
+
+        /// <summary>
+        /// The token without the bearer
+        /// </summary>
         public string Token_NoBearer { get; set; }
+
+        /// <summary>
+        /// The boolean to determine if the token is valid
+        /// </summary>
         public bool IsTokenValid { get; set; }
 
+        /// <summary>
+        /// The factory to use to access the database
+        /// </summary>
         public BigQueryFactory factory { get; set; }
 
+        /// <summary>
+        /// The results of the authentication attempt
+        /// </summary>
         public enum AuthResults
         {
+            /// <summary>
+            /// The user does not exist
+            /// </summary>
             NO_RESULTS,
+            /// <summary>
+            /// The user exists, but the password is incorrect
+            /// </summary>
             WRONG_PASSWORD,
+            /// <summary>
+            /// The Token is over the limit
+            /// </summary>
             TOKEN_OVERLIMIT,
+            /// <summary>
+            /// The Token is expired
+            /// </summary>
             TOKEN_EXPIRED,
+            /// <summary>
+            /// The Token is invalid
+            /// </summary>
             TOKEN_INVALID,
+            /// <summary>
+            /// The user exists, and the password is correct
+            /// </summary>
             SUCCESS_USER,
+            /// <summary>
+            /// The user exists, and the password is correct
+            /// </summary>
             SUCCESS_ADMIN
         }
 
+        /// <summary>
+        /// The results of the authentication attempt
+        /// </summary>
         public enum AuthRefreshResults
         {
+            /// <summary>
+            /// The user does not exist
+            /// </summary>
             FAILURE,
+            /// <summary>
+            /// The user exists, but the password is incorrect
+            /// </summary>
             SUCCESS
         }
 
 
 
+        /// <summary>
+        /// The constructor for the TokenAuthenticator class
+        /// </summary>
         public TokenAuthenticator()
         {
             factory = new BigQueryFactory();
         }
 
+        /// <summary>
+        /// Generate a token from the credentials
+        /// </summary>
         public string GenerateTokenFromCredentials()
         {
             if (Username == null || Password == null)
@@ -244,6 +336,9 @@ namespace IO.Swagger.Controllers
             return Token;
         }
 
+        /// <summary>
+        /// Validate the token
+        /// </summary>
         public AuthResults ValidateToken(string token)
         {
             //lookup token and check credentials
@@ -303,6 +398,9 @@ namespace IO.Swagger.Controllers
             }
         }
 
+        /// <summary>
+        /// Validate the credentials
+        /// </summary>
         public AuthResults ValidateCredentials()
         {
             string query = $"SELECT * FROM `package-registry-461.userData.users` WHERE Username = '{Username}' LIMIT 1";
@@ -377,6 +475,9 @@ namespace IO.Swagger.Controllers
 
         }
 
+        /// <summary>
+        /// Updates the user's token expiration and uses
+        /// </summary>
         public AuthRefreshResults UpdateUserDateRefreshToken()
         {
             //if token is valid, update token expiration and uses (now-10 hours, 1000)
@@ -395,6 +496,9 @@ namespace IO.Swagger.Controllers
             return AuthRefreshResults.SUCCESS;
         }
 
+        /// <summary>
+        /// Adds a user to the database if they don't already exist
+        /// </summary>
         public AuthRefreshResults AddUserToDatabaseIfNotExists(string token)
         {
             //if token is valid, update token expiration and uses (now-10 hours, 1000)
@@ -408,6 +512,9 @@ namespace IO.Swagger.Controllers
             return AuthRefreshResults.SUCCESS;
         }
 
+        /// <summary>
+        /// Decrements the number of uses for a token
+        /// </summary>
         public AuthRefreshResults DecrementNumUsesForToken(string token)
         {
 
@@ -423,6 +530,9 @@ namespace IO.Swagger.Controllers
         }
 
 
+        /// <summary>
+        /// Verifies that the token is valid
+        /// </summary>
         public bool VerifyToken()
         {
             if (Token == null)
@@ -451,38 +561,64 @@ namespace IO.Swagger.Controllers
             return true;
         }
 
+        /// <summary>
+        /// Sets username
+        /// </summary>
         public void setUsername(string username)
         {
             this.Username = username;
         }
+
+        /// <summary>
+        /// Sets password
+        /// </summary>
         public void setPassword(string password)
         {
             this.Password = password;
         }
+
+
+        /// <summary>
+        /// Sets admin
+        /// </summary>
         public void setAdmin(bool? admin)
         {
             this.IsAdmin = admin ?? false;
         }
-    
+
+        /// <summary>
+        /// Returns username
+        /// </summary>
         public string getUsername()
         {
             return this.Username;
         }
 
+        /// <summary>
+        /// Returns password
+        /// </summary>
         public string getPassword()
         {
             return this.Password;
         }
 
+        /// <summary>
+        /// Returns true if user is admin, false if not
+        /// </summary>
         public bool getAdmin()
         {
             return this.IsAdmin;
         }
     }
 
+    /// <summary>
+    /// Class for encoding and decoding base64 strings
+    /// </summary>
     public class Base64Encoder
     {
-        //convert between base 64 string and zip file
+        /// <summary>
+        /// Encodes a file to a base64 string
+        /// </summary>
         public static string Encode(string filename)
         {
             var plainTextBytes = System.IO.File.ReadAllBytes(filename);
@@ -490,6 +626,9 @@ namespace IO.Swagger.Controllers
             return encoded.Replace(" ", "").Replace("\n", "").Replace("\r", "");
         }
 
+        /// <summary>
+        /// Decodes a base64 string to a file
+        /// </summary>
         public static void Decode(string base64String, string filename)
         {
             var base64EncodedBytes = System.Convert.FromBase64String(base64String);
