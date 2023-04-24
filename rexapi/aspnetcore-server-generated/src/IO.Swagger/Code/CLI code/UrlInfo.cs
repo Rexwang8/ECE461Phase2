@@ -270,22 +270,24 @@ namespace IO.Swagger.CLI
         {
             try
             {
+                Console.WriteLine("trying to delete temp folder");
                 if(Directory.Exists("Temp"))
                 {
                     Directory.Delete("Temp", true);
                 }
-
+                Console.WriteLine("deleted temp folder");
                 if (baseURL.Contains("https://github.com"))
                 {
+                    Console.WriteLine("Cloning for github link");
                     var co = new CloneOptions();
                     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
                     Repository.Clone(baseURL, "Temp", co);
-
+                    Console.WriteLine("Cloned for github link");
                     return true;
                 }
                 else if (baseURL.Contains("https://www.npmjs.com"))
                 {
-                    
+                    Console.WriteLine("Cloning for npm link");
                     List<URLInfo> urlInfos = new List<URLInfo>();
                     urlInfos.Add(new URLInfo(baseURL));
                     URLClass AllPackages = new URLClass(urlInfos);
@@ -328,6 +330,7 @@ namespace IO.Swagger.CLI
 
                 }
                 
+                Console.WriteLine("Nothing was hit");
                 return false;
             }
             catch (Exception e)
