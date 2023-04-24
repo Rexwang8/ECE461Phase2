@@ -1138,7 +1138,8 @@ namespace IO.Swagger.Controllers
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSantized)
             {
-                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                Console.WriteLine("(reset/X-Debug) Token is not sanitized");
+                Response.Headers.Add("X-Debug", "Token is not sanitized + " + token);
                 return StatusCode(400);
             }
             TokenAuthenticator authenticator = new TokenAuthenticator();
@@ -1146,6 +1147,7 @@ namespace IO.Swagger.Controllers
             if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
             {
                 //append debug message to header
+                Console.WriteLine("(reset/X-Debug) Token is invalid");
                 Response.Headers.Add("X-Debug", "Token is invalid");
                 return StatusCode(400);
             }
@@ -1154,6 +1156,7 @@ namespace IO.Swagger.Controllers
             TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
+                Console.WriteLine("(reset/X-Debug) Token decrement failed"")
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
@@ -1161,6 +1164,7 @@ namespace IO.Swagger.Controllers
             //get bigquery
             BigQueryFactory factory = new BigQueryFactory();
             var ghtoken = factory.GetGithubTokenStoredInBQ();
+            Console.WriteLine("(reset/X-Debug) Registry reset + github token: " + ghtoken);
             Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
 
 
