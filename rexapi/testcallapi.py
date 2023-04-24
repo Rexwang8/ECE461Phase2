@@ -90,8 +90,11 @@ def DeletePackageRequestByName(token, packagename):
 
 def PackagesListRequest(token, querys):
     url = "http://package-registry-461.appspot.com/packages"
-    Header = {'X-Authorization': token, 'Accept': 'application/json'}
-    body = json.dumps(querys.__dict__, default=lambda o: o.__dict__, indent=4)
+    Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
+    body = "["
+    body += ", ".join([json.dumps(query.__dict__, default=lambda o: o.__dict__, indent=4) for query in querys])
+    
+    body += "]"
     return url, Header, body
 
 def CreatePackageRequest(token):    
@@ -169,10 +172,9 @@ def main():
     #PrintResponse(response, False)
     
     #create 
-    Authurl, Authheader, Authbody = CreatePackageRequest(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageRequest(token)
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
     #url, header = FormPackageHistoryRequest(token, "packagename")
     #print(f"History GET: {url} WITH HEADER: {header}")
@@ -193,10 +195,12 @@ def main():
     
     
     #packages list
-    # QueryRequestObj = QueryRequest("kevin", "")
-    # url, header, body = PackagesListRequest(token, QueryRequestObj)
-    # response = requests.post(url, headers=header, data=body)
-    # PrintResponse(response, True)
+    QueryRequestObj = list()
+    QueryRequestObj.append(QueryRequest("kevin", ""))
+    url, header, body = PackagesListRequest(token, QueryRequestObj)
+    print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    response = requests.post(url, headers=header, data=body)
+    PrintResponse(response, True)
     
 
 

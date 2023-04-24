@@ -942,23 +942,25 @@ namespace IO.Swagger.Controllers
             foreach (PackageQuery queryobj in body)
             {
                 //determine if query is invalid (both null)
-                if (queryobj.Name == null && queryobj.Version == null)
+                if (queryobj.Name == null || queryobj.Name == "" && queryobj.Version == null || queryobj.Version == "")
                 {
-                    Response.Headers.Add("X-Debug", "Query is invalid");
                     return StatusCode(400);
                 }
-                if(queryobj.Name == null)
+                if(queryobj.Name == null || queryobj.Name == "")
                 {
                     queryobj.Name = "*";
                 }
-                if(queryobj.Version == null)
+                string verregex = ".*";
+                if(queryobj.Version == null || queryobj.Version == "")
                 {
                     queryobj.Version = ".*";
                 }
+                else{
+                    Version ver = new Version(queryobj.Version);
+                    verregex = ver.ToRegexString();
+                    queryobj.Version = verregex;
+                }
 
-
-                Version ver = new Version(queryobj.Version);
-                string verregex = ver.ToRegexString();
                 //search matching metadata
                 string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND version REGEXP '{verregex}' LIMIT 101 OFFSET {offsetInt}";
                 factory.SetQuery(query);
