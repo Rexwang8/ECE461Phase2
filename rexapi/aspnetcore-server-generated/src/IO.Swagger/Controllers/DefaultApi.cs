@@ -1156,7 +1156,7 @@ namespace IO.Swagger.Controllers
             TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
-                Console.WriteLine("(reset/X-Debug) Token decrement failed"")
+                Console.WriteLine("(reset/X-Debug) Token decrement failed");
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }

@@ -154,10 +154,10 @@ def main():
     
     
     #request
-    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response)
+    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response)
     
     #delete
     #Authurl, Authheader = DeletePackageRequestByName(token, "kevin")
@@ -196,12 +196,12 @@ def main():
     
     
     #packages list
-    QueryRequestObj = list()
-    QueryRequestObj.append(QueryRequest("kevin", ""))
-    url, header, body = PackagesListRequest(token, QueryRequestObj)
-    print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.post(url, headers=header, data=body)
-    PrintResponse(response, True)
+    #QueryRequestObj = list()
+    #QueryRequestObj.append(QueryRequest("kevin", ""))
+    #url, header, body = PackagesListRequest(token, QueryRequestObj)
+    #print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.post(url, headers=header, data=body)
+    #PrintResponse(response, True)
     
 
 
