@@ -39,6 +39,16 @@ class QueryRequest:
         self.Name = name
         self.Version = version
 
+class PackageData:
+    Content: str
+    URL: str
+    JSProgram: str
+
+    def __init__(self, content, jsprogram, url):
+        self.Content = content
+        self.URL = url
+        self.JSProgram = jsprogram
+        
 
 #https://www.geeksforgeeks.org/serialize-and-deserialize-complex-json-in-python/
 
@@ -84,18 +94,14 @@ def PackagesListRequest(token, querys):
     body = json.dumps(querys.__dict__, default=lambda o: o.__dict__, indent=4)
     return url, Header, body
 
-def CreatePackageRequest(token):
-    url = "http://package-registry-461.appspot.com/package"
+def CreatePackageRequest(token):    
+    file = open("Sample.txt", 'r')
+    prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
+    packageData = PackageData("file.read()", "testing", prog)
+    Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
+    URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
-    
-    ##Creating the body 
-    file = open(f"Sample.txt", 'rb')
-    body = {}
-    body['content'] = file.read()
-    body['JSProgram'] = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
-    
-    print(body)
-    return url, Header, body
+    return URL, Header, Body
 
 def CheckToken(token):
     print(f"len of token: {len(token)}")
@@ -164,6 +170,7 @@ def main():
     
     #create 
     Authurl, Authheader, Authbody = CreatePackageRequest(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     response = requests.post(Authurl, data=Authbody, headers=Authheader)
     PrintResponse(response, False)
     
