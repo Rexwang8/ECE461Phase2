@@ -65,24 +65,29 @@ namespace IO.Swagger.Controllers
             //check if any fields are null or empty
             if (username == null || password == null || username == "" || password == "" || admin == null)
             {
+                Response.Headers.Add("X-Debug", "Missing field(s) in the AuthenticationRequest or it is formed improperly");
                 return StatusCode(400);
             }
 
             //check if username or password is invalid
             if (username == "admin" || password == "admin")
             {
+                Response.Headers.Add("X-Debug", "The user or password is invalid");
                 return StatusCode(401);
             }
             if (username == "user" || password == "user")
             {
+                Response.Headers.Add("X-Debug", "The user or password is invalid");
                 return StatusCode(401);
             }
             if (username == "guest" || password == "guest")
             {
+                Response.Headers.Add("X-Debug", "The user or password is invalid");
                 return StatusCode(401);
             }
             if (username == "invalid" || password == "invalid")
             {
+                Response.Headers.Add("X-Debug", "The user or password is invalid");
                 return StatusCode(401);
             }
 
