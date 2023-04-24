@@ -212,7 +212,7 @@ namespace IO.Swagger.CLI
 
         public string returnVersionFromPackage()
         {
-            Console.WriteLine("Inside returnVersionFromPackage Function")
+            Console.WriteLine("Inside returnVersionFromPackage Function");
             StreamReader sr = new StreamReader(packageJsonPath);
             string line = sr.ReadLine();
 
@@ -221,7 +221,7 @@ namespace IO.Swagger.CLI
                 if (line.Contains("\"version\":"))
                 {
                     string[] splitLine = line.Split("\"");
-                    Console.WriteLine(splitLine[3])
+                    Console.WriteLine(splitLine[3]);
                     return splitLine[3];
                 }
 
