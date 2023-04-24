@@ -968,9 +968,8 @@ namespace IO.Swagger.Controllers
                 }
 
                 //search matching metadata
-                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND version REGEXP '{verregex}' LIMIT 101 OFFSET {offsetInt}";
-                Response.Headers.Add("X-Debugquery", query);
-                return StatusCode(200);
+                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND REGEXP_CONTAINS(version, '{verregex}') LIMIT 101 OFFSET {offsetInt}";
+                Response.Headers.Add("X-Debugquery1", query);
 
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
@@ -979,9 +978,11 @@ namespace IO.Swagger.Controllers
                 if (result.TotalRows > 100)
                 {
                     //too many packages
+                    Response.Headers.Add("X-Debug", "Too many packages returned");
                     return StatusCode(413);
                 }
             }
+            Response.Headers.Add("X-DebugTag1", "Tag1");
             List<PackageMetadata> metadataList = new List<PackageMetadata>();
             //get a list of metadata from the results
             for (int i = 0; i < results.Count; i++)
@@ -996,6 +997,7 @@ namespace IO.Swagger.Controllers
                     metadataList.Add(metadata);
                 }
             }
+            Response.Headers.Add("X-DebugTag2", "metadataList.Count: " + metadataList.Count);
 
             //format response
             //[
