@@ -486,7 +486,7 @@ namespace IO.Swagger.Controllers
 
             //TODO: Uncomment the next line to return response 424 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(424);
-            Response.Headers.Add("Line-485", "You're in!");
+            
             string token = xAuthorization;
 
             //verify token
@@ -495,7 +495,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
-            Response.Headers.Add("Line-494", "You're in!");
+    
             TokenAuthenticator authenticator = new TokenAuthenticator();
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
 
@@ -505,7 +505,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Token is invalid");
                 return StatusCode(400);
             }
-            Response.Headers.Add("Line-504", "You're in!");
+            
             //-------------Add package to metadata table ----------------
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
@@ -530,7 +530,7 @@ namespace IO.Swagger.Controllers
                 //Get the version
                 Version = urlInfo.returnVersionFromPackage();
 
-                Response.Headers.Add("X-Debug", $"Name = {Name}, Version = {Version}");
+                Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
                 //Delete the Package
                 Directory.Delete("Temp", true);
             }
@@ -553,7 +553,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Package is missing both content and url");
                 return StatusCode(400);
             }
-            Response.Headers.Add("Line-552", "You're in!");
+            
             //Add to metadata table
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
