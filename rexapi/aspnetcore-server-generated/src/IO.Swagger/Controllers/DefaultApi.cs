@@ -66,6 +66,7 @@ namespace IO.Swagger.Controllers
             if (username == null || password == null || username == "" || password == "" || admin == null)
             {
                 Response.Headers.Add("X-Debug", "Missing field(s) in the AuthenticationRequest or it is formed improperly");
+                Console.WriteLine("(authenticate/X-Debug) Missing field(s) in the AuthenticationRequest or it is formed improperly");
                 return StatusCode(400);
             }
 
@@ -73,21 +74,25 @@ namespace IO.Swagger.Controllers
             if (username == "admin" || password == "admin")
             {
                 Response.Headers.Add("X-Debug", "The user or password is invalid");
+                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
                 return StatusCode(401);
             }
             if (username == "user" || password == "user")
             {
                 Response.Headers.Add("X-Debug", "The user or password is invalid");
+                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
                 return StatusCode(401);
             }
             if (username == "guest" || password == "guest")
             {
                 Response.Headers.Add("X-Debug", "The user or password is invalid");
+                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
                 return StatusCode(401);
             }
             if (username == "invalid" || password == "invalid")
             {
                 Response.Headers.Add("X-Debug", "The user or password is invalid");
+                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
                 return StatusCode(401);
             }
 
@@ -106,29 +111,43 @@ namespace IO.Swagger.Controllers
             {
                 //user does not exist, add user to database
                 Response.Headers.Add("X-Debug", "User does not exist, adding user to database");
+                Console.WriteLine("(authenticate/X-Debug) User does not exist, adding user to database");
                 authenticator.AddUserToDatabaseIfNotExists(token);
             }
             else if (UserStatus == TokenAuthenticator.AuthResults.WRONG_PASSWORD || UserStatus == TokenAuthenticator.AuthResults.TOKEN_INVALID)
             {
                 //wrong password, return error
                 if (UserStatus == TokenAuthenticator.AuthResults.WRONG_PASSWORD)
+                {
                     Response.Headers.Add("X-Debug", "Wrong password, returning error");
+                    Console.WriteLine("(authenticate/X-Debug) Wrong password, returning error");
+                }
                 else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_INVALID)
-                    Response.Headers.Add("X-Debug", "Wrong password or token, returning error");
+                {
+                    Response.Headers.Add("X-Debug", "Invalid token, returning error");
+                    Console.WriteLine("(authenticate/X-Debug) Invalid token, returning error");
+                }
                 return StatusCode(401);
             }
             else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_OVERLIMIT || UserStatus == TokenAuthenticator.AuthResults.TOKEN_EXPIRED)
             {
                 //Refresh token
                 if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_OVERLIMIT)
+                {
                     Response.Headers.Add("X-Debug", "Token overlimit, refreshing token");
+                    Console.WriteLine("(authenticate/X-Debug) Token overlimit, refreshing token");
+                }
                 else if (UserStatus == TokenAuthenticator.AuthResults.TOKEN_EXPIRED)
+                {
                     Response.Headers.Add("X-Debug", "Token expired, refreshing token");
+                    Console.WriteLine("(authenticate/X-Debug) Token expired, refreshing token");
+                }
                 authenticator.UpdateUserDateRefreshToken();
             }
 
             //add the token to the header of the response in the X-Authorization field
             Response.Headers.Add("X-Authorization", token);
+            Console.WriteLine("(authenticate/X-Debug) Token: " + token);
 
             //set the token as the response body
             return new ObjectResult(token);
@@ -154,12 +173,14 @@ namespace IO.Swagger.Controllers
             if (!Sanitizer.VerifyTokenSanitized(token))
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Token is not sanitized");
                 return StatusCode(400);
             }
 
             if (!Sanitizer.VerifyPackageNameSafe(name))
             {
                 Response.Headers.Add("X-Debug", "Name is not sanitized");
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Name is not sanitized");
                 return StatusCode(400);
             }
 
@@ -170,6 +191,7 @@ namespace IO.Swagger.Controllers
             if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
             {
                 Response.Headers.Add("X-Debug", "User has no perms");
+                Console.WriteLine("(/package/byName/{name}/X-Debug) User has no perms");
                 return StatusCode(400);
             }
 
@@ -178,16 +200,19 @@ namespace IO.Swagger.Controllers
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
                 Response.Headers.Add("X-Debug", "Token decrement failed");
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Token decrement failed");
                 return StatusCode(400);
             }
 
 
             try
-            {
+            {   
+                Console.WriteLine("(/package/byName/{name}/X-Debug) User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
                 Response.Headers.Add("X-DebugUser", "User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
             }
             catch (Exception e)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) User: " + "null" + " Admin: " + "null" + "error" + e.ToString());
                 Response.Headers.Add("X-DebugUser", "User: " + "null" + " Admin: " + "null" + "error" + e.ToString());
             }
 
@@ -202,6 +227,7 @@ namespace IO.Swagger.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Query failed" + "error" + e.ToString());
                 Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
                 return StatusCode(400);
             }
@@ -210,11 +236,13 @@ namespace IO.Swagger.Controllers
             //get metadata for package, most recent version
             if (result == null)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Query failed");
                 Response.Headers.Add("X-Debug", "Query failed");
                 return StatusCode(400);
             }
             if (result.TotalRows == 0)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Package does not exist");
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
@@ -256,11 +284,12 @@ namespace IO.Swagger.Controllers
                     }
 
                 }
-
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
                 Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
             }
             catch (Exception e)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Metadata: " + "invalid" + "error" + e.ToString());
                 Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid" + "error" + e.ToString());
                 return StatusCode(400);
             }
@@ -277,6 +306,7 @@ namespace IO.Swagger.Controllers
             }
             catch (Exception e)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Query failed: Result: " + result.ToString() + "error" + e.ToString());
                 Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
                 return StatusCode(400);
             }
@@ -326,6 +356,7 @@ namespace IO.Swagger.Controllers
             if (!isSanitized)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Token is not sanitized");
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400);
             }
@@ -334,6 +365,7 @@ namespace IO.Swagger.Controllers
             if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Token is invalid");
                 Response.Headers.Add("X-Debug", "Token is invalid");
                 return StatusCode(400);
             }
@@ -342,6 +374,7 @@ namespace IO.Swagger.Controllers
             TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Token decrement failed");
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
@@ -350,6 +383,7 @@ namespace IO.Swagger.Controllers
             if (!isSanitizedName)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Package name is not sanitized");
                 Response.Headers.Add("X-Debug", "Package name is not sanitized");
                 return StatusCode(400);
             }
@@ -368,10 +402,12 @@ namespace IO.Swagger.Controllers
             {
                 Buffer += col.Name + " " + col.Type + ", ";
             }
+            Console.WriteLine("(/package/byName/{name}/X-DebugSchema) " + Buffer);
             Response.Headers.Add("X-DebugSchema", Buffer);
             if (result.TotalRows == 0)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byName/{name}/X-Debug) Package does not exist");
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
@@ -382,6 +418,7 @@ namespace IO.Swagger.Controllers
             packageHistoryEntries = factory.GetPackageHistoryFromResults(result);
 
             //return list of package history entries in response body, formatted as ndjson [{},{}]
+            Console.WriteLine("(/package/byName/{name}/X-Debug) Package history returned");
             Response.Headers.Add("X-Debug", "Package history returned");
             return StatusCode(200, packageHistoryEntries);
         }
@@ -406,6 +443,7 @@ namespace IO.Swagger.Controllers
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSantized)
             {
+                Console.WriteLine("(/package/byRegEx/X-Debug) Token is not sanitized");
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
                 return StatusCode(400, "");
             }
@@ -414,6 +452,7 @@ namespace IO.Swagger.Controllers
             if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byRegEx/X-Debug) Token is invalid");
                 Response.Headers.Add("X-Debug", "Token is invalid");
                 return StatusCode(400);
             }
@@ -422,6 +461,7 @@ namespace IO.Swagger.Controllers
             TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
+                Console.WriteLine("(/package/byRegEx/X-Debug) Token decrement failed");
                 Response.Headers.Add("X-Debug", "Token decrement failed");
                 return StatusCode(400);
             }
@@ -433,6 +473,7 @@ namespace IO.Swagger.Controllers
             if (pattern == null)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byRegEx/X-Debug) Regex is null");
                 Response.Headers.Add("X-Debug", "Regex is null");
                 return StatusCode(400);
             }
@@ -447,6 +488,7 @@ namespace IO.Swagger.Controllers
             if (result.TotalRows == 0)
             {
                 //append debug message to header
+                Console.WriteLine("(/package/byRegEx/X-Debug) No packages found for regex + " + pattern + "  " + factory.GetQuery());
                 Response.Headers.Add("X-Debug", "No packages found for regex + " + pattern + "  " + factory.GetQuery());
                 return StatusCode(404);
             }
@@ -455,6 +497,7 @@ namespace IO.Swagger.Controllers
             packageMetadata = factory.GetPackageMetadataFromResults(result);
 
             //return list of package metadata in response body, formatted as ndjson [{},{}]
+            Console.WriteLine("(/package/byRegEx/X-Debug) Package metadata returned");
             Response.Headers.Add("X-Debug", "Package metadata returned");
             return StatusCode(200, packageMetadata);
         }
@@ -493,6 +536,7 @@ namespace IO.Swagger.Controllers
             if (!Sanitizer.VerifyTokenSanitized(token))
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
+                Console.WriteLine("(/package/X-Debug) Token is not sanitized");
                 return StatusCode(400);
             }
     
@@ -503,6 +547,7 @@ namespace IO.Swagger.Controllers
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "Token is invalid");
+                Console.WriteLine("(/package/X-Debug) Token is invalid");
                 return StatusCode(400);
             }
             
@@ -523,6 +568,7 @@ namespace IO.Swagger.Controllers
                 {
                     //append debug message to header
                     Response.Headers.Add("X-Debug", "Package could not be downloaded");
+                    Console.WriteLine("(/package/X-Debug) Package could not be downloaded");
                     return StatusCode(400);
                 }
                 //Get Json file
@@ -531,6 +577,7 @@ namespace IO.Swagger.Controllers
                 Version = urlInfo.returnVersionFromPackage();
 
                 Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
+                Console.WriteLine("(/package/X-Debug) Name = {Name}, Version = {Version}");
                 //Delete the Package
                 Directory.Delete("Temp", true);
             }
@@ -551,6 +598,7 @@ namespace IO.Swagger.Controllers
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "Package is missing both content and url");
+                Console.WriteLine("(/package/X-Debug) Package is missing both content and url");
                 return StatusCode(400);
             }
             
@@ -566,6 +614,7 @@ namespace IO.Swagger.Controllers
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "No packages are added + " + factory.GetQuery());
+                Console.WriteLine("(/package/X-Debug) No packages are added + " + factory.GetQuery());
                 return StatusCode(404);
             }
 
@@ -596,6 +645,7 @@ namespace IO.Swagger.Controllers
             if (!Sanitizer.VerifyTokenSanitized(token))
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
+                Console.WriteLine("(/package/{id}/X-Debug) Token is not sanitized");
                 return StatusCode(400);
             }
 
@@ -604,6 +654,7 @@ namespace IO.Swagger.Controllers
             if (!isGuid)
             {
                 Response.Headers.Add("X-Debug", "ID is not valid GUID");
+                Console.WriteLine("(/package/{id}/X-Debug) ID is not valid GUID");
                 return StatusCode(400);
             }
 
@@ -614,6 +665,7 @@ namespace IO.Swagger.Controllers
             if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
             {
                 Response.Headers.Add("X-Debug", "User has no perms");
+                Console.WriteLine("(/package/{id}/X-Debug) User has no perms");
                 return StatusCode(400);
             }
 
@@ -622,6 +674,7 @@ namespace IO.Swagger.Controllers
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
                 Response.Headers.Add("X-Debug", "Token decrement failed");
+                Console.WriteLine("(/package/{id}/X-Debug) Token decrement failed");
                 return StatusCode(400);
             }
 
@@ -629,10 +682,12 @@ namespace IO.Swagger.Controllers
             try
             {
                 Response.Headers.Add("X-DebugUser", "User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
+                Console.WriteLine("(/package/{id}/X-Debug) User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
             }
             catch (Exception e)
             {
                 Response.Headers.Add("X-DebugUser", "User: " + "null" + " Admin: " + "null" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) User: " + "null" + " Admin: " + "null" + "error" + e.ToString());
             }
 
             BigQueryFactory factory = new BigQueryFactory();
@@ -647,6 +702,7 @@ namespace IO.Swagger.Controllers
             catch (Exception e)
             {
                 Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed" + "error" + e.ToString());
                 return StatusCode(400);
             }
 
@@ -655,11 +711,13 @@ namespace IO.Swagger.Controllers
             if (result == null)
             {
                 Response.Headers.Add("X-Debug", "Query failed");
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed");
                 return StatusCode(400);
             }
             if (result.TotalRows == 0)
             {
                 Response.Headers.Add("X-Debug", "Package does not exist");
+                Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
                 return StatusCode(404);
             }
 
@@ -702,10 +760,12 @@ namespace IO.Swagger.Controllers
                 }
 
                 Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
+                Console.WriteLine("(/package/{id}/X-Debug) Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
             }
             catch (Exception e)
             {
                 Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) Metadata: " + "invalid" + "error" + e.ToString());
                 return StatusCode(400);
             }
 
@@ -764,6 +824,7 @@ namespace IO.Swagger.Controllers
             if (!isSantized)
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
+                Console.WriteLine("(/package/{id}/rate/X-Debug) Token is not sanitized");
                 return StatusCode(400);
             }
 
@@ -773,6 +834,7 @@ namespace IO.Swagger.Controllers
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "Token is invalid");
+                Console.WriteLine("(/package/{id}/rate/X-Debug) Token is invalid");
                 return StatusCode(400);
             }
 
@@ -781,6 +843,7 @@ namespace IO.Swagger.Controllers
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
                 Response.Headers.Add("X-Debug", "Token decrement failed");
+                Console.WriteLine("(/package/{id}/rate/X-Debug) Token decrement failed");
                 return StatusCode(400);
             }
 
@@ -796,6 +859,7 @@ namespace IO.Swagger.Controllers
             rating.NetScore = 2;
 
             Response.Headers.Add("X-Debug", "Token is valid --- " + id);
+            Console.WriteLine("(/package/{id}/rate/X-Debug) Token is valid --- " + id);
 
 
             return StatusCode(200, rating);
@@ -904,6 +968,7 @@ namespace IO.Swagger.Controllers
             if (!isSantized)
             {
                 Response.Headers.Add("X-Debug", "Token is not sanitized");
+                Console.WriteLine("(packages/X-Debug) Token is not sanitized");
                 return StatusCode(400);
             }
 
@@ -913,6 +978,7 @@ namespace IO.Swagger.Controllers
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "Token is invalid");
+                Console.WriteLine("(packages/X-Debug) Token is invalid");
                 return StatusCode(400);
             }
 
@@ -921,6 +987,7 @@ namespace IO.Swagger.Controllers
             if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
             {
                 Response.Headers.Add("X-Debug", "Token decrement failed");
+                Console.WriteLine("(packages/X-Debug) Token decrement failed");
                 return StatusCode(400);
             }
 
@@ -949,6 +1016,7 @@ namespace IO.Swagger.Controllers
                 if ((queryobj.Name == null || queryobj.Name == "") && (queryobj.Version == null || queryobj.Version == ""))
                 {
                     Response.Headers.Add("X-Debug", "Both name and version are null");
+                    Console.WriteLine("(packages/X-Debug) Token decrement failed");
                     return StatusCode(400);
                 }
                 if(queryobj.Name == null || queryobj.Name == "")
@@ -970,6 +1038,7 @@ namespace IO.Swagger.Controllers
                 //search matching metadata
                 string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND REGEXP_CONTAINS(version, '{verregex}') LIMIT 101 OFFSET {offsetInt}";
                 Response.Headers.Add("X-Debugquery1", query);
+                Console.WriteLine("(packages/X-Debugquery1) " + query);
 
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
@@ -979,10 +1048,12 @@ namespace IO.Swagger.Controllers
                 {
                     //too many packages
                     Response.Headers.Add("X-Debug", "Too many packages returned");
+                    Console.WriteLine("(packages/X-Debug) Too many packages returned");
                     return StatusCode(413);
                 }
             }
             Response.Headers.Add("X-DebugTag1", "Tag1");
+            Console.WriteLine("(packages/X-DebugTag1) Tag1");
             List<PackageMetadata> metadataList = new List<PackageMetadata>();
             //get a list of metadata from the results
             for (int i = 0; i < results.Count; i++)
@@ -998,6 +1069,7 @@ namespace IO.Swagger.Controllers
                 }
             }
             Response.Headers.Add("X-DebugTag2", "metadataList.Count: " + metadataList.Count);
+            Console.WriteLine("(packages/X-DebugTag2) metadataList.Count: " + metadataList.Count);
 
             //format response
             //[
