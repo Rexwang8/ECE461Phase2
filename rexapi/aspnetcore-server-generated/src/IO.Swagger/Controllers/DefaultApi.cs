@@ -519,12 +519,25 @@ namespace IO.Swagger.Controllers
 
                 URLInfo urlInfo = new URLInfo(body.URL);
                 //Download Package
-                if (!urlInfo.ClonePackage())
+                /* if (!urlInfo.ClonePackage())
                 {
                     //append debug message to header
                     Response.Headers.Add("X-Debug", "Package could not be downloaded");
                     return StatusCode(400);
+                } */
+                try {
+                    if (urlInfo.baseURL.Contains("https://github.com"))
+                    {
+                        var co = new CloneOptions();
+                        co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
+                        Repository.Clone(urlInfo.baseURL, "Temp", co);
+                    }
+                }catch (Exception e)
+                {
+                    Response.Headers.Add("X-Debug", "Package could not be downloaded " + e);
+                    return StatusCode(400);
                 }
+
                 //Get Json file
                 urlInfo.getJsonFile("Temp");
                 //Get the version
@@ -537,7 +550,7 @@ namespace IO.Swagger.Controllers
             else if (body.Content != null)
             {
                 //convert base64 into zip
-                
+                //Base64Encoder.Decode(body.Content, "Temp.zip");
                 //unzip the zip file
 
                 //get Json file
