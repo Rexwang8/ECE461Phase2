@@ -609,7 +609,7 @@ namespace IO.Swagger.Controllers
 
             Console.WriteLine("Line 609");
 
-            string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ({ID}, {Name}, {Version})";
+            string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             Console.WriteLine("Line 615");
