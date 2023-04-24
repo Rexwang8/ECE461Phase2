@@ -514,14 +514,20 @@ namespace IO.Swagger.Controllers
 
                 URLInfo urlInfo = new URLInfo(body.URL);
                 //Download Package
-                
-
+                if (!urlInfo.ClonePackage())
+                {
+                    //append debug message to header
+                    Response.Headers.Add("X-Debug", "Package could not be downloaded");
+                    return StatusCode(400);
+                }
                 //Get Json file
-                
+                urlInfo.getJsonFile("Temp");
                 //Get the version
+                Version = urlInfo.returnVersionFromPackage();
 
+                Response.Headers.Add("X-Debug", $"Name = {Name}, Version = {Version}");
                 //Delete the Package
-
+                Directory.Delete("Temp", true);
             }
             else if (body.Content != null)
             {

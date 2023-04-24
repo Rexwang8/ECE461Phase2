@@ -266,23 +266,23 @@ namespace IO.Swagger.CLI
             }
         }
 
-        public bool ClonePackage(string url)
+        public bool ClonePackage()
         {
             try
             {
-                if (url.Contains("https://github.com"))
+                if (baseURL.Contains("https://github.com"))
                 {
                     var co = new CloneOptions();
                     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-                    Repository.Clone(url, "Temp", co);
+                    Repository.Clone(baseURL, "Temp", co);
 
                     return true;
                 }
-                else if (url.Contains("https://www.npmjs.com"))
+                else if (baseURL.Contains("https://www.npmjs.com"))
                 {
                     
                     List<URLInfo> urlInfos = new List<URLInfo>();
-                    urlInfos.Add(new URLInfo(url));
+                    urlInfos.Add(new URLInfo(baseURL));
                     URLClass AllPackages = new URLClass(urlInfos);
 
                     for (int i = 0; i < 3; i++)
