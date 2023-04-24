@@ -28,12 +28,6 @@ using Google.Cloud.SecretManager.V1;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
-using System.Linq;
-using IO.Swagger.CLI;
-using LibGit2Sharp;
-using System.Threading;
-using System.IO;
-
 
 namespace IO.Swagger.Controllers
 {
