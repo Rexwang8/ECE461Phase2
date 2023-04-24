@@ -941,7 +941,7 @@ namespace IO.Swagger.Controllers
             foreach (PackageQuery queryobj in body)
             {
                 //determine if query is invalid (both null)
-                if (queryobj.Name == null || queryobj.Name == "" && queryobj.Version == null || queryobj.Version == "")
+                if ((queryobj.Name == null || queryobj.Name == "") && (queryobj.Version == null || queryobj.Version == ""))
                 {
                     return StatusCode(400);
                 }
@@ -953,6 +953,7 @@ namespace IO.Swagger.Controllers
                 if(queryobj.Version == null || queryobj.Version == "")
                 {
                     queryobj.Version = ".*";
+                    verregex = ".*";
                 }
                 else{
                     Version ver = new Version(queryobj.Version);
@@ -962,6 +963,9 @@ namespace IO.Swagger.Controllers
 
                 //search matching metadata
                 string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND version REGEXP '{verregex}' LIMIT 101 OFFSET {offsetInt}";
+                Response.Headers.Add("X-Debugquery", query);
+                return StatusCode(200);
+
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
 
@@ -1008,7 +1012,7 @@ namespace IO.Swagger.Controllers
                 }
             }
             response += "]";
-            return Content(response, "application/json");
+            return StatusCode(200, response);
 
 
 
