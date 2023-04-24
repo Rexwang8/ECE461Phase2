@@ -469,7 +469,7 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("PackageCreate")]
         [SwaggerResponse(statusCode: 201, type: typeof(Package), description: "Success. Check the ID in the returned metadata for the official ID.")]
-        public virtual IActionResult PackageCreate([FromBody] PackageData body, [FromHeader][Required()] string xAuthorization)
+        public virtual IActionResult PackageCreate([FromBody] PackageData body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
             //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(201, default(Package));

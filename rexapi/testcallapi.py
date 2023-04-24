@@ -84,6 +84,17 @@ def PackagesListRequest(token, querys):
     body = json.dumps(querys.__dict__, default=lambda o: o.__dict__, indent=4)
     return url, Header, body
 
+def CreatePackageRequest(token):
+    url = "http://package-registry-461.appspot.com/package"
+    Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
+    
+    ##Creating the body 
+    file = open(f"Sample.txt", 'rb')
+    body = {}
+    body['content'] = file.read()
+    body['JSProgram'] = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
+    return url, Header, body
+
 def CheckToken(token):
     print(f"len of token: {len(token)}")
     tokensub = token[7:]
@@ -149,7 +160,10 @@ def main():
     #response = requests.delete(url, headers=header)
     #PrintResponse(response, False)
     
-    
+    #create 
+    Authurl, Authheader, Authbody = CreatePackageRequest(token)
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
     #url, header = FormPackageHistoryRequest(token, "packagename")
     #print(f"History GET: {url} WITH HEADER: {header}")
@@ -170,10 +184,10 @@ def main():
     
     
     #packages list
-    QueryRequestObj = QueryRequest("kevin", "")
-    url, header, body = PackagesListRequest(token, QueryRequestObj)
-    response = requests.post(url, headers=header, data=body)
-    PrintResponse(response, True)
+    # QueryRequestObj = QueryRequest("kevin", "")
+    # url, header, body = PackagesListRequest(token, QueryRequestObj)
+    # response = requests.post(url, headers=header, data=body)
+    # PrintResponse(response, True)
     
 
 
