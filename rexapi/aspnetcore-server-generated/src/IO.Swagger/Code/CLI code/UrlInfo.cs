@@ -270,6 +270,11 @@ namespace IO.Swagger.CLI
         {
             try
             {
+                if(Directory.Exists("Temp"))
+                {
+                    Directory.Delete("Temp", true);
+                }
+
                 if (baseURL.Contains("https://github.com"))
                 {
                     var co = new CloneOptions();
