@@ -93,6 +93,8 @@ def CreatePackageRequest(token):
     body = {}
     body['content'] = file.read()
     body['JSProgram'] = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
+    
+    print(body)
     return url, Header, body
 
 def CheckToken(token):
