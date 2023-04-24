@@ -943,6 +943,7 @@ namespace IO.Swagger.Controllers
                 //determine if query is invalid (both null)
                 if ((queryobj.Name == null || queryobj.Name == "") && (queryobj.Version == null || queryobj.Version == ""))
                 {
+                    Response.Headers.Add("X-Debug", "Both name and version are null");
                     return StatusCode(400);
                 }
                 if(queryobj.Name == null || queryobj.Name == "")
