@@ -584,15 +584,40 @@ namespace IO.Swagger.Controllers
             }
             else if (body.Content != null)
             {
+                //Clean up
+                if(Directory.Exists("Temp"))
+                {
+                    Directory.Delete("Temp", true);
+                }
+                FileInfo fileInfo = new FileInfo("Test.zip");
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+
                 //convert base64 into zip
-                
+                Base64Encoder.Decode(body.Content, "Test.zip");
+
                 //unzip the zip file
-
-                //get Json file
-
-                //get name
+                Directory.CreateDirectory("Temp");
+                string zipFilePath = Path.GetFullPath("Test.zip");
+                string targetFilePath = Path.GetFullPath("Temp");
+                System.IO.Compression.ZipFile.ExtractToDirectory(zipFilePath, targetFilePath);
                 
+                //get Json file
+                URLInfo urlInfo = new URLInfo(body.URL);
+                urlInfo.getJsonFile("Temp");
+                //get name
+                urlInfo.returnNameFromPackage();
                 //get version
+                urlInfo.returnVersionFromPackage();
+
+                //Delete 
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+                Directory.Delete("Temp", true);
                 
             }
             else 
