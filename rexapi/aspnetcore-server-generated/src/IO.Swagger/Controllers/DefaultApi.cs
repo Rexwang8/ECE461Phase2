@@ -580,6 +580,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("(/package/X-Debug) Name = {Name}, Version = {Version}");
                 //Delete the Package
                 Directory.Delete("Temp", true);
+                Console.WriteLine("Line 583");
             }
             else if (body.Content != null)
             {
@@ -606,17 +607,13 @@ namespace IO.Swagger.Controllers
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
 
+            Console.WriteLine("Line 609");
+
             string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ({ID}, {Name}, {Version})";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-
-            if (result.TotalRows == 0)
-            {
-                //append debug message to header
-                Response.Headers.Add("X-Debug", "No packages are added + " + factory.GetQuery());
-                Console.WriteLine("(/package/X-Debug) No packages are added + " + factory.GetQuery());
-                return StatusCode(404);
-            }
+            Console.WriteLine("Line 615");
+           
 
             //Add to package table
 
