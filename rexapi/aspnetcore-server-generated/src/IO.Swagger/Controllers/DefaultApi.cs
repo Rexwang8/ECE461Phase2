@@ -33,6 +33,7 @@ using IO.Swagger.CLI;
 using LibGit2Sharp;
 using System.Threading;
 using System.IO;
+using Microsoft.AspNetCore.Cors;
 
 namespace IO.Swagger.Controllers
 {
@@ -58,6 +59,9 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "Return an AuthenticationToken.")]
         public virtual IActionResult CreateAuthToken([FromBody] AuthenticationRequest body)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             string username = body.User.Name;
             bool? admin = body.User.IsAdmin;
             string password = body.Secret.Password;
@@ -167,6 +171,8 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageByNameDelete")]
         public virtual IActionResult PackageByNameDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string name)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
             string token = xAuthorization;
 
             //Sanitize Inputs
@@ -347,6 +353,9 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
         public virtual IActionResult PackageByNameGet([FromRoute][Required] string name, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             //Get Variables
             string token = xAuthorization;
             string packagename = name;
@@ -439,6 +448,9 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageMetadata>), description: "Return a list of packages.")]
         public virtual IActionResult PackageByRegExGet([FromBody] PackageRegex body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSantized)
@@ -518,18 +530,9 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 201, type: typeof(Package), description: "Success. Check the ID in the returned metadata for the official ID.")]
         public virtual IActionResult PackageCreate([FromBody] PackageData body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
-            //TODO: Uncomment the next line to return response 201 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(201, default(Package));
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 409 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(409);
-
-            //TODO: Uncomment the next line to return response 424 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(424);
-            
             string token = xAuthorization;
 
             //verify token
@@ -659,6 +662,9 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageDelete")]
         public virtual IActionResult PackageDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             string token = xAuthorization;
 
 
@@ -840,6 +846,9 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(PackageRating), description: "Return the rating. Only use this if each metric was computed successfully.")]
         public virtual IActionResult PackageRate([FromRoute][Required] string id, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
             //VERIFY TOKEN
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
@@ -916,17 +925,10 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
         public virtual IActionResult PackageRetrieve([FromHeader][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(Package));
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
 
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
             string exampleJson = null;
             exampleJson = "{\n  \"metadata\" : {\n    \"Version\" : \"1.2.3\",\n    \"ID\" : \"ID\",\n    \"Name\" : \"Name\"\n  },\n  \"data\" : {\n    \"Content\" : \"Content\",\n    \"JSProgram\" : \"JSProgram\",\n    \"URL\" : \"URL\"\n  }\n}";
 
@@ -952,14 +954,8 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageUpdate")]
         public virtual IActionResult PackageUpdate([FromBody] Package body, [FromHeader][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200);
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 404 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(404);
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
 
             throw new NotImplementedException();
@@ -984,6 +980,10 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
         public virtual IActionResult PackagesList([FromBody] List<PackageQuery> body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromQuery] string offset)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+
             //VERIFY TOKEN
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
@@ -1116,29 +1116,6 @@ namespace IO.Swagger.Controllers
             response += "]";
             return StatusCode(200, response);
 
-
-
-
-
-
-            //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(200, default(List<PackageMetadata>));
-
-            //TODO: Uncomment the next line to return response 400 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(400);
-
-            //TODO: Uncomment the next line to return response 413 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(413);
-
-            //TODO: Uncomment the next line to return response 0 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
-            // return StatusCode(0, default(Error));
-            string exampleJson = null;
-            exampleJson = "[ {\n  \"Version\" : \"1.2.3\",\n  \"ID\" : \"ID\",\n  \"Name\" : \"Name\"\n}, {\n  \"Version\" : \"1.2.3\",\n  \"ID\" : \"ID\",\n  \"Name\" : \"Name\"\n} ]";
-
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<List<PackageMetadata>>(exampleJson)
-            : default(List<PackageMetadata>);            //TODO: Change the data returned
-            return new ObjectResult(example);
         }
 
         /// <summary>
@@ -1155,6 +1132,9 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("RegistryReset")]
         public virtual IActionResult RegistryReset([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            //add cors
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            
             //use this for testing.
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
