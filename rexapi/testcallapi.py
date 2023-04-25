@@ -98,9 +98,9 @@ def PackagesListRequest(token, querys):
     return url, Header, body
 
 def CreatePackageRequest(token):    
-    file = open("Sample.txt", 'r')
+    file = open("rexapi/Sample.txt", 'r')
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
-    packageData = PackageData(None, "https://github.com/jonschlinkert/even", prog)
+    packageData = PackageData('content123', "https://github.com/jonschlinkert/even", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -172,10 +172,10 @@ def main():
     #PrintResponse(response, False)
     
     #create 
-    Authurl, Authheader, Authbody = CreatePackageRequest(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageRequest(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
     #url, header = FormPackageHistoryRequest(token, "packagename")
     #print(f"History GET: {url} WITH HEADER: {header}")

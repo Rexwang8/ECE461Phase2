@@ -553,7 +553,9 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("(/package/X-Debug) Token is invalid");
                 return StatusCode(400);
             }
+
             
+
             //-------------Add package to metadata table ----------------
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
@@ -561,10 +563,12 @@ namespace IO.Swagger.Controllers
             //sanitize package name, version, and id
             string Name = "";
             string Version = "";
-            if (body.URL != null)
+
+            Console.WriteLine("URL: " + body.URL + "  Content: " + body.Content);
+            if (body.URL != null && body.URL != "")
             {
                 Name = (body.URL).Split('/').Last();
-
+                Console.WriteLine("Name of package: " + Name);
                 URLInfo urlInfo = new URLInfo(body.URL);
                 //Download Package
                 if (!urlInfo.ClonePackage())
@@ -574,18 +578,21 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("(/package/X-Debug) Package could not be downloaded");
                     return StatusCode(400);
                 }
+                Console.WriteLine("Package downloaded");
+
                 //Get Json file
                 urlInfo.getJsonFile("Temp");
                 //Get the version
                 Version = urlInfo.returnVersionFromPackage();
 
                 Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
-                Console.WriteLine("(/package/X-Debug) Name = {Name}, Version = {Version}");
+                Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {Version}");
+
                 //Delete the Package
                 Directory.Delete("Temp", true);
                 Console.WriteLine("Line 583");
             }
-            else if (body.Content != null)
+            else if (body.Content != null && body.Content != "")
             {
                 //Clean up
                 if(Directory.Exists("Temp"))
@@ -638,13 +645,13 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("Line 609");
 
             string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
+            Console.WriteLine("Query@646: " + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             Console.WriteLine("Line 615");
            
 
             //Add to package table
-
             return StatusCode(201);
         }
 
@@ -1134,7 +1141,7 @@ namespace IO.Swagger.Controllers
         {
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            
+
             //use this for testing.
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
