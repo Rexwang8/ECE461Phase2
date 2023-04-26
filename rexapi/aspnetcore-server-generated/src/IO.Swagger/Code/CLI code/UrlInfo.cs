@@ -318,7 +318,6 @@ namespace IO.Swagger.CLI
                         {
                             break;
                         }
-
                         System.Threading.Thread.Sleep(2000);
                     }
 
@@ -359,7 +358,7 @@ namespace IO.Swagger.CLI
             }
             else
             {
-                Console.WriteLine("Error: " + err.ToString());
+                Console.WriteLine("NPM Error: " + err.ToString());
             }
             return;
         }

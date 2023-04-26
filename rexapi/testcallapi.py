@@ -88,6 +88,11 @@ def DeletePackageRequestByName(token, packagename):
     Header = {'X-Authorization': token, 'Accept': 'application/json'}
     return url, Header
 
+def DeletePackageRequestByID(token, id):
+    url = f"http://package-registry-461.appspot.com/package/{id}"
+    Header = {'X-Authorization': token, 'Accept': 'application/json'}
+    return url, Header
+
 def PackagesListRequest(token, querys):
     url = "http://package-registry-461.appspot.com/packages"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -164,12 +169,17 @@ def main():
     #response = requests.put(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response)
     
-    #delete
-    # Authurl, Authheader = DeletePackageRequestByName(token, "even")
-    # print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    # response = requests.delete(Authurl, headers=Authheader)
-    # PrintResponse(response, False)
+    #delete by name
+    Authurl, Authheader = DeletePackageRequestByName(token, "even")
+    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    response = requests.delete(Authurl, headers=Authheader)
+    PrintResponse(response, False)
     
+    #delete by id
+    # Authurl, AuthHeader = DeletePackageRequestByID(token, "d4f153b1-eedf-49cf-a0c3-d2a75efa1e7f")
+    # print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
+    # response = requests.delete(Authurl, headers=AuthHeader)
+    # PrintResponse(response, False)
     
     #url, header = FormResetRequest(token)
     #print(f"DELETE: {url} WITH HEADER: {header}")
