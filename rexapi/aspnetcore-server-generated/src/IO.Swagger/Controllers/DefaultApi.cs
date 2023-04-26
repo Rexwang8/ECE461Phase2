@@ -601,6 +601,7 @@ namespace IO.Swagger.Controllers
                 {
                     Directory.Delete("Temp", true);
                 }
+                
                 FileInfo fileInfo = new FileInfo("Test.zip");
                 if (fileInfo.Exists)
                 {
@@ -646,30 +647,21 @@ namespace IO.Swagger.Controllers
             //Add to metadata table
             
             //check if package exists 
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{ID}'";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name} AND version = '{Version}'";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             Console.WriteLine("Line 622" + result.TotalRows);
-            if (result.TotalRows == 0)
+            if (result.TotalRows > 0)
             {
-                query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
-                Console.WriteLine("Query 655: " + query);
-                factory.SetQuery(query);
-                result = factory.ExecuteQuery();
-                Console.WriteLine("Line 660" + result.TotalRows);
+                Response.Headers.Add("X-Debug", "Package already exists");
+                return StatusCode(409);
             }
-
+            
+            query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
             
             //Add to package table
-            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE id = '{ID}'";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery();
-            Console.WriteLine("Line 622" + result.TotalRows);
-            if (result.TotalRows == 0)
-            {
-                query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('{body.Content}', '{body.JSProgram}', '{URL}', '{ID}', '{Name}')";
-            }
-
+            query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('{body.Content}', '{body.JSProgram}', '{URL}', '{ID}', '{Name}')";
+            
             //Add to History table
             try
             {
@@ -863,8 +855,6 @@ namespace IO.Swagger.Controllers
             //--------------------Delete from cloud store------------------------------------
 
             return StatusCode(200);
-
-
 
         }
 
