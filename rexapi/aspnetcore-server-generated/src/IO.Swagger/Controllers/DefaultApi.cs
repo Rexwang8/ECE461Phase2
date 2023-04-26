@@ -61,11 +61,13 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            Console.WriteLine("(authenticate) Received request to authenticate user: " + body.User.Name);
-            Console.WriteLine("args: " + body.ToString());
+            //generate runid
+            int runid = new Random().Next(1000, 2000);
+            Console.WriteLine($"(authenticate/{runid}) Received request to authenticate user: " + body.User.Name);
+            Console.WriteLine("(authenticate/{runid})args: " + body.ToString());
             Console.WriteLine("------END DEBUG INFO-----");
-            Response.Headers.Add("X-DebugAutograder", "Received request to authenticate user: " + body.User.Name);
-            Response.Headers.Add("X-DebugArgs", "args: " + body.ToString());
+            Response.Headers.Add("X-DebugAutograder", $"/{runid}Received request to authenticate user: " + body.User.Name);
+            Response.Headers.Add("X-DebugArgs", $"/{runid}args: " + body.ToString());
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
