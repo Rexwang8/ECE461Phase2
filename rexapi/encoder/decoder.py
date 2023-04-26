@@ -33,7 +33,7 @@ def trimspace(filename):
     f.close()
     
 if __name__ == '__main__':
-    decode("lodash")
-    encode("lodash")
-    trimspace("lodash_2")
-    compare("lodash")
+    decode("sample")
+    encode("sample")
+    trimspace("sample_2")
+    compare("sample")

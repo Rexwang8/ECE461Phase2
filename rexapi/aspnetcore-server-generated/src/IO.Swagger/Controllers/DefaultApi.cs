@@ -1217,9 +1217,6 @@ namespace IO.Swagger.Controllers
                     }
 
                 }
-
-                Response.Headers.Add("X-DebugStatus", "Data: " + data.Content + " " + data.JSProgram + " " + data.URL);
-                Console.WriteLine("(/package/{id}/X-Debug) Data: " + data.Content + " " + data.JSProgram + " " + data.URL);
             }
             catch (Exception e)
             {
