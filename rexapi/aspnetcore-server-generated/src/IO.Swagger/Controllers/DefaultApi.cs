@@ -570,7 +570,7 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("(POST /package/X-Debug) Received request to create package");
-            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body.JSProgram + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
+            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "POST /package/X-Debug");
             //Response.Headers.Add("X-DebugArgs", "args : " + xAuthorization + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
@@ -1253,9 +1253,9 @@ namespace IO.Swagger.Controllers
 
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0,100) : body.Data.Content) + ", " + body.Data.JSProgram + ", " + body.Data.URL);
+            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0,100) : body.Data.Content) +  ", " + body.Data.URL);
             Console.WriteLine("------END DEBUG INFO-----");
-            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.JSProgram + ", " + body.Data.URL);
+            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.URL);
 
 
             throw new NotImplementedException();
