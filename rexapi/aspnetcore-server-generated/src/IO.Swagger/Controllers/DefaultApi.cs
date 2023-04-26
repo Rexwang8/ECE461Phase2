@@ -670,6 +670,7 @@ namespace IO.Swagger.Controllers
                 Directory.CreateDirectory("Temp");
                 string zipFilePath = Path.GetFullPath("Test.zip");
                 string targetFilePath = Path.GetFullPath("Temp");
+                Console.WriteLine("Line 673" + zipFilePath + "\n" + targetFilePath);
                 System.IO.Compression.ZipFile.ExtractToDirectory(zipFilePath, targetFilePath);
                 Console.WriteLine("Line 672");
                 //get Json file

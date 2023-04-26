@@ -107,7 +107,7 @@ def CreatePackageLink(token):
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     #https://www.npmjs.com/package/date-fns
     #https://github.com/jonschlinkert/even
-    packageData = PackageData('', "https://github.com/jonschlinkert/even", prog)
+    packageData = PackageData('', "https://github.com/cloudinary/cloudinary_npm", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -200,17 +200,17 @@ def main():
     
     #create 
     #Using Link
-    Authurl, Authheader, Authbody = CreatePackageLink(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
-    
-
-    #Using Content
-    # Authurl, Authheader, Authbody = CreatePackageContent(token)
+    # Authurl, Authheader, Authbody = CreatePackageLink(token)
     # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     # response = requests.post(Authurl, data=Authbody, headers=Authheader)
     # PrintResponse(response, False)
+    
+
+    #Using Content
+    Authurl, Authheader, Authbody = CreatePackageContent(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
     #url, header = FormPackageHistoryRequest(token, "packagename")
     #print(f"History GET: {url} WITH HEADER: {header}")
