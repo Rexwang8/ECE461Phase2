@@ -960,19 +960,203 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageRetrieve")]
         [SwaggerResponse(statusCode: 200, type: typeof(Package), description: "Return the package.")]
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
-        public virtual IActionResult PackageRetrieve([FromHeader][Required()] string xAuthorization, [FromRoute][Required] string id)
+        public virtual IActionResult PackageRetrieve([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
+            string token = xAuthorization;
+            //Validate token
+            bool isSanitized = Sanitizer.VerifyTokenSanitized(token);
+            if (!isSanitized)
+            {
+                //append debug message to header
+                Console.WriteLine("(/package/{id}/X-Debug) Token is not sanitized");
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                //append debug message to header
+                Console.WriteLine("(/package/{id}/X-Debug) Token is invalid");
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
 
-            string exampleJson = null;
-            exampleJson = "{\n  \"metadata\" : {\n    \"Version\" : \"1.2.3\",\n    \"ID\" : \"ID\",\n    \"Name\" : \"Name\"\n  },\n  \"data\" : {\n    \"Content\" : \"Content\",\n    \"JSProgram\" : \"JSProgram\",\n    \"URL\" : \"URL\"\n  }\n}";
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Console.WriteLine("(reset/X-Debug) Token decrement failed");
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
 
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<Package>(exampleJson)
-            : default(Package);            //TODO: Change the data returned
-            return new ObjectResult(example);
+            //End token validation
+
+            //Get metadata for package, most recent version
+
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults results = null;
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id='{id}' ORDER BY version DESC LIMIT 1";
+            factory.SetQuery(query);
+            try
+            {
+                //Response.Headers.Add("X-Debugquery", "query: " + query);
+                results = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed" + "error" + e.ToString());
+                return StatusCode(400);
+            }
+
+
+            //get metadata for package, most recent version
+            if (results == null)
+            {
+                Response.Headers.Add("X-Debug", "Query failed");
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed");
+                return StatusCode(400);
+            }
+            if (results.TotalRows == 0)
+            {
+                Response.Headers.Add("X-Debug", "Package does not exist");
+                Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
+                return StatusCode(404);
+            }
+
+            PackageMetadata metadata = new PackageMetadata();
+            try
+            {
+
+                foreach (BigQueryRow row in results)
+                {
+                    //Name
+                    if (row["name"] != null)
+                    {
+                        metadata.Name = row["name"].ToString();
+                    }
+                    else
+                    {
+                        metadata.Name = "invalid";
+                    }
+
+                    //Version
+                    if (row["version"] != null)
+                    {
+                        metadata.Version = row["version"].ToString();
+                    }
+                    else
+                    {
+                        metadata.Version = "invalid";
+                    }
+
+                    //ID
+                    if (row["id"] != null)
+                    {
+                        metadata.ID = row["id"].ToString();
+                    }
+                    else
+                    {
+                        metadata.ID = "invalid";
+                    }
+
+                }
+
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
+                Console.WriteLine("(/package/{id}/X-Debug) Metadata: " + metadata.Name + " " + metadata.Version + " " + metadata.ID);
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugStatus", "Metadata: " + "invalid" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) Metadata: " + "invalid" + "error" + e.ToString());
+                return StatusCode(400);
+            }
+
+            //call get package data using id
+            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE id='{id}' ORDER BY version DESC LIMIT 1";
+            factory.SetQuery(query);
+            try
+            {
+                //Response.Headers.Add("X-Debugquery", "query: " + query);
+                results = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed" + "error" + e.ToString());
+                return StatusCode(400);
+            }
+            if (results == null)
+            {
+                Response.Headers.Add("X-Debug", "Query failed");
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed");
+                return StatusCode(400);
+            }
+            if (results.TotalRows == 0)
+            {
+                Response.Headers.Add("X-Debug", "Package does not exist");
+                Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
+                return StatusCode(404);
+            }
+
+            PackageData data = new PackageData();
+            try
+            {
+
+                foreach (BigQueryRow row in results)
+                {
+                    //Content
+                    if (row["content"] != null)
+                    {
+                        data.Content = row["content"].ToString();
+                    }
+                    else
+                    {
+                        data.Content = "invalid";
+                    }
+
+                    //JSProgram
+                    if (row["jsProgram"] != null)
+                    {
+                        data.JSProgram = row["jsProgram"].ToString();
+                    }
+                    else
+                    {
+                        data.JSProgram = "invalid";
+                    }
+
+                    //URL
+                    if (row["url"] != null)
+                    {
+                        data.URL = row["url"].ToString();
+                    }
+                    else
+                    {
+                        data.URL = "invalid";
+                    }
+
+                }
+
+                Response.Headers.Add("X-DebugStatus", "Data: " + data.Content + " " + data.JSProgram + " " + data.URL);
+                Console.WriteLine("(/package/{id}/X-Debug) Data: " + data.Content + " " + data.JSProgram + " " + data.URL);
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugStatus", "Data: " + "invalid" + "error" + e.ToString());
+                Console.WriteLine("(/package/{id}/X-Debug) Data: " + "invalid" + "error" + e.ToString());
+                return StatusCode(400);
+            }
+
+            //returns package with 200
+            Package package = new Package();
+            package.Metadata = metadata;
+            package.Data = data;
+            return StatusCode(200, package);
         }
 
         /// <summary>
