@@ -177,10 +177,14 @@ def main():
     #PrintResponse(response, False)
     
     #create 
+    #Using Link
     Authurl, Authheader, Authbody = CreatePackageRequest(token)
     print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     response = requests.post(Authurl, data=Authbody, headers=Authheader)
     PrintResponse(response, False)
+    
+
+    #Using Content
     
     #url, header = FormPackageHistoryRequest(token, "packagename")
     #print(f"History GET: {url} WITH HEADER: {header}")
