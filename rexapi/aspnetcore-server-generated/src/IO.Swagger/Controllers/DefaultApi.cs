@@ -563,7 +563,7 @@ namespace IO.Swagger.Controllers
             //sanitize package name, version, and id
             string Name = "";
             string Version = "";
-
+            string URL = "";
             Console.WriteLine("URL: " + body.URL + "  Content: " + body.Content);
             if (body.URL != null && body.URL != "")
             {
@@ -584,6 +584,7 @@ namespace IO.Swagger.Controllers
                 urlInfo.getJsonFile("Temp");
                 //Get the version
                 Version = urlInfo.returnVersionFromPackage();
+                URL = body.URL;
 
                 Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
                 Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {Version}");
@@ -638,20 +639,49 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
             
-            //Add to metadata table
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
 
-            Console.WriteLine("Line 609");
-
-            string query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
-            Console.WriteLine("Query@646: " + query);
+            //Add to metadata table
+            
+            //check if package exists 
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{ID}'";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            Console.WriteLine("Line 615");
-           
+            Console.WriteLine("Line 622" + result.TotalRows);
+            if (result.TotalRows == 0)
+            {
+                query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
+                Console.WriteLine("Query 655: " + query);
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+                Console.WriteLine("Line 660" + result.TotalRows);
+            }
 
+            
             //Add to package table
+            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE id = '{ID}'";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            Console.WriteLine("Line 622" + result.TotalRows);
+            if (result.TotalRows == 0)
+            {
+                query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('{body.Content}', '{body.JSProgram}', '{URL}', '{ID}', '{Name}')";
+            }
+
+            //Add to History table
+            try
+            {
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), '{authenticator.getAdmin()}', '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
+                return StatusCode(400);
+            }
+
             return StatusCode(201);
         }
 
