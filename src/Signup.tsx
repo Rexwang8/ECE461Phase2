@@ -1,5 +1,61 @@
 import React, { useState } from 'react';
 import './Signup.css';
+import { AxiosResponse } from 'axios';
+import axios from 'axios';
+
+
+interface User {
+  name: string;
+  isAdmin: boolean;
+}
+
+interface Secret {
+  password: string;
+}
+
+interface AuthenticateRequest {
+  User: User;
+  Secret: Secret;
+}
+
+class UserObj implements User {
+  constructor(public name: string, public isAdmin: boolean) {}
+}
+
+class SecretObj implements Secret {
+  constructor(public password: string) {}
+}
+
+class AuthenticateRequestObj implements AuthenticateRequest {
+  constructor(public User: UserObj, public Secret: SecretObj) {}
+}
+
+function formAuthenticateRequest(username: string, password: string, isadmin: boolean): [string, any, any] {
+  const userObj = new UserObj(username, isadmin);
+  const secretObj = new SecretObj(password);
+  const authenticateRequestObj = new AuthenticateRequestObj(userObj, secretObj);
+  const body = JSON.stringify(authenticateRequestObj, null, 4);
+  //AIzaSyCbPo8ILEPQ_zwnOCUsOwU9PPvfr5n7atQ
+  const header = { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*','X-Authorization': 'AIzaSyCbPo8ILEPQ_zwnOCUsOwU9PPvfr5n7atQ'};
+  const url = 'http://package-registry-461.appspot.com/authenticate';
+  return [url, body, header];
+}
+
+function printResponse(response: AxiosResponse<any>, isjson = true): void {
+  if (response.status === 200) {
+    console.log('Success!');
+    console.log(response.status);
+    if (isjson) {
+      console.log(response.data);
+      localStorage.setItem('login_token', response.data);
+    }
+    console.log(response.headers);
+  } else {
+    console.log('Failed!');
+    console.log(response.status);
+    console.log(response.headers);
+  }
+}
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -20,11 +76,21 @@ function Signup() {
     setIsAdmin(event.target.checked);
   };
 
-  const handleFormSubmit = () => {
-    // event.preventDefault();
-    alert(`Username: ${username}, Password: ${password}, isAdmin: ${isAdmin}`);
-    // You can perform further actions with the submitted data here
+
+  // const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const [authUrl, authRequest, authHeader] = formAuthenticateRequest(username, password, isAdmin);
+      const response = await axios.put(authUrl, authRequest, { headers: authHeader });
+      printResponse(response);
+      window.location.href = '/Packages';
+    }
+    catch (error) {
+      alert("An error occurred " + error);
+    }
   };
+
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -75,7 +141,7 @@ function Signup() {
       </nav>
       <div className="signup-page">
         <div className="signup-box">
-          <h1>Sign Up</h1>
+          <h1>Sign In</h1>
           <form onSubmit={handleFormSubmit}>
             <input
               type="text"
@@ -97,7 +163,7 @@ function Signup() {
               />
               Are you an admin?
             </label>
-            <button type="submit">Sign Up</button>
+            <button type="submit">Sign In</button>
           </form>
         </div>
       </div>

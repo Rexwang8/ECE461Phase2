@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function Packages() {
@@ -20,6 +20,19 @@ function Packages() {
   { name: 'Package 12', indicator: 'green', score: 69, latestVersion: '12.2.1', lastUpdated: '2022-01-10' }
 ]);
 
+useEffect(() => {
+    const login_token = localStorage.getItem('login_token');
+    if (!login_token) {
+      alert("Please make sure you are signed in!")
+      window.location.href = '/Signup';
+    }
+  }, []);
+
+  const handleMoreInfoClick = (packageName: string) => {
+    // alert(`Clicked on package: ${packageName}`);
+    localStorage.setItem('packageID', packageName);
+    redirectToPackageInfo();
+  };
 
   const handleSearchInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // Function implementation here
@@ -119,9 +132,8 @@ function Packages() {
                       <li><b>Kevin the rat on the boat that misses ECE 404 Lecture;</b></li>
                     </ul>
                   </div>
-                  <button className="button2" onClick={redirectToPackageInfo}>
-                    More info
-                  </button>
+                  <button className="button2" onClick={() => handleMoreInfoClick(item.name)}>More Info</button>
+
                   <button className="button" onClick={redirectToPackages}>
                     {item.indicator === 'red' ? 'Request Ingest' : 'Download'}
                   </button>

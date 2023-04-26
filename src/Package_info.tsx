@@ -3,6 +3,8 @@ import './PackageInfo.css';
 
 function PackageInfo() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const package_name = localStorage.getItem('packageID');
+
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -61,7 +63,7 @@ function PackageInfo() {
         
         <main className="main">
         <section className="about" id = "about"></section>
-        <h1>psd-export 1.0.8</h1>
+        <h1>psd-export 1.0.8 {package_name}</h1>
           <div className="section-line"></div>
         <h2>psd-export</h2>
         <ul>
