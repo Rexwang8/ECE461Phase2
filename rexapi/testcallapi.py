@@ -176,10 +176,10 @@ def main():
     # PrintResponse(response, False)
     
     #delete by id
-    Authurl, AuthHeader = DeletePackageRequestByID(token, "f216cc5f-7d63-48c8-83ff-36e481c48991")
-    print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
-    response = requests.delete(Authurl, headers=AuthHeader)
-    PrintResponse(response, False)
+    # Authurl, AuthHeader = DeletePackageRequestByID(token, "f216cc5f-7d63-48c8-83ff-36e481c48991")
+    # print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
+    # response = requests.delete(Authurl, headers=AuthHeader)
+    # PrintResponse(response, False)
     
     #url, header = FormResetRequest(token)
     #print(f"DELETE: {url} WITH HEADER: {header}")
@@ -188,10 +188,10 @@ def main():
     
     #create 
     #Using Link
-    # Authurl, Authheader, Authbody = CreatePackageRequest(token)
-    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    # PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageRequest(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
 
     #Using Content
