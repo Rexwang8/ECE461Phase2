@@ -940,7 +940,7 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("((GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
             Console.WriteLine("------END DEBUG INFO-----");
-            Response.Headers.Add("X-DebugAutograder", "((GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
+            //Response.Headers.Add("X-DebugAutograder", "((GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");

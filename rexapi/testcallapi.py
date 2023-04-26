@@ -176,10 +176,10 @@ def main():
     
     
     #request
-    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response)
+    # Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    # print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    # response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    # PrintResponse(response)
     
     #delete by name
     # Authurl, Authheader = DeletePackageRequestByName(token, "even")
@@ -200,10 +200,10 @@ def main():
     
     #create 
     #Using Link
-    # Authurl, Authheader, Authbody = CreatePackageLink(token)
-    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    # PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageLink(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
 
     #Using Content
