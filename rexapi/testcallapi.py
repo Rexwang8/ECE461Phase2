@@ -126,7 +126,7 @@ def CheckToken(token):
         print("invalid bearer string")
 
 def PrintResponse(response, isjson=True):
-    if response.status_code == 200:
+    if response.status_code == 200 or response.status_code == 201:
         print("Success!")
         print(response.status_code)
         if isjson:
