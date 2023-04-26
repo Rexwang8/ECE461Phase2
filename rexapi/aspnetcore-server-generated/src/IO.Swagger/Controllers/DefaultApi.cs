@@ -59,6 +59,14 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(string), description: "Return an AuthenticationToken.")]
         public virtual IActionResult CreateAuthToken([FromBody] AuthenticationRequest body)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("(authenticate) Received request to authenticate user: " + body.User.Name);
+            Console.WriteLine("args: " + body);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "Received request to authenticate user: " + body.User.Name);
+            Response.Headers.Add("X-DebugArgs", "args: " + body);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
@@ -172,6 +180,14 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageByNameDelete")]
         public virtual IActionResult PackageByNameDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string name)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("(DELETE /package/byName/{name}/X-Debug) Received request to delete package: " + name);
+            Console.WriteLine("(DELETE /package/byName/{name}/X-Debug) args: " + xAuthorization + ", " + name);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "DELETE /package/byName/{name}/X-Debug");
+            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + name);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             string token = xAuthorization;
@@ -354,6 +370,16 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
         public virtual IActionResult PackageByNameGet([FromRoute][Required] string name, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("(GET /package/byName/{name}/X-Debug) Received request to get package history: " + name);
+            Console.WriteLine("(GET /package/byName/{name}/X-Debug) args : " + xAuthorization + ", " + name);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "GET /package/byName/{name}/X-Debug");
+            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + name);
+
+
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -449,6 +475,14 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(List<PackageMetadata>), description: "Return a list of packages.")]
         public virtual IActionResult PackageByRegExGet([FromBody] PackageRegex body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("(GET /package/byRegEx/X-Debug) Received request to get package by regex: " + body.Regex);
+            Console.WriteLine("(GET /package/byName/{name}/X-Debug) args : " + xAuthorization + ", " + body);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "GET /package/byRegEx/X-Debug");
+            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -531,6 +565,14 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 201, type: typeof(Package), description: "Success. Check the ID in the returned metadata for the official ID.")]
         public virtual IActionResult PackageCreate([FromBody] PackageData body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("(POST /package/X-Debug) Received request to create package");
+            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "POST /package/X-Debug");
+            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -707,6 +749,12 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("PackageDelete")]
         public virtual IActionResult PackageDelete([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("(DELETE /package/{id}) Received request with args: " + xAuthorization + ", " + id);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "Received request with args: " + xAuthorization + ", " + id);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -887,6 +935,12 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 200, type: typeof(PackageRating), description: "Return the rating. Only use this if each metric was computed successfully.")]
         public virtual IActionResult PackageRate([FromRoute][Required] string id, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("((GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "((GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -983,6 +1037,12 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
         public virtual IActionResult PackageRetrieve([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("((GET) /package/{id}) Received request with args: " + xAuthorization + ", " + id);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "((GET) /package/{id}) Received request with args: " + xAuthorization + ", " + id);
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -1199,6 +1259,12 @@ namespace IO.Swagger.Controllers
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.ToString());
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.ToString());
+
 
             throw new NotImplementedException();
         }
@@ -1222,6 +1288,12 @@ namespace IO.Swagger.Controllers
         [SwaggerResponse(statusCode: 0, type: typeof(Error), description: "unexpected error")]
         public virtual IActionResult PackagesList([FromBody] List<PackageQuery> body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromQuery] string offset)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("((POST) /packages) Received request with args: " + xAuthorization + ", " + offset + ", " + body.ToString());
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "((POST) /packages) Received request with args: " + xAuthorization + ", " + offset + ", " + body.ToString());
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -1374,6 +1446,13 @@ namespace IO.Swagger.Controllers
         [SwaggerOperation("RegistryReset")]
         public virtual IActionResult RegistryReset([FromHeader(Name = "X-Authorization")][Required()] string xAuthorization)
         {
+            // Debug for autograder
+            Console.WriteLine("------BEGIN DEBUG INFO-----");
+            Console.WriteLine("((DELETE) /reset) Received request with args: " + xAuthorization);
+            Console.WriteLine("------END DEBUG INFO-----");
+            Response.Headers.Add("X-DebugAutograder", "((DELETE) /reset) Received request with args: " + xAuthorization);
+
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
