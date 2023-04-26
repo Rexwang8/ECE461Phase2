@@ -1159,7 +1159,7 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             try
             {
-                //Response.Headers.Add("X-Debugquery", "query: " + query);
+                Response.Headers.Add("X-Debugquery", "query: " + query);
                 results = factory.ExecuteQuery();
             }
             catch (Exception e)
@@ -1180,6 +1180,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
                 return StatusCode(404);
             }
+            Response.Headers.Add("X-DebugStatus3", "Length: " + results.TotalRows.ToString());
 
             PackageData data = new PackageData();
             try
@@ -1198,9 +1199,9 @@ namespace IO.Swagger.Controllers
                     }
 
                     //JSProgram
-                    if (row["jsProgram"] != null)
+                    if (row["jsprogram"] != null)
                     {
-                        data.JSProgram = row["jsProgram"].ToString();
+                        data.JSProgram = row["jsprogram"].ToString();
                     }
                     else
                     {
