@@ -714,7 +714,7 @@ namespace IO.Swagger.Controllers
 
             Console.WriteLine("Line 632");
             //Add to package table
-            query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('IDK', '{body.JSProgram.Replace("'", "''")}', '{URL}', '{ID}', '{Name}')";
+            query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('IDK', '{body.JSProgram.Replace("\n", "@").Replace("'", "$")}', '{URL}', '{ID}', '{Name}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             Console.WriteLine("Line 669 " + query);
