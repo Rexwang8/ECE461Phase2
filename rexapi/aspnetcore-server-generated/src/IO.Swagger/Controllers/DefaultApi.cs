@@ -61,6 +61,7 @@ namespace IO.Swagger.Controllers
         {
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            Response.Headers.Add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 
             string username = body.User.Name;
             bool? admin = body.User.IsAdmin;
