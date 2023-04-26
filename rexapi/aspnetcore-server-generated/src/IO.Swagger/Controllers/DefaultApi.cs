@@ -658,16 +658,22 @@ namespace IO.Swagger.Controllers
             }
             
             query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
-            
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+
+            Console.WriteLine("Line 632");
             //Add to package table
             query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('{body.Content}', '{body.JSProgram}', '{URL}', '{ID}', '{Name}')";
-            
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            Console.WriteLine("Line 669");
             //Add to History table
             try
             {
-                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), '{authenticator.getAdmin()}', '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), '{authenticator.getAdmin().ToString()}', '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
+                Console.WriteLine("Line 676");
             }
             catch (Exception e)
             {
