@@ -679,7 +679,7 @@ namespace IO.Swagger.Controllers
             //Add to History table
             try
             {
-                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), '{authenticator.getAdmin()}', '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
                 Console.WriteLine("Line 676");
