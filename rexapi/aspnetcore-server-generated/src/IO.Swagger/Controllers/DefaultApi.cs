@@ -555,8 +555,6 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            
-
             //-------------Add package to metadata table ----------------
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
@@ -643,8 +641,6 @@ namespace IO.Swagger.Controllers
             
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
-
-            //Add to metadata table
             
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{Version}'";
@@ -657,6 +653,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(409);
             }
             
+            //Add to metadata table
             query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
@@ -912,7 +909,20 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //Check if the package exist 
             //Form NotImplemented JSON
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{id}'";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            Console.WriteLine("Line 622" + result.TotalRows);
+            if (result.TotalRows > 0)
+            {
+                Response.Headers.Add("X-Debug", "Package already exists");
+                return StatusCode(409);
+            }
+            
             PackageRating rating = new PackageRating();
             rating.BusFactor = 2;
             rating.Correctness = 3;
@@ -922,6 +932,10 @@ namespace IO.Swagger.Controllers
             rating.GoodPinningPractice = 2;
             rating.PullRequest = 2;
             rating.NetScore = 2;
+
+            //Download the Package
+            //Perform 
+            //Grade the Package
 
             Response.Headers.Add("X-Debug", "Token is valid --- " + id);
             Console.WriteLine("(/package/{id}/rate/X-Debug) Token is valid --- " + id);
