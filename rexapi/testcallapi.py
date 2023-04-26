@@ -239,7 +239,7 @@ def main():
     #PrintResponse(response, True)
     
     #retrieve package
-    url, header = FormRetrievePackageRequest(token, "id123")
+    url, header = FormRetrievePackageRequest(token, "0402c011-db66-4b73-a2e9-004bbe68a818")
     print(f"Retrieve GET: {url} WITH HEADER: {header}")
     response = requests.get(url, headers=header)
     PrintResponse(response, True)
