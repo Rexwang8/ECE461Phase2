@@ -1220,8 +1220,8 @@ namespace IO.Swagger.Controllers
             }
             catch (Exception e)
             {
-                Response.Headers.Add("X-DebugStatus", "Data: " + "invalid" + "error" + e.ToString());
-                Console.WriteLine("(/package/{id}/X-Debug) Data: " + "invalid" + "error" + e.ToString());
+                Response.Headers.Add("X-DebugStatus", "Data: " + "invalid" + "error" + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                Console.WriteLine("(/package/{id}/X-Debug) Data: " + "invalid" + "error" + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
                 return StatusCode(400);
             }
 
