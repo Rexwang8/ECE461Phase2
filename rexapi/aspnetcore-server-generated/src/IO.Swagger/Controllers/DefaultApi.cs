@@ -913,7 +913,7 @@ namespace IO.Swagger.Controllers
             result = factory.ExecuteQuery();
 
             //--------------------Delete from Packages Data Query------------------------------------
-            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.metaid IN (SELECT metaid from `package-registry-461.packages.packagesData` WHERE metaid = '{id}' LIMIT 1";
+            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.metaid IN (SELECT metaid from `package-registry-461.packages.packagesData` WHERE metaid = '{id}' LIMIT 1)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //--------------------Delete from cloud store------------------------------------
