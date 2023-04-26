@@ -64,10 +64,10 @@ namespace IO.Swagger.Controllers
             //generate runid
             int runid = new Random().Next(1000, 2000);
             Console.WriteLine($"(authenticate/{runid}) Received request to authenticate user: " + body.User.Name);
-            Console.WriteLine("(authenticate/{runid})args: " + body.ToString());
+            Console.WriteLine("(authenticate/{runid})args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", $"/{runid}Received request to authenticate user: " + body.User.Name);
-            Response.Headers.Add("X-DebugArgs", $"/{runid}args: " + body.ToString());
+            Response.Headers.Add("X-DebugArgs", $"/{runid}args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -480,10 +480,10 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("(GET /package/byRegEx/X-Debug) Received request to get package by regex: " + body.Regex);
-            Console.WriteLine("(GET /package/byName/{name}/X-Debug) args : " + xAuthorization + ", " + body.ToString());
+            Console.WriteLine("(GET /package/byName/{name}/X-Debug) args : " + xAuthorization + ", " + body.Regex);
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "GET /package/byRegEx/X-Debug");
-            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body.ToString());
+            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body.Regex);
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -1256,9 +1256,9 @@ namespace IO.Swagger.Controllers
 
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.ToString());
+            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0,100) : body.Data.Content) + ", " + body.Data.JSProgram + ", " + body.Data.URL);
             Console.WriteLine("------END DEBUG INFO-----");
-            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.ToString());
+            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.JSProgram + ", " + body.Data.URL);
 
 
             throw new NotImplementedException();
@@ -1285,9 +1285,9 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            Console.WriteLine("((POST) /packages) Received request with args: " + xAuthorization + ", " + offset + ", " + body.ToString());
+            Console.WriteLine("((POST) /packages) Received request with args: " + xAuthorization + ", " + offset + ", " + body[0].Name + ", " + body[0].Version);
             Console.WriteLine("------END DEBUG INFO-----");
-            Response.Headers.Add("X-DebugAutograder", "((POST) /packages) Received request with args: " + xAuthorization + ", " + offset + ", " + body.ToString());
+            Response.Headers.Add("X-DebugAutograder", "((POST) /packages) Received request with args: " + xAuthorization + ", " + offset + ", " + body[0].Name + ", " + body[0].Version);
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
