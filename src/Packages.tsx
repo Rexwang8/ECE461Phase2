@@ -1,7 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
+interface QueryRequest {
+  Name: string;
+  Version: string;
+}
+
+function createPackagesListRequest(token: string, queries: QueryRequest[]): [string, Record<string, string>, string] {
+  const url = "http://package-registry-461.appspot.com/packages";
+  const header = { 'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json' };
+  const body = JSON.stringify(queries);
+  return [url, header, body];
+}
+
+var alerted = false;
+
+
 function Packages() {
+  const login_token = localStorage.getItem('login_token');
+  if (!login_token && !alerted) {
+    alerted = true;
+    alert("Please make sure you are signed in!")
+    window.location.href = '/Signup';
+  }
+if(typeof login_token === 'string') {
+  const queryRequests: QueryRequest[] = [{ Name: "kevin", Version: "" }];
+  const [url, header, body] = createPackagesListRequest(login_token, queryRequests);
+  console.log(`List POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
+  fetch(url, { method: 'POST', headers: header, body })
+    .then(response => response.json())
+    .then(json => console.log(json))
+    .catch(error => console.error(error));
+}
+
+
+
+  // alert("done testing");
+
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -20,13 +55,6 @@ function Packages() {
   { name: 'Package 12', indicator: 'green', score: 69, latestVersion: '12.2.1', lastUpdated: '2022-01-10' }
 ]);
 
-useEffect(() => {
-    const login_token = localStorage.getItem('login_token');
-    if (!login_token) {
-      alert("Please make sure you are signed in!")
-      window.location.href = '/Signup';
-    }
-  }, []);
 
   const handleMoreInfoClick = (packageName: string) => {
     // alert(`Clicked on package: ${packageName}`);
