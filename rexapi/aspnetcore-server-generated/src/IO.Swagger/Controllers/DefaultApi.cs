@@ -660,6 +660,7 @@ namespace IO.Swagger.Controllers
                     fileInfo.Delete();
                 }
 
+                Console.WriteLine("Line 663");
                 //convert base64 into zip
                 Base64Encoder.Decode(body.Content, "Test.zip");
 
@@ -668,7 +669,7 @@ namespace IO.Swagger.Controllers
                 string zipFilePath = Path.GetFullPath("Test.zip");
                 string targetFilePath = Path.GetFullPath("Temp");
                 System.IO.Compression.ZipFile.ExtractToDirectory(zipFilePath, targetFilePath);
-                
+                Console.WriteLine("Line 672");
                 //get Json file
                 URLInfo urlInfo = new URLInfo(body.URL);
                 urlInfo.getJsonFile("Temp");
@@ -676,7 +677,7 @@ namespace IO.Swagger.Controllers
                 urlInfo.returnNameFromPackage();
                 //get version
                 urlInfo.returnVersionFromPackage();
-
+                Console.WriteLine("Line 680");
                 //Delete 
                 if (fileInfo.Exists)
                 {
@@ -974,19 +975,22 @@ namespace IO.Swagger.Controllers
             }
 
             //Check if the package exist 
-            //Form NotImplemented JSON
+            
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{id}'";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            Console.WriteLine("Line 622" + result.TotalRows);
-            if (result.TotalRows > 0)
+            
+            if (result.TotalRows == 0)
             {
-                Response.Headers.Add("X-Debug", "Package already exists");
-                return StatusCode(409);
+                Response.Headers.Add("X-Debug", "Package does not exist");
+                return StatusCode(404);
             }
             
+            //Get the Content Data 
+            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid = '{id}'";
+
             PackageRating rating = new PackageRating();
             rating.BusFactor = 2;
             rating.Correctness = 3;
