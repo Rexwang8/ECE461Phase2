@@ -226,6 +226,10 @@ definitions:
       - password
     type: object
 host: package-registry-461.appspot.com
+x-google-endpoints:
+- name: "package-registry-461.appspot.com"
+  allowCors: True
+
 info:
   contact:
     email: davisjam@purdue.edu

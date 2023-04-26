@@ -3,6 +3,11 @@ env: flex
 network:
   forwarded_ports:
     - 5000/tcp
+handlers:
+- url: /*
+  http_headers:
+    Access-Control-Allow-Origin: *
+  # ...
 
 # [START configuration]
 endpoints_api_service:

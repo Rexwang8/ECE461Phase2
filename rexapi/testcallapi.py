@@ -159,10 +159,10 @@ def main():
     
     
     #request
-    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response)
+    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response)
     
     #delete
     #Authurl, Authheader = DeletePackageRequestByName(token, "even")
@@ -209,10 +209,10 @@ def main():
     #PrintResponse(response, True)
     
     #retrieve package
-    url, header = FormRetrievePackageRequest(token, "id123")
-    print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    #url, header = FormRetrievePackageRequest(token, "id123")
+    #print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
     
 
 
