@@ -105,6 +105,8 @@ def PackagesListRequest(token, querys):
 def CreatePackageRequest(token):    
     file = open("Sample.txt", 'r')
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
+    #https://www.npmjs.com/package/date-fns
+    #https://github.com/jonschlinkert/even
     packageData = PackageData('content123', "https://github.com/jonschlinkert/even", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
@@ -176,9 +178,9 @@ def main():
     # PrintResponse(response, False)
     
     #delete by id
-    # Authurl, AuthHeader = DeletePackageRequestByID(token, "f216cc5f-7d63-48c8-83ff-36e481c48991")
-    # print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
-    # response = requests.delete(Authurl, headers=AuthHeader)
+    Authurl, AuthHeader = DeletePackageRequestByID(token, "a47e3b8b-2cb5-420e-ade0-09bf0e758a49")
+    print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
+    response = requests.delete(Authurl, headers=AuthHeader)
     # PrintResponse(response, False)
     
     #url, header = FormResetRequest(token)

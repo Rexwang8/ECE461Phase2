@@ -369,6 +369,7 @@ namespace IO.Swagger.CLI
         #region API calls
         public async Task<APIError> PullNpmInfo()
         {
+            Console.WriteLine("Inside PullNpmInfo Function");
             APIError error = new APIError();
 
             HttpClient client = new HttpClient();
@@ -392,20 +393,22 @@ namespace IO.Swagger.CLI
             HttpResponseMessage response = await client.GetAsync(npmURLRegistry);
             if (!response.IsSuccessStatusCode)
             {
+                Console.WriteLine("396");
                 error.SetError("Response from registry.npmjs.org: " + response.StatusCode, APIError.errorType.badresponse);
                 //Console.WriteLine("Response from registry.npmjs.org: " + response.StatusCode);
                 return error;
             }
-
+            Console.WriteLine("401");
             //decode json
             string responseBody = await response.Content.ReadAsStringAsync();
             if (responseBody == null || responseBody == "")
             {
+                Console.WriteLine("406");
                 error.SetError("Response from registry.npmjs.org: " + response.StatusCode, APIError.errorType.badresponse);
                 Console.WriteLine("Response from registry.npmjs.org: " + response.StatusCode);
                 return error;
             }
-
+            Console.WriteLine("411");
             //null forgiving operator
             //Console.WriteLine((JsonConvert.DeserializeObject(responseBody)).ToString().Length);
             //File.WriteAllText(currentDirectory + "/npmresponse.json", (JsonConvert.DeserializeObject(responseBody)).ToString());
@@ -416,7 +419,7 @@ namespace IO.Swagger.CLI
                 Console.WriteLine(error.ToString());
                 return error;
             }
-
+            Console.WriteLine("422");
             //break into data
             string[] times = jsoncontent.time.ToString().Split(',');
             string[] versions = jsoncontent.versions.ToString().Split(',');
@@ -444,7 +447,7 @@ namespace IO.Swagger.CLI
             npmVersions = versions;
             npmTimes = times;
             githubURL = repository;
-
+            Console.WriteLine("450 + " + githubURL);
             // Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             client.Dispose();
 
