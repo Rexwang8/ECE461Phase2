@@ -324,6 +324,7 @@ namespace IO.Swagger.CLI
 
                     foreach (var pkg in AllPackages.GetAllPackages().Values)
                     {
+                        Console.WriteLine("Trying to clone " + pkg.githubURL + " for npm link)");
                         var co = new CloneOptions();
                         co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
                         Repository.Clone(pkg.githubURL, "Temp", co);

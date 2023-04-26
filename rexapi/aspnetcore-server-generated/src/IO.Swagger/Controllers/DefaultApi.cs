@@ -555,8 +555,6 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            
-
             //-------------Add package to metadata table ----------------
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
@@ -589,10 +587,22 @@ namespace IO.Swagger.Controllers
 
                 Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
                 Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {Version}");
+                //get Body Content
+                System.IO.Compression.ZipFile.CreateFromDirectory("Temp", "TempPackage.zip"); 
+                Console.WriteLine("Package was zipped");
+                body.Content = Base64Encoder.Encode("TempPackage.zip");
+                Console.WriteLine("Package was encoded");
 
                 //Delete the Package
                 Directory.Delete("Temp", true);
                 Console.WriteLine("Line 583");
+
+                FileInfo fileInfo = new FileInfo("TempPackage.zip");
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+                Console.WriteLine("Line 605");
             }
             else if (body.Content != null && body.Content != "")
             {
@@ -643,8 +653,6 @@ namespace IO.Swagger.Controllers
             
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
-
-            //Add to metadata table
             
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{Version}'";
@@ -657,6 +665,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(409);
             }
             
+            //Add to metadata table
             query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
@@ -670,7 +679,7 @@ namespace IO.Swagger.Controllers
             //Add to History table
             try
             {
-                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), '{authenticator.getAdmin().ToString()}', '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), '{authenticator.getAdmin()}', '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
                 Console.WriteLine("Line 676");
@@ -912,7 +921,20 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //Check if the package exist 
             //Form NotImplemented JSON
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults result = null;
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{id}'";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+            Console.WriteLine("Line 622" + result.TotalRows);
+            if (result.TotalRows > 0)
+            {
+                Response.Headers.Add("X-Debug", "Package already exists");
+                return StatusCode(409);
+            }
+            
             PackageRating rating = new PackageRating();
             rating.BusFactor = 2;
             rating.Correctness = 3;
@@ -922,6 +944,10 @@ namespace IO.Swagger.Controllers
             rating.GoodPinningPractice = 2;
             rating.PullRequest = 2;
             rating.NetScore = 2;
+
+            //Download the Package
+            //Perform 
+            //Grade the Package
 
             Response.Headers.Add("X-Debug", "Token is valid --- " + id);
             Console.WriteLine("(/package/{id}/rate/X-Debug) Token is valid --- " + id);
