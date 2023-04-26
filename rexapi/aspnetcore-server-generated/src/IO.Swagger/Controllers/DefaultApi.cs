@@ -573,7 +573,7 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body.JSProgram + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "POST /package/X-Debug");
-            Response.Headers.Add("X-DebugArgs", "args : " + xAuthorization + ", " + body.JSProgram + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
+            //Response.Headers.Add("X-DebugArgs", "args : " + xAuthorization + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
