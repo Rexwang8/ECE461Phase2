@@ -1069,7 +1069,7 @@ namespace IO.Swagger.Controllers
             }
 
             //call get package data using id
-            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid='{id}' DESC LIMIT 1";
+            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid='{id}' LIMIT 1";
             factory.SetQuery(query);
             try
             {
