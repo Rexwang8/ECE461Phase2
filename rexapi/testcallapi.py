@@ -170,16 +170,16 @@ def main():
     #PrintResponse(response)
     
     #delete by name
-    Authurl, Authheader = DeletePackageRequestByName(token, "even")
-    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    response = requests.delete(Authurl, headers=Authheader)
-    PrintResponse(response, False)
+    # Authurl, Authheader = DeletePackageRequestByName(token, "even")
+    # print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    # response = requests.delete(Authurl, headers=Authheader)
+    # PrintResponse(response, False)
     
     #delete by id
-    # Authurl, AuthHeader = DeletePackageRequestByID(token, "d4f153b1-eedf-49cf-a0c3-d2a75efa1e7f")
-    # print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
-    # response = requests.delete(Authurl, headers=AuthHeader)
-    # PrintResponse(response, False)
+    Authurl, AuthHeader = DeletePackageRequestByID(token, "f216cc5f-7d63-48c8-83ff-36e481c48991")
+    print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
+    response = requests.delete(Authurl, headers=AuthHeader)
+    PrintResponse(response, False)
     
     #url, header = FormResetRequest(token)
     #print(f"DELETE: {url} WITH HEADER: {header}")
@@ -188,10 +188,10 @@ def main():
     
     #create 
     #Using Link
-    Authurl, Authheader, Authbody = CreatePackageRequest(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    # Authurl, Authheader, Authbody = CreatePackageRequest(token)
+    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    # PrintResponse(response, False)
     
 
     #Using Content
@@ -223,10 +223,10 @@ def main():
     #PrintResponse(response, True)
     
     #retrieve package
-    url, header = FormRetrievePackageRequest(token, "id123")
-    print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    # url, header = FormRetrievePackageRequest(token, "id123")
+    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    # response = requests.get(url, headers=header)
+    # PrintResponse(response, True)
     
 
 
