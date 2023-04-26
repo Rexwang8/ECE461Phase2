@@ -107,7 +107,7 @@ def CreatePackageLink(token):
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     #https://www.npmjs.com/package/date-fns
     #https://github.com/jonschlinkert/even
-    packageData = PackageData('', "https://github.com/cloudinary/cloudinary_npm", prog)
+    packageData = PackageData('', "https://www.npmjs.com/package/date-fns", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -200,10 +200,10 @@ def main():
     
     #create 
     #Using Link
-    #Authurl, Authheader, Authbody = CreatePackageLink(token)
-    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageLink(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
 
     #Using Content
@@ -214,10 +214,10 @@ def main():
     
 
     #Using Content
-    Authurl, Authheader, Authbody = CreatePackageContent(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    # Authurl, Authheader, Authbody = CreatePackageContent(token)
+    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    # PrintResponse(response, False)
     
     #url, header = FormPackageHistoryRequest(token, "packagename")
     #print(f"History GET: {url} WITH HEADER: {header}")
@@ -246,10 +246,17 @@ def main():
     #PrintResponse(response, True)
     
     #retrieve package
+<<<<<<< Updated upstream
     url, header = FormRetrievePackageRequest(token, "0402c011-db66-4b73-a2e9-004bbe68a818")
     print(f"Retrieve GET: {url} WITH HEADER: {header}")
     response = requests.get(url, headers=header)
     PrintResponse(response, True)
+=======
+    # url, header = FormRetrievePackageRequest(token, "id123")
+    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    # response = requests.get(url, headers=header)
+    # PrintResponse(response, True)
+>>>>>>> Stashed changes
     
 
 

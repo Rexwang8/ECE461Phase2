@@ -306,6 +306,7 @@ namespace IO.Swagger.CLI
                         {
                             if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
                             {
+                                Console.WriteLine("pkg " + pkg.getName() + " is npm");
                                 callNPM(pkg);
                                 
                                 //add built in delay to avoid rate limiting
@@ -345,6 +346,7 @@ namespace IO.Swagger.CLI
 
         public static async void callNPM(URLInfo urlInfo)
         {
+            Console.WriteLine("Inside callNPM Function");
             //prevent double calls
             if (urlInfo.getNPMSuccess())
                 return;
