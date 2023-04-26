@@ -319,12 +319,12 @@ namespace IO.Swagger.Controllers
             }
 
             //-----------------------Delete from Meta Data Query------------------------------------
-            query = $"DELETE `package-registry-461.packages.packagesMetadata` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesMetadata WHERE name = {name}` LIMIT 100)";
+            query = $"DELETE `package-registry-461.packages.packagesMetadata` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesMetadata` WHERE name = '{name}' LIMIT 100)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
             //--------------------Delete from Packages Data Query------------------------------------
-            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData WHERE name = {name}` LIMIT 100";
+            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData` WHERE name = '{name}' LIMIT 100)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //--------------------Delete from cloud store------------------------------------
@@ -1069,7 +1069,7 @@ namespace IO.Swagger.Controllers
             }
 
             //call get package data using id
-            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE id='{id}' ORDER BY version DESC LIMIT 1";
+            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid='{id}' DESC LIMIT 1";
             factory.SetQuery(query);
             try
             {

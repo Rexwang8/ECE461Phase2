@@ -106,6 +106,11 @@ def CreatePackageRequest(token):
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
     return URL, Header, Body
 
+def FormRetrievePackageRequest(token, packageid):
+    header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
+    url = f"http://package-registry-461.appspot.com/package/{packageid}"
+    return url, header
+
 def CheckToken(token):
     print(f"len of token: {len(token)}")
     tokensub = token[7:]
@@ -154,16 +159,16 @@ def main():
     
     
     #request
-    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response)
+    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response)
     
     #delete
-    #Authurl, Authheader = DeletePackageRequestByName(token, "kevin")
-    #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    #response = requests.delete(Authurl, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader = DeletePackageRequestByName(token, "even")
+    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    response = requests.delete(Authurl, headers=Authheader)
+    PrintResponse(response, False)
     
     
     #url, header = FormResetRequest(token)
@@ -201,6 +206,12 @@ def main():
     #url, header, body = PackagesListRequest(token, QueryRequestObj)
     #print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
     #response = requests.post(url, headers=header, data=body)
+    #PrintResponse(response, True)
+    
+    #retrieve package
+    #url, header = FormRetrievePackageRequest(token, "id123")
+    #print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
     
 
