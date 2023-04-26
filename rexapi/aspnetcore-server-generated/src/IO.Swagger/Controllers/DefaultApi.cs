@@ -1355,12 +1355,12 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("(packages/X-Debug) Token decrement failed");
                     return StatusCode(400);
                 }
-                if(queryobj.Name == null || queryobj.Name == "")
+                if(queryobj.Name == null || queryobj.Name == "" || queryobj.Name == "*")
                 {
                     queryobj.Name = "*";
                 }
                 string verregex = ".*";
-                if(queryobj.Version == null || queryobj.Version == "")
+                if(queryobj.Version == null || queryobj.Version == "" || queryobj.Version == "*")
                 {
                     queryobj.Version = ".*";
                     verregex = ".*";
@@ -1372,7 +1372,7 @@ namespace IO.Swagger.Controllers
                 }
 
                 //search matching metadata
-                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{queryobj.Name}' AND REGEXP_CONTAINS(version, '{verregex}') LIMIT 101 OFFSET {offsetInt}";
+                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(name, '{queryobj.Name}') AND REGEXP_CONTAINS(version, '{verregex}') LIMIT 101 OFFSET {offsetInt}";
                 Response.Headers.Add("X-Debugquery1", query);
                 Console.WriteLine("(packages/X-Debugquery1) " + query);
 
