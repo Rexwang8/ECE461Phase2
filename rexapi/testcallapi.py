@@ -200,7 +200,14 @@ def main():
     
     #create 
     #Using Link
-    # Authurl, Authheader, Authbody = CreatePackageLink(token)
+    #Authurl, Authheader, Authbody = CreatePackageLink(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
+    
+
+    #Using Content
+    # Authurl, Authheader, Authbody = CreatePackageContent(token)
     # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     # response = requests.post(Authurl, data=Authbody, headers=Authheader)
     # PrintResponse(response, False)
@@ -239,10 +246,10 @@ def main():
     #PrintResponse(response, True)
     
     #retrieve package
-    # url, header = FormRetrievePackageRequest(token, "id123")
-    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    # response = requests.get(url, headers=header)
-    # PrintResponse(response, True)
+    url, header = FormRetrievePackageRequest(token, "id123")
+    print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
 
 

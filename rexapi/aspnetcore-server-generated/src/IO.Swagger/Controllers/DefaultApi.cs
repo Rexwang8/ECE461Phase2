@@ -570,7 +570,7 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("(POST /package/X-Debug) Received request to create package");
-            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body.JSProgram + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
+            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "POST /package/X-Debug");
             //Response.Headers.Add("X-DebugArgs", "args : " + xAuthorization + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
@@ -909,12 +909,12 @@ namespace IO.Swagger.Controllers
             }
 
             //-----------------------Delete from Meta Data Query------------------------------------
-            query = $"DELETE `package-registry-461.packages.packagesMetadata` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesMetadata` WHERE id = '{id}' LIMIT 1)";
+            query = $"DELETE `package-registry-461.packages.packagesMetadata` entry WHERE entry.id IN (SELECT id from `package-registry-461.packages.packagesMetadata` WHERE id = '{id}' LIMIT 1)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
             //--------------------Delete from Packages Data Query------------------------------------
-            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.name IN (SELECT name from `package-registry-461.packages.packagesData` WHERE metaid = '{id}' LIMIT 1";
+            query = $"DELETE `package-registry-461.packages.packagesData` entry WHERE entry.metaid IN (SELECT metaid from `package-registry-461.packages.packagesData` WHERE metaid = '{id}' LIMIT 1)";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //--------------------Delete from cloud store------------------------------------
@@ -1218,14 +1218,11 @@ namespace IO.Swagger.Controllers
                     }
 
                 }
-
-                Response.Headers.Add("X-DebugStatus", "Data: " + data.Content + " " + data.JSProgram + " " + data.URL);
-                Console.WriteLine("(/package/{id}/X-Debug) Data: " + data.Content + " " + data.JSProgram + " " + data.URL);
             }
             catch (Exception e)
             {
-                Response.Headers.Add("X-DebugStatus", "Data: " + "invalid" + "error" + e.ToString());
-                Console.WriteLine("(/package/{id}/X-Debug) Data: " + "invalid" + "error" + e.ToString());
+                Response.Headers.Add("X-DebugStatus", "Data: " + "invalid" + "error" + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                Console.WriteLine("(/package/{id}/X-Debug) Data: " + "invalid" + "error" + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
                 return StatusCode(400);
             }
 
@@ -1257,9 +1254,9 @@ namespace IO.Swagger.Controllers
 
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0,100) : body.Data.Content) + ", " + body.Data.JSProgram + ", " + body.Data.URL);
+            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0,100) : body.Data.Content) +  ", " + body.Data.URL);
             Console.WriteLine("------END DEBUG INFO-----");
-            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.JSProgram + ", " + body.Data.URL);
+            Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.URL);
 
 
             throw new NotImplementedException();
