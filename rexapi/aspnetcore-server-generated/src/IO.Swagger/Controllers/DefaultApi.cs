@@ -568,7 +568,7 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("(POST /package/X-Debug) Received request to create package");
-            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body);
+            Console.WriteLine("(POST /package/X-Debug) args : " + xAuthorization + ", " + body.JSProgram + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "POST /package/X-Debug");
             Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body);
