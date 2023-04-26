@@ -647,7 +647,7 @@ namespace IO.Swagger.Controllers
             //Add to metadata table
             
             //check if package exists 
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name} AND version = '{Version}'";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{Version}'";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             Console.WriteLine("Line 622" + result.TotalRows);
