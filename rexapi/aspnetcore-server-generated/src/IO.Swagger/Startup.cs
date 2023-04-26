@@ -110,6 +110,14 @@ namespace IO.Swagger
 
             app.UseAuthorization();
 
+            //enable cors
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+
+            
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
