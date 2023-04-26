@@ -62,10 +62,10 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("(authenticate) Received request to authenticate user: " + body.User.Name);
-            Console.WriteLine("args: " + body);
+            Console.WriteLine("args: " + body.ToString());
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "Received request to authenticate user: " + body.User.Name);
-            Response.Headers.Add("X-DebugArgs", "args: " + body);
+            Response.Headers.Add("X-DebugArgs", "args: " + body.ToString());
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -478,10 +478,10 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             Console.WriteLine("(GET /package/byRegEx/X-Debug) Received request to get package by regex: " + body.Regex);
-            Console.WriteLine("(GET /package/byName/{name}/X-Debug) args : " + xAuthorization + ", " + body);
+            Console.WriteLine("(GET /package/byName/{name}/X-Debug) args : " + xAuthorization + ", " + body.ToString());
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "GET /package/byRegEx/X-Debug");
-            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body);
+            Response.Headers.Add("X-DebugArgs", "args: " + xAuthorization + ", " + body.ToString());
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -1010,17 +1010,6 @@ namespace IO.Swagger.Controllers
 
 
             return StatusCode(200, rating);
-
-
-
-            /*
-            string exampleJson = null;
-            exampleJson = "{\n  \"GoodPinningPractice\" : 2.3021358869347655,\n  \"NetScore\" : 9.301444243932576,\n  \"PullRequest\" : 7.061401241503109,\n  \"ResponsiveMaintainer\" : 5.962133916683182,\n  \"LicenseScore\" : 5.637376656633329,\n  \"RampUp\" : 1.4658129805029452,\n  \"BusFactor\" : 0.8008281904610115,\n  \"Correctness\" : 6.027456183070403\n}";
-
-            var example = exampleJson != null
-            ? JsonConvert.DeserializeObject<PackageRating>(exampleJson)
-            : default(PackageRating);            //TODO: Change the data returned
-            return new ObjectResult(example);*/
         }
 
         /// <summary>
