@@ -291,44 +291,44 @@ namespace IO.Swagger.CLI
                 else if (baseURL.Contains("https://www.npmjs.com"))
                 {
                     Console.WriteLine("Cloning for npm link");
-                    List<URLInfo> urlInfos = new List<URLInfo>();
-                    urlInfos.Add(new URLInfo(baseURL));
-                    URLClass AllPackages = new URLClass(urlInfos);
+                    // List<URLInfo> urlInfos = new List<URLInfo>();
+                    // urlInfos.Add(new URLInfo(baseURL));
+                    // URLClass AllPackages = new URLClass(urlInfos);
 
-                    for (int i = 0; i < 3; i++)
-                    {
-                        if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
-                        {
-                            break;
-                        }
+                    // for (int i = 0; i < 3; i++)
+                    // {
+                    //     if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
+                    //     {
+                    //         break;
+                    //     }
 
-                        foreach (var pkg in AllPackages.GetAllPackages().Values)
-                        {
-                            if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
-                            {
-                                Console.WriteLine("pkg " + pkg.getName() + " is npm");
-                                callNPM(pkg);
+                    //     foreach (var pkg in AllPackages.GetAllPackages().Values)
+                    //     {
+                    //         if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
+                    //         {
+                    //             Console.WriteLine("pkg " + pkg.getName() + " is npm");
+                    //             callNPM(pkg);
                                 
-                                //add built in delay to avoid rate limiting
-                                System.Threading.Thread.Sleep(500);
-                            }
-                        }
-                        //update total npm pulled
-                        AllPackages.countNpmPulled();
-                        if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
-                        {
-                            break;
-                        }
-                        System.Threading.Thread.Sleep(2000);
-                    }
+                    //             //add built in delay to avoid rate limiting
+                    //             System.Threading.Thread.Sleep(500);
+                    //         }
+                    //     }
+                    //     //update total npm pulled
+                    //     AllPackages.countNpmPulled();
+                    //     if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
+                    //     {
+                    //         break;
+                    //     }
+                    //     System.Threading.Thread.Sleep(2000);
+                    // }
 
-                    foreach (var pkg in AllPackages.GetAllPackages().Values)
-                    {
-                        Console.WriteLine("Trying to clone " + pkg.githubURL + " for npm link)");
-                        var co = new CloneOptions();
-                        co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-                        Repository.Clone(pkg.githubURL, "Temp", co);
-                    }
+                    // foreach (var pkg in AllPackages.GetAllPackages().Values)
+                    // {
+                    //     Console.WriteLine("Trying to clone " + pkg.githubURL + " for npm link)");
+                    //     var co = new CloneOptions();
+                    //     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
+                    //     Repository.Clone(pkg.githubURL, "Temp", co);
+                    // }
                     
                     return true;
 
@@ -342,6 +342,30 @@ namespace IO.Swagger.CLI
                 Console.WriteLine("The process failed: {0}", e.ToString());
                 return false;
             }
+        }
+
+        async Task<int> GetGitHubFromNPM(string npmLink)
+        {
+            using (var client = new HttpClient())
+            {
+                try
+                {
+                    var response = await client.GetAsync(npmLink);
+                    response.EnsureSuccessStatusCode();
+
+                    var responseBody = await response.Content.ReadAsStringAsync();
+                    var packageInfo = JsonConvert.DeserializeObject<PackageInfo>(responseBody);
+
+                    var repositoryUrl = packageInfo.Repository.Url;
+                    Console.WriteLine("The github Link is " + repositoryUrl);
+                    githubURL = repositoryUrl;
+                }
+                catch (HttpRequestException ex)
+                {
+                    Console.WriteLine($"Error retrieving repository URL for npm link: {ex.Message}");
+                }
+            }
+            return 0;
         }
 
         public static async void callNPM(URLInfo urlInfo)
@@ -964,6 +988,16 @@ namespace IO.Swagger.CLI
     class QLDiscussions
     {
         public int totalCount { get; set; } = 0;
+    }
+
+    class PackageInfo
+    {
+        public RepositoryInfo Repository { get; set; }
+    }
+
+    class RepositoryInfo
+    {
+        public string Url { get; set; }
     }
 
     #endregion

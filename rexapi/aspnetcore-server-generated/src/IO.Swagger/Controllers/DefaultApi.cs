@@ -682,7 +682,6 @@ namespace IO.Swagger.Controllers
                     fileInfo.Delete();
                 }
                 Directory.Delete("Temp", true);
-                
             }
             else 
             {
