@@ -626,6 +626,8 @@ namespace IO.Swagger.Controllers
                 body.Content = Base64Encoder.Encode("TempPackage.zip");
                 Console.WriteLine("Package was encoded");
 
+                //Check Package Rating 
+                
                 //Delete the Package
                 Directory.Delete("Temp", true);
                 Console.WriteLine("Line 583");
@@ -1007,6 +1009,7 @@ namespace IO.Swagger.Controllers
 
             //Get the Content Data 
             query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid = '{id}'";
+
 
             PackageRating rating = new PackageRating();
             rating.BusFactor = 2;
