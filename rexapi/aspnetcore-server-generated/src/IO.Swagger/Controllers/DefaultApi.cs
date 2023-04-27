@@ -618,7 +618,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Package downloaded");
 
                 //Get Json file
-                urlInfo.getJsonFile("Temp");
+                urlInfo.getJsonFile("/app/TempDirectory");
                 //Get the version
                 Version = urlInfo.returnVersionFromPackage();
                 URL = body.URL;
