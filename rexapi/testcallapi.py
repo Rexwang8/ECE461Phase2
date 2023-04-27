@@ -181,6 +181,12 @@ def main():
     #response = requests.put(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response)
     
+    #request -- Authenticate (WITH ECE)
+    Authurl, Authbody, Authheader = FormAuthenticateRequest("ece30861defaultadminuser", '''correcthorsebatterystaple123(!__+@**(A'"`;DROP TABLE packages''', True)
+    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response)
+    
     #delete by name -- works
     #Authurl, Authheader = DeletePackageRequestByName(token, "even")
     #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
@@ -201,10 +207,10 @@ def main():
     
     #create 
     #Using Link -- works using gh link, not with npm link
-    Authurl, Authheader, Authbody = CreatePackageLink(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageLink(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
 
     #Using Content
@@ -212,7 +218,10 @@ def main():
     #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     #response = requests.post(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response, False)
-        
+    
+    
+    
+    
     #Get history of package by name -- works
     #url, header = FormPackageHistoryRequest(token, "even")
     #print(f"History GET: {url} WITH HEADER: {header}")
@@ -242,10 +251,10 @@ def main():
     
     
     #retrieve package -- works
-    # url, header = FormRetrievePackageRequest(token, "76c9b64d-24c7-482d-950f-34c7b5eed866")
-    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    # response = requests.get(url, headers=header)
-    # PrintResponse(response, True)
+    url, header = FormRetrievePackageRequest(token, "76c9b64d-24c7-482d-950f-34c7b5eed866")
+    print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
     #update package -- doesn't exist
     
