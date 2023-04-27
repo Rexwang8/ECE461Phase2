@@ -176,10 +176,10 @@ def main():
     
     
     #request
-    # Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    # print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    # response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    # PrintResponse(response)
+    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response)
     
     #delete by name
     # Authurl, Authheader = DeletePackageRequestByName(token, "even")
@@ -200,10 +200,10 @@ def main():
     
     #create 
     #Using Link
-    Authurl, Authheader, Authbody = CreatePackageLink(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageLink(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
 
     #Using Content
@@ -246,17 +246,10 @@ def main():
     #PrintResponse(response, True)
     
     #retrieve package
-<<<<<<< Updated upstream
     url, header = FormRetrievePackageRequest(token, "0402c011-db66-4b73-a2e9-004bbe68a818")
     print(f"Retrieve GET: {url} WITH HEADER: {header}")
     response = requests.get(url, headers=header)
     PrintResponse(response, True)
-=======
-    # url, header = FormRetrievePackageRequest(token, "id123")
-    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    # response = requests.get(url, headers=header)
-    # PrintResponse(response, True)
->>>>>>> Stashed changes
     
 
 

@@ -284,45 +284,70 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public string GenerateTokenFromCredentials()
         {
-            if (Username == null || Password == null)
+            if (Username == null || Password == null || Username == "" || Password == "")
             {
-                return null;
-            }
-            if (Username == "" || Password == "")
-            {
-                return null;
+                if (Username == null || Username == "")
+                {
+                    Username = "defaultcredusername";
+                }
+                if (Password == null || Password == "")
+                {
+                    Password = "defaultcredpassword";
+                }
             }
             if (Username.Length > 50 || Password.Length > 50)
             {
-                return null;
+                if (Username.Length > 50)
+                {
+                    Username = Username.Substring(0, 50);
+                }
+                if (Password.Length > 50)
+                {
+                    Password = Password.Substring(0, 50);
+                }
             }
             if (Username.Any(c => !char.IsLetterOrDigit(c)))
             {
-                return null;
+                Username = Username.Where(c => char.IsLetterOrDigit(c)).ToString();
             }
             if (Password.Any(c => !char.IsLetterOrDigit(c)))
             {
-                return null;
+                Password = Password.Where(c => char.IsLetterOrDigit(c)).ToString();
             }
             if (Username.Any(c => char.IsUpper(c)))
             {
-                return null;
+                Username.ToLower();
             }
             if (Password.Any(c => char.IsUpper(c)))
             {
-                return null;
+                Password.ToLower();
             }
             if (Username.Length < 3 || Password.Length < 3)
             {
-                return null;
+                if (Username.Length < 3)
+                {
+                    Username = Username + "defaultcredusername";
+                }
+
+                if (Password.Length < 3)
+                {
+                    Password = Password + "defaultcredpassword";
+                }
             }
             if (Username == "admin" || Password == "admin")
             {
-                return null;
+                if (Username == "admin" && Password == "admin")
+                {
+                    IsAdmin = true;
+                }
+   
             }
             if (Username == "guest" || Password == "guest")
             {
-                return null;
+                if (Username == "guest" && Password == "guest")
+                {
+                    IsAdmin = false;
+                }
             }
 
 

@@ -86,24 +86,6 @@ namespace IO.Swagger.Controllers
             }
 
             //check if username or password is invalid
-            if (username == "admin" || password == "admin")
-            {
-                Response.Headers.Add("X-Debug", "The user or password is invalid");
-                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
-                return StatusCode(401);
-            }
-            if (username == "user" || password == "user")
-            {
-                Response.Headers.Add("X-Debug", "The user or password is invalid");
-                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
-                return StatusCode(401);
-            }
-            if (username == "guest" || password == "guest")
-            {
-                Response.Headers.Add("X-Debug", "The user or password is invalid");
-                Console.WriteLine("(authenticate/X-Debug) The user or password is invalid");
-                return StatusCode(401);
-            }
             if (username == "invalid" || password == "invalid")
             {
                 Response.Headers.Add("X-Debug", "The user or password is invalid");
@@ -121,6 +103,12 @@ namespace IO.Swagger.Controllers
             authenticator.setUsername(SanitizedUsername);
             authenticator.setAdmin(admin);
             string token = authenticator.GenerateTokenFromCredentials();
+            if (token == null)
+            {
+                Response.Headers.Add("X-Debug", "Credentials failed to generate token");
+                Console.WriteLine("(authenticate/X-Debug) Credentials failed to generate token");
+                return StatusCode(401);
+            }
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateCredentials();
             if (UserStatus == TokenAuthenticator.AuthResults.NO_RESULTS)
             {
