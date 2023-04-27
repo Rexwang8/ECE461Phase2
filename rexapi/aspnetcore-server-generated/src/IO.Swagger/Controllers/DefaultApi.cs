@@ -617,6 +617,15 @@ namespace IO.Swagger.Controllers
                 }
                 Console.WriteLine("Package downloaded");
 
+                //check package downloaded properly
+                if(!Directory.Exists("/app/TempDirectory"))
+                {
+                    Response.Headers.Add("X-Debug", "Package download failed, can't find package");
+                    Console.WriteLine("(/package/X-Debug) Package download failed, can't find package");
+                    return StatusCode(400);
+                }
+                
+
                 //Get Json file
                 urlInfo.getJsonFile("/app/TempDirectory");
                 //Get the version

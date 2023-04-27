@@ -261,6 +261,11 @@ namespace IO.Swagger.CLI
         public void searchJsonFile(string directoryPath)
         {
             string[] files = Directory.GetFiles(directoryPath);
+            for (int i = 0; i < files.Length; i++)
+            {
+                files[i] = files[i].Replace("\\", "/");
+                Console.WriteLine(files[i]);
+            }
 
             foreach (string file in files)
             {
@@ -324,6 +329,9 @@ namespace IO.Swagger.CLI
                     bool result = task;
 
                     SuccessClone = result;
+                    var co = new CloneOptions();
+                    co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
+                    Repository.Clone(baseURL, "/app/TempDirectory", co);
                     Console.WriteLine("result: " + result);
                     return 1;
 
