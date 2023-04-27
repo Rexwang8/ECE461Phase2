@@ -667,14 +667,6 @@ namespace IO.Swagger.Controllers
                     //convert base64 into zip
                     Base64Encoder.Decode(body.Content, "/app/TempPackage.zip");
                     fileInfo = new FileInfo("/app/TempPackage.zip");
-                    if (fileInfo.Exists)
-                    {
-                        Console.WriteLine("IT EXISTS");
-                    }
-                    else
-                    {
-                        Console.WriteLine("IT DOES NOT EXIST");
-                    }
                 }
                 catch (Exception e)
                 {
@@ -682,33 +674,34 @@ namespace IO.Swagger.Controllers
                 }
 
                 //list all files in working directory
-                string[] files = Directory.GetFiles("/app");
-                foreach (string file in files)
-                {
-                    Console.WriteLine(file);
-                }
-                return StatusCode(444);
+                //string[] files = Directory.GetFiles("/app");
+                //foreach (string file in files)
+                //{
+                //    Console.WriteLine(file);
+                //}
+                
                 
 
                 //unzip the zip file
-                Directory.CreateDirectory("Temp");
-                string zipFilePath = Path.GetFullPath("TempPackage.zip");
-                string targetFilePath = Path.GetFullPath("Temp");
-                Console.WriteLine("Line 673" + zipFilePath + "\n" + targetFilePath);
-                System.IO.Compression.ZipFile.ExtractToDirectory(zipFilePath, targetFilePath);
+                Directory.CreateDirectory("/app/TempDirectory");
+                System.IO.Compression.ZipFile.ExtractToDirectory("/app/TempPackage.zip", "/app/TempDirectory");
+
+                
                 //get Json file
-                URLInfo urlInfo = new URLInfo(body.URL);
-                urlInfo.getJsonFile("Temp");
+                URLInfo urlInfo = new URLInfo("");
+                urlInfo.getJsonFile("/app/TempDirectory");
                 //get name
-                urlInfo.returnNameFromPackage();
+                Name = urlInfo.returnNameFromPackage();
                 //get version
-                urlInfo.returnVersionFromPackage();
+                Version = urlInfo.returnVersionFromPackage();
                 //Delete 
+                fileInfo = new FileInfo("/app/TempPackage.zip");
                 if (fileInfo.Exists)
                 {
                     fileInfo.Delete();
                 }
                 Directory.Delete("Temp", true);
+                Console.WriteLine("Content finished for name: " + Name + " and version: " + Version);
             }
             else
             {
