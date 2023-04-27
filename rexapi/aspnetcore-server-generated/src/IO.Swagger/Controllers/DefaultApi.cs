@@ -1211,7 +1211,7 @@ namespace IO.Swagger.Controllers
                     //Content
                     if (row["content"] != null)
                     {
-                        data.Content = row["content"].ToString();
+                        data.Content = row["content"].ToString().Replace("@", "\n");
                     }
                     else
                     {

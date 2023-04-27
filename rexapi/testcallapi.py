@@ -208,17 +208,13 @@ def main():
     
 
     #Using Content
-    # Authurl, Authheader, Authbody = CreatePackageContent(token)
-    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    # PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageContent(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
-
-    #Using Content
-    Authurl, Authheader, Authbody = CreatePackageContent(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    
+    
     
     #Get history of package by name -- works
     #url, header = FormPackageHistoryRequest(token, "even")
@@ -249,10 +245,10 @@ def main():
     
     
     #retrieve package -- works
-    #url, header = FormRetrievePackageRequest(token, "0402c011-db66-4b73-a2e9-004bbe68a818")
-    #print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    #response = requests.get(url, headers=header)
-    #PrintResponse(response, True)
+    url, header = FormRetrievePackageRequest(token, "76c9b64d-24c7-482d-950f-34c7b5eed866")
+    print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
     #update package -- doesn't exist
     
