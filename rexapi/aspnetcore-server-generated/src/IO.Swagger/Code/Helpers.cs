@@ -308,11 +308,23 @@ namespace IO.Swagger.Controllers
             }
             if (Username.Any(c => !char.IsLetterOrDigit(c)))
             {
-                Username = Username.Where(c => char.IsLetterOrDigit(c)).ToString();
+                for (int i = 0; i < Username.Length; i++)
+                {
+                    if (!char.IsLetterOrDigit(Username[i]))
+                    {
+                        Username = Username.Remove(i, 1);
+                    }
+                }
             }
             if (Password.Any(c => !char.IsLetterOrDigit(c)))
             {
-                Password = Password.Where(c => char.IsLetterOrDigit(c)).ToString();
+                for (int i = 0; i < Password.Length; i++)
+                {
+                    if (!char.IsLetterOrDigit(Password[i]))
+                    {
+                        Password = Password.Remove(i, 1);
+                    }
+                }
             }
             if (Username.Any(c => char.IsUpper(c)))
             {
@@ -354,6 +366,8 @@ namespace IO.Swagger.Controllers
             string basestring = $"START -- SanitizedUsername: {Username} SanitizedPassword: {Password} Admin: {IsAdmin} -- END";
             Token_NoBearer = Hasher.HashString(basestring);
             Token = "bearer " + Token_NoBearer;
+            Console.WriteLine("username pwd admin" + Username + Password + IsAdmin);
+            Console.WriteLine($"Token: {Token}");
 
             return Token;
         }
