@@ -283,86 +283,61 @@ namespace IO.Swagger.CLI
             }
         }
 
-        public async void ClonePackage()
+        // <summary>
+        // This function is used to clone the package from the link
+        // </summary>
+        public void TaskIssueClonePackage()
+        {
+            Console.WriteLine("Inside TaskIssueClonePackage Function");
+            Task.Run(() => ClonePackage());
+        }
+
+        // <summary>
+        // This function is used to clone the package from the link
+        // </summary>
+        public async Task<int> ClonePackage()
         {
             try
             {
                 Console.WriteLine("trying to delete temp folder");
-                if(Directory.Exists("Temp"))
+                if(Directory.Exists("/app/TempDirectory"))
                 {
-                    Directory.Delete("Temp", true);
+                    Directory.Delete("/app/TempDirectory", true);
                 }
+
                 Console.WriteLine("deleted temp folder");
                 if (baseURL.Contains("https://github.com"))
                 {
                     Console.WriteLine("Cloning for github link");
                     var co = new CloneOptions();
                     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-                    Repository.Clone(baseURL, "Temp", co);
+                    Repository.Clone(baseURL, "/app/TempDirectory", co);
                     Console.WriteLine("Cloned for github link");
                     SuccessClone = true;
-                    return;
+                    return 1;
                 }
                 else if (baseURL.Contains("https://www.npmjs.com"))
                 {
                     Console.WriteLine("Cloning for npm link");
-                    // List<URLInfo> urlInfos = new List<URLInfo>();
-                    // urlInfos.Add(new URLInfo(baseURL));
-                    // URLClass AllPackages = new URLClass(urlInfos);
-
-                    // for (int i = 0; i < 3; i++)
-                    // {
-                    //     if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
-                    //     {
-                    //         break;
-                    //     }
-
-                    //     foreach (var pkg in AllPackages.GetAllPackages().Values)
-                    //     {
-                    //         if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
-                    //         {
-                    //             Console.WriteLine("pkg " + pkg.getName() + " is npm");
-                    //             callNPM(pkg);
-                                
-                    //             //add built in delay to avoid rate limiting
-                    //             System.Threading.Thread.Sleep(500);
-                    //         }
-                    //     }
-                    //     //update total npm pulled
-                    //     AllPackages.countNpmPulled();
-                    //     if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
-                    //     {
-                    //         break;
-                    //     }
-                    //     System.Threading.Thread.Sleep(2000);
-                    // }
-
-                    // foreach (var pkg in AllPackages.GetAllPackages().Values)
-                    // {
-                    //     Console.WriteLine("Trying to clone " + pkg.githubURL + " for npm link)");
-                    //     var co = new CloneOptions();
-                    //     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-                    //     Repository.Clone(pkg.githubURL, "Temp", co);
-                    // }
-                    bool task = await Task.Run(() => GetGitHubFromNPM());
+                    bool task = await Task.Run(async() => await GetGitHubFromNPM());
                     Console.WriteLine("345");
                     bool result = task;
 
                     SuccessClone = result;
                     Console.WriteLine("result: " + result);
-                    return;
+                    return 1;
 
                 }
                 
                 Console.WriteLine("Nothing was hit");
                 SuccessClone = false;
-                return;
+                return 0;
             }
             catch (Exception e)
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
                 SuccessClone = false;
-                return;
+                return 0;
             }
         }
 

@@ -602,7 +602,9 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Name of package: " + Name);
                 URLInfo urlInfo = new URLInfo(body.URL);
                 //Download Package
-                urlInfo.ClonePackage();
+                //await clonepackage to finish
+                var task = urlInfo.ClonePackage();
+                task.Wait();
 
            
 
