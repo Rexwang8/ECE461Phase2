@@ -653,7 +653,14 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Line 663");
                 //convert base64 into zip
                 Base64Encoder.Decode(body.Content, "Test.zip");
-
+                if (fileInfo.Exists)
+                {
+                    Console.WriteLine("IT EXISTS");
+                }
+                else
+                {
+                    Console.WriteLine("IT DOES NOT EXIST");
+                }
                 //unzip the zip file
                 Directory.CreateDirectory("Temp");
                 string zipFilePath = Path.GetFullPath("Test.zip");
