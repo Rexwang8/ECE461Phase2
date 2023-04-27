@@ -603,6 +603,9 @@ namespace IO.Swagger.Controllers
                 URLInfo urlInfo = new URLInfo(body.URL);
                 //Download Package
                 urlInfo.ClonePackage();
+
+           
+
                 if (!urlInfo.SuccessClone)
                 {
                     //append debug message to header
@@ -626,7 +629,8 @@ namespace IO.Swagger.Controllers
                 body.Content = Base64Encoder.Encode("TempPackage.zip");
                 Console.WriteLine("Package was encoded");
 
-                //Check Package Rating 
+                //Check Package Rating
+                 
                 
                 //Delete the Package
                 Directory.Delete("Temp", true);
