@@ -132,6 +132,8 @@ namespace IO.Swagger.CLI
         public bool SuccessDoClone { get; set; } = false;
         public bool SuccessDoStaticAnalysis { get; set; } = false;
         public bool SuccessDoLicenseAnalysis { get; set; } = false;
+        
+        public bool SuccessClone { get; set; }
         #endregion
 
         #region Constructors
@@ -269,7 +271,7 @@ namespace IO.Swagger.CLI
             }
         }
 
-        public bool ClonePackage()
+        public async void ClonePackage()
         {
             try
             {
@@ -286,7 +288,8 @@ namespace IO.Swagger.CLI
                     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
                     Repository.Clone(baseURL, "Temp", co);
                     Console.WriteLine("Cloned for github link");
-                    return true;
+                    SuccessClone = true;
+                    return;
                 }
                 else if (baseURL.Contains("https://www.npmjs.com"))
                 {
@@ -329,28 +332,35 @@ namespace IO.Swagger.CLI
                     //     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
                     //     Repository.Clone(pkg.githubURL, "Temp", co);
                     // }
-                    
-                    return true;
+                    Task<bool> task = Task.Run(() => GetGitHubFromNPM());
+                    bool result = await task;
+
+                    SuccessClone = result;
+                    Console.WriteLine("result: " + result);
+                    return;
 
                 }
                 
                 Console.WriteLine("Nothing was hit");
-                return false;
+                SuccessClone = false;
+                return;
             }
             catch (Exception e)
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
-                return false;
+                SuccessClone = false;
+                return;
             }
         }
 
-        async Task<int> GetGitHubFromNPM(string npmLink)
+        async Task<bool> GetGitHubFromNPM()
         {
+            Console.WriteLine("Inside GetGitHubFromNPM Function");
             using (var client = new HttpClient())
             {
                 try
                 {
-                    var response = await client.GetAsync(npmLink);
+                    var response = await client.GetAsync(npmURL);
                     response.EnsureSuccessStatusCode();
 
                     var responseBody = await response.Content.ReadAsStringAsync();
@@ -359,13 +369,14 @@ namespace IO.Swagger.CLI
                     var repositoryUrl = packageInfo.Repository.Url;
                     Console.WriteLine("The github Link is " + repositoryUrl);
                     githubURL = repositoryUrl;
+                    return true;
                 }
                 catch (HttpRequestException ex)
                 {
                     Console.WriteLine($"Error retrieving repository URL for npm link: {ex.Message}");
+                    return false;
                 }
             }
-            return 0;
         }
 
         public static async void callNPM(URLInfo urlInfo)
