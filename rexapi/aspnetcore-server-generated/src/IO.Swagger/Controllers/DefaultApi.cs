@@ -635,19 +635,19 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
                 Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {Version}");
                 //get Body Content
-                System.IO.Compression.ZipFile.CreateFromDirectory("Temp", "TempPackage.zip");
+                System.IO.Compression.ZipFile.CreateFromDirectory("/app/TempDirectory", "/app/TempPackage.zip");
                 Console.WriteLine("Package was zipped");
-                body.Content = Base64Encoder.Encode("TempPackage.zip");
+                body.Content = Base64Encoder.Encode("/app/TempPackage.zip");
                 Console.WriteLine("Package was encoded");
 
                 //Check Package Rating
                  
                 
                 //Delete the Package
-                Directory.Delete("Temp", true);
+                Directory.Delete("/app/TempDirectory", true);
                 Console.WriteLine("Line 583");
 
-                FileInfo fileInfo = new FileInfo("TempPackage.zip");
+                FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
                 if (fileInfo.Exists)
                 {
                     fileInfo.Delete();
