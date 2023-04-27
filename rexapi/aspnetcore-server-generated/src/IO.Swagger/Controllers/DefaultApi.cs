@@ -602,7 +602,8 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Name of package: " + Name);
                 URLInfo urlInfo = new URLInfo(body.URL);
                 //Download Package
-                if (!urlInfo.ClonePackage())
+                urlInfo.ClonePackage();
+                if (!urlInfo.SuccessClone)
                 {
                     //append debug message to header
                     Response.Headers.Add("X-Debug", "Package could not be downloaded");
