@@ -36,8 +36,8 @@ function formAuthenticateRequest(username: string, password: string, isadmin: bo
   const authenticateRequestObj = new AuthenticateRequestObj(userObj, secretObj);
   const body = JSON.stringify(authenticateRequestObj, null, 4);
   //AIzaSyCbPo8ILEPQ_zwnOCUsOwU9PPvfr5n7atQ
-  const header = { 'Content-Type': 'application/json', 'Accept': 'application/json', 'Access-Control-Allow-Origin': '*','X-Authorization': 'AIzaSyCbPo8ILEPQ_zwnOCUsOwU9PPvfr5n7atQ'};
-  const url = 'http://package-registry-461.appspot.com/authenticate';
+  const header = { 'Content-Type': 'application/json', 'Accept': 'application/json'};
+  const url = 'https://package-registry-461.appspot.com/authenticate';
   return [url, body, header];
 }
 
@@ -84,7 +84,9 @@ function Signup() {
       const [authUrl, authRequest, authHeader] = formAuthenticateRequest(username, password, isAdmin);
       const response = await axios.put(authUrl, authRequest, { headers: authHeader });
       printResponse(response);
-      window.location.href = '/Packages';
+      // window.location.href = '/Packages';
+      localStorage.setItem("path_name", "/Packages")
+      location.reload();
     }
     catch (error) {
       alert("An error occurred " + error);
@@ -97,19 +99,27 @@ function Signup() {
   };
 
   function redirectToPackages() {
-    window.location.href = '/Packages';
+    // window.location.href = '/Packages';
+    localStorage.setItem("path_name", "/Packages")
+    location.reload();
   }
 
   function redirectToAbout() {
-    window.location.href = '/App';
+    // window.location.href = '/App';
+    localStorage.setItem("path_name", "/App")
+    location.reload();
   }
 
   function redirectToSignUp() {
-    window.location.href = '/Signup';
+    // window.location.href = '/Signup';
+    localStorage.setItem("path_name", "/Signup")
+    location.reload();
   }
 
   function redirectToSignIn() {
-    window.location.href = '/Signin';
+    // window.location.href = '/Signin';
+    localStorage.setItem("path_name", "/Signin")
+    location.reload();
   }
 
   return (

@@ -8,23 +8,14 @@ import Package_info from './Package_info';
 import './index.css';
 
 // Get the current URL path
-const path = window.location.pathname;
-
-// Render the appropriate component based on the URL path
-// ReactDOM.render(
-//   <React.StrictMode>
-//     {path === '/Packages' ? <Packages /> : <App />}
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
-// ReactDOM.render(
-//   <React.StrictMode>
-//     {path === '/Packages' ? <Packages /> : (path === '/Signup' ? <Signup /> : <App />)}
-//   </React.StrictMode>,
-//   document.getElementById('root')
-// );
-
+// const path = window.location.pathname;
+// alert(typeof path);
+// const path: string = "/Signup";
+const path = localStorage.getItem("path_name");
+// if(!path) {
+//   path
+// }
+// alert(path);
 ReactDOM.render(
   <React.StrictMode>
     {path === '/Packages' ? (
@@ -41,5 +32,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root') // make sure you have an element with id 'root' in your HTML file
 );
-
 

@@ -14,19 +14,27 @@ function App() {
   };
 
   function redirectToPackages() {
-    window.location.href = '/Packages';
+    // window.location.href = '/Packages';
+    localStorage.setItem("path_name", "/Packages")
+    location.reload();
   }
 
   function redirectToAbout() {
-    window.location.href = '/App';
+    // window.location.href = '/App';
+    localStorage.setItem("path_name", "/App")
+    location.reload();
   }
 
   function redirectToSignUp() {
-    window.location.href = '/Signup';
+    // window.location.href = '/Signup';
+    localStorage.setItem("path_name", "/Signup")
+    location.reload();
   }
 
   function redirectToSignIn() {
-    window.location.href = '/Signin';
+    // window.location.href = '/Signin';
+    localStorage.setItem("path_name", "/Signin")
+    location.reload();
   }
 
   return (

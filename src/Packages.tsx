@@ -13,25 +13,27 @@ function createPackagesListRequest(token: string, queries: QueryRequest[]): [str
   return [url, header, body];
 }
 
-var alerted = false;
-
+// var alerted = false;
+// && !alerted
 
 function Packages() {
   const login_token = localStorage.getItem('login_token');
-  if (!login_token && !alerted) {
-    alerted = true;
+  if (!login_token) {
+    // alerted = true;
     alert("Please make sure you are signed in!")
-    window.location.href = '/Signup';
+    // window.location.href = '/Signup';
+    localStorage.setItem("path_name", "/Signup")
+    location.reload();
   }
-if(typeof login_token === 'string') {
-  const queryRequests: QueryRequest[] = [{ Name: "kevin", Version: "" }];
-  const [url, header, body] = createPackagesListRequest(login_token, queryRequests);
-  console.log(`List POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
-  fetch(url, { method: 'POST', headers: header, body })
-    .then(response => response.json())
-    .then(json => console.log(json))
-    .catch(error => console.error(error));
-}
+  if(typeof login_token === 'string') {
+    const queryRequests: QueryRequest[] = [{ Name: "kevin", Version: "" }];
+    const [url, header, body] = createPackagesListRequest(login_token, queryRequests);
+    console.log(`List POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
+    fetch(url, { method: 'POST', headers: header, body })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .catch(error => console.error(error));
+  }
 
 
 
@@ -76,23 +78,33 @@ if(typeof login_token === 'string') {
   };
 
   function redirectToPackages() {
-    window.location.href = '/Packages';
+    // window.location.href = '/Packages';
+    localStorage.setItem("path_name", "/Packages")
+    location.reload();
   }
 
   function redirectToAbout() {
-    window.location.href = '/App';
+    // window.location.href = '/App';
+    localStorage.setItem("path_name", "/App")
+    location.reload();
   }
 
   function redirectToSignUp() {
-    window.location.href = '/Signup';
+    // window.location.href = '/Signup';
+    localStorage.setItem("path_name", "/Signup")
+    location.reload();
   }
 
   function redirectToSignIn() {
-    window.location.href = '/Signin';
+    // window.location.href = '/Signin';
+    localStorage.setItem("path_name", "/Signin")
+    location.reload();
   }
 
   function redirectToPackageInfo() {
-    window.location.href = '/Package_info';
+    // window.location.href = '/Package_info';
+    localStorage.setItem("path_name", "/Package_info")
+    location.reload();
   }
 
   return (
