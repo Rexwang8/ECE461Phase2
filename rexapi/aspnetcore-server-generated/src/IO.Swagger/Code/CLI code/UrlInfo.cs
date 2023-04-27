@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.IO;
 using System;
 using LibGit2Sharp;
+using System.Linq;
 
 namespace IO.Swagger.CLI
 {
@@ -194,6 +195,17 @@ namespace IO.Swagger.CLI
         
         #region Static Analysis
 
+        public void getURLStats()
+        {
+            //npm pull
+
+            //github pull
+
+            //static analysis
+            StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+            StaticAnalysis.Analyze(this);
+        }
+
         public string returnNameFromPackage()
         {
             StreamReader sr = new StreamReader(packageJsonPath);
@@ -332,8 +344,9 @@ namespace IO.Swagger.CLI
                     //     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
                     //     Repository.Clone(pkg.githubURL, "Temp", co);
                     // }
-                    Task<bool> task = Task.Run(() => GetGitHubFromNPM());
-                    bool result = await task;
+                    bool task = await Task.Run(() => GetGitHubFromNPM());
+                    Console.WriteLine("345");
+                    bool result = task;
 
                     SuccessClone = result;
                     Console.WriteLine("result: " + result);
@@ -355,6 +368,7 @@ namespace IO.Swagger.CLI
 
         async Task<bool> GetGitHubFromNPM()
         {
+            Console.WriteLine("Inside GetGitHubFromNPM Function");
             var apiUrl = $"https://registry.npmjs.org/{name}";
             using (var client = new HttpClient())
             {
@@ -367,7 +381,7 @@ namespace IO.Swagger.CLI
                     var packageInfo = JsonConvert.DeserializeObject<PackageInfo>(responseBody);
 
                     var repositoryUrl = packageInfo.Repository.Url.ToString().Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");;
-                    Console.WriteLine("The github Link is " + repositoryUrl);
+                    Console.WriteLine("379: The github Link is " + repositoryUrl);
                     githubURL = repositoryUrl;
                     return true;
                 }
@@ -1012,4 +1026,156 @@ namespace IO.Swagger.CLI
     }
 
     #endregion
+    public class StaticAnalysisLibrary
+    {
+        DirectoryTool DirectoryTool = new DirectoryTool();
+
+        public void Analyze(URLInfo urlInfo)
+        {
+            string repoPath = urlInfo.getPath();
+            DirectoryTool.getFiles(repoPath);
+            urlInfo.licensePath = DirectoryTool.licensePath;
+            urlInfo.readmePath = DirectoryTool.readmePath;
+            urlInfo.packageJsonPath = DirectoryTool.packageJsonPath;
+
+            foreach(string file in DirectoryTool.sourceCodeEntries)
+            {
+                ReadFile(file, urlInfo);
+            }
+
+            foreach(string file in DirectoryTool.mdEntries)
+            {
+                urlInfo.commentCharCount += File.ReadAllLines(file).Sum(s => s.Length);
+            }
+
+            DirectoryTool.Clear();
+        }
+
+        //Reads the file and does the static analysis on the file
+        public void ReadFile(string filename, URLInfo urlInfo)
+        {
+            String? line;
+            
+            try
+            {
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader(filename);
+                
+                line = sr.ReadLine();
+                //Continue to read until you reach end of file
+                while (line != null)
+                {
+                    AnalyzeLine(line, urlInfo);
+                    line = sr.ReadLine();
+                }
+                
+                sr.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+                throw;
+            }
+        }
+
+        public void AnalyzeLine(string text, URLInfo urlInfo)
+        {
+            if (text.StartsWith("//") || text.StartsWith("/*"))
+            {
+                urlInfo.commentLineCount++;
+            }
+            else if (text.Contains("//") || text.Contains("/*"))
+            {
+                urlInfo.commentLineCount++;
+                urlInfo.codeLineCount++;
+                
+                //finds length of code in lines with code and comments
+                String[] separator = { "//,", "/*" };
+                String[] textArr = text.Split(separator, StringSplitOptions.RemoveEmptyEntries);
+                urlInfo.codeCharCount += textArr[0].Length;
+            }
+            else
+            {
+                urlInfo.codeLineCount++;
+                urlInfo.codeCharCount += text.Length;
+            }
+        }
+    }
+
+    public class DirectoryTool
+    {
+        public List<string> sourceCodeEntries = new List<string>(); //List of all source code files
+        public List<string> mdEntries = new List<string>(); //List of all .md files 
+        public string licensePath = "none";
+        public string readmePath = "none";
+        public string packageJsonPath = "none"; 
+
+        public string[] jsFileExt = {".css", ".sass", ".scss", ".less", ".styl", ".html", ".htmls", ".htm", ".js", ".jsx", ".ts", ".tsx", ".cjs", ".mjs", ".iced", ".liticed", ".ls", ".es", ".es6", ".sjs", ".php", ".jsp", ".asp", ".aspx"};
+        
+        public void getFiles(string directoryPath)
+        {
+            try
+            {   
+                getAllFiles(directoryPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("The process failed: {0}", e.ToString());
+                throw;
+            }
+        }
+
+        public void Clear()
+        {
+            sourceCodeEntries.Clear();
+            mdEntries.Clear();
+            licensePath = "none";
+            readmePath = "none";
+            packageJsonPath = "none";
+        }
+
+        //recursive call for getFiles
+        public void getAllFiles(string directoryPath)
+        {
+            //Gets important files in directory path
+            string[] filePaths = Directory.GetFiles(directoryPath); 
+            foreach (string filePath in filePaths)
+            {
+                String[] splitFilePath = filePath.Split("/");
+                string fileName = splitFilePath[splitFilePath.Length - 1];
+
+                if (jsFileExt.Any(fileName.EndsWith))
+                {
+                    sourceCodeEntries.Add(filePath); 
+                }
+                else if (fileName.ToLower().Contains("license"))
+                {
+                    licensePath = filePath;
+                }
+                else if (fileName.ToLower().Contains("readme"))
+                {
+                    readmePath = filePath;
+                    mdEntries.Add(filePath);
+                }
+                else if (fileName.EndsWith(".md"))
+                {
+                    mdEntries.Add(filePath);
+                }
+                else if (fileName.ToLower() == "package.json")
+                {
+                    
+                    if (packageJsonPath == "none")
+                    {
+                        packageJsonPath = filePath;
+                    }
+                }
+            }
+
+            string[] dirs = Directory.GetDirectories(directoryPath, "*", SearchOption.TopDirectoryOnly);
+            foreach (string dir in dirs)
+            {
+                getAllFiles(dir);
+            }
+        }
+    }
 }

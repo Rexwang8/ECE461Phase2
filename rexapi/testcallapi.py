@@ -107,7 +107,7 @@ def CreatePackageLink(token):
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     #https://www.npmjs.com/package/date-fns
     #https://github.com/jonschlinkert/even
-    packageData = PackageData('', "https://github.com/jonschlinkert/even", prog)
+    packageData = PackageData('', "https://www.npmjs.com/package/date-fns", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -207,10 +207,10 @@ def main():
     
     #create 
     #Using Link -- works using gh link, not with npm link
-    #Authurl, Authheader, Authbody = CreatePackageLink(token)
-    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageLink(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
 
     #Using Content
@@ -221,6 +221,15 @@ def main():
     
     
     
+<<<<<<< Updated upstream
+=======
+
+    #Using Content
+    # Authurl, Authheader, Authbody = CreatePackageContent(token)
+    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    # PrintResponse(response, False)
+>>>>>>> Stashed changes
     
     #Get history of package by name -- works
     #url, header = FormPackageHistoryRequest(token, "even")
