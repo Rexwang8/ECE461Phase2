@@ -215,10 +215,10 @@ def main():
     
 
     #Using Content
-    # Authurl, Authheader, Authbody = CreatePackageContent(token)
-    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    # PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageContent(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
     #Get history of package by name -- works
     #url, header = FormPackageHistoryRequest(token, "even")

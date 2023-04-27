@@ -219,7 +219,7 @@ namespace IO.Swagger.Controllers
 
 
             try
-            {   
+            {
                 Console.WriteLine("(/package/byName/{name}/X-Debug) User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
                 Response.Headers.Add("X-DebugUser", "User: " + authenticator.getUsername() + " Admin: " + authenticator.getAdmin());
             }
@@ -575,7 +575,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("(/package/X-Debug) Token is not sanitized");
                 return StatusCode(400);
             }
-    
+
             TokenAuthenticator authenticator = new TokenAuthenticator();
             TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
 
@@ -620,7 +620,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
                 Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {Version}");
                 //get Body Content
-                System.IO.Compression.ZipFile.CreateFromDirectory("Temp", "TempPackage.zip"); 
+                System.IO.Compression.ZipFile.CreateFromDirectory("Temp", "TempPackage.zip");
                 Console.WriteLine("Package was zipped");
                 body.Content = Base64Encoder.Encode("TempPackage.zip");
                 Console.WriteLine("Package was encoded");
@@ -638,36 +638,54 @@ namespace IO.Swagger.Controllers
             }
             else if (body.Content != null && body.Content != "")
             {
+                //check existing
+                string workingdir = Directory.GetCurrentDirectory();
+                bool ifdirexists = Directory.Exists("Temp");
+                FileInfo fileInfo = new FileInfo("TempPackage.zip");
+                bool ifzipexists = fileInfo.Exists;
+
+                Console.WriteLine("workingdir = " + workingdir);
+                Console.WriteLine("ifdirexists = " + ifdirexists);
+                Console.WriteLine("ifzipexists = " + ifzipexists);
+                Response.Headers.Add("Check", $"workingdir = {workingdir}, ifdirexists = {ifdirexists}, ifzipexists = {ifzipexists}");
                 //Clean up
-                if(Directory.Exists("Temp"))
+                if (Directory.Exists("Temp"))
                 {
                     Directory.Delete("Temp", true);
                 }
-                
-                FileInfo fileInfo = new FileInfo("Test.zip");
+
+                fileInfo = new FileInfo("TempPackage.zip");
                 if (fileInfo.Exists)
                 {
                     fileInfo.Delete();
                 }
 
-                Console.WriteLine("Line 663");
-                //convert base64 into zip
-                Base64Encoder.Decode(body.Content, "Test.zip");
-                if (fileInfo.Exists)
+                try
                 {
-                    Console.WriteLine("IT EXISTS");
+                    //convert base64 into zip
+                    Base64Encoder.Decode(body.Content, "TempPackage.zip");
+                    if (fileInfo.Exists)
+                    {
+                        Console.WriteLine("IT EXISTS");
+                    }
+                    else
+                    {
+                        Console.WriteLine("IT DOES NOT EXIST");
+                    }
                 }
-                else
+                catch (Exception e)
                 {
-                    Console.WriteLine("IT DOES NOT EXIST");
+                    Console.WriteLine("Exception: " + e.Message);
                 }
+                return StatusCode(444);
+                
+
                 //unzip the zip file
                 Directory.CreateDirectory("Temp");
-                string zipFilePath = Path.GetFullPath("Test.zip");
+                string zipFilePath = Path.GetFullPath("TempPackage.zip");
                 string targetFilePath = Path.GetFullPath("Temp");
                 Console.WriteLine("Line 673" + zipFilePath + "\n" + targetFilePath);
                 System.IO.Compression.ZipFile.ExtractToDirectory(zipFilePath, targetFilePath);
-                Console.WriteLine("Line 672");
                 //get Json file
                 URLInfo urlInfo = new URLInfo(body.URL);
                 urlInfo.getJsonFile("Temp");
@@ -675,7 +693,6 @@ namespace IO.Swagger.Controllers
                 urlInfo.returnNameFromPackage();
                 //get version
                 urlInfo.returnVersionFromPackage();
-                Console.WriteLine("Line 680");
                 //Delete 
                 if (fileInfo.Exists)
                 {
@@ -683,17 +700,17 @@ namespace IO.Swagger.Controllers
                 }
                 Directory.Delete("Temp", true);
             }
-            else 
+            else
             {
                 //append debug message to header
                 Response.Headers.Add("X-Debug", "Package is missing both content and url");
                 Console.WriteLine("(/package/X-Debug) Package is missing both content and url");
                 return StatusCode(400);
             }
-            
+
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
-            
+
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{Version}'";
             factory.SetQuery(query);
@@ -704,7 +721,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Package already exists");
                 return StatusCode(409);
             }
-            
+
             //Add to metadata table
             query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
             factory.SetQuery(query);
@@ -972,19 +989,19 @@ namespace IO.Swagger.Controllers
             }
 
             //Check if the package exist 
-            
+
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{id}'";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            
+
             if (result.TotalRows == 0)
             {
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
-            
+
             //Get the Content Data 
             query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid = '{id}'";
 
@@ -1249,7 +1266,7 @@ namespace IO.Swagger.Controllers
 
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0,100) : body.Data.Content) +  ", " + body.Data.URL);
+            Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.URL);
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.URL);
 
@@ -1343,17 +1360,18 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("(packages/X-Debug) Token decrement failed");
                     return StatusCode(400);
                 }
-                if(queryobj.Name == null || queryobj.Name == "" || queryobj.Name == "*")
+                if (queryobj.Name == null || queryobj.Name == "" || queryobj.Name == "*")
                 {
                     queryobj.Name = "*";
                 }
                 string verregex = ".*";
-                if(queryobj.Version == null || queryobj.Version == "" || queryobj.Version == "*")
+                if (queryobj.Version == null || queryobj.Version == "" || queryobj.Version == "*")
                 {
                     queryobj.Version = ".*";
                     verregex = ".*";
                 }
-                else{
+                else
+                {
                     Version ver = new Version(queryobj.Version);
                     verregex = ver.ToRegexString();
                     queryobj.Version = verregex;
@@ -1398,8 +1416,8 @@ namespace IO.Swagger.Controllers
             //format response
             //[
             //{
-                //"Version": "1.2.3",
-                //"Name": "Underscore"
+            //"Version": "1.2.3",
+            //"Name": "Underscore"
             //}, ]
 
             string response = "[";
