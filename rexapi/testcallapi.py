@@ -107,7 +107,7 @@ def CreatePackageLink(token):
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     #https://www.npmjs.com/package/date-fns
     #https://github.com/jonschlinkert/even
-    packageData = PackageData('', "https://www.npmjs.com/package/date-fns", prog)
+    packageData = PackageData('', "https://github.com/jonschlinkert/even", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -175,35 +175,36 @@ def main():
     print(token)
     
     
-    #request
+    #request -- Authenticate works
     #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
     #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     #response = requests.put(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response)
     
-    #delete by name
-    # Authurl, Authheader = DeletePackageRequestByName(token, "even")
-    # print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    # response = requests.delete(Authurl, headers=Authheader)
-    # PrintResponse(response, False)
+    #delete by name -- works
+    #Authurl, Authheader = DeletePackageRequestByName(token, "even")
+    #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    #response = requests.delete(Authurl, headers=Authheader)
+    #PrintResponse(response, False)
     
     #delete by id
-    # Authurl, AuthHeader = DeletePackageRequestByID(token, "a47e3b8b-2cb5-420e-ade0-09bf0e758a49")
-    # print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
-    # response = requests.delete(Authurl, headers=AuthHeader)
-    # PrintResponse(response, False)
+    #Authurl, AuthHeader = DeletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262")
+    #print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
+    #response = requests.delete(Authurl, headers=AuthHeader)
+    #PrintResponse(response, False)
     
+    #reset -- works but doesn't reset currently
     #url, header = FormResetRequest(token)
     #print(f"DELETE: {url} WITH HEADER: {header}")
     #response = requests.delete(url, headers=header)
     #PrintResponse(response, False)
     
     #create 
-    #Using Link
-    Authurl, Authheader, Authbody = CreatePackageLink(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Using Link -- works using gh link, not with npm link
+    #Authurl, Authheader, Authbody = CreatePackageLink(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
 
     #Using Content
@@ -219,25 +220,26 @@ def main():
     # response = requests.post(Authurl, data=Authbody, headers=Authheader)
     # PrintResponse(response, False)
     
-    #url, header = FormPackageHistoryRequest(token, "packagename")
+    #Get history of package by name -- works
+    #url, header = FormPackageHistoryRequest(token, "even")
     #print(f"History GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
     
-    #example regex
+    #get metadata by regex/name -- works
     #url, header, body = FormPackageRegexSearchRequest(token, "(NAMEKEVIN)")
     #print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
     #response = requests.post(url, headers=header, data=body)
     #PrintResponse(response, True)
     
-    #rating
-    # url, header = FormRateRequest(token, "packageid123")
-    # print(f"Rating GET: {url} WITH HEADER: {header}")
-    # response = requests.get(url, headers=header)
-    # PrintResponse(response, True)
+    #rating by id -- works but doesn't return actual rating
+    #url, header = FormRateRequest(token, "0562f8fc-d583-4106-9a87-258257cf0262")
+    #print(f"Rating GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
     
     
-    #packages list
+    #packages list version/name query -- works
     #QueryRequestObj = list()
     #QueryRequestObj.append(QueryRequest("kevin", ""))
     #url, header, body = PackagesListRequest(token, QueryRequestObj)
@@ -245,11 +247,14 @@ def main():
     #response = requests.post(url, headers=header, data=body)
     #PrintResponse(response, True)
     
-    #retrieve package
-    url, header = FormRetrievePackageRequest(token, "0402c011-db66-4b73-a2e9-004bbe68a818")
-    print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    
+    #retrieve package -- works
+    #url, header = FormRetrievePackageRequest(token, "0402c011-db66-4b73-a2e9-004bbe68a818")
+    #print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
+    
+    #update package -- doesn't exist
     
 
 
