@@ -393,27 +393,6 @@ namespace IO.Swagger.CLI
             }
         }
 
-        public static async void callNPM(URLInfo urlInfo)
-        {
-            Console.WriteLine("Inside callNPM Function");
-            //prevent double calls
-            if (urlInfo.getNPMSuccess())
-                return;
-
-            //Execute the task and handle any errors
-            Task<APIError> task = Task.Run(() => urlInfo.PullNpmInfo());
-            APIError err = await task;
-            if (err.GetErrType() == APIError.errorType.none)
-            {
-                Console.WriteLine("NPM Data Recieved for package: " + urlInfo.getName());
-            }
-            else
-            {
-                Console.WriteLine("NPM Error: " + err.ToString());
-            }
-            return;
-        }
-
         #endregion
 
 
