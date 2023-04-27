@@ -1282,9 +1282,89 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.URL);
             Console.WriteLine("------END DEBUG INFO-----");
             Response.Headers.Add("X-DebugAutograder", "((PUT) /package/{id}) Received request with args: " + xAuthorization + ", " + id + ", " + body.Metadata.ID + ", " + body.Metadata.Name + ", " + body.Metadata.Version + ", " + (body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content) + ", " + body.Data.URL);
+            
+            string token = xAuthorization;
+            //Validate token
+            bool isSanitized = Sanitizer.VerifyTokenSanitized(token);
+            if (!isSanitized)
+            {
+                //append debug message to header
+                Console.WriteLine("(/package/{id}/X-Debug) Token is not sanitized");
+                Response.Headers.Add("X-Debug", "Token is not sanitized");
+                return StatusCode(400);
+            }
+            TokenAuthenticator authenticator = new TokenAuthenticator();
+            TokenAuthenticator.AuthResults UserStatus = authenticator.ValidateToken(token);
+            if (UserStatus != TokenAuthenticator.AuthResults.SUCCESS_USER && UserStatus != TokenAuthenticator.AuthResults.SUCCESS_ADMIN)
+            {
+                //append debug message to header
+                Console.WriteLine("(/package/{id}/X-Debug) Token is invalid");
+                Response.Headers.Add("X-Debug", "Token is invalid");
+                return StatusCode(400);
+            }
+
+            //decrement token
+            TokenAuthenticator.AuthRefreshResults success = authenticator.DecrementNumUsesForToken(token);
+            if (success != TokenAuthenticator.AuthRefreshResults.SUCCESS)
+            {
+                Console.WriteLine("(reset/X-Debug) Token decrement failed");
+                Response.Headers.Add("X-Debug", "Token decrement failed");
+                return StatusCode(400);
+            }
+
+            //check id from path and body are the same
+            if (id != body.Metadata.ID)
+            {
+                Console.WriteLine("(/package/{id}/X-Debug) ID from path and body are not the same");
+                Response.Headers.Add("X-Debug", "ID from path and body are not the same");
+                return StatusCode(400);
+            }
 
 
-            throw new NotImplementedException();
+            //check if package exists
+            BigQueryFactory factory = new BigQueryFactory();
+            BigQueryResults results = null;
+
+            try
+            {
+                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = {body.Metadata.ID} AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+                factory.SetQuery(query);
+                results = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                Response.Headers.Add("X-Debug", "Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                return StatusCode(400);
+            }
+            if (results == null)
+            {
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed");
+                Response.Headers.Add("X-Debug", "Query failed");
+                return StatusCode(400);
+            }
+            if(results.TotalRows == 0)
+            {
+                Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
+                Response.Headers.Add("X-Debug", "Package does not exist");
+                return StatusCode(404);
+            }
+
+            //update package
+            try
+            {
+                string query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE id = {body.Metadata.ID} AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+                factory.SetQuery(query);
+                results = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                Response.Headers.Add("X-Debug", "Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                return StatusCode(400);
+            }
+
+            return StatusCode(200);
         }
 
         /// <summary>

@@ -207,10 +207,10 @@ def main():
     
     #create 
     #Using Link -- works using gh link, not with npm link
-    Authurl, Authheader, Authbody = CreatePackageLink(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageLink(token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
 
     #Using Content
@@ -221,15 +221,6 @@ def main():
     
     
     
-<<<<<<< Updated upstream
-=======
-
-    #Using Content
-    # Authurl, Authheader, Authbody = CreatePackageContent(token)
-    # print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    # response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    # PrintResponse(response, False)
->>>>>>> Stashed changes
     
     #Get history of package by name -- works
     #url, header = FormPackageHistoryRequest(token, "even")
