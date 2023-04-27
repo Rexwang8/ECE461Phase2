@@ -172,7 +172,7 @@ namespace Index
                 Console.WriteLine("!!!!!!Getting metrics for " + pkg.getName());
 
                 //license
-                //pkg.CalcValidLicense();
+                pkg.CalcValidLicense();
 
                 //busfactor
                 pkg.setBusFactor(BusFactor.GetScore(pkg));
@@ -184,14 +184,17 @@ namespace Index
                 pkg.setResponseMaintainerScore(Maintainer.GetScore(pkg));
 
                 //license compatibility
-                //pkg.setLicenseScore(License.GetScore(pkg));
+                //string path = Path.GetFullPath("licenselist.txt");
+                //Console.WriteLine(path);
+                //Console.WriteLine("---------------------------------1398749123749817203498172309418237409132847198324");
+                //pkg.setLicenseScore(License.GetScore(pkg, path));
                 
                 //correctness
                 pkg.setCorrectnessScore(Correctness.GetScore(pkg));
 
                 //NEW METRICS
                 //code review ratio
-
+                pkg.setPullRequestsScore(PullRequests.GetScore(pkg));
                 //version ratio
                 pkg.setDependencyScore(Dependency.GetScore(pkg));
                 //net score

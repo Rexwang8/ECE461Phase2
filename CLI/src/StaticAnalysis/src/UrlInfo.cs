@@ -2,7 +2,9 @@ using Utility;
 using Newtonsoft.Json;
 using GraphQL.Client.Serializer.Newtonsoft;
 using GraphQL.Client.Http;
-
+using Newtonsoft.Json.Linq;
+using GraphQL;
+using System;
 namespace StaticAnalysis
 {
     public class APIError
@@ -115,12 +117,14 @@ namespace StaticAnalysis
         public int githubForks { get; set; } = -1;
         public int githubOpenIssues { get; set; } = -1;
         public int githubIssues { get; set; } = -1;
-        public List<QLMergedPullRequestNode> githubMergedPullRequests { get; set; } = new List<QLMergedPullRequestNode>();
-        public int githubMergedPullRequestsCount { get; set; } = -1;
+        public int githubTotalChanges { get; set; } = -1;
+        public int githubPRChanges { get; set; } = -1;
+        //public List<QLMergedPullRequestNode> githubMergedPullRequests { get; set; } = new List<QLMergedPullRequestNode>();
+        //public int githubMergedPullRequestsCount { get; set; } = -1;
 
         public int githubStargazersCount { get; set; } = -1;
         public int githubDiscussions { get; set; } = -1;
-        public int githubOpenPullRequests { get; set; } = -1;
+        //public int githubOpenPullRequests { get; set; } = -1;
 
         public bool SuccessGrabGithub { get; set; } = false;
         public bool SuccessGrabNpm { get; set; } = false;
@@ -353,24 +357,29 @@ namespace StaticAnalysis
                     forks {{
                         totalCount
                     }}
-                    pullRequests(states: MERGED, first: 100) {{
-                        totalCount
-                        nodes {{    
-                            title
-                            comments {{
-                                totalCount
-                            }}
-
-                            number
-                            commits(first: 100) {{
-                                nodes {{
-                                    commit {{
-                                        number
-                                    }}
+                    defaultBranchRef {{
+                      target {{
+                        ... on Commit {{
+                          history(first: 100) {{
+                            totalCount
+                            edges {{
+                              node {{
+                                ... on Commit {{
+                                    changedFiles
                                 }}
+                              }}
                             }}
-
+                          }}
                         }}
+                      }}
+                    }}
+                    pullRequests(first: 100, states: MERGED) {{
+                      nodes {{
+                        reviews(first: 1) {{
+                          totalCount
+                        }}
+                        changedFiles
+                      }}
                     }}
                     openPullRequests: pullRequests(states: OPEN) {{
                         totalCount
@@ -391,6 +400,7 @@ namespace StaticAnalysis
 
             // Get response
             var graphQLResponse = await graphQLClient.SendQueryAsync<QLResponse>(graphQLRequest);
+            dynamic responseAdditions = await graphQLClient.SendQueryAsync<JObject>(graphQLRequest);
             QLResponse resp = graphQLResponse.Data;
             if(graphQLResponse.Errors != null)
             //check response
@@ -400,6 +410,20 @@ namespace StaticAnalysis
                 Console.WriteLine("Error Graphql response");
                 return error;
             }
+            int totalChangedFiles = 0;
+            int prChangedFiles = 0;
+            foreach (var edge in responseAdditions.Data.repository.defaultBranchRef.target.history.edges)
+            {
+                totalChangedFiles += (int)edge.node.changedFiles;
+            }
+            foreach (var node in responseAdditions.Data.repository.pullRequests.nodes)
+            {
+                if (node.reviews.totalCount > 0)
+                {
+                    prChangedFiles += (int)node.changedFiles;
+                }
+            }
+
             Console.WriteLine("Response from github api: " + resp);
 
             Console.WriteLine("Name of repo is: " + resp.repository.name);
@@ -410,19 +434,21 @@ namespace StaticAnalysis
             Console.WriteLine("URL: " + resp.repository.url);
             Console.WriteLine("Homepage URL: " + resp.repository.homepageUrl);
             Console.WriteLine("Flags: " + resp.repository.isArchived + " " + resp.repository.isDisabled + " " + resp.repository.isFork + " " + resp.repository.isLocked + " " + resp.repository.isPrivate + " " + resp.repository.isEmpty);
-            //Console.WriteLine("License: " + resp.repository.licenseInfo.name + " " + resp.repository.licenseInfo.spdxId);
+            if(resp.repository.licenseInfo != null)
+            Console.WriteLine("License: " + resp.repository.licenseInfo.name + " " + resp.repository.licenseInfo.spdxId);
             if(resp.repository.releases.nodes.Count > 0)
             Console.WriteLine("Release: " + resp.repository.releases.nodes[0].name + " " + resp.repository.releases.nodes[0].description + " " + resp.repository.releases.nodes[0].url + " " + resp.repository.releases.nodes[0].publishedAt);
             Console.WriteLine("Watchers: " + resp.repository.watchers.totalCount);
             Console.WriteLine("Issues: " + resp.repository.issues.totalCount);
             Console.WriteLine("Open issues: " + resp.repository.openIssues.totalCount);
             Console.WriteLine("Forks: " + resp.repository.forks.totalCount);
-            Console.WriteLine("Pull requests: " + resp.repository.pullRequests.totalCount);
-            if(resp.repository.pullRequests.nodes.Count > 0)
-            Console.WriteLine("Pull request comments: " + resp.repository.pullRequests.nodes[0].comments.totalCount);
-            Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+            Console.WriteLine("Total Changes: " + totalChangedFiles);
+            Console.WriteLine("PR Changes: " + prChangedFiles);
+            //if(resp.repository.pullRequests.nodes.Count > 0)
+            //Console.WriteLine("Pull request comments: " + resp.repository.pullRequests.nodes[0].comments.totalCount);
+            //Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
 
-            Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
+            //Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
             Console.WriteLine("Discussions: " + resp.repository.discussions.totalCount);
             Console.WriteLine("Stargazers: " + resp.repository.stargazers.totalCount);
             
@@ -440,7 +466,8 @@ namespace StaticAnalysis
             githubIsLocked = resp.repository.isLocked;
             githubIsPrivate = resp.repository.isPrivate;
             githubIsEmpty = resp.repository.isEmpty;
-            //githubLicense = resp.repository.licenseInfo.name;
+            if(resp.repository.licenseInfo != null)
+            githubLicense = resp.repository.licenseInfo.name;
             if(resp.repository.releases.nodes.Count > 0)
             {
                 githubReleaseName = resp.repository.releases.nodes[0].name;
@@ -452,9 +479,10 @@ namespace StaticAnalysis
             githubIssues = resp.repository.issues.totalCount;
             githubOpenIssues = resp.repository.openIssues.totalCount;
             githubForks = resp.repository.forks.totalCount;
-            githubMergedPullRequests = resp.repository.pullRequests.nodes;
-            githubMergedPullRequestsCount = resp.repository.pullRequests.totalCount;
-            githubOpenPullRequests = resp.repository.openPullRequests.totalCount;
+            githubTotalChanges = totalChangedFiles;
+            githubPRChanges = prChangedFiles;
+            //githubMergedPullRequestsCount = resp.repository.pullRequests.totalCount;
+            //githubOpenPullRequests = resp.repository.openPullRequests.totalCount;
             githubDiscussions = resp.repository.discussions.totalCount;
             githubStargazers = resp.repository.stargazers.totalCount;
             
@@ -573,7 +601,10 @@ namespace StaticAnalysis
         {
             this.dependency_score = dependency;
         }
-
+        public void setPullRequestsScore(float pullRequests)
+        {
+            this.pullreview_score = pullRequests;
+        }
         public void setCorrectnessScore(float correctnessScore)
         {
             this.correctness_score = correctnessScore;
@@ -702,13 +733,13 @@ namespace StaticAnalysis
         public QLForks forks { get; set; } = new QLForks();
 
         //merged pulls
-        public QLMergedPullRequest pullRequests { get; set; } = new QLMergedPullRequest();
+        //public QLMergedPullRequest defaultBranchRef { get; set; } = new QLMergedPullRequest();
 
         //stargazers
         public QLStargazers stargazers { get; set; } = new QLStargazers();
 
         //open PRs
-        public QLOpenPullRequestCount openPullRequests { get; set; } = new QLOpenPullRequestCount();
+        //public QLOpenPullRequestCount openPullRequests { get; set; } = new QLOpenPullRequestCount();
 
         //discussions
         public QLDiscussions discussions { get; set; } = new QLDiscussions();
@@ -757,7 +788,7 @@ namespace StaticAnalysis
     {
         public int totalCount { get; set; } = 0;
     }
-
+    /*
     public class QLMergedPullRequestNode
     {
         public string title { get; set; } = "";
@@ -774,18 +805,18 @@ namespace StaticAnalysis
     {
         public int number { get; set; } = 0;
     }
-
+    
     class QLMergedPullRequest
     {
         public List<QLMergedPullRequestNode> nodes { get; set; } = new List<QLMergedPullRequestNode>();
         public int totalCount { get; set; } = 0;
     }
-
+    
     class QLOpenPullRequestCount
     {
         public int totalCount { get; set; } = 0;
     }
-
+    */
     class QLDiscussions
     {
         public int totalCount { get; set; } = 0;
