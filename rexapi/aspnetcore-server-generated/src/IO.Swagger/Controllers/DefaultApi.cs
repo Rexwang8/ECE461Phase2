@@ -606,8 +606,6 @@ namespace IO.Swagger.Controllers
                 var task = urlInfo.ClonePackage();
                 task.Wait();
 
-           
-
                 if (!urlInfo.SuccessClone)
                 {
                     //append debug message to header
@@ -616,6 +614,7 @@ namespace IO.Swagger.Controllers
                     return StatusCode(400);
                 }
                 Console.WriteLine("Package downloaded");
+                urlInfo.path = "/app/TempDirectory";
 
                 //check package downloaded properly
                 if(!Directory.Exists("/app/TempDirectory"))
@@ -640,8 +639,14 @@ namespace IO.Swagger.Controllers
                 body.Content = Base64Encoder.Encode("TempPackage.zip");
                 Console.WriteLine("Package was encoded");
 
-                //Check Package Rating
-                 
+                //Get data for package Rating
+                APICalls.GetURLStatistics(urlInfo);
+                Console.WriteLine(urlInfo.getNPMInfo());
+                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+                StaticAnalysis.Analyze(urlInfo);
+                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+                
+
                 
                 //Delete the Package
                 Directory.Delete("Temp", true);
