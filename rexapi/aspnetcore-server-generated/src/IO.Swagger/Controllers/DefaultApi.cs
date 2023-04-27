@@ -598,6 +598,18 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("URL: " + body.URL);
             if (body.URL != null && body.URL != "")
             {
+                //Clean up
+                if (Directory.Exists("/app/TempDirectory"))
+                {
+                    Directory.Delete("/app/TempDirectory", true);
+                }
+
+                FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
+                if (fileInfo.Exists)
+                {
+                    fileInfo.Delete();
+                }
+
                 Name = (body.URL).Split('/').Last();
                 Console.WriteLine("Name of package: " + Name);
                 URLInfo urlInfo = new URLInfo(body.URL);
