@@ -355,18 +355,18 @@ namespace IO.Swagger.CLI
 
         async Task<bool> GetGitHubFromNPM()
         {
-            Console.WriteLine("Inside GetGitHubFromNPM Function");
+            var apiUrl = $"https://registry.npmjs.org/{name}";
             using (var client = new HttpClient())
             {
                 try
                 {
-                    var response = await client.GetAsync(npmURL);
+                    var response = await client.GetAsync(apiUrl);
                     response.EnsureSuccessStatusCode();
 
                     var responseBody = await response.Content.ReadAsStringAsync();
                     var packageInfo = JsonConvert.DeserializeObject<PackageInfo>(responseBody);
 
-                    var repositoryUrl = packageInfo.Repository.Url;
+                    var repositoryUrl = packageInfo.Repository.Url.ToString().Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");;
                     Console.WriteLine("The github Link is " + repositoryUrl);
                     githubURL = repositoryUrl;
                     return true;
@@ -535,7 +535,7 @@ namespace IO.Swagger.CLI
                             homepageUrl
                             isArchived
                             isDisabled
-                            isFork
+                            isForkname
                             isLocked
                             isPrivate
                             isEmpty
