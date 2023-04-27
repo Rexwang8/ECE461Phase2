@@ -1366,6 +1366,7 @@ namespace IO.Swagger.Controllers
             List<BigQueryResults> results = new List<BigQueryResults>();
             foreach (PackageQuery queryobj in body)
             {
+                
                 //determine if query is invalid (both null)
                 if ((queryobj.Name == null || queryobj.Name == "") && (queryobj.Version == null || queryobj.Version == ""))
                 {
@@ -1373,10 +1374,18 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("(packages/X-Debug) Token decrement failed");
                     return StatusCode(400);
                 }
+
                 if (queryobj.Name == null || queryobj.Name == "" || queryobj.Name == "*")
                 {
                     queryobj.Name = ".*";
                 }
+                else
+                {
+                    //sanitize name
+                    queryobj.Name = Sanitizer.SantizeRegex(queryobj.Name);
+                }
+
+
                 string verregex = ".*";
                 if (queryobj.Version == null || queryobj.Version == "" || queryobj.Version == "*")
                 {
