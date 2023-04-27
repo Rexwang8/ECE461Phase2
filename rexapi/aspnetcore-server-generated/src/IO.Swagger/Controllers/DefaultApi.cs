@@ -595,7 +595,7 @@ namespace IO.Swagger.Controllers
             string Name = "";
             string Version = "";
             string URL = "";
-            Console.WriteLine("URL: " + body.URL + "  Content: " + body.Content);
+            Console.WriteLine("URL: " + body.URL);
             if (body.URL != null && body.URL != "")
             {
                 Name = (body.URL).Split('/').Last();
@@ -642,7 +642,7 @@ namespace IO.Swagger.Controllers
                 //check existing
                 string workingdir = Directory.GetCurrentDirectory();
                 bool ifdirexists = Directory.Exists("Temp");
-                FileInfo fileInfo = new FileInfo("TempPackage.zip");
+                FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
                 bool ifzipexists = fileInfo.Exists;
 
                 Console.WriteLine("workingdir = " + workingdir);
@@ -655,16 +655,18 @@ namespace IO.Swagger.Controllers
                     Directory.Delete("Temp", true);
                 }
 
-                fileInfo = new FileInfo("TempPackage.zip");
+                fileInfo = new FileInfo("/app/TempPackage.zip");
                 if (fileInfo.Exists)
                 {
                     fileInfo.Delete();
                 }
 
+
                 try
                 {
                     //convert base64 into zip
-                    Base64Encoder.Decode(body.Content, "TempPackage.zip");
+                    Base64Encoder.Decode(body.Content, "/app/TempPackage.zip");
+                    fileInfo = new FileInfo("/app/TempPackage.zip");
                     if (fileInfo.Exists)
                     {
                         Console.WriteLine("IT EXISTS");
@@ -677,6 +679,13 @@ namespace IO.Swagger.Controllers
                 catch (Exception e)
                 {
                     Console.WriteLine("Exception: " + e.Message);
+                }
+
+                //list all files in working directory
+                string[] files = Directory.GetFiles("/app");
+                foreach (string file in files)
+                {
+                    Console.WriteLine(file);
                 }
                 return StatusCode(444);
                 
@@ -1363,7 +1372,7 @@ namespace IO.Swagger.Controllers
                 }
                 if (queryobj.Name == null || queryobj.Name == "" || queryobj.Name == "*")
                 {
-                    queryobj.Name = "*";
+                    queryobj.Name = ".*";
                 }
                 string verregex = ".*";
                 if (queryobj.Version == null || queryobj.Version == "" || queryobj.Version == "*")

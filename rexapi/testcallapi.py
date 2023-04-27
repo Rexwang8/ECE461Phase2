@@ -187,7 +187,7 @@ def main():
     #response = requests.delete(Authurl, headers=Authheader)
     #PrintResponse(response, False)
     
-    #delete by id
+    #delete by id -- works
     #Authurl, AuthHeader = DeletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262")
     #print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
     #response = requests.delete(Authurl, headers=AuthHeader)
@@ -239,7 +239,7 @@ def main():
     #PrintResponse(response, True)
     
     
-    #packages list version/name query -- works
+    #packages list version/name query -- works with 1 query
     #QueryRequestObj = list()
     #QueryRequestObj.append(QueryRequest("kevin", ""))
     #url, header, body = PackagesListRequest(token, QueryRequestObj)
