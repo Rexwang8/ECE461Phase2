@@ -19,17 +19,15 @@ public static class PullRequests
     Status                              50%
 
     */
-   /*  public static float GetScore(URLInfo urlInfo)
+    public static float GetScore(URLInfo urlInfo)
     {   
-         Console.WriteLine("-----\nCalculating Pull Request Ratio");
-        int githubPRCount = urlInfo.githubMergedPullRequestsCount;
-
-        float finalScore = 0;
-
-        
-
-
-        finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT;
-        return finalScore; 
-    } */
+        int totalChanges = urlInfo.githubTotalChanges;
+        Console.WriteLine(totalChanges);
+        Console.WriteLine("a hduiashdfioashdfiuoashdifaiosdhf uashodfuahsidofhaiusd fioas hdfiua hsuiofhasiudf hiaous hdfiuah sdfiua hsidfhauisd f");
+        int prChanges = urlInfo.githubPRChanges;
+        Console.WriteLine(prChanges);
+        Console.WriteLine("kasdh fiuasdiof hausiodfh uaoishdfiua hsdifuh aiusdfh oiushdciuansdiufhaosd fhoiuashdfiu");
+        double fraction = (double)prChanges / totalChanges;
+        return (float)fraction;
+    } 
 }

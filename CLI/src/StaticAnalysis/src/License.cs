@@ -8,7 +8,7 @@ using Utility;
 //using System.Text.Json.Serialization;
 
 namespace StaticAnalysis;
-public static class License
+public static class LicenseFake
 {
                 /*
         License

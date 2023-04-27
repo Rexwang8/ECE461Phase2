@@ -195,17 +195,6 @@ namespace IO.Swagger.CLI
         
         #region Static Analysis
 
-        public void getURLStats()
-        {
-            //npm pull
-
-            //github pull
-
-            //static analysis
-            StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
-            StaticAnalysis.Analyze(this);
-        }
-
         public string returnNameFromPackage()
         {
             StreamReader sr = new StreamReader(packageJsonPath);

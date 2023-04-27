@@ -11,14 +11,15 @@ using System.Linq;
 
 namespace IO.Swagger.CLI
 {
-    public class Index
+    public static class APICalls
     {
-        public void GetURLStatistics(URLInfo urlInfo)
+        public static void GetURLStatistics(URLInfo urlInfo)
         {
             List<URLInfo> urlInfos = new List<URLInfo>();
             urlInfos.Add(urlInfo);
             URLClass AllPackages = new URLClass(urlInfos);
 
+            //Call NPM 
             for (int i = 0; i < 3; i++)
             {
                 if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
