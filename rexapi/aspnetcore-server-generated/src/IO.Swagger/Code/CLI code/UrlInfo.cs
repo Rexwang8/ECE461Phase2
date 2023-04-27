@@ -336,8 +336,8 @@ namespace IO.Swagger.CLI
                     {
                         Directory.Delete("/app/TempDirectory", true);
                     }
-                    Console.WriteLine("Base URL: " + baseURL);
-                    Repository.Clone(baseURL, "/app/TempDirectory", co);
+                    Console.WriteLine("githubURL URL: " + githubURL);
+                    Repository.Clone(githubURL, "/app/TempDirectory", co);
                     Console.WriteLine("result: " + result);
                     return 1;
 
