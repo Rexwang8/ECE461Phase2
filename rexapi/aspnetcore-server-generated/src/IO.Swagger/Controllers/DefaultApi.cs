@@ -643,7 +643,7 @@ namespace IO.Swagger.Controllers
             {
                 //check existing
                 string workingdir = Directory.GetCurrentDirectory();
-                bool ifdirexists = Directory.Exists("Temp");
+                bool ifdirexists = Directory.Exists("/app/TempDirectory");
                 FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
                 bool ifzipexists = fileInfo.Exists;
 
@@ -652,9 +652,9 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("ifzipexists = " + ifzipexists);
                 Response.Headers.Add("Check", $"workingdir = {workingdir}, ifdirexists = {ifdirexists}, ifzipexists = {ifzipexists}");
                 //Clean up
-                if (Directory.Exists("Temp"))
+                if (Directory.Exists("/app/TempDirectory"))
                 {
-                    Directory.Delete("Temp", true);
+                    Directory.Delete("/app/TempDirectory", true);
                 }
 
                 fileInfo = new FileInfo("/app/TempPackage.zip");
@@ -702,7 +702,10 @@ namespace IO.Swagger.Controllers
                 {
                     fileInfo.Delete();
                 }
-                Directory.Delete("Temp", true);
+                if (Directory.Exists("/app/TempDirectory"))
+                {
+                    Directory.Delete("/app/TempDirectory", true);
+                }
                 Console.WriteLine("Content finished for name: " + Name + " and version: " + Version);
             }
             else
