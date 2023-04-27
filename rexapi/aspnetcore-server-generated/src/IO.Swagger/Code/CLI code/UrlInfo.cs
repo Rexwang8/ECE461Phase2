@@ -331,6 +331,12 @@ namespace IO.Swagger.CLI
                     SuccessClone = result;
                     var co = new CloneOptions();
                     co.CredentialsProvider = (_url, _user, _cred) => new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
+                    //delete repo if it exists
+                    if (Directory.Exists("/app/TempDirectory"))
+                    {
+                        Directory.Delete("/app/TempDirectory", true);
+                    }
+                    Console.WriteLine("Base URL: " + baseURL);
                     Repository.Clone(baseURL, "/app/TempDirectory", co);
                     Console.WriteLine("result: " + result);
                     return 1;
