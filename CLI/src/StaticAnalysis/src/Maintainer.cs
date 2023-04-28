@@ -25,7 +25,7 @@ public static class Maintainer
 
         float finalScore = 0;
         float STATUS_WEIGHT = 0;
-        //float UPDATE_WEIGHT = 0;
+        float UPDATE_WEIGHT = 0;
         float ISSUES_WEIGHT = 0;
         float MAINTAINER_WEIGHT = 0;
 
@@ -82,7 +82,7 @@ public static class Maintainer
             } else {
                 UPDATE_WEIGHT += 0;
             }*/
-
+            UPDATE_WEIGHT += .15f;
         }
         else if (urlInfo.getType() == "npm")
         {
@@ -97,6 +97,7 @@ public static class Maintainer
             } else {
                 UPDATE_WEIGHT += 0;
             }*/
+            UPDATE_WEIGHT += 0.40f;
         
             if ((urlInfo.npmMaintainers).Count() == 0){
                 MAINTAINER_WEIGHT += 0;
@@ -116,7 +117,7 @@ public static class Maintainer
         {
             Console.WriteLine("No Type, Awarding no points");
         }
-        finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT;
+        finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT + UPDATE_WEIGHT;
         urlInfo.responseMaintainer_score = finalScore;
         return finalScore;
     }
