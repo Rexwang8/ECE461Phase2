@@ -7,7 +7,7 @@ namespace IO.Swagger.CLI
 {
     //License
     //Pull Request
-    public static class RampUp
+    public static class Grader
     {
         /*
         Rampup
@@ -24,7 +24,7 @@ namespace IO.Swagger.CLI
 
 
         */
-        public static float GetScore(URLInfo urlInfo)
+        public static float GetRampupTimeScore(URLInfo urlInfo)
         {   
             Console.WriteLine("-----\nCalculating Rampup Time");
 
@@ -137,10 +137,6 @@ namespace IO.Swagger.CLI
 
             return finalScore;
         }
-    }
-
-    public static class Maintainer
-    {
         /*
         Responsive Maintainer
 
@@ -159,13 +155,13 @@ namespace IO.Swagger.CLI
         Status                              50%
 
         */
-        public static float GetScore(URLInfo urlInfo)
+        public static float GetResponseMaintainerScore(URLInfo urlInfo)
         {   
             Console.WriteLine("-----\nCalculating Response Maintainer");
 
             float finalScore = 0;
             float STATUS_WEIGHT = 0;
-            //float UPDATE_WEIGHT = 0;
+            float UPDATE_WEIGHT = 0;
             float ISSUES_WEIGHT = 0;
             float MAINTAINER_WEIGHT = 0;
 
@@ -222,6 +218,7 @@ namespace IO.Swagger.CLI
                 } else {
                     UPDATE_WEIGHT += 0;
                 }*/
+                UPDATE_WEIGHT += 0.15f;
 
             }
             else if (urlInfo.getType() == "npm")
@@ -237,6 +234,7 @@ namespace IO.Swagger.CLI
                 } else {
                     UPDATE_WEIGHT += 0;
                 }*/
+                UPDATE_WEIGHT += 0.4f;
             
                 if ((urlInfo.npmMaintainers).Count() == 0){
                     MAINTAINER_WEIGHT += 0;
@@ -256,15 +254,12 @@ namespace IO.Swagger.CLI
             {
                 Console.WriteLine("No Type, Awarding no points");
             }
-            finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT;
+            finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT + UPDATE_WEIGHT;
             urlInfo.responseMaintainer_score = finalScore;
             return finalScore;
         }
-    }
 
-    public static class Dependency
-    {
-        public static float GetScore(URLInfo urlInfo)
+        public static float GetDependencyScore(URLInfo urlInfo)
         {
             Console.WriteLine("-----\nCalculating Dependency");
             String? line;
@@ -416,10 +411,6 @@ namespace IO.Swagger.CLI
             Console.WriteLine("Unknowned Dependency");
             return 0;
         }
-    }
-
-    public static class Correctness
-    {
         /*
         Responsive Maintainer
 
@@ -437,7 +428,7 @@ namespace IO.Swagger.CLI
         Maintainers                         50%
         Version Count                       50%
         */
-        public static float GetScore(URLInfo urlInfo)
+        public static float GetCorrectnessScore(URLInfo urlInfo)
         {   
             Console.WriteLine("-----\nCalculating Correctness");
 
@@ -533,10 +524,7 @@ namespace IO.Swagger.CLI
             urlInfo.correctness_score = finalScore;
             return finalScore;
         }
-    }
-    public static class BusFactor
-    {
-        public static float GetScore(URLInfo urlInfo)
+        public static float GetBusFactorScore(URLInfo urlInfo)
         {   
             Console.WriteLine("-----\nCalculating BusFactor");
 
@@ -672,6 +660,78 @@ namespace IO.Swagger.CLI
             finalScore += watcher_score/10 * WATCHER_WEIGHT;
 
             return finalScore;
+        }
+
+        public static int GetLicenseScore(URLInfo urlInfo, string []LicenseList)
+        {
+            /*if (urlInfo.licensePath == "" || urlInfo.licensePath == null)
+            {
+                urlInfo.license = "Not Available";
+                return 0;
+            }*/
+            if (urlInfo.license == "" || urlInfo.license == null) {
+                urlInfo.license = "Not Available";
+                return 0;
+            }
+            //string License = File.ReadLines(urlInfo.licensePath).First(); // gets the first line from file.
+            string License = urlInfo.license;
+            var allLicensesArr = LicenseList;
+            List<string> allLicensesArrCleaned = new List<string>();
+            foreach (string li in allLicensesArr)
+            {
+                string newli = li.Trim().ToLower();
+                allLicensesArrCleaned.Add(newli);
+            }
+
+
+
+            foreach (var LicenseVar in allLicensesArrCleaned)
+            {
+                string cleanedlicense = License.Trim().ToLower();
+                string CleanedLicenseVar = LicenseVar.Trim().ToLower();
+                if(cleanedlicense.Contains(CleanedLicenseVar))
+                {
+                    urlInfo.license = CleanedLicenseVar;
+                    return 1;
+                }
+            }
+            urlInfo.license = "Not Available";
+            return 0;
+        }
+        public static float GetNetScore(URLInfo urlInfo)
+        {
+            float netScore = 0;
+            netScore = urlInfo.license_score + urlInfo.rampUp_score + urlInfo.busFactor_score + urlInfo.correctness_score + urlInfo.responseMaintainer_score + urlInfo.dependency_score + urlInfo.pullreview_score;
+            netScore = netScore / 7;
+            return netScore;
+        }
+
+        public static float GetPullRequestsScore(URLInfo urlInfo)
+        {   
+            int totalChanges = urlInfo.githubTotalChanges;
+            Console.WriteLine(totalChanges);
+            Console.WriteLine("a hduiashdfioashdfiuoashdifaiosdhf uashodfuahsidofhaiusd fioas hdfiua hsuiofhasiudf hiaous hdfiuah sdfiua hsidfhauisd f");
+            int prChanges = urlInfo.githubPRChanges;
+            Console.WriteLine(prChanges);
+            Console.WriteLine("kasdh fiuasdiof hausiodfh uaoishdfiua hsdifuh aiusdfh oiushdciuansdiufhaosd fhoiuashdfiu");
+            double fraction = (double)prChanges / totalChanges;
+            fraction = CalculateScore((float)fraction);
+            return (float)fraction;
+        } 
+
+        static float CalculateScore(float fraction)
+        {
+            // Define the mapping function here. This example uses a simple linear mapping.
+            float slope = 0.5f;
+            float intercept = 0.25f;
+
+            float score = slope * fraction + intercept;
+
+            // Ensure the score is between 0 and 1
+            if (score < 0) score = 0;
+            if (score > 1) score = 1;
+
+            return score;
         }
     }
 }

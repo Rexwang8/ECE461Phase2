@@ -864,13 +864,18 @@ namespace IO.Swagger.Controllers
                 StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
                 StaticAnalysis.Analyze(urlInfo);
                 Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
-
+                
+                string[]LicenseList = {"Academic Free", "Apache", "Artistic", "Boost", "BSD", "BSD", "BSD", "BSD", "CC0 1.0 Universal", "(CC0 1.0)", "CeCILL-2.1", "CeCILL-B", "Common Public license", "(CPL-1.0)", "Creative Commons Attribution No Derivatives 4.0 International", "Creative Commons Attribution 3.0 Unported", "(CC BY 3.0)", "Creative Commons Attribution Non Commercial Share Alike 4.0 International", "Creative Commons Attribution Share Alike 4.0 International", "Creative Commons Attribution 4.0 International", "(CC-BY-4.0)", "Deutsche Freie", "Eclipse", "European Union Public License", "(EUPL)", "GNU General Public License", "(GPL)", "GNU Affero", "ISC License", "LaTeX Project", "Microsoft Reciprocal", "MIT", "ODC Open Database", "(ODbL)", "ODC Public Domain Dedication", "(PDDL)", "Open Software license", "(OSL-3.0)", "Open Data Commons Attribution", "(ODC-BY)", "PostgreSQL", "The Universal Permissive", "Illinois", "NCSA", "Unlicense", "Do What The F*ck You Want To Public License", "WTFPL", "zlib", "libpng"};
                 //log out ratings
-                Console.WriteLine($"Maintainer Rating: {Maintainer.GetScore(urlInfo)}");
-                Console.WriteLine($"RampUp Rating: {RampUp.GetScore(urlInfo)}");
-                Console.WriteLine($"Dependency Rating: {Dependency.GetScore(urlInfo)}");
-                Console.WriteLine($"Correctness Rating: {Correctness.GetScore(urlInfo)}");
-                Console.WriteLine($"BusFactor Rating: {BusFactor.GetScore(urlInfo)}");
+                Console.WriteLine($"Maintainer Rating: {Grader.GetResponseMaintainerScore(urlInfo)}");
+                Console.WriteLine($"RampUp Rating: {Grader.GetRampupTimeScore(urlInfo)}");
+                Console.WriteLine($"Dependency Rating: {Grader.GetDependencyScore(urlInfo)}");
+                Console.WriteLine($"Correctness Rating: {Grader.GetCorrectnessScore(urlInfo)}");
+                Console.WriteLine($"BusFactor Rating: {Grader.GetBusFactorScore(urlInfo)}");
+                Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
+                Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
+                Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
+
 
 
                 //Delete 
