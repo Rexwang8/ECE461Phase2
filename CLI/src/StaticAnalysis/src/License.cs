@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using System.Text;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -18,7 +18,7 @@ public static class LicenseFake
         Has Valid License?  (y/n) weight of 1
 
 
-        */
+        
     //public bool unsuccesfullHTTPRequestFlag = false;
 
     public static int GetScore(URLInfo urlInfo)
@@ -73,4 +73,4 @@ public static class LicenseFake
             }
         }
     }
-}
+}*/
