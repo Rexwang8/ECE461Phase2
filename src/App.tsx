@@ -4,6 +4,7 @@ import './App.css'
 function App() {
   // const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  localStorage.setItem("loaded", "0");
 
   // const handleSearchInputChange = (event) => {
   //   setSearchQuery(event.target.value);

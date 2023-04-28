@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './PackageInfo.css';
 
 function PackageInfo() {
+  localStorage.setItem("loaded", "0");
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageID');
 
