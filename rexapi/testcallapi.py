@@ -241,7 +241,7 @@ def main():
     #PrintResponse(response, True)
     
     #rating by id -- works but doesn't return actual rating
-    #url, header = FormRateRequest(token, "0562f8fc-d583-4106-9a87-258257cf0262")
+    #url, header = FormRateRequest(token, "bfddf655-84d6-426c-9727-e51e01da83fd")
     #print(f"Rating GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
