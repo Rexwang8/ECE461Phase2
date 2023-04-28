@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import { useEffect, useState } from 'react';
 import './App.css';
 
 interface QueryRequest {
@@ -19,9 +18,6 @@ function createPackagesListRequest(token: string, queries: QueryRequest[]): [str
   return [url, header, body];
 }
 
-// var alerted = false;
-// && !alerted
-
 function Packages() {
   const [isLoading, setIsLoading] = useState(true);
   const [listItems, setListItems] = useState([{ name: 'Loading...', version: ['1']}]);
@@ -34,15 +30,11 @@ function Packages() {
 
   let responseString: string; 
   if (!login_token) {
-    // alerted = true;
     alert("Please make sure you are signed in!")
-    // window.location.href = '/Signup';
     localStorage.setItem("path_name", "/Signup")
     location.reload();
   }
   const myList: ListItem[] = [
-    // { name: 'Loading...', version: ['1'] },
-    // { name: 'Loading2...', version: ['2'] }
   ];
 
   function addItem(name: string, version: string) {
@@ -56,22 +48,24 @@ function Packages() {
     // item with the given name does not exist, add a new object to the list
     myList.push({ name, version: [version] });
   }
-}
+  }
 
   if(typeof login_token === 'string' && (localStorage.getItem("loaded") === "0")) {
-    
     localStorage.setItem("loaded", "1");
+    console.log("enter 1");
     const queryRequests: QueryRequest[] = [{ Name: ".*", Version: "" }];
     const [url, header, body] = createPackagesListRequest(login_token, queryRequests);
-    // console.log(`List POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
+    console.log("enter 2");
     fetch(url, { method: 'POST', headers: header, body })
       .then(response => response.json())
       .then(json => {console.log(json)
         const parsedArray = JSON.parse(json);
         for(let i = 0; i < parsedArray.length; i++) {
+          console.log("enter 3");
           addItem(parsedArray[i].Name, parsedArray[i].Version);
         }
         setListItems(myList);
+        console.log("enter 4");
         setIsLoading(false);
         console.log(myList);
       })
@@ -80,28 +74,6 @@ function Packages() {
 
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-
-//   const [listItems, setListItems] = useState([
-//   { name: 'Package 1', indicator: 'green', score: 90, latestVersion: '1.0.0', lastUpdated: '2022-12-01' },
-//   { name: 'Package 2', indicator: 'red', score: 60, latestVersion: '2.3.1', lastUpdated: '2022-11-15' },
-//   { name: 'Package 3', indicator: 'green', score: 75, latestVersion: '3.5.2', lastUpdated: '2022-10-20' },
-//   { name: 'Package 4', indicator: 'red', score: 40, latestVersion: '4.2.0', lastUpdated: '2022-09-30' },
-//   { name: 'Package 5', indicator: 'green', score: 85, latestVersion: '5.1.3', lastUpdated: '2022-08-25' },
-//   { name: 'Package 6', indicator: 'red', score: 55, latestVersion: '6.0.1', lastUpdated: '2022-07-10' },
-//   { name: 'Package 7', indicator: 'red', score: 55, latestVersion: '7.2.2', lastUpdated: '2022-06-20' },
-//   { name: 'Package 8', indicator: 'red', score: 55, latestVersion: '8.3.0', lastUpdated: '2022-05-15' },
-//   { name: 'Package 9', indicator: 'red', score: 55, latestVersion: '9.1.1', lastUpdated: '2022-04-30' },
-//   { name: 'Package 10', indicator: 'red', score: 55, latestVersion: '10.0.2', lastUpdated: '2022-03-25' },
-//   { name: 'Package 11', indicator: 'red', score: 55, latestVersion: '11.5.3', lastUpdated: '2022-02-15' },
-//   { name: 'Package 12', indicator: 'green', score: 69, latestVersion: '12.2.1', lastUpdated: '2022-01-10' }
-// ]);
-
-
-// const [listItems, setListItems] = useState([
-//   { name: 'Package 1', version: '1.0.1'},
-//   { name: 'Package 2', version: '1.0.1'},
-//   { name: 'Package 3', version: '1.0.1'},
-// ]);
 
   const handleMoreInfoClick = (packageName: string) => {
     // alert(`Clicked on package: ${packageName}`);
@@ -125,29 +97,36 @@ function Packages() {
   function redirectToPackages() {
     // window.location.href = '/Packages';
     localStorage.setItem("path_name", "/Packages")
+    localStorage.setItem("loaded", "0");
     location.reload();
   }
 
   function redirectToAbout() {
     // window.location.href = '/App';
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/App")
     location.reload();
   }
 
   function redirectToSignUp() {
     // window.location.href = '/Signup';
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/Signup")
     location.reload();
   }
 
-  function redirectToSignIn() {
-    // window.location.href = '/Signin';
-    localStorage.setItem("path_name", "/Signin")
+  function redirectToLogOut() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/Signup");
+    localStorage.removeItem("login_token");
+    localStorage.removeItem("loaded");
+    localStorage.removeItem("packageID");
     location.reload();
   }
 
   function redirectToPackageInfo() {
     // window.location.href = '/Package_info';
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/Package_info")
     location.reload();
   }
@@ -167,18 +146,16 @@ function Packages() {
             type="text"
             placeholder="Search"
             value={searchQuery}
-
             onChange={handleSearchInputChange}
           />
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
-            Profile
+            Menu
           </button>
           {isProfileOpen && (
             <div className="profile-dropdown">
-              <button onClick={redirectToSignUp}>Sign up</button>
-              <button onClick = {redirectToSignIn}>Sign in</button>
+              <button onClick={redirectToLogOut}>Log out</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>

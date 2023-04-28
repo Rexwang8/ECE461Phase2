@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import './App.css'
 
 function App() {
   // const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  localStorage.setItem("loaded", "0");
+  const [loggedIn, setLogIn] = useState(false);
 
-  // const handleSearchInputChange = (event) => {
-  //   setSearchQuery(event.target.value);
-  // };
+
+  useEffect(() => {
+    localStorage.setItem("loaded", "0");
+    const check = (localStorage.getItem("login_token") === null);
+    setLogIn(!check);
+  }, []);
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -32,9 +35,11 @@ function App() {
     location.reload();
   }
 
-  function redirectToSignIn() {
-    // window.location.href = '/Signin';
-    localStorage.setItem("path_name", "/Signin")
+  function redirectToLogOut() {
+    localStorage.setItem("path_name", "/Signup");
+    localStorage.removeItem("login_token");
+    localStorage.removeItem("loaded");
+    localStorage.removeItem("packageID");
     location.reload();
   }
 
@@ -42,21 +47,18 @@ function App() {
     <div className="App">
       <nav className="navbar">
         <div className="navbar-left">
-{/*          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            // onChange={handleSearchInputChange}
-          />*/}
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
-            Profile
+            Menu
           </button>
           {isProfileOpen && (
             <div className="profile-dropdown">
-              <button onClick = {redirectToSignUp}>Sign up</button>
-              <button onClick = {redirectToSignIn}>Sign in</button>
+              {loggedIn ? (
+                     <button onClick={redirectToLogOut}>Log out</button>
+                   ) : (
+                     <button onClick={redirectToSignUp}>Log in</button>
+                   )}
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>

@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import Packages from './Packages';
 import Signup from './Signup';
-import Signin from './Signin';
 import Package_info from './Package_info';
 import './index.css';
 
@@ -22,8 +21,6 @@ ReactDOM.render(
       <Packages />
     ) : path === '/Signup' ? (
       <Signup />
-    ) : path === '/Signin' ? (
-      <Signin />
     ) : path === '/Package_info' ? (
       <Package_info />
     ) : (

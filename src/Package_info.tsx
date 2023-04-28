@@ -3,6 +3,14 @@ import './PackageInfo.css';
 
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
+
+  const login_token = localStorage.getItem('login_token');
+  if (!login_token) {
+    alert("Please make sure you are signed in!")
+    localStorage.setItem("path_name", "/Signup")
+    location.reload();
+  }
+
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageID');
 
@@ -29,12 +37,13 @@ function PackageInfo() {
     location.reload();
   }
 
-  function redirectToSignIn() {
-    localStorage.setItem("path_name", "/Signin")
+  function redirectToLogOut() {
+    localStorage.setItem("path_name", "/Signup");
+    localStorage.removeItem("login_token");
+    localStorage.removeItem("loaded");
+    localStorage.removeItem("packageID");
     location.reload();
-    // window.location.href = '/Signin';
   }
-
 
   return (
     <div className="package-info">
@@ -49,12 +58,11 @@ function PackageInfo() {
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
-            Profile
+            Menu
           </button>
           {isProfileOpen && (
             <div className="profile-dropdown">
-              <button onClick = {redirectToSignUp}>Sign up</button>
-              <button onClick = {redirectToSignIn}>Sign in</button>
+              <button onClick = {redirectToLogOut}>Log out</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>

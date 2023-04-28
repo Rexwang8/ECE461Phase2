@@ -117,11 +117,6 @@ function Signup() {
     location.reload();
   }
 
-  function redirectToSignIn() {
-    // window.location.href = '/Signin';
-    localStorage.setItem("path_name", "/Signin")
-    location.reload();
-  }
 
   return (
     <div className="App">
@@ -137,12 +132,11 @@ function Signup() {
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
-            Profile
+            Menu
           </button>
           {isProfileOpen && (
             <div className="profile-dropdown">
-              <button onClick={redirectToSignUp}>Sign up</button>
-              <button onClick = {redirectToSignIn}>Sign in</button>
+              <button onClick={redirectToSignUp}>Log in</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button>Other</button>
