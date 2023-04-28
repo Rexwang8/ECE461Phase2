@@ -20,7 +20,7 @@ function createPackagesListRequest(token: string, queries: QueryRequest[]): [str
 
 function Packages() {
   const [isLoading, setIsLoading] = useState(true);
-  const [listItems, setListItems] = useState([{ name: 'Loading...X', version: ['1']}]);
+  const [listItems, setListItems] = useState([{ name: 'Loading...X', version: ['1'], id: '69'}]);
   const login_token = localStorage.getItem('login_token');
 
   useEffect(() => {
@@ -41,12 +41,14 @@ function Packages() {
           .then(response => response.json())
           .then(json => {console.log(json)
             const parsedArray = JSON.parse(json);
+            console.log(parsedArray);
             for(let i = 0; i < parsedArray.length; i++) {
 
-              addItem(parsedArray[i].Name, parsedArray[i].Version);
+              addItem(parsedArray[i].Name, parsedArray[i].Version, parsedArray[i].ID);
             }
             setListItems(myList);
             setIsLoading(false);
+            console.log("here is my list");
             console.log(myList);
           })
           .catch(error => console.error(error));
@@ -58,7 +60,7 @@ function Packages() {
   const myList: ListItem[] = [
   ];
 
-  function addItem(name: string, version: string) {
+  function addItem(name: string, version: string, id: string) {
   // check if an item with the given name already exists in the list
   const itemIndex = myList.findIndex(item => item.name === name);
 
@@ -67,7 +69,7 @@ function Packages() {
     myList[itemIndex].version.push(version);
   } else {
     // item with the given name does not exist, add a new object to the list
-    myList.push({ name, version: [version] });
+    myList.push({ name, version: [version], id});
   }
   }
 
@@ -83,13 +85,15 @@ function Packages() {
       .then(response => response.json())
       .then(json => {console.log(json)
         const parsedArray = JSON.parse(json);
+        
         for(let i = 0; i < parsedArray.length; i++) {
           console.log("enter 3");
-          addItem(parsedArray[i].Name, parsedArray[i].Version);
+          addItem(parsedArray[i].Name, parsedArray[i].Version, parsedArray[i].ID);
         }
         setListItems(myList);
 
         setIsLoading(false);
+        console.log("here is my list");
         console.log(myList);
       })
       .catch(error => console.error(error));
@@ -156,7 +160,7 @@ function Packages() {
 
   function redirectToCreatePage() {
     localStorage.setItem("loaded", "0");
-    localStorage.setItem("path_name", "/create_package");
+    localStorage.setItem("path_name", "/CreatePackage");
     location.reload();
   }
 

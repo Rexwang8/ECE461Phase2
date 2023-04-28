@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 
 function App() {
-  // const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [loggedIn, setLogIn] = useState(false);
 
@@ -43,6 +42,19 @@ function App() {
     location.reload();
   }
 
+  function redirectToCreatePage() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/create_package");
+    alert("create package");
+    location.reload();
+  }
+
+  function redirectToCreatePage() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/CreatePackage");
+    location.reload();
+  }
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -61,6 +73,8 @@ function App() {
                    )}
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
+              <button onClick={redirectToCreatePage}>Create Package</button>
+
               <button>Other</button>
             </div>
           )}

@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'
 
-function App() {
-  // const [searchQuery, setSearchQuery] = useState('');
+function CreatePackage() {
+
+  localStorage.setItem("loaded", "0");
+
+  
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [loggedIn, setLogIn] = useState(false);
 
@@ -11,6 +14,11 @@ function App() {
     localStorage.setItem("loaded", "0");
     const check = (localStorage.getItem("login_token") === null);
     setLogIn(!check);
+    if (check) {
+      alert("Please make sure you are signed in!")
+      localStorage.setItem("path_name", "/Signup")
+      location.reload();
+    }
   }, []);
 
   const handleProfileButtonClick = () => {
@@ -43,6 +51,12 @@ function App() {
     location.reload();
   }
 
+  function redirectToCreatePage() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/create_package");
+    location.reload();
+  }
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -61,13 +75,14 @@ function App() {
                    )}
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
+              <button onClick={redirectToCreatePage}>Create Package</button>
               <button>Other</button>
             </div>
           )}
         </div>
       </nav>
       <section className="about-us">
-        <h1>About Us</h1>
+        <h1>Create Packages</h1>
         <p>
           Kevin, the notorious ECE student, has gained quite the reputation as a rat on a boat. 
           Always finding himself in precarious situations, he's known for missing ECE 404 lectures due to his uncanny ability to lock his key in his house. 
@@ -84,6 +99,6 @@ function App() {
   )
 }
 
-export default App;
+export default CreatePackage;
 
 

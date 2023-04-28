@@ -34,13 +34,6 @@ function PackageInfo() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageID');
 
-  // if(login_token != null) {
-
-  // }
-  
-  // const response = await fetch(url, { method: 'POST', headers: header, body: body });
-  // const data = await response.json();
-  // console.log(data);
 
   try {
     if(login_token != null) {
@@ -92,16 +85,17 @@ function PackageInfo() {
     location.reload();
   }
 
+  function redirectToCreatePage() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/CreatePackage");
+    location.reload();
+  }
+
   return (
     <div className="package-info">
       <nav className="navbar">
         <div className="navbar-left">
-{/*          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-            // onChange={handleSearchInputChange}
-          />*/}
+
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
@@ -112,6 +106,7 @@ function PackageInfo() {
               <button onClick = {redirectToLogOut}>Log out</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
+              <button onClick={redirectToCreatePage}>Create Package</button>
               <button>Other</button>
             </div>
           )}
