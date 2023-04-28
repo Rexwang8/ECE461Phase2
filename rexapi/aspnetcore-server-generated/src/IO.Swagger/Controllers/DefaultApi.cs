@@ -1765,6 +1765,7 @@ namespace IO.Swagger.Controllers
                 response += "{\n";
                 response += $"\"Version\": \"{metadata.Version}\",\n";
                 response += $"\"Name\": \"{metadata.Name}\"\n";
+                response += $"\"ID\": \"{metadata.ID}\"\n";
                 response += "}";
                 if (i != metadataList.Count - 1)
                 {
