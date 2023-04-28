@@ -465,14 +465,13 @@ namespace IO.Swagger.CLI
             return error;
         }
 
-        public async Task<APIError> PullGithubInfo(Logger logger, string token)
+        public async Task<APIError> PullGithubInfo(string token)
         {
             APIError error = new APIError();
 
             if (type != "github" && type != "both")
             {
                 error.SetError("Invalid URL for github pull or other issue with type " + baseURL, APIError.errorType.invalidtype);
-                logger.Log(error.ToString(), 2);
                 return error;
             }
 
@@ -480,7 +479,6 @@ namespace IO.Swagger.CLI
             {
                 error.SetError("Empty github url or invalid package." + baseURL, APIError.errorType.invalidtype);
                 Console.WriteLine("name: " + name);
-                logger.Log(error.ToString(), 2);
                 return error;
             }
 
@@ -577,7 +575,6 @@ namespace IO.Swagger.CLI
             //check response
             {
                 error.SetError("Response from github api: " + graphQLResponse.Errors[0].Message, APIError.errorType.badresponse);
-                logger.Log(error.ToString(), 2);
                 Console.WriteLine("Error Graphql response");
                 return error;
             }

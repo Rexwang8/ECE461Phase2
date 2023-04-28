@@ -768,12 +768,7 @@ namespace IO.Swagger.Controllers
                 body.Content = Base64Encoder.Encode("/app/TempPackage.zip");
                 Console.WriteLine("Package was encoded");
 
-                //Get data for package Rating
-                APICalls.GetURLStatistics(urlInfo);
-                Console.WriteLine(urlInfo.getNPMInfo());
-                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
-                StaticAnalysis.Analyze(urlInfo);
-                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+                
                 
 
                 
@@ -848,7 +843,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Package was unzipped");
                 
                 //get Json file
-                URLInfo urlInfo = new URLInfo("");
+                URLInfo urlInfo = new URLInfo(body.URL);
                 urlInfo.getJsonFile("/app/TempDirectory");
                 //get name
                 Name = urlInfo.returnNameFromPackage();
@@ -862,6 +857,20 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("(/package/X-Debug) Invalid version");
                     return StatusCode(400);
                 }
+
+                //Get data for package Rating
+                APICalls.GetURLStatistics(urlInfo);
+                Console.WriteLine(urlInfo.getNPMInfo());
+                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+                StaticAnalysis.Analyze(urlInfo);
+                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+
+                //log out ratings
+                Console.WriteLine($"Maintainer Rating: {Maintainer.GetScore(urlInfo)}");
+                Console.WriteLine($"RampUp Rating: {RampUp.GetScore(urlInfo)}");
+                Console.WriteLine($"Dependency Rating: {Dependency.GetScore(urlInfo)}");
+                Console.WriteLine($"Correctness Rating: {Correctness.GetScore(urlInfo)}");
+                Console.WriteLine($"BusFactor Rating: {BusFactor.GetScore(urlInfo)}");
 
 
                 //Delete 
