@@ -28,6 +28,22 @@ public static class PullRequests
         Console.WriteLine(prChanges);
         Console.WriteLine("kasdh fiuasdiof hausiodfh uaoishdfiua hsdifuh aiusdfh oiushdciuansdiufhaosd fhoiuashdfiu");
         double fraction = (double)prChanges / totalChanges;
+        fraction = CalculateScore((float)fraction);
         return (float)fraction;
     } 
+
+    static float CalculateScore(float fraction)
+    {
+        // Define the mapping function here. This example uses a simple linear mapping.
+        float slope = 0.5f;
+        float intercept = 0.25f;
+
+        float score = slope * fraction + intercept;
+
+        // Ensure the score is between 0 and 1
+        if (score < 0) score = 0;
+        if (score > 1) score = 1;
+
+        return score;
+    }
 }
