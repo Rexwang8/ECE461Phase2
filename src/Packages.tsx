@@ -154,6 +154,42 @@ function Packages() {
     location.reload();
   }
 
+  function redirectToCreatePage() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/create_package");
+    location.reload();
+  }
+
+  function findHighestVersion(versions: string[]): string {
+    let highestVersion = versions[0];
+    
+    for (const version of versions) {
+      if (!/^\d+(\.\d+){2}$/.test(version)) {
+        // Skip non-version strings
+        continue;
+      }
+      
+      const versionNumbers = version.split('.').map(Number);
+      const highestNumbers = highestVersion.split('.').map(Number);
+      
+      let isHigher = false;
+      for (let i = 0; i < versionNumbers.length; i++) {
+        if (versionNumbers[i] > highestNumbers[i]) {
+          isHigher = true;
+          break;
+        } else if (versionNumbers[i] < highestNumbers[i]) {
+          break;
+        }
+      }
+      
+      if (isHigher) {
+        highestVersion = version;
+      }
+    }
+    
+    return highestVersion;
+  }
+
   if (isLoading) {
   return (<div>
         <div className="isloading">Loading data please wait...</div>
@@ -181,6 +217,7 @@ function Packages() {
               <button onClick={redirectToLogOut}>Log out</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
+              <button onClick={redirectToCreatePage}>Create Package</button>
               <button>Other</button>
             </div>
           )}
@@ -212,7 +249,7 @@ function Packages() {
                   
                   <div className="item-details">
                     <div className="item-name">{item.name}</div>
-                    <div className="item-version">{`Latest version: ${item.version[0]}`}</div>
+                    <div className="item-version">{`Latest version: ${findHighestVersion(item.version)}`}</div>
                     <div className="item-version">{`Number of Versions: ${item.version.length}`}</div>
                   </div>
 

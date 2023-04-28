@@ -4,6 +4,7 @@ import App from './App';
 import Packages from './Packages';
 import Signup from './Signup';
 import Package_info from './Package_info';
+import create_package from './create_package';
 import './index.css';
 
 // Get the current URL path
@@ -22,6 +23,8 @@ ReactDOM.render(
     ) : path === '/Signup' ? (
       <Signup />
     ) : path === '/Package_info' ? (
+      <Package_info />
+    ) : path === '/create_package' ? (
       <Package_info />
     ) : (
       <App />

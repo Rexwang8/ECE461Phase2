@@ -1,6 +1,26 @@
 import { useState } from 'react';
 import './PackageInfo.css';
 
+/*
+  (url or base 64 encoding) && js program
+*/
+
+class Regex {
+  RegEx: string;
+
+  constructor(RegEx: string) {
+    this.RegEx = RegEx;
+  }
+}
+
+function FormPackageRegexSearchRequest(token: string, regex: string): [string, Record<string, string>, string] {
+  const url = "https://package-registry-461.appspot.com/package/byRegEx";
+  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
+  const regexobj = new Regex(regex);
+  const body = JSON.stringify(regexobj, null, 4);
+  return [url, header, body];
+}
+
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
 
@@ -14,10 +34,37 @@ function PackageInfo() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageID');
 
+  // if(login_token != null) {
+
+  // }
+  
+  // const response = await fetch(url, { method: 'POST', headers: header, body: body });
+  // const data = await response.json();
+  // console.log(data);
+
+  try {
+    if(login_token != null) {
+      const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
+      console.log(`Regex POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
+      fetch(url, { method: 'POST', headers: header, body: body })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          // do something with the data
+        });
+    }
+    
+  } catch (error) {
+    console.log("we got some error LMAO");
+    console.log(error);
+  }
+
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
   };
+
+  // function getPackageByRegex
 
   function redirectToPackages() {
     // window.location.href = '/Packages';
@@ -80,7 +127,7 @@ function PackageInfo() {
         
         <main className="main">
         <section className="about" id = "about"></section>
-        <h1>psd-export 1.0.8 {package_name}</h1>
+        <h1>Package information: {package_name}</h1>
           <div className="section-line"></div>
         <h2>psd-export</h2>
         <ul>
