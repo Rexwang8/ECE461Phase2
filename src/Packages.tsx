@@ -167,7 +167,7 @@ function Packages() {
         <div className="navbar-left">
           <input
             type="text"
-            placeholder="Search"
+            placeholder="Search for a package(s)"
             value={searchQuery}
             onChange={handleSearchInputChange}
           />
