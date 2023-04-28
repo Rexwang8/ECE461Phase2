@@ -63,13 +63,13 @@ namespace StaticAnalysis
         public  string path { get; set; }
 
         public int license_score { get; set; } = -1;
-        float rampUp_score { get; set; } = -1;
-        float busFactor_score { get; set; } = -1;
+        public float rampUp_score { get; set; } = -1;
+        public float busFactor_score { get; set; } = -1;
         public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
-        float dependency_score { get; set; } = -1;
-        float pullreview_score { get; set; } = -1;
-        float net_score { get; set; } = -1;
+        public float dependency_score { get; set; } = -1;
+        public float pullreview_score { get; set; } = -1;
+        public float net_score { get; set; } = -1;
 
 
 
@@ -618,6 +618,10 @@ namespace StaticAnalysis
         public void setLicenseScore(int licenseScore)
         {
             this.license_score = licenseScore;
+        }
+        public void setNetScore(float netScore)
+        {
+            this.net_score = netScore;
         }
         #endregion
         
