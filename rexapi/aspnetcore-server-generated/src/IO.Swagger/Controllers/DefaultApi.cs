@@ -823,11 +823,11 @@ namespace IO.Swagger.Controllers
                 //unzip the zip file
                 Directory.CreateDirectory("/app/TempDirectory");
                 //list all files in working directory
-                string[] files = Directory.GetFiles("/app");
-                foreach (string file in files)
-                {
-                    Console.WriteLine(file);
-                }
+                //string[] files = Directory.GetFiles("/app");
+                //foreach (string file in files)
+                //{
+                //    Console.WriteLine(file);
+                //}
                 try{
                     System.IO.Compression.ZipFile.ExtractToDirectory("/app/TempPackage.zip", "/app/TempDirectory");
                 }
@@ -871,9 +871,14 @@ namespace IO.Swagger.Controllers
 
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{Version}'";
+            Console.WriteLine("Line 619" + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            Console.WriteLine("Line 622" + result.TotalRows);
+            if(result == null)
+            {
+                Response.Headers.Add("X-Debug", "Package already exists");
+                return StatusCode(409);
+            }
             if (result.TotalRows > 0)
             {
                 Response.Headers.Add("X-Debug", "Package already exists");
@@ -882,22 +887,20 @@ namespace IO.Swagger.Controllers
 
             //Add to metadata table
             query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
+            Console.WriteLine("Line 890" + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-
-            Console.WriteLine("Line 632");
             //Add to package table
             query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('{body.Content}', '{body.JSProgram.Replace("\n", "@").Replace("'", "$")}', '{URL}', '{ID}', '{Name}')";
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            Console.WriteLine("Line 669 " + query);
             //Add to History table
             try
             {
                 query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
-                Console.WriteLine("Line 676");
+                Console.WriteLine("Line 904");
             }
             catch (Exception e)
             {
