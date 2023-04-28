@@ -875,6 +875,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
                 Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
                 Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
+                Console.WriteLine($"license name: {urlInfo.license}");
 
 
 
