@@ -755,13 +755,11 @@ namespace IO.Swagger.Controllers
                 StaticAnalysis.Analyze(urlInfo);
                 Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
                 
-
-                
                 //Delete the Package
                 Directory.Delete("/app/TempDirectory", true);
                 Console.WriteLine("Line 583");
 
-                FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
+                fileInfo = new FileInfo("/app/TempPackage.zip");
                 if (fileInfo.Exists)
                 {
                     fileInfo.Delete();
