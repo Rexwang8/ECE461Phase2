@@ -185,9 +185,11 @@ namespace Index
 
                 //license compatibility
                 //string path = Path.GetFullPath("licenselist.txt");
+                string currentDirectory = Directory.GetCurrentDirectory();
+                string licenselistpath = Path.Combine(currentDirectory, "licenselist.txt");
                 //Console.WriteLine(path);
                 //Console.WriteLine("---------------------------------1398749123749817203498172309418237409132847198324");
-                //pkg.setLicenseScore(License.GetScore(pkg, path));
+                pkg.setLicenseScore(License.GetScore(pkg, licenselistpath));
                 
                 //correctness
                 pkg.setCorrectnessScore(Correctness.GetScore(pkg));
@@ -198,6 +200,7 @@ namespace Index
                 //version ratio
                 pkg.setDependencyScore(Dependency.GetScore(pkg));
                 //net score
+                pkg.setNetScore(NetScore.GetScore(pkg));
             }
 
             //write to file

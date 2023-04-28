@@ -8,20 +8,20 @@ using Utility;
 namespace StaticAnalysis;
 public static class License
 {               
-    public static int GetScore(URLInfo urlInfo, string LicenseListPath)
+    public static int GetScore(URLInfo urlInfo, string licenseListPath)
     {
-        if (urlInfo.licensePath == "" || urlInfo.licensePath == null)
+        /*if (urlInfo.licensePath == "" || urlInfo.licensePath == null)
         {
             urlInfo.license = "Not Available";
             return 0;
-        }
+        }*/
         if (urlInfo.license == "" || urlInfo.license == null) {
             urlInfo.license = "Not Available";
             return 0;
         }
-        string License = File.ReadLines(urlInfo.licensePath).First(); // gets the first line from file.
-        
-        var allLicenses = File.ReadAllLines(LicenseListPath);
+        //string License = File.ReadLines(urlInfo.licensePath).First(); // gets the first line from file.
+        string License = urlInfo.license;
+        var allLicenses = File.ReadAllLines(licenseListPath);
         var allLicensesArr = new List<string>(allLicenses);
         List<string> allLicensesArrCleaned = new List<string>();
         foreach (string li in allLicensesArr)
@@ -44,6 +44,5 @@ public static class License
         }
         urlInfo.license = "Not Available";
         return 0;
-
     }
 }
