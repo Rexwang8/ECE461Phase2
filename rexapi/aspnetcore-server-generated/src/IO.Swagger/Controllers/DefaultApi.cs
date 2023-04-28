@@ -754,8 +754,8 @@ namespace IO.Swagger.Controllers
                 ver = new Version(versionfromfile);
                 if(ver.getValidVersion() == false)
                 {
-                    Response.Headers.Add("X-Debug", "Invalid version");
-                    Console.WriteLine("(/package/X-Debug) Invalid version");
+                    Response.Headers.Add("X-Debug", "Invalid version (Attempted to add package with version " + versionfromfile + ")");
+                    Console.WriteLine("(/package/X-Debug) Invalid version (Attempted to add package with version " + versionfromfile + ")");
                     return StatusCode(400);
                 }
                 URL = body.URL;

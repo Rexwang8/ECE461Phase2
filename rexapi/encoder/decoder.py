@@ -41,5 +41,5 @@ if __name__ == '__main__':
     print(pwd)
     encode("rexapi/encoder/date-fns-2.29.1")
     trimspace("rexapi/encoder/date-fns-2.29.1_2")
-    #decode("rexapi/encoder/date-fns-2.29.3_2")
+    #decode("rexapi/encoder/date-fns-2.29.1_2")
     #compare("rexapi/encoder/date-fns-2.29.3")
