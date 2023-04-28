@@ -20,11 +20,32 @@ function createPackagesListRequest(token: string, queries: QueryRequest[]): [str
 
 function Packages() {
   const [isLoading, setIsLoading] = useState(true);
-  const [listItems, setListItems] = useState([{ name: 'Loading...', version: ['1']}]);
+  const [listItems, setListItems] = useState([{ name: 'Loading...X', version: ['1']}]);
   const login_token = localStorage.getItem('login_token');
 
   useEffect(() => {
-    localStorage.setItem("loaded", "0");
+    if(listItems[0].name === "Loading...X") {
+      if(typeof login_token === 'string') {
+        localStorage.setItem("loaded", "1");
+
+        const queryRequests: QueryRequest[] = [{ Name: ".*", Version: "" }];
+        const [url, header, body] = createPackagesListRequest(login_token, queryRequests);
+
+        fetch(url, { method: 'POST', headers: header, body })
+          .then(response => response.json())
+          .then(json => {console.log(json)
+            const parsedArray = JSON.parse(json);
+            for(let i = 0; i < parsedArray.length; i++) {
+
+              addItem(parsedArray[i].Name, parsedArray[i].Version);
+            }
+            setListItems(myList);
+            setIsLoading(false);
+            console.log(myList);
+          })
+          .catch(error => console.error(error));
+      }
+    }
     console.log('Component mounted or updated');
   }, []);
 
@@ -50,12 +71,14 @@ function Packages() {
   }
   }
 
-  if(typeof login_token === 'string' && (localStorage.getItem("loaded") === "0")) {
+  if(!isLoading && (typeof login_token === 'string') && (localStorage.getItem("loaded") === "0") && (listItems[0].name === "Loading...X")) {
+    console.log(localStorage.getItem("loaded"))
     localStorage.setItem("loaded", "1");
-    console.log("enter 1");
+    console.log(localStorage.getItem("loaded"));
+
     const queryRequests: QueryRequest[] = [{ Name: ".*", Version: "" }];
     const [url, header, body] = createPackagesListRequest(login_token, queryRequests);
-    console.log("enter 2");
+
     fetch(url, { method: 'POST', headers: header, body })
       .then(response => response.json())
       .then(json => {console.log(json)
@@ -65,7 +88,7 @@ function Packages() {
           addItem(parsedArray[i].Name, parsedArray[i].Version);
         }
         setListItems(myList);
-        console.log("enter 4");
+
         setIsLoading(false);
         console.log(myList);
       })
