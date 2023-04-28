@@ -117,18 +117,16 @@ function Signup() {
     location.reload();
   }
 
+  function redirectToCreatePage() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/CreatePackage");
+    location.reload();
+  }
 
   return (
     <div className="App">
     <nav className="navbar">
         <div className="navbar-left">
-{/*          <input
-            type="text"
-            placeholder="Search"
-            value={searchQuery}
-
-            onChange={handleSearchInputChange}
-          />*/}
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
@@ -139,6 +137,7 @@ function Signup() {
               <button onClick={redirectToSignUp}>Log in</button>
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
+              <button onClick={redirectToCreatePage}>Create Package</button>
               <button>Other</button>
             </div>
           )}
