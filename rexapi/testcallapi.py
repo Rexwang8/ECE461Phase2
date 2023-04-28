@@ -114,8 +114,8 @@ def CreatePackageLink(token):
     return URL, Header, Body
 
 
-def CreatePackageContent(token):
-    file = open("Sample.txt", 'r')
+def CreatePackageContent(filename, token):
+    file = open(filename, 'r')
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     packageData = PackageData(file.read(), "", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
@@ -176,10 +176,10 @@ def main():
     
     
     #request -- Authenticate works
-    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response)
+    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response)
     
     #request -- Authenticate (WITH ECE)
     #Authurl, Authbody, Authheader = FormAuthenticateRequest("ece30861defaultadminuser", '''correcthorsebatterystaple123(!__+@**(A'"`;DROP TABLE packages''', True)
@@ -207,17 +207,17 @@ def main():
     
     #create 
     #Using Link -- works using gh link, not with npm link
-    Authurl, Authheader, Authbody = CreatePackageLink(token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
-    
-
-    #Using Content
-    #Authurl, Authheader, Authbody = CreatePackageContent(token)
+    #Authurl, Authheader, Authbody = CreatePackageLink(token)
     #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     #response = requests.post(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response, False)
+    
+
+    #Using Content
+    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/Sample.txt", token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
     
     

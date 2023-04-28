@@ -1,0 +1,403 @@
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:12:44 default[20230426t220426]        Request finished in 13.3699ms 500
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:12:44 default[20230426t220426]        Request starting HTTP/1.1 PUT http://package-registry-461.appspot.com/authenticate application/json 174
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:12:44 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:12:44 default[20230426t220426]        Route matched with {action = "CreateAuthToken", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateAuthToken(IO.Swagger.Models.AuthenticationRequest) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:12:44 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  (authenticate) Received request to authenticate user: Alfalfa
+2023-04-26 22:12:44 default[20230426t220426]  args: class AuthenticationRequest {
+2023-04-26 22:12:44 default[20230426t220426]    User: class User {
+2023-04-26 22:12:44 default[20230426t220426]    Name: Alfalfa
+2023-04-26 22:12:44 default[20230426t220426]    IsAdmin: True
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]    Secret: class UserAuthenticationInfo {
+2023-04-26 22:12:44 default[20230426t220426]    Password: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:12:44 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger) in 
+1.3208ms
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:12:44 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'2023-04-26 22:12:44 default[20230426t220426]  fail: Microsoft.AspNetCore.Server.Kestrel[13]
+2023-04-26 22:12:44 default[20230426t220426]        Connection id "0HMQ6KCE4QRSB", Request id "0HMQ6KCE4QRSB:00000003": An unhandled exception was thrown by the application.
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()    
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)      
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:12:44 default[20230426t220426]        Request finished in 4.6653ms 500
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:12:44 default[20230426t220426]        Request starting HTTP/1.1 PUT http://package-registry-461.appspot.com/authenticate application/json 177
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:12:44 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:12:44 default[20230426t220426]        Route matched with {action = "CreateAuthToken", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateAuthToken(IO.Swagger.Models.AuthenticationRequest) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:12:44 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  (authenticate) Received request to authenticate user: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]  args: class AuthenticationRequest {
+2023-04-26 22:12:44 default[20230426t220426]    User: class User {
+2023-04-26 22:12:44 default[20230426t220426]    Name: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]    IsAdmin: True
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]    Secret: class UserAuthenticationInfo {
+2023-04-26 22:12:44 default[20230426t220426]    Password: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:12:44 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger) in 
+1.425ms
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:12:44 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'2023-04-26 22:12:44 default[20230426t220426]  fail: Microsoft.AspNetCore.Server.Kestrel[13]
+2023-04-26 22:12:44 default[20230426t220426]        Connection id "0HMQ6KCE4QRSB", Request id "0HMQ6KCE4QRSB:00000004": An unhandled exception was thrown by the application.
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()    
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)        
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)      
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:12:44 default[20230426t220426]        Request finished in 6.9741ms 500
+2023-04-26 22:12:44 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:12:44 default[20230426t220426]        Request starting HTTP/1.1 PUT http://package-registry-461.appspot.com/authenticate application/json 77
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:12:44 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:12:44 default[20230426t220426]        Route matched with {action = "CreateAuthToken", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateAuthToken(IO.Swagger.Models.AuthenticationRequest) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:12:44 default[20230426t220426]  (authenticate) Received request to authenticate user: Alfalfa
+2023-04-26 22:12:44 default[20230426t220426]  args: class AuthenticationRequest {
+2023-04-26 22:12:44 default[20230426t220426]    User: class User {
+2023-04-26 22:12:44 default[20230426t220426]    Name: Alfalfa
+2023-04-26 22:12:44 default[20230426t220426]    IsAdmin: True
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]    Secret: class UserAuthenticationInfo {
+2023-04-26 22:12:44 default[20230426t220426]    Password: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:12:44 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger) in 
+1.9533ms
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:12:44 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'2023-04-26 22:12:44 default[20230426t220426]  fail: Microsoft.AspNetCore.Server.Kestrel[13]
+2023-04-26 22:12:44 default[20230426t220426]        Connection id "0HMQ6KCE4QRSB", Request id "0HMQ6KCE4QRSB:00000005": An unhandled exception was thrown by the application.
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()    
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)        
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)      
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:12:44 default[20230426t220426]        Request finished in 4.9054ms 500
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:12:44 default[20230426t220426]        Request starting HTTP/1.1 PUT http://package-registry-461.appspot.com/authenticate application/json 80
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:12:44 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:12:44 default[20230426t220426]        Route matched with {action = "CreateAuthToken", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult CreateAuthToken(IO.Swagger.Models.AuthenticationRequest) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:12:44 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  (authenticate) Received request to authenticate user: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]  args: class AuthenticationRequest {
+2023-04-26 22:12:44 default[20230426t220426]    User: class User {
+2023-04-26 22:12:44 default[20230426t220426]    Name: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]    IsAdmin: True
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]    Secret: class UserAuthenticationInfo {
+2023-04-26 22:12:44 default[20230426t220426]    Password: fuzzstring
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  }
+2023-04-26 22:12:44 default[20230426t220426]
+2023-04-26 22:12:44 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:12:44 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger) in 
+1.3379ms
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:12:44 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.CreateAuthToken (IO.Swagger)'2023-04-26 22:12:44 default[20230426t220426]  fail: Microsoft.AspNetCore.Server.Kestrel[13]
+2023-04-26 22:12:44 default[20230426t220426]        Connection id "0HMQ6KCE4QRSB", Request id "0HMQ6KCE4QRSB:00000006": An unhandled exception was thrown by the application.
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()    
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|24_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+2023-04-26 22:12:44 default[20230426t220426]  --- End of stack trace from previous location where exception was thrown ---
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)        
+2023-04-26 22:12:44 default[20230426t220426]     at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)      
+2023-04-26 22:12:44 default[20230426t220426]     at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Http.HttpProtocol.ProcessRequests[TContext](IHttpApplication`1 application)
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:12:44 default[20230426t220426]        Request finished in 5.1398ms 500
+2023-04-26 22:12:44 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  ((DELETE) /reset) Received request with args: bearer 54661h18504oq9b3hgk535k36mad6hh7360m2o92g3975l63n3570695858il8l154661g18504np9a3gfj535j36lmc6gg7360l2n92f3975k63m3570695858hk8k154661f18504mo9m3fei535i36kl
+2023-04-26 22:12:44 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:12:44 default[20230426t220426]        Request starting HTTP/1.1 DELETE http://package-registry-461.appspot.com/reset  0
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:12:44 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.RegistryReset (IO.Swagger)' 
+2023-04-26 22:12:44 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:12:44 default[20230426t220426]        Route matched with {action = "RegistryReset", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult RegistryReset(System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:12:44 default[20230426t220426]  "GET /package/fuzzstring/rate" 200
+2023-04-26 22:12:44 default[20230426t220426]  "PUT /authenticate" 500
+2023-04-26 22:12:44 default[20230426t220426]  "PUT /authenticate" 500
+2023-04-26 22:12:44 default[20230426t220426]  "PUT /authenticate" 500
+2023-04-26 22:12:44 default[20230426t220426]  "PUT /authenticate" 500
+2023-04-26 22:12:44 default[20230426t220426]  "PUT /authenticate" 500
+2023-04-26 22:12:47 default[20230426t220426]  "DELETE /reset" 200
+PS E:\Projects\461pkg\ECE461Phase2\rexapi\aspnetcore-server-generated> gcloud app logs read
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:20 default[20230426t220426]        Request starting HTTP/1.1 PUT http://package-registry-461.appspot.com/package/id2fc7436ce3 application/json 523
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:20 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageUpdate (IO.Swagger)' 
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:20 default[20230426t220426]        Route matched with {action = "PackageUpdate", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageUpdate(IO.Swagger.Models.Package, System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:20 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:20 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageUpdate (IO.Swagger) in 1.6635ms
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:20 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageUpdate (IO.Swagger)'  
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:20 default[20230426t220426]        Request finished in 2.9509ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:20 default[20230426t220426]        Request starting HTTP/1.1 PUT http://package-registry-461.appspot.com/package/id5cb5027b39 application/json 2
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:20 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageUpdate (IO.Swagger)' 
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:20 default[20230426t220426]        Route matched with {action = "PackageUpdate", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageUpdate(IO.Swagger.Models.Package, System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:20 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:20 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageUpdate (IO.Swagger) in 1.406ms
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:20 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageUpdate (IO.Swagger)'  
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:20 default[20230426t220426]        Request finished in 2.6912ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:20 default[20230426t220426]        Request starting HTTP/1.1 GET http://package-registry-461.appspot.com/package/byName/lodash 
+ 0
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:20 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageByNameGet (IO.Swagger)'
+2023-04-26 22:13:20 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:20 default[20230426t220426]        Route matched with {action = "PackageByNameGet", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageByNameGet(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:20 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:20 default[20230426t220426]  (GET /package/byName/{name}/X-Debug) Received request to get package history: lodash
+2023-04-26 22:13:20 default[20230426t220426]  (GET /package/byName/{name}/X-Debug) args : bearer 54661h18504oq9b3hgk535k36mad6hh7360m2o92g3975l63n3570695858il8l154661g18504np9a3gfj535j36lmc6gg7360l2n92f3975k63m3570695858hk8k154661f18504mo9m3fei535i36kl, lodash
+2023-04-26 22:13:20 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:20 default[20230426t220426]  "POST /package/byRegEx" 400
+2023-04-26 22:13:20 default[20230426t220426]  "PUT /package/id03ca64605d" 400
+2023-04-26 22:13:20 default[20230426t220426]  "PUT /package/id2fc7436ce3" 400
+2023-04-26 22:13:20 default[20230426t220426]  "PUT /package/id5cb5027b39" 400
+2023-04-26 22:13:24 default[20230426t220426]  (/package/byName/{name}/X-DebugSchema) Schema: action STRING, date DATETIME, user_isadmin BOOLEAN, user_name STRING, packagemetadata_id STRING, packagemetadata_name STRING, packagemetadata_version STRING,
+2023-04-26 22:13:24 default[20230426t220426]  (/package/byName/{name}/X-Debug) Package history returned
+2023-04-26 22:13:24 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:24 default[20230426t220426]        Executing ObjectResult, writing value of type 'System.Collections.Generic.List`1[[IO.Swagger.Models.PackageHistoryEntry, IO.Swagger, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2023-04-26 22:13:25 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:25 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageByNameGet (IO.Swagger) in 4049.4442ms
+2023-04-26 22:13:25 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:25 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageByNameGet (IO.Swagger)'
+2023-04-26 22:13:25 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:25 default[20230426t220426]        Request finished in 4096.9412ms 200 application/json; charset=utf-8
+2023-04-26 22:13:25 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:25 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:25 default[20230426t220426]        Request starting HTTP/1.1 DELETE http://package-registry-461.appspot.com/package/byName/even  0
+2023-04-26 22:13:25 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:25 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageByNameDelete (IO.Swagger)'
+2023-04-26 22:13:25 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:25 default[20230426t220426]        Route matched with {action = "PackageByNameDelete", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageByNameDelete(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:25 default[20230426t220426]  (DELETE /package/byName/{name}/X-Debug) Received request to delete package: even
+2023-04-26 22:13:25 default[20230426t220426]  (DELETE /package/byName/{name}/X-Debug) args: bearer 54661h18504oq9b3hgk535k36mad6hh7360m2o92g3975l63n3570695858il8l154661g18504np9a3gfj535j36lmc6gg7360l2n92f3975k63m3570695858hk8k154661f18504mo9m3fei535i36kl, even
+2023-04-26 22:13:25 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:25 default[20230426t220426]  "GET /package/byName/lodash" 200
+2023-04-26 22:13:27 default[20230426t220426]  (/package/byName/{name}/X-Debug) User: alan Admin: True
+2023-04-26 22:13:27 default[20230426t220426]  (/package/byName/{name}/X-Debug) Package does not exist
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.    
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:27 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageByNameDelete (IO.Swagger) in 2356.8021ms
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageByNameDelete (IO.Swagger)'
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:27 default[20230426t220426]        Request finished in 2358.0389ms 404 application/problem+json; charset=utf-8
+2023-04-26 22:13:27 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:27 default[20230426t220426]  (DELETE /package/byName/{name}/X-Debug) Received request to delete package: even
+2023-04-26 22:13:27 default[20230426t220426]  (DELETE /package/byName/{name}/X-Debug) args: fuzzstring, even
+2023-04-26 22:13:27 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:27 default[20230426t220426]  (/package/byName/{name}/X-Debug) Token is not sanitized
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:27 default[20230426t220426]        Request starting HTTP/1.1 DELETE http://package-registry-461.appspot.com/package/byName/even  0
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:27 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageByNameDelete (IO.Swagger)'
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:27 default[20230426t220426]        Route matched with {action = "PackageByNameDelete", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageByNameDelete(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.    
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:27 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageByNameDelete (IO.Swagger) in 1.6416ms
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageByNameDelete (IO.Swagger)'
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:27 default[20230426t220426]        Request finished in 1.9702ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:27 default[20230426t220426]        Request starting HTTP/1.1 DELETE http://package-registry-461.appspot.com/package/id123  0   
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:27 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageDelete (IO.Swagger)' 
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:27 default[20230426t220426]        Route matched with {action = "PackageDelete", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageDelete(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:27 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:27 default[20230426t220426]  (DELETE /package/{id}) Received request with args: bearer 54661h18504oq9b3hgk535k36mad6hh7360m2o92g3975l63n3570695858il8l154661g18504np9a3gfj535j36lmc6gg7360l2n92f3975k63m3570695858hk8k154661f18504mo9m3fei535i36kl, id123
+2023-04-26 22:13:27 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:27 default[20230426t220426]  (/package/{id}/X-Debug) ID is not valid GUID
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.    
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:27 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageDelete (IO.Swagger) in 2.9382ms
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageDelete (IO.Swagger)'  
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:27 default[20230426t220426]        Request finished in 4.475ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:27 default[20230426t220426]        Request starting HTTP/1.1 DELETE http://package-registry-461.appspot.com/package/id123  0   
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:27 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageDelete (IO.Swagger)' 
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:27 default[20230426t220426]        Route matched with {action = "PackageDelete", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageDelete(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:27 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:27 default[20230426t220426]  (DELETE /package/{id}) Received request with args: fuzzstring, id123
+2023-04-26 22:13:27 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:27 default[20230426t220426]  (/package/{id}/X-Debug) Token is not sanitized
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:27 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageDelete (IO.Swagger) in 2.8383ms
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:27 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageDelete (IO.Swagger)'  
+2023-04-26 22:13:27 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:27 default[20230426t220426]        Request finished in 4.2669ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:27 default[20230426t220426]  "DELETE /package/byName/even" 404
+2023-04-26 22:13:27 default[20230426t220426]  "DELETE /package/byName/even" 400
+2023-04-26 22:13:27 default[20230426t220426]  "DELETE /package/id123" 400
+2023-04-26 22:13:27 default[20230426t220426]  "DELETE /package/id123" 400
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:28 default[20230426t220426]        Request starting HTTP/1.1 POST http://package-registry-461.appspot.com/packages?offset=fuzzstring application/json 225
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:28 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackagesList (IO.Swagger)'  
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:28 default[20230426t220426]        Route matched with {action = "PackagesList", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackagesList(System.Collections.Generic.List`1[IO.Swagger.Models.PackageQuery], System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:28 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:28 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackagesList (IO.Swagger) in 24.7276ms
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:28 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackagesList (IO.Swagger)'   
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:28 default[20230426t220426]        Request finished in 26.3244ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:28 default[20230426t220426]        Request starting HTTP/1.1 POST http://package-registry-461.appspot.com/packages application/json 2
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:28 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackagesList (IO.Swagger)'  
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:28 default[20230426t220426]        Route matched with {action = "PackagesList", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackagesList(System.Collections.Generic.List`1[IO.Swagger.Models.PackageQuery], System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:28 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ValidationProblemDetails'.
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:28 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackagesList (IO.Swagger) in 1.454ms
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:28 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackagesList (IO.Swagger)'   
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:28 default[20230426t220426]        Request finished in 3.8232ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:28 default[20230426t220426]        Request starting HTTP/1.1 GET http://package-registry-461.appspot.com/package/fuzzstring  0 
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:28 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageRetrieve (IO.Swagger)'
+2023-04-26 22:13:28 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:28 default[20230426t220426]        Route matched with {action = "PackageRetrieve", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageRetrieve(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:28 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:28 default[20230426t220426]  ((GET) /package/{id}) Received request with args: bearer 54661h18504oq9b3hgk535k36mad6hh7360m2o92g3975l63n3570695858il8l154661g18504np9a3gfj535j36lmc6gg7360l2n92f3975k63m3570695858hk8k154661f18504mo9m3fei535i36kl, fuzzstring
+2023-04-26 22:13:28 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:28 default[20230426t220426]  "POST /packages?offset=fuzzstring" 400
+2023-04-26 22:13:28 default[20230426t220426]  "POST /packages" 400
+2023-04-26 22:13:30 default[20230426t220426]  (/package/{id}/X-Debug) Package does not exist
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:30 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.    
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:30 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageRetrieve (IO.Swagger) in 
+2462.2553ms
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:30 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageRetrieve (IO.Swagger)'2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:30 default[20230426t220426]        Request finished in 2463.9728ms 404 application/problem+json; charset=utf-8
+2023-04-26 22:13:30 default[20230426t220426]  ------BEGIN DEBUG INFO-----
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+2023-04-26 22:13:30 default[20230426t220426]        Request starting HTTP/1.1 GET http://package-registry-461.appspot.com/package/fuzzstring  0 
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+2023-04-26 22:13:30 default[20230426t220426]        Executing endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageRetrieve (IO.Swagger)'
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+2023-04-26 22:13:30 default[20230426t220426]        Route matched with {action = "PackageRetrieve", controller = "DefaultApi"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult PackageRetrieve(System.String, System.String) on controller IO.Swagger.Controllers.DefaultApiController (IO.Swagger).
+2023-04-26 22:13:30 default[20230426t220426]  ((GET) /package/{id}) Received request with args: fuzzstring, fuzzstring
+2023-04-26 22:13:30 default[20230426t220426]  ------END DEBUG INFO-----
+2023-04-26 22:13:30 default[20230426t220426]  (/package/{id}/X-Debug) Token is not sanitized
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ObjectResultExecutor[1]
+2023-04-26 22:13:30 default[20230426t220426]        Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.    
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+2023-04-26 22:13:30 default[20230426t220426]        Executed action IO.Swagger.Controllers.DefaultApiController.PackageRetrieve (IO.Swagger) in 
+3.9821ms
+2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+2023-04-26 22:13:30 default[20230426t220426]        Executed endpoint 'IO.Swagger.Controllers.DefaultApiController.PackageRetrieve (IO.Swagger)'2023-04-26 22:13:30 default[20230426t220426]  info: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+2023-04-26 22:13:30 default[20230426t220426]        Request finished in 5.2135ms 400 application/problem+json; charset=utf-8
+2023-04-26 22:13:30 default[20230426t220426]  "GET /package/fuzzstring" 404
+2023-04-26 22:13:30 default[20230426t220426]  "GET /package/fuzzstring" 400
+PS E:\Projects\461pkg\ECE461Phase2\rexapi\aspnetcore-server-generated>

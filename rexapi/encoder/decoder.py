@@ -33,7 +33,13 @@ def trimspace(filename):
     f.close()
     
 if __name__ == '__main__':
-    decode("sample")
-    encode("sample")
-    trimspace("sample_2")
-    compare("sample")
+   # decode("sample")
+    #encode("sample")
+    #trimspace("sample_2")
+    #compare("sample")
+    pwd = os.getcwd()
+    print(pwd)
+    #encode("rexapi/encoder/date-fns-2.29.3")
+    #trimspace("rexapi/encoder/date-fns-2.29.3_2")
+    decode("rexapi/encoder/date-fns-2.29.3_2")
+    #compare("rexapi/encoder/date-fns-2.29.3")
