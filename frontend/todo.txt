@@ -1,0 +1,4 @@
+SIGN UP - username, password, isadmin -- stored as session key -return a token
+SIGN IN - username, password -- Stored as session key - return a token
+For all other api requests token will be used for authentication
+
