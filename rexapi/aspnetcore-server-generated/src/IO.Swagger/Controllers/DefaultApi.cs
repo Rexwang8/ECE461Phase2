@@ -702,7 +702,8 @@ namespace IO.Swagger.Controllers
 
             //sanitize package name, version, and id
             string Name = "";
-            string Version = "";
+            string versionfromfile = "";
+            Version ver = null;
             string URL = "";
             Console.WriteLine("URL: " + body.URL);
             if (!flagBodyUrlEmpty)
@@ -749,11 +750,18 @@ namespace IO.Swagger.Controllers
                 //Get Json file
                 urlInfo.getJsonFile("/app/TempDirectory");
                 //Get the version
-                Version = urlInfo.returnVersionFromPackage();
+                versionfromfile = urlInfo.returnVersionFromPackage();
+                ver = new Version(versionfromfile);
+                if(ver.getValidVersion() == false)
+                {
+                    Response.Headers.Add("X-Debug", "Invalid version");
+                    Console.WriteLine("(/package/X-Debug) Invalid version");
+                    return StatusCode(400);
+                }
                 URL = body.URL;
 
-                Response.Headers.Add("Check", $"Name = {Name}, Version = {Version}");
-                Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {Version}");
+                Response.Headers.Add("Check", $"Name = {Name}, Version = {ver.ToString()}");
+                Console.WriteLine($"(/package/X-Debug) Name = {Name}, Version = {ver.ToString()}");
                 //get Body Content
                 System.IO.Compression.ZipFile.CreateFromDirectory("/app/TempDirectory", "/app/TempPackage.zip");
                 Console.WriteLine("Package was zipped");
@@ -845,7 +853,17 @@ namespace IO.Swagger.Controllers
                 //get name
                 Name = urlInfo.returnNameFromPackage();
                 //get version
-                Version = urlInfo.returnVersionFromPackage();
+                versionfromfile = urlInfo.returnVersionFromPackage();
+                Console.WriteLine("Version from file: " + versionfromfile);
+                ver = new Version(versionfromfile);
+                if (ver.getValidVersion() == false)
+                {
+                    Response.Headers.Add("X-Debug", "Invalid version");
+                    Console.WriteLine("(/package/X-Debug) Invalid version");
+                    return StatusCode(400);
+                }
+
+
                 //Delete 
                 fileInfo = new FileInfo("/app/TempPackage.zip");
                 if (fileInfo.Exists)
@@ -856,7 +874,7 @@ namespace IO.Swagger.Controllers
                 {
                     Directory.Delete("/app/TempDirectory", true);
                 }
-                Console.WriteLine("Content finished for name: " + Name + " and version: " + Version);
+                Console.WriteLine("Content finished for name: " + Name + " and version: " + ver.ToString());
             }
             else
             {
@@ -870,7 +888,7 @@ namespace IO.Swagger.Controllers
             string ID = Guid.NewGuid().ToString();
 
             //check if package exists 
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{Version}'";
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{ver.ToString()}'";
             Console.WriteLine("Line 619" + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
@@ -886,7 +904,7 @@ namespace IO.Swagger.Controllers
             }
 
             //Add to metadata table
-            query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{Version}')";
+            query = $"INSERT INTO `package-registry-461.packages.packagesMetadata` (id, name, version) VALUES ('{ID}', '{Name}', '{ver.ToString()}')";
             Console.WriteLine("Line 890" + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
@@ -897,7 +915,7 @@ namespace IO.Swagger.Controllers
             //Add to History table
             try
             {
-                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{Version}')";
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{ver.ToString()}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
                 Console.WriteLine("Line 904");
@@ -1764,8 +1782,8 @@ namespace IO.Swagger.Controllers
                 PackageMetadata metadata = metadataList[i];
                 response += "{\n";
                 response += $"\"Version\": \"{metadata.Version}\",\n";
-                response += $"\"Name\": \"{metadata.Name}\"\n";
-                response += $"\"ID\": \"{metadata.ID}\"\n";
+                response += $"\"Name\": \"{metadata.Name}\",\n";
+                response += $"\"ID\": \"{metadata.ID}\",\n";
                 response += "}";
                 if (i != metadataList.Count - 1)
                 {
