@@ -651,6 +651,9 @@ namespace IO.Swagger.Controllers
                 flagBodyContentEmpty = true;
             }
 
+            Console.WriteLine("(/package/X-Debug) flagBodyUrlEmpty: " + flagBodyUrlEmpty);
+            Console.WriteLine("(/package/X-Debug) flagBodyContentEmpty: " + flagBodyContentEmpty);
+
             if(flagBodyUrlEmpty && flagBodyContentEmpty)
             {
                 Console.WriteLine("(/package/X-Debug) Missing field(s)");
@@ -702,7 +705,7 @@ namespace IO.Swagger.Controllers
             string Version = "";
             string URL = "";
             Console.WriteLine("URL: " + body.URL);
-            if (flagBodyUrlEmpty)
+            if (!flagBodyUrlEmpty)
             {
                 //Clean up
                 if (Directory.Exists("/app/TempDirectory"))
@@ -777,7 +780,7 @@ namespace IO.Swagger.Controllers
                 }
                 Console.WriteLine("Line 605");
             }
-            else if (flagBodyContentEmpty)
+            else if (!flagBodyContentEmpty)
             {
                 //check existing
                 string workingdir = Directory.GetCurrentDirectory();

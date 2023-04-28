@@ -176,10 +176,10 @@ def main():
     
     
     #request -- Authenticate works
-    Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
-    print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.put(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response)
+    #Authurl, Authbody, Authheader = FormAuthenticateRequest(username, password, isadmin)
+    #print(f"PUT: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.put(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response)
     
     #request -- Authenticate (WITH ECE)
     #Authurl, Authbody, Authheader = FormAuthenticateRequest("ece30861defaultadminuser", '''correcthorsebatterystaple123(!__+@**(A'"`;DROP TABLE packages''', True)
