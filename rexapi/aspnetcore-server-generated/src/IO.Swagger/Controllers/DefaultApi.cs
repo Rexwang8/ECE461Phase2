@@ -816,19 +816,28 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("Exception: " + e.Message);
                 }
 
-                //list all files in working directory
-                //string[] files = Directory.GetFiles("/app");
-                //foreach (string file in files)
-                //{
-                //    Console.WriteLine(file);
-                //}
+                
                 
                 
 
                 //unzip the zip file
                 Directory.CreateDirectory("/app/TempDirectory");
-                System.IO.Compression.ZipFile.ExtractToDirectory("/app/TempPackage.zip", "/app/TempDirectory");
-
+                //list all files in working directory
+                string[] files = Directory.GetFiles("/app");
+                foreach (string file in files)
+                {
+                    Console.WriteLine(file);
+                }
+                try{
+                    System.IO.Compression.ZipFile.ExtractToDirectory("/app/TempPackage.zip", "/app/TempDirectory");
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Zip file is invalid or corrupted");
+                    Response.Headers.Add("X-Debug", "Zip file is invalid or corrupted");
+                    return StatusCode(400);
+                }
+                Console.WriteLine("Package was unzipped");
                 
                 //get Json file
                 URLInfo urlInfo = new URLInfo("");

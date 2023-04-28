@@ -213,8 +213,14 @@ def main():
     #PrintResponse(response, False)
     
 
-    #Using Content
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/Sample.txt", token)
+    #Using Content  -- works with even
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/sample.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
+    
+    #Using Content  
+    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
     print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     response = requests.post(Authurl, data=Authbody, headers=Authheader)
     PrintResponse(response, False)
