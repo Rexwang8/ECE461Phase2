@@ -757,9 +757,11 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public void Parse(string version)
         {
+            Console.WriteLine("Parsing version: " + version);
             //detect if range, and if so, parse min version and max version
             if (version.StartsWith("^"))
             {
+                Console.WriteLine("Major range detected");
                 //major range
                 IsMajorRange = true;
                 IsMinorRange = false;
@@ -771,12 +773,14 @@ namespace IO.Swagger.Controllers
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = int.Parse(versionSplit[2]);
+                    return;
                 }
                 else if (versionSplit.Length == 2)
                 {
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = 0;
+                    return;
                 }
                 else
                 {
@@ -791,6 +795,7 @@ namespace IO.Swagger.Controllers
             }
             else if (version.StartsWith("~"))
             {
+                Console.WriteLine("Minor range detected");
                 //minor range
                 IsMajorRange = false;
                 IsMinorRange = true;
@@ -802,12 +807,14 @@ namespace IO.Swagger.Controllers
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = int.Parse(versionSplit[2]);
+                    return;
                 }
                 else if (versionSplit.Length == 2)
                 {
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = 0;
+                    return;
                 }
                 else
                 {
@@ -821,6 +828,7 @@ namespace IO.Swagger.Controllers
             }
             else if (version.Contains("-"))
             {
+                Console.WriteLine("Range detected");
                 //range
                 string[] versionRangeSplit = version.Split('-');
                 //max version
@@ -874,6 +882,7 @@ namespace IO.Swagger.Controllers
             }
             else
             {
+                Console.WriteLine("Normal version detected");
                 //normal version
                 IsMajorRange = false;
                 IsMinorRange = false;
@@ -884,12 +893,14 @@ namespace IO.Swagger.Controllers
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = int.Parse(versionSplit[2]);
+                    return;
                 }
                 else if (versionSplit.Length == 2)
                 {
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = 0;
+                    return;
                 }
                 else
                 {
