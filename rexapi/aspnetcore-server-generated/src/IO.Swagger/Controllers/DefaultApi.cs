@@ -648,7 +648,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Missing field(s)");
                 return StatusCode(400);
             }
-            if(body.URL != null && body.Content != null)
+            if((body.URL != null || body.URL != "") && (body.Content != null || body.Content != ""))
             {
                 Console.WriteLine("(/package/X-Debug) Too many fields");
                 Response.Headers.Add("X-Debug", "Too many fields");
@@ -754,6 +754,8 @@ namespace IO.Swagger.Controllers
                 StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
                 StaticAnalysis.Analyze(urlInfo);
                 Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+                
+
                 
                 //Delete the Package
                 Directory.Delete("/app/TempDirectory", true);
