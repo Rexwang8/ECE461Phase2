@@ -24,6 +24,12 @@ function Packages() {
   const login_token = localStorage.getItem('login_token');
 
   useEffect(() => {
+    let responseString: string; 
+    if (!login_token) {
+      alert("Please make sure you are signed in!")
+      localStorage.setItem("path_name", "/Signup")
+      location.reload();
+    }
     if(listItems[0].name === "Loading...X") {
       if(typeof login_token === 'string') {
         localStorage.setItem("loaded", "1");
@@ -49,12 +55,6 @@ function Packages() {
     console.log('Component mounted or updated');
   }, []);
 
-  let responseString: string; 
-  if (!login_token) {
-    alert("Please make sure you are signed in!")
-    localStorage.setItem("path_name", "/Signup")
-    location.reload();
-  }
   const myList: ListItem[] = [
   ];
 
@@ -228,8 +228,6 @@ function Packages() {
     </div>
   );
   }
-
-  
 }
 
 export default Packages;
