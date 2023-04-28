@@ -675,7 +675,8 @@ namespace IO.Swagger.CLI
             }
             //string License = File.ReadLines(urlInfo.licensePath).First(); // gets the first line from file.
             string License = urlInfo.license;
-            var allLicensesArr = LicenseList;
+            var allLicenses = LicenseList;
+            var allLicensesArr = allLicenses;
             List<string> allLicensesArrCleaned = new List<string>();
             foreach (string li in allLicensesArr)
             {

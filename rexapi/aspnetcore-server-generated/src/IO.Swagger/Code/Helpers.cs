@@ -757,6 +757,7 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public void Parse(string version)
         {
+            isvalidversion = true;
             Console.WriteLine("Parsing version: " + version);
             //detect if range, and if so, parse min version and max version
             if (version.StartsWith("^"))
