@@ -200,6 +200,7 @@ namespace Index
                 //version ratio
                 pkg.setDependencyScore(Dependency.GetScore(pkg));
                 //net score
+                pkg.setNetScore(NetScore.GetScore(pkg));
             }
 
             //write to file
