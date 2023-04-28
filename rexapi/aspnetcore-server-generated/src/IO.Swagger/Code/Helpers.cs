@@ -721,6 +721,11 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public bool IsMinorRange { get; set; }
 
+        /// <summary>
+        /// if version is valid
+        /// </summary>
+        public bool isvalidversion { get; set; }
+
 
 
         /// <summary>
@@ -728,6 +733,7 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public Version(int major, int minor, int patch, bool isRange = false, bool isSubRange = false, Version minVersion = null, bool isMajorRange = false, bool isMinorRange = false)
         {
+            isvalidversion = true;
             Major = major;
             Minor = minor;
             Patch = patch;
@@ -774,7 +780,11 @@ namespace IO.Swagger.Controllers
                 }
                 else
                 {
-                    throw new Exception("Invalid version string");
+                    isvalidversion = false;
+                    Major = 1;
+                    Minor = 0;
+                    Patch = 0;
+                    return;
                 }
 
             }
@@ -800,7 +810,11 @@ namespace IO.Swagger.Controllers
                 }
                 else
                 {
-                    throw new Exception("Invalid version string");
+                    isvalidversion = false;
+                    Major = 1;
+                    Minor = 0;
+                    Patch = 0;
+                    return;
                 }
             }
             else if (version.Contains("-"))
@@ -828,7 +842,11 @@ namespace IO.Swagger.Controllers
                 }
                 else
                 {
-                    throw new Exception("Invalid version string");
+                    isvalidversion = false;
+                    Major = 1;
+                    Minor = 0;
+                    Patch = 0;
+                    return;
                 }
 
                 //parse min version
@@ -843,7 +861,11 @@ namespace IO.Swagger.Controllers
                 }
                 else
                 {
-                    throw new Exception("Invalid version string");
+                    isvalidversion = false;
+                    Major = 1;
+                    Minor = 0;
+                    Patch = 0;
+                    return;
                 }
             }
             else
@@ -867,9 +889,18 @@ namespace IO.Swagger.Controllers
                 }
                 else
                 {
-                    throw new Exception("Invalid version string");
+                    isvalidversion = false;
+                    Major = 1;
+                    Minor = 0;
+                    Patch = 0;
+                    return;
                 }
             }
+        }
+
+        public bool getValidVersion()
+        {
+            return isvalidversion;
         }
 
 

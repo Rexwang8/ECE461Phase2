@@ -213,8 +213,14 @@ def main():
     #PrintResponse(response, False)
     
 
-    #Using Content
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/Sample.txt", token)
+    #Using Content  -- works with even
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/sample.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
+    
+    #Using Content  
+    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
     print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     response = requests.post(Authurl, data=Authbody, headers=Authheader)
     PrintResponse(response, False)
@@ -235,7 +241,7 @@ def main():
     #PrintResponse(response, True)
     
     #rating by id -- works but doesn't return actual rating
-    #url, header = FormRateRequest(token, "0562f8fc-d583-4106-9a87-258257cf0262")
+    #url, header = FormRateRequest(token, "bfddf655-84d6-426c-9727-e51e01da83fd")
     #print(f"Rating GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
