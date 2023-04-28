@@ -858,7 +858,7 @@ namespace IO.Swagger.Controllers
                 ver = new Version(versionfromfile);
                 if (ver.getValidVersion() == false)
                 {
-                    Response.Headers.Add("X-Debug", "Invalid version");
+                    Response.Headers.Add("X-Debugversion", "Invalid version");
                     Console.WriteLine("(/package/X-Debug) Invalid version");
                     return StatusCode(400);
                 }

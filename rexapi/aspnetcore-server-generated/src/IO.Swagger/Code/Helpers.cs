@@ -780,6 +780,7 @@ namespace IO.Swagger.Controllers
                 }
                 else
                 {
+                    Console.WriteLine("Failed when testing length of version string 783");
                     isvalidversion = false;
                     Major = 1;
                     Minor = 0;
@@ -814,6 +815,7 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
+                    Console.WriteLine("Failed when testing length of version string 818");
                     return;
                 }
             }
@@ -843,6 +845,7 @@ namespace IO.Swagger.Controllers
                 else
                 {
                     isvalidversion = false;
+                    Console.WriteLine("Failed when testing length of version string 848");
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
@@ -865,6 +868,7 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
+                    Console.WriteLine("Failed when testing version min string 868");
                     return;
                 }
             }
@@ -893,6 +897,7 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
+                    Console.WriteLine("Failed when testing max version string 894");
                     return;
                 }
             }
