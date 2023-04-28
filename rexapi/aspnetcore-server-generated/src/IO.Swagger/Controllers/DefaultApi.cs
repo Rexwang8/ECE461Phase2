@@ -66,29 +66,29 @@ namespace IO.Swagger.Controllers
             if(body.User != null)
             {
                 Console.WriteLine($"(authenticate/{runid}) Received request to authenticate user: " + body.User.Name);
-                Response.Headers.Add($"X-Debug", $"authenticate/{runid} Received request to authenticate user: " + body.User.Name);
+                Response.Headers.Add($"X-Debug98032", $"authenticate/{runid} Received request to authenticate user: " + body.User.Name);
             }
             else
             {
                 Console.WriteLine($"(authenticate/{runid}) Received request to authenticate user: null");
-                Response.Headers.Add($"X-Debug", $"authenticate/{runid} Received request to authenticate user: null");
+                Response.Headers.Add($"X-Debug12543", $"authenticate/{runid} Received request to authenticate user: null");
             }
             if(body.User != null && body.Secret != null)
             {
                 Console.WriteLine($"(authenticate/{runid}) args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
-                Response.Headers.Add($"X-Debug", $"authenticate/{runid} args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
+                Response.Headers.Add($"X-Debug1231", $"authenticate/{runid} args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
             }
             else
             {
                 if (body.User != null)
                 {
                     Console.WriteLine($"(authenticate/{runid}) args: " + body.User.Name + " null " + body.User.IsAdmin);
-                    Response.Headers.Add($"X-Debug", $"authenticate/{runid} args: " + body.User.Name + " null " + body.User.IsAdmin);
+                    Response.Headers.Add($"X-Debug234908", $"authenticate/{runid} args: " + body.User.Name + " null " + body.User.IsAdmin);
                 }
                 if (body.Secret != null)
                 {
                     Console.WriteLine($"(authenticate/{runid}) args: null " + body.Secret.Password + " null");
-                    Response.Headers.Add($"X-Debug", $"authenticate/{runid} args: null " + body.Secret.Password + " null");
+                    Response.Headers.Add($"X-Debug03948", $"authenticate/{runid} args: null " + body.Secret.Password + " null");
                 }
             }
             
@@ -285,7 +285,6 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             try
             {
-                //Response.Headers.Add("X-Debugquery", "query: " + query);
                 result = factory.ExecuteQuery();
             }
             catch (Exception e)
@@ -641,14 +640,24 @@ namespace IO.Swagger.Controllers
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            bool flagBodyUrlEmpty = false;
+            if(body.URL == null || body.URL == "")
+            {
+                flagBodyUrlEmpty = true;
+            }
+            bool flagBodyContentEmpty = false;
+            if(body.Content == null || body.Content == "")
+            {
+                flagBodyContentEmpty = true;
+            }
 
-            if(body.URL == null && body.Content == null)
+            if(flagBodyUrlEmpty && flagBodyContentEmpty)
             {
                 Console.WriteLine("(/package/X-Debug) Missing field(s)");
                 Response.Headers.Add("X-Debug", "Missing field(s)");
                 return StatusCode(400);
             }
-            if((body.URL != null || body.URL != "") && (body.Content != null || body.Content != ""))
+            if(flagBodyContentEmpty == false && flagBodyUrlEmpty == false)
             {
                 Console.WriteLine("(/package/X-Debug) Too many fields");
                 Response.Headers.Add("X-Debug", "Too many fields");
@@ -693,7 +702,7 @@ namespace IO.Swagger.Controllers
             string Version = "";
             string URL = "";
             Console.WriteLine("URL: " + body.URL);
-            if (body.URL != null && body.URL != "")
+            if (flagBodyUrlEmpty)
             {
                 //Clean up
                 if (Directory.Exists("/app/TempDirectory"))
@@ -768,7 +777,7 @@ namespace IO.Swagger.Controllers
                 }
                 Console.WriteLine("Line 605");
             }
-            else if (body.Content != null && body.Content != "")
+            else if (flagBodyContentEmpty)
             {
                 //check existing
                 string workingdir = Directory.GetCurrentDirectory();
