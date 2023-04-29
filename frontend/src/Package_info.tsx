@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 import './PackageInfo.css';
 import axios from 'axios';
 
@@ -201,7 +202,7 @@ function PackageInfo() {
   function handleSideBar(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if(event.currentTarget.textContent === "Delete All") {
       // alert(event.currentTarget.textContent);
-      const [authUrl, authHeader] = DeleteNameRequest(localStorage.getItem("login_token"), localStorage.getItem("packageName"))
+      const [authUrl, authHeader] = DeleteNameRequest(localStorage.getItem("login_token") as string, localStorage.getItem("packageName") as string)
       console.log(`DELETE ALL: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
       setIsDeleting(true);
       fetch(authUrl, { method: 'DELETE', headers: authHeader })
@@ -219,7 +220,7 @@ function PackageInfo() {
         .catch(error => {
           setIsDeleting(false);
           // handle error, like showing an error message to the user
-          alert('Please make sure you are an admin - There was a problem with the network request:', error);
+          alert('Please make sure you are an admin - There was a problem with the network request:' + error);
         });
     }
     else {
@@ -239,24 +240,25 @@ function PackageInfo() {
   }
 
   const handleUpdateClick = () => {
-    console.log(localStorage.getItem("ver_id"))
-    // localStorage.setItem("loaded", "0");
-    // localStorage.setItem("path_name", "/PackageUpdate")
-    // location.reload();
-    if (localStorage.getItem("ver_id"))
-    {
-      localStorage.setItem("loaded", "0");
-      localStorage.setItem("path_name", "/UpdatePackage")
-      location.reload();
-    }
-    else {
-      alert("Error: Package ID not found.");
-    }
+    alert("CHECK THE FUNCTION HANDLEUPDATECLICK IN PACKAGE_INFO.TSX -- THX CUZ WE DON'T NEED THIS NO MORE?")
+    // console.log(localStorage.getItem("ver_id"))
+    // // localStorage.setItem("loaded", "0");
+    // // localStorage.setItem("path_name", "/PackageUpdate")
+    // // location.reload();
+    // if (localStorage.getItem("ver_id"))
+    // {
+    //   localStorage.setItem("loaded", "0");
+    //   localStorage.setItem("path_name", "/UpdatePackage")
+    //   location.reload();
+    // }
+    // else {
+    //   alert("Error: Package ID not found.");
+    // }
   }
 
 
   const handleDelete = () => {
-    const [authUrl, authHeader] = deletePackageRequestByID(localStorage.getItem("login_token"), localStorage.getItem("ver_id"));
+    const [authUrl, authHeader] = deletePackageRequestByID(localStorage.getItem("login_token") as string, localStorage.getItem("ver_id") as string);
     console.log(`DELETE: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
     setIsDeleting(true);
     fetch(authUrl, { method: 'DELETE', headers: authHeader })
@@ -274,7 +276,7 @@ function PackageInfo() {
       .catch(error => {
         setIsDeleting(false);
         // handle error, like showing an error message to the user
-        alert('Please make sure you are an admin - There was a problem with the network request:', error);
+        alert('Please make sure you are an admin - There was a problem with the network request:' + error);
       });
   }
 
