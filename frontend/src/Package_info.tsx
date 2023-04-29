@@ -52,6 +52,10 @@ function convertBinaryToZip(binaryData: Uint8Array, filename: string) {
 
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
+  // localStorage.setItem("loaded1", "0");
+  // localStorage.setItem("loaded2", "0");
+  // localStorage.setItem("loaded3", "0");
+
   let ver = localStorage.getItem("version");  //the version the user selected
 
   const [isLoading, setIsLoading] = useState(true);
@@ -244,44 +248,8 @@ function PackageInfo() {
             <a href="#" onClick={handleSideBar}>Delete All</a>
           </li>
         </ul>
-      </nav>
-         <main className="main">
-        <h1>Package information: {package_name}</h1>
-        <h2>Version: {localStorage.getItem("version")}</h2>
-          <div className="section-line"></div>
-        <h2>Download</h2>
-        <ul>
-          <li>Download <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
-          <button className = "download_button" onClick={createDownload} >Download</button>
-        </ul>
-        <div className="section-line"></div>
-        
-        <h2>Ratings</h2>
-        <p>
-        <b>BusFactor</b>: {localStorage.getItem("busFactor") + "\n"}
-        <h3></h3>
-        <b>Correctness</b>: {localStorage.getItem("correctness")}
-        <h3></h3>
-        <b>License Score</b>: {localStorage.getItem("licenseScore")}
-        <h3></h3>
-        <b>Net Score</b>: {localStorage.getItem("netScore")}
-        <h3></h3>
-        <b>Pull Request</b>: {localStorage.getItem("pullRequest")}
-        <h3></h3>
-        <b>Ramp up</b>: {localStorage.getItem("rampUp")}
-        <h3></h3>
-        <b>Responsive Maintaner</b>: {localStorage.getItem("responsiveMaintainer")}
-        </p>
-        <div className="section-line"></div>
-
-
-
-        <h2>Delete this package</h2>
-        We delete this package.
-        <div className="section-line"></div>
-        </main>
-        
-        {/*<main className="main">
+      </nav>        
+        <main className="main">
         <section className="about" id = "about"></section>
         <h1>Package information: {package_name}</h1>
         <h2>Version: {localStorage.getItem("version")}</h2>
@@ -323,7 +291,7 @@ function PackageInfo() {
         <h2>Delete this package</h2>
         We delete this package.
         <div className="section-line"></div>
-        </main>*/}
+        </main>
     </div>
   )
 }
