@@ -746,7 +746,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Package downloaded");
                 urlInfo.path = "/app/TempDirectory";
                 urlInfo.getJsonFile("/app/TempDirectory");
-                urlInfo.returnGHURLfrompackagejson();
+                //urlInfo.returnGHURLfrompackagejson();
                 urlInfo.initType();
                 urlInfo.initName();
 
