@@ -82,14 +82,14 @@ function CreatePackage() {
   const contentArea = document.getElementById('ContentOption') as HTMLDivElement;
 
   const handleURLoption = () => {
-    urlArea.style.backgroundColor = '#777';
-    contentArea.style.backgroundColor = '#ccc';
+    urlArea.style.backgroundColor = 'gray';
+    contentArea.style.backgroundColor = 'white';
     ContentValue = "URL";
   };
 
   const handleContentoption = () => {
-    urlArea.style.backgroundColor = '#ccc';
-    contentArea.style.backgroundColor = '#777';
+    urlArea.style.backgroundColor = 'white';
+    contentArea.style.backgroundColor = 'gray';
     ContentValue = "Content";
   };
 
@@ -199,9 +199,8 @@ function CreatePackage() {
           )}
         </div>
       </nav>
-      <section className="about-us">
-        <div className="background">
-          <h1>Create Package</h1>
+      <section className="create-main">
+          <h1>Create Package:</h1>
           <div className="content-row">
             <div id="URLOption" onClick={handleURLoption}>
               <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
@@ -211,14 +210,10 @@ function CreatePackage() {
               <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
             </div>     
           </div>
-          <div className='content-row'>
+          <div>
             <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
           </div>
           <button onClick={handleClickCreateButton}>Create</button>
-        </div>
-        
-
-
       </section>
     </div>
   )

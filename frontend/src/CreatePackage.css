@@ -1,295 +1,57 @@
-/*#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.create-main { 
+  background-color: white;
+  padding: 30px;
+  height: 60%;
+  width: 60%;
+  position: absolute;
+
+  top: 25%;
+  left: 25%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.create-main h1 {
+  font-size: 25px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.content-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#URLOption {
+  width: 300px;
+  height: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#URLOption input {
+  width: 200px;
+  height: 30px;
+  margin-top: 35px;
 }
 
-.card {
-  padding: 2em;
+#ContentOption {
+  width: 300px;
+  height: 100px;
+  background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
-.read-the-docs {
-  color: #888;
+#ContentOption input {
+  width: 200px;
+  height: 30px;
+  margin-top: 35px;
 }
-*/
 
-/* Navbar styles */
-.navbar {
-    /*  display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #f0f0f0;
-      padding: 10px;*/
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #f0f0f0;
-      padding: 10px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-    }
-    
-    .navbar input[type="text"] {
-      padding: 8px;
-      border: none;
-      border-radius: 4px;
-      width: 300px;
-    }
-    
-    .profile-button {
-      background-color: green;
-      border: none;
-      cursor: pointer;
-      margin-left: 10px;
-    }
-    
-    .profile-dropdown {
-      position: absolute;
-      top: 50px;
-      right: 10px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      padding: 10px;
-    }
-    
-    .profile-dropdown button {
-      display: block;
-      width: 100%;
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      padding: 5px 0;
-    }
-    
-    /* About Us section styles */
-    .about-us {
-        position: absolute;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    
-    .about-us h1 {
-      font-size: 2rem;
-      margin-bottom: 50px;
-    }
-    
-    .content-row{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 50px;
-    }
-
-    .background {
-      padding: 30px;
-      background-color: #ccc;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      margin-top: 25%;
-    }
-
-    #JSProgam{
-      width: 600px;
-      height: 100px;
-    }
-    .list-container {
-      display: flex;
-      justify-content: center;
-      overflow-y: auto;
-      border: 3px solid lightgrey;
-      max-height: 60vh;
-      border-radius: 10px;
-    }
-    
-    #URLOption{
-        width: 300px;
-        height: 70;
-        margin-right: 100px;
-        background-color: #ccc;
-        border-radius: 10px;
-        color: black;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-    }
-
-    #ContentOption{
-        width: 300px;
-        height: 70;
-        margin-left: 100px;
-        background-color: #ccc;
-        border-radius: 10px;
-        color: black;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-    }
-
-    .list {
-      list-style-type: none;
-      padding: 0;
-    }
-    
-    .list-item {
-      margin: 5px;
-    }
-    
-    .list-item-box {
-      background-color: #f0f0f0;
-      padding: 10px;
-      border-radius: 5px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      /*min-width: 1200px;*/
-      min-width: 800px;
-    }
-    
-    .description {
-      position: relative;
-      right: 100px;
-      /*postion: fixed;*/
-      /*left: 1000px;*/
-      text-align: left;
-      font-size: 16px;
-      color: #777;
-      text-align: center;
-    }
-    
-    .more-info {
-      padding: 10px;
-      position: fixed;
-      left: 50%;
-      top: 55%;
-      transform: translate(-50%, -50%);
-    }
-    
-    .title {
-      padding: 10px;
-      position: fixed;
-      top: 10%;
-      left: 50%;
-      transform: translate(-50%, 0%);
-      /*top: -3%;*/
-    }
-    
-    .invisible {
-      visibility: hidden;
-    }
-    
-    .indicator {
-      width: 1rem;
-      height: 1rem;
-      margin-right: 0.5rem;
-      border-radius: 50%;
-    }
-    
-    .indicator.green {
-      background-color: green;
-    }
-    
-    .indicator.red {
-      background-color: red;
-    }
-    
-    .score {
-      margin-left: auto;
-    }
-    
-    .button {
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      margin-left: 1rem;
-      width: 20%;
-    }
-    
-    .button2 {
-      background-color: green;
-      color: #fff;
-      border: none;
-      padding: 0.5rem;
-      cursor: pointer;
-      margin-left: 1rem;
-      width: 15%;
-    }
-    
-    .description {
-      font-size: 13px;
-      color: #777;
-      background-color: #f0f0f0;
-      margin-left: 1rem;
-      padding: 0.5rem;
-      width: 35%;
-    }
-    
-    .item-details {
-      flex: 1;
-    }
-    
-    .item-name {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    
-    .item-version,
-    .item-updated,
-    .item-score {
-      margin-top: 5px;
-      font-size: 12px;
-      color: #777;
-    }
-    
-    .isloading {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 35px;
-      font-weight: bold;
-      text-align: center;
-      color: #fff;
-      background-color: #007bff;
-      padding: 50px;
-      border-radius: 20px;
-      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
-    }
-    
+#JSProgam {
+  width: 100%;
+  height: 100px;
+}
