@@ -1,9 +1,5 @@
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './PackageInfo.css';
-
-/*
-  (url or base 64 encoding) && js program
-*/
 
 class Regex {
   RegEx: string;
@@ -21,37 +17,46 @@ function FormPackageRegexSearchRequest(token: string, regex: string): [string, R
   return [url, header, body];
 }
 
+const versions: string[] = [];
+
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
-
-  const login_token = localStorage.getItem('login_token');
-  if (!login_token) {
-    alert("Please make sure you are signed in!")
-    localStorage.setItem("path_name", "/Signup")
-    location.reload();
-  }
-
+  const [isLoading, setIsLoading] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const package_name = localStorage.getItem('packageID');
+  const package_name = localStorage.getItem('packageName');
 
-
-  try {
-    if(login_token != null) {
-      const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
-      console.log(`Regex POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
-      fetch(url, { method: 'POST', headers: header, body: body })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          // do something with the data
-        });
+  useEffect(() => {
+    const login_token = localStorage.getItem('login_token');
+    let responseString: string; 
+    if (!login_token) {
+      alert("Please make sure you are signed in!")
+      localStorage.setItem("path_name", "/Signup")
+      location.reload();
     }
-    
-  } catch (error) {
-    console.log("we got some error LMAO");
-    console.log(error);
-  }
+    try {
+      if(login_token != null) {
+        const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
+        console.log(`Regex POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
+        fetch(url, { method: 'POST', headers: header, body: body })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            // do something with the data
+            for(let i = 0; i < data.length; i++) {
+              console.log(data[i]);
+              versions.push(data[i].version);
+            }
+            setIsLoading(false);
+          });
+        
+      }
+    } catch (error) {
+      console.log("we got some error LMAO");
+      console.log(error);
+    }
+  }, []);
 
+  
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -91,6 +96,12 @@ function PackageInfo() {
     location.reload();
   }
 
+  if(isLoading) {
+    return(<div>
+        <div className="isloading">Loading data please wait...</div>
+    </div>);
+  }
+  else {
   return (
     <div className="package-info">
       <nav className="navbar">
@@ -215,5 +226,6 @@ function PackageInfo() {
           </main>
     </div>
   )
+}
 }
 export default PackageInfo;
