@@ -255,9 +255,36 @@ namespace IO.Swagger.CLI
                 if (line.Contains("\"repository\":"))
                 {
                     string[] splitLine = line.Split("\"");
-                    Console.WriteLine(splitLine[3]);
-                    baseURL = splitLine[3];
-                    return splitLine[3];
+                    if(splitLine[3] != null)
+                    {
+                        if (splitLine[3].Contains("github.com"))
+                        {
+                            Console.WriteLine(splitLine[3]);
+                            baseURL = splitLine[3];
+                            return splitLine[3];
+                        }
+                        else
+                        {
+                            Console.WriteLine("No github URL found in package.json (REPO)");
+                        }
+                    }
+                }
+                if (line.Contains("\"homepage\":"))
+                {
+                    string[] splitLine = line.Split("\"");
+                    if (splitLine[3] != null)
+                    {
+                        if (splitLine[3].Contains("github.com"))
+                        {
+                            Console.WriteLine(splitLine[3]);
+                            baseURL = splitLine[3];
+                            return splitLine[3];
+                        }
+                        else
+                        {
+                            Console.WriteLine("No github URL found in package.json (HOMEPAGE)");
+                        }
+                    }
                 }
 
                 line = sr.ReadLine();
@@ -654,7 +681,11 @@ namespace IO.Swagger.CLI
             Console.WriteLine("Pull requests: " + resp.repository.pullRequests.totalCount);
             if(resp.repository.pullRequests.nodes.Count > 0)
             Console.WriteLine("Pull request comments: " + resp.repository.pullRequests.nodes[0].comments.totalCount);
-            Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+            if(resp.repository.pullRequests.nodes.Count > 1)
+            {
+                Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+            }
+            
 
             Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
             Console.WriteLine("Discussions: " + resp.repository.discussions.totalCount);

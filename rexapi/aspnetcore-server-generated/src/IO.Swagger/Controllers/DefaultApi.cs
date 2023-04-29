@@ -730,10 +730,7 @@ namespace IO.Swagger.Controllers
 
                 Name = (body.URL).Split('/').Last();
                 Console.WriteLine("Name of package: " + Name);
-                urlInfo.getJsonFile("/app/TempDirectory");
-                urlInfo.returnGHURLfrompackagejson();
-                urlInfo.initType();
-                urlInfo.initName();
+                
                 //Download Package
                 //await clonepackage to finish
                 var task = urlInfo.ClonePackage();
@@ -748,6 +745,10 @@ namespace IO.Swagger.Controllers
                 }
                 Console.WriteLine("Package downloaded");
                 urlInfo.path = "/app/TempDirectory";
+                urlInfo.getJsonFile("/app/TempDirectory");
+                //urlInfo.returnGHURLfrompackagejson();
+                urlInfo.initType();
+                urlInfo.initName();
 
                 //check package downloaded properly
                 if (!Directory.Exists("/app/TempDirectory"))
@@ -831,9 +832,16 @@ namespace IO.Swagger.Controllers
                     return StatusCode(400);
                 }
                 Console.WriteLine("Package was unzipped");
+                if (!Directory.Exists("/app/TempDirectory"))
+                {
+                    Response.Headers.Add("X-Debug", "Package download failed, can't find package");
+                    Console.WriteLine("(/package/X-Debug) Package download failed, can't find package");
+                    return StatusCode(400);
+                }
 
 
                 //get Json file
+                urlInfo.setPath("/app/TempDirectory");
                 urlInfo.getJsonFile("/app/TempDirectory");
                 urlInfo.returnGHURLfrompackagejson();
                 urlInfo.initType();
@@ -1275,7 +1283,7 @@ namespace IO.Swagger.Controllers
             {
                 if (row["busfactor"] != null)
                 {
-                    rating.BusFactor = (float)row["busfactor"];
+                    rating.BusFactor = double.Parse(row["busfactor"].ToString());
                 }
                 else
                 {
@@ -1284,7 +1292,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["correctness"] != null)
                 {
-                    rating.Correctness = (float)row["correctness"];
+                    rating.Correctness = double.Parse(row["correctness"].ToString());
                 }
                 else
                 {
@@ -1293,7 +1301,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["rampup"] != null)
                 {
-                    rating.RampUp = (float)row["rampup"];
+                    rating.RampUp = double.Parse(row["rampup"].ToString());
                 }
                 else
                 {
@@ -1302,7 +1310,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["responsive"] != null)
                 {
-                    rating.ResponsiveMaintainer = (float)row["responsive"];
+                    rating.ResponsiveMaintainer = double.Parse(row["responsive"].ToString());
                 }
                 else
                 {
@@ -1311,7 +1319,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["licensescore"] != null)
                 {
-                    rating.LicenseScore = (float)row["licensescore"];
+                    rating.LicenseScore = double.Parse(row["licensescore"].ToString());
                 }
                 else
                 {
@@ -1320,7 +1328,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["goodpin"] != null)
                 {
-                    rating.GoodPinningPractice = (float)row["goodpin"];
+                    rating.GoodPinningPractice = double.Parse(row["goodpin"].ToString());
                 }
                 else
                 {
@@ -1329,7 +1337,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["pullreq"] != null)
                 {
-                    rating.PullRequest = (float)row["pullreq"];
+                    rating.PullRequest = double.Parse(row["pullreq"].ToString());
                 }
                 else
                 {
@@ -1338,7 +1346,7 @@ namespace IO.Swagger.Controllers
 
                 if (row["netscore"] != null)
                 {
-                    rating.NetScore = (float)row["netscore"];
+                    rating.NetScore = double.Parse(row["netscore"].ToString());
                 }
                 else
                 {

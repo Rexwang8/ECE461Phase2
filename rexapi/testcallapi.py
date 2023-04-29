@@ -188,7 +188,7 @@ def main():
     #PrintResponse(response)
     
     #delete by name -- works
-    #Authurl, Authheader = DeletePackageRequestByName(token, "date-fns")
+    #Authurl, Authheader = DeletePackageRequestByName(token, "even")
     #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
     #response = requests.delete(Authurl, headers=Authheader)
     #PrintResponse(response, False)
@@ -207,10 +207,10 @@ def main():
     
     #create 
     #Using Link -- works using gh link, not with npm link
-    #Authurl, Authheader, Authbody = CreatePackageLink(token)
-    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageLink(token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
 
     #Using Content  -- works with even
@@ -220,7 +220,7 @@ def main():
     #PrintResponse(response, False)
     
     #Using Content  -- works with date-fns 2.29.1
-    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.3_2.txt", token)
     #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
     #response = requests.post(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response, False)
@@ -241,10 +241,10 @@ def main():
     #PrintResponse(response, True)
     
     #rating by id -- works but doesn't return actual rating
-    url, header = FormRateRequest(token, "d7f1b297-5070-42be-a14f-c89aaa91cb84")
-    print(f"Rating GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    #url, header = FormRateRequest(token, "d7f1b297-5070-42be-a14f-c89aaa91cb84")
+    #print(f"Rating GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
     
     
     #packages list version/name query -- works with 1 query

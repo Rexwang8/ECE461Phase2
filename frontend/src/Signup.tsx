@@ -59,6 +59,7 @@ function printResponse(response: AxiosResponse<any>, isjson = true): void {
 
 function Signup() {
   localStorage.setItem("loaded", "0");
+  localStorage.removeItem("version");
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
