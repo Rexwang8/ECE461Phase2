@@ -49,6 +49,24 @@ class PackageData:
         self.URL = url
         self.JSProgram = jsprogram
         
+class PackageMetaData:
+    Name: str
+    Version: str
+    ID: str
+
+    def __init__(self, Name, Version, ID):
+        self.Name = Name
+        self.Version = Version
+        self.ID = ID
+        
+class Package:
+    metadata: PackageMetaData
+    data: PackageData
+
+    def __init__(self, metadata, data):
+        self.metadata = metadata
+        self.data = data
+        
 
 #https://www.geeksforgeeks.org/serialize-and-deserialize-complex-json-in-python/
 
@@ -107,7 +125,7 @@ def CreatePackageLink(token):
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     #https://www.npmjs.com/package/date-fns
     #https://github.com/jonschlinkert/even
-    packageData = PackageData('', "https://www.npmjs.com/package/date-fns", prog)
+    packageData = PackageData('', "https://github.com/jonschlinkert/even", prog)
     Body = json.dumps(packageData.__dict__, default=lambda o: o.__dict__, indent=4)
     URL = "http://package-registry-461.appspot.com/package"
     Header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
@@ -127,6 +145,17 @@ def FormRetrievePackageRequest(token, packageid):
     header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
     url = f"http://package-registry-461.appspot.com/package/{packageid}"
     return url, header
+
+def FormPackageUpdateRequest(token, id, filename):
+    url = f"http://package-registry-461.appspot.com/package/{id}"
+    metaobj = PackageMetaData("fetcha", "4.2.3", id)
+    file = open(filename, 'r')
+    prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
+    packageData = PackageData(file.read(), "", prog)
+    pkg = Package(metaobj, packageData)
+    body = json.dumps(pkg.__dict__, default=lambda o: o.__dict__, indent=4)
+    header = {'xAuthorization': token, 'Accept': '*/*', 'Content-Type': 'application/json'}
+    return url, header, body
 
 def CheckToken(token):
     print(f"len of token: {len(token)}")
@@ -226,10 +255,10 @@ def main():
     #PrintResponse(response, False)
     
     #Using Content  -- works with date-fns 2.29.1
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/read2.txt", token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, True)
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/read2.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, True)
     
     
     #Get history of package by name -- works
@@ -239,13 +268,13 @@ def main():
     #PrintResponse(response, True)
     
     #get metadata by regex/name -- works
-    #url, header, body = FormPackageRegexSearchRequest(token, "(NAMEKEVIN)")
+    #url, header, body = FormPackageRegexSearchRequest(token, "(.*)")
     #print(f"Regex POST: {url} WITH HEADER: {header} AND BODY: {body}")
     #response = requests.post(url, headers=header, data=body)
     #PrintResponse(response, True)
     
     #rating by id -- works but doesn't return actual rating
-    #url, header = FormRateRequest(token, "d7f1b297-5070-42be-a14f-c89aaa91cb84")
+    #url, header = FormRateRequest(token, "8b7061cd-e0a7-46a9-990d-5768d796c7f5")
     #print(f"Rating GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
@@ -261,12 +290,17 @@ def main():
     
     
     #retrieve package -- works
-    #url, header = FormRetrievePackageRequest(token, "76c9b64d-24c7-482d-950f-34c7b5eed866")
+    #url, header = FormRetrievePackageRequest(token, "8b7061cd-e0a7-46a9-990d-5768d796c7f5")
     #print(f"Retrieve GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
     
-    #update package -- doesn't exist
+    #update package 
+    url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
+    print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
+    response = requests.put(url, headers=header, data=body)
+    PrintResponse(response, False)
+    
     
 
 

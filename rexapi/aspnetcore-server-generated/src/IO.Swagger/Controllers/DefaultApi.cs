@@ -1644,7 +1644,7 @@ namespace IO.Swagger.Controllers
         [Route("/package/{id}")]
         [ValidateModelState]
         [SwaggerOperation("PackageUpdate")]
-        public virtual IActionResult PackageUpdate([FromBody] Package body, [FromHeader][Required()] string xAuthorization, [FromRoute][Required] string id)
+        public virtual IActionResult PackageUpdate([FromBody] Package body, [FromHeader(Name = "X-Authorization")][Required()] string xAuthorization, [FromRoute][Required] string id)
         {
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -1724,7 +1724,7 @@ namespace IO.Swagger.Controllers
 
             try
             {
-                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = {body.Metadata.ID} AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
                 factory.SetQuery(query);
                 results = factory.ExecuteQuery();
             }
@@ -1750,7 +1750,7 @@ namespace IO.Swagger.Controllers
             //update package
             try
             {
-                string query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE id = {body.Metadata.ID} AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+                string query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE id = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
                 factory.SetQuery(query);
                 results = factory.ExecuteQuery();
             }
