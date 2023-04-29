@@ -137,27 +137,22 @@ function CreatePackage() {
         const login_token = localStorage.getItem("login_token") as string;
         const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
         console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-        try {
-          fetch(url, { method: 'POST', headers: header, body: body})
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
+        fetch(url, { method: 'POST', headers: header, body: body})
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            // do something with the data
+            if(data.status == null) {
               // do something with the data
-              if(data.status == null) {
-                // do something with the data
-                setIsLoading(false);
-                doneCreating(data.metadata.name);
-              }
-              else {
-                setIsLoading(false);
-                alert("Failed to create due to Error " + data.status)
-              }
-            });
-        }
-        catch(error) {
-          alert(error);
-        }
-        
+              setIsLoading(false);
+              doneCreating(data.metadata.name);
+            }
+            else {
+              setIsLoading(false);
+              alert("Failed to create due to Error " + data.status)
+            }
+          });
+
       }
       else if (ContentValue === "Content"){
         const contentfile = document.getElementById('inputContent') as HTMLInputElement;
@@ -184,28 +179,22 @@ function CreatePackage() {
             const login_token = localStorage.getItem("login_token") as string;
             const [url, header, body] = FormPackageRequest(login_token, base64String, "", JSFile);
             console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-            try {
-              fetch(url, { method: 'POST', headers: header, body: body })
-              .then(response => response.json())
-              .then(data => {
-                console.log(data);
-                // alert(data.status)
-                if(data.status == null) {
-                  // do something with the data
-                  setIsLoading(false);
-                  doneCreating(data.metadata.name);
-                }
-                else {
-                  setIsLoading(false);
-                  alert("Failed to create due to Error " + data.status)
-                }
-                
-              });
-            }
-            catch(error) {
-              alert(error);
-            }
-            
+            fetch(url, { method: 'POST', headers: header, body: body })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+              // alert(data.status)
+              if(data.status == null) {
+                // do something with the data
+                setIsLoading(false);
+                doneCreating(data.metadata.name);
+              }
+              else {
+                setIsLoading(false);
+                alert("Failed to create due to Error " + data.status)
+              }
+              
+            });
           }).catch((error) => {
             alert("invalid file")
           });
