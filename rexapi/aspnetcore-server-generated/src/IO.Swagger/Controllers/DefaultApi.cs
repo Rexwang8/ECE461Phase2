@@ -842,8 +842,10 @@ namespace IO.Swagger.Controllers
                 }
                 Console.WriteLine("Package was unzipped");
                 
+                
                 //get Json file
                 URLInfo urlInfo = new URLInfo(body.URL);
+                urlInfo.setPath("/app/TempDirectory");
                 urlInfo.getJsonFile("/app/TempDirectory");
                 //get name
                 Name = urlInfo.returnNameFromPackage();
@@ -1878,7 +1880,7 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
             var ghtoken = factory.GetGithubTokenStoredInBQ();
             Console.WriteLine("(reset/X-Debug) Registry reset + github token: " + ghtoken);
-            Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
+            Response.Headers.Add("X-Debug1", "Registry reset + github token: " + ghtoken);
 
 
             //make directory
