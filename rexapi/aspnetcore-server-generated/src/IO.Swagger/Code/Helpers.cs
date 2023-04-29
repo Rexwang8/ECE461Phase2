@@ -25,8 +25,8 @@ namespace IO.Swagger.Controllers
             {
                 return null;
             }
-            // Replace all non-alphanumeric characters with underscores
-            string NoalphaNumeric = Regex.Replace(input, @"[^a-zA-Z0-9_\-\.]", "_");
+            // Replace all non-alphanumeric (allows dashes) characters with underscores
+            string NoalphaNumeric = Regex.Replace(input, @"[^a-zA-Z0-9-]", "_");
             // Replace all multiple underscores with a single underscore
             string NoMultipleUnderscores = Regex.Replace(NoalphaNumeric, @"_+", "_");
             // Remove leading and trailing underscores
