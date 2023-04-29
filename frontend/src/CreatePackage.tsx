@@ -1,6 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import './CreatePackage.css';
 
+class PackageData {
+  Content: string;
+  URL: string;
+  JSProgram: string;
+
+  constructor(Content: string, URL: string, JSProgram: string) {
+    this.Content = Content;
+    this.URL = URL;
+    this.JSProgram = JSProgram;
+  }
+}
+
+function FormPackageRequest(token: string, content: string, urlpackage: string, jsprogram: string): [string, Record<string, string>, string] {
+  const url = "http://package-registry-461.appspot.com/package";
+  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
+  const packageObj = new PackageData(content, urlpackage, jsprogram);
+  const body = JSON.stringify(packageObj, null, 4);
+  return [url, header, body];
+}
+
 function CreatePackage() {
 
   localStorage.setItem("loaded", "0");
@@ -73,25 +93,85 @@ function CreatePackage() {
     ContentValue = "Content";
   };
 
+  function getBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
+  
+
   const handleClickCreateButton = () => {
-    if (ContentValue === "URL") {
-      const urlfile = document.getElementById('inputURL') as HTMLInputElement;
-      const selectedFile = urlfile.files;
-      if (selectedFile == null)
-      {
-        alert("Please enter an url");
+    try {
+      if (ContentValue === "URL") {
+        const urlfile = document.getElementById('inputURL') as HTMLInputElement;
+        const selectedFile = urlfile.value;
+        const jsprogramfile = document.getElementById('JSProgam') as HTMLInputElement;
+        const JSFile = jsprogramfile.value;
+
+        if (selectedFile == "")
+        {
+          alert("Please enter an url");
+        }
+        
+        const login_token = localStorage.getItem("login_token") as string;
+        const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
+        console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
+        fetch(url, { method: 'POST', headers: header, body: body, mode: 'no-cors' })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            // do something with the data
+          });
+        
       }
-    }
-    else if (ContentValue === "Content"){
-      const contentfile = document.getElementById('inputContent') as HTMLInputElement;
-      const selectedFile = contentfile.files;
-      if (selectedFile?.length == 0)
-      {
-        alert("Please select a file");
+      else if (ContentValue === "Content"){
+        const contentfile = document.getElementById('inputContent') as HTMLInputElement;
+        const selectedFile = contentfile.files ? contentfile.files[0] : null;
+
+        const jsprogramfile = document.getElementById('JSProgam') as HTMLInputElement;
+        const JSFile = jsprogramfile.value;
+        if (selectedFile == null)
+        {
+          alert("Please select a file");
+        }
+        else{
+          var reader = new FileReader();
+          reader.readAsDataURL(selectedFile);
+          reader.onload = function () {
+            reader.result;
+          };
+          reader.onerror = function (error) {
+            alert("invalid file");
+          };
+  
+          getBase64(selectedFile).then((result) => {
+            var base64String = result.split('base64,')[1];
+            const login_token = localStorage.getItem("login_token") as string;
+            const [url, header, body] = FormPackageRequest(login_token, base64String, "", JSFile);
+            console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
+            fetch(url, { method: 'POST', headers: header, body: body })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                // do something with the data
+              });
+          }).catch((error) => {
+            alert("invalid file")
+          });
+        }
       }
-    }
-    else {
-      alert("Please select a package option");
+      else {
+        alert("Please select a package option");
+      }
+    } catch (error) {
+      alert("Something went Wrong: " + error)
     }
   }
 
