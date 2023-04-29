@@ -884,7 +884,17 @@ namespace IO.Swagger.Controllers
             Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
 
             Console.WriteLine("Net score is over 0.5? : " + (Grader.GetNetScore(urlInfo) > 0.5));
-            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsiveness, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}')";
+            //fail it if it is a url and net score is less than 0.5
+            if(flagBodyUrlEmpty == false && Grader.GetNetScore(urlInfo) < 0.5)
+            {
+                Response.Headers.Add("X-Debug", "Net score is less than 0.5");
+                Console.WriteLine("(/package/X-Debug) Net score is less than 0.5");
+                return StatusCode(424);
+            }
+            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsiveness, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{urlInfo.license}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}')";
+            Console.WriteLine("Line 619 " + ratequery);
+            factory.SetQuery(ratequery);
+            result = factory.ExecuteQuery();
 
 
             //check if package exists 
