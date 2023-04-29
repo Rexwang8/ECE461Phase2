@@ -972,7 +972,19 @@ namespace IO.Swagger.Controllers
 
             Console.WriteLine("Sucessfully added package to database");
 
-            return StatusCode(201);
+            Package pkg = new Package();
+            PackageMetadata pkgmeta = new PackageMetadata();
+            pkgmeta.ID = ID;
+            pkgmeta.Name = Name;
+            pkgmeta.Version = ver.ToString();
+            pkg.Metadata = pkgmeta;
+            PackageData pkgdata = new PackageData();
+            pkgdata.Content = body.Content;
+            pkgdata.JSProgram = body.JSProgram;
+            pkgdata.URL = URL;
+            pkg.Data = pkgdata;
+
+            return StatusCode(201, pkg);
         }
 
         /// <summary>
