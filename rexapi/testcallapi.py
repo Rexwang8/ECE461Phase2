@@ -152,9 +152,10 @@ def FormPackageUpdateRequest(token, id, filename):
     file = open(filename, 'r')
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     packageData = PackageData(file.read(), "", prog)
+    #packageData = PackageData("1", "", "prog")
     pkg = Package(metaobj, packageData)
     body = json.dumps(pkg.__dict__, default=lambda o: o.__dict__, indent=4)
-    header = {'xAuthorization': token, 'Accept': '*/*', 'Content-Type': 'application/json'}
+    header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
     return url, header, body
 
 def CheckToken(token):
@@ -282,7 +283,8 @@ def main():
     
     #packages list version/name query -- works with 1 query
     #QueryRequestObj = list()
-    #QueryRequestObj.append(QueryRequest("kevin", ""))
+    #QueryRequestObj.append(QueryRequest("fecha", ""))
+    #QueryRequestObj.append(QueryRequest("fecha", ""))
     #url, header, body = PackagesListRequest(token, QueryRequestObj)
     #print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
     #response = requests.post(url, headers=header, data=body)
