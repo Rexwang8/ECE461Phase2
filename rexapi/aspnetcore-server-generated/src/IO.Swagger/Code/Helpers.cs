@@ -82,10 +82,13 @@ namespace IO.Swagger.Controllers
                 return false;
             }
 
-            //check for invalid characters
-            if (name.Any(c => !char.IsLetterOrDigit(c)))
+            //check for invalid characters (allow alphanumeric or dashes)
+            for (int i = 0; i < name.Length; i++)
             {
-                return false;
+                if (!char.IsLetterOrDigit(name[i]) && name[i] != '-')
+                {
+                    return false;
+                }
             }
             return true;
         }

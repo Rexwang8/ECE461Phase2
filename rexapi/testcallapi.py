@@ -188,10 +188,10 @@ def main():
     #PrintResponse(response)
     
     #delete by name -- works
-    Authurl, Authheader = DeletePackageRequestByName(token, "date-fns")
-    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    response = requests.delete(Authurl, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader = DeletePackageRequestByName(token, "date-fns")
+    #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    #response = requests.delete(Authurl, headers=Authheader)
+    #PrintResponse(response, False)
     
     #delete by id -- works
     #Authurl, AuthHeader = DeletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262")
@@ -220,10 +220,10 @@ def main():
     #PrintResponse(response, False)
     
     #Using Content  
-    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
-    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, False)
     
     
     
