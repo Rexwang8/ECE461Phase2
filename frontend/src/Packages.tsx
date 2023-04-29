@@ -25,6 +25,7 @@ function Packages() {
   const login_token = localStorage.getItem('login_token');
 
   useEffect(() => {
+    localStorage.removeItem("version")
     let responseString: string; 
     if (!login_token) {
       alert("Please make sure you are signed in!")
@@ -42,15 +43,14 @@ function Packages() {
           .then(response => response.json())
           .then(json => {console.log(json)
             const parsedArray = JSON.parse(json);
-            console.log(parsedArray);
+
             for(let i = 0; i < parsedArray.length; i++) {
 
               addItem(parsedArray[i].Name, parsedArray[i].Version, parsedArray[i].ID);
             }
             setListItems(myList);
             setIsLoading(false);
-            console.log("here is my list");
-            console.log(myList);
+
           })
           .catch(error => console.error(error));
       }

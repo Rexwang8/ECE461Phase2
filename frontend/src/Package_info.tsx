@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import * as JSZip from 'jszip';
+import * as FileSaver from 'file-saver';
 import './PackageInfo.css';
 
 class Regex {
@@ -7,6 +9,23 @@ class Regex {
   constructor(RegEx: string) {
     this.RegEx = RegEx;
   }
+}
+
+/*
+def FormRetrievePackageRequest(token, packageid):
+    header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'}
+    url = f"http://package-registry-461.appspot.com/package/{packageid}"
+    return url, header
+
+ url, header = FormRetrievePackageRequest(token, "76c9b64d-24c7-482d-950f-34c7b5eed866")
+ print(f"Retrieve GET: {url} WITH HEADER: {header}")
+response = requests.get(url, headers=header)
+*/
+
+function FormRetrievePackageRequest(token: string, packageid: string): [string, {[key: string]: string}] {
+  const header: {[key: string]: string} = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
+  const url: string = `https://package-registry-461.appspot.com/package/${packageid}`;
+  return [url, header];
 }
 
 function FormPackageRegexSearchRequest(token: string, regex: string): [string, Record<string, string>, string] {
@@ -18,17 +37,30 @@ function FormPackageRegexSearchRequest(token: string, regex: string): [string, R
 }
 
 const versions: [string, boolean][] = [];
+const binaryData2: Uint8Array[] = [];
+let vers: string;
+
+function convertBinaryToZip(binaryData: Uint8Array, filename: string) {
+  const zip = new JSZip();
+  zip.file("package_data.zip", binaryData);
+  zip.generateAsync({ type: 'blob' }).then(function(content) {
+    FileSaver.saveAs(content, filename + '.zip');
+  });
+}
+
 
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
   let ver = localStorage.getItem("version");  //the version the user selected
 
   const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading2, setIsLoading2] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageName');
 
   useEffect(() => {
     setIsLoading(true);
+    // setIsLoading2(true);
     const login_token = localStorage.getItem('login_token');
     let responseString: string; 
     if (!login_token) {
@@ -43,10 +75,10 @@ function PackageInfo() {
         fetch(url, { method: 'POST', headers: header, body: body })
           .then(response => response.json())
           .then(data => {
-            console.log(data);
             // do something with the data
             for(let i = 0; i < data.length; i++) {
               setIsLoading(true);
+
               console.log(data[i]);
               if(!ver && i == 0) {
                 localStorage.setItem("version", data[i].version);
@@ -55,10 +87,35 @@ function PackageInfo() {
               else {
                 versions.push([data[i].version, false]);
               }
+              if(data[i].version === localStorage.getItem("version")) {
+                //check if we are on our current version
+                localStorage.setItem("ver_id", data[i].id);
+                vers = data[i].id;
+              }
             }
-            versions.push(["Delete All", false]);
-            setIsLoading(false);
+            alert(localStorage.getItem("ver_id"));
+            if(!localStorage.getItem("ver_id")) {
+              const [retrieve_url, retrieve_header] = FormRetrievePackageRequest(login_token, vers);
+              console.log(`Retrieve GET: ${retrieve_url} WITH HEADER: ${JSON.stringify(retrieve_header)}`);
+              fetch(retrieve_url, { method: 'GET', headers: retrieve_header})
+                .then(response => response.json())
+                .then(data => {
+                  console.log(data);
+                  console.log(data.data.content);
+                  const binaryData = atob(data.data.content).split('').map(function (char) { return char.charCodeAt(0); });
+                  // const binaryData2: Uint8Array = new Uint8Array(binaryData)
+                  const binaryDataUint8Array: Uint8Array = new Uint8Array(binaryData); // create new Uint8Array from binaryData
+                  binaryData2.push(binaryDataUint8Array);
+                  
+                  setIsLoading(false);
+                });
+            }
+            else {
+              alert("version undefined");
+            }
+           
           });
+        
         
       }
     } catch (error) {
@@ -107,6 +164,26 @@ function PackageInfo() {
     location.reload();
   }
 
+  function handleSideBar(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    if(event.currentTarget.textContent === "Delete All") {
+      alert(event.currentTarget.textContent);
+    }
+    else {
+      if(event.currentTarget.textContent) {
+        localStorage.setItem("version", event.currentTarget.textContent);
+      }
+      else {
+        alert("error");
+      }
+      location.reload();
+    }
+    
+  }
+  function createDownload() {
+    convertBinaryToZip(binaryData2[0], localStorage.getItem('packageName') + "_" + localStorage.getItem("version"));
+  }
+
+
   if(isLoading) {
     return(<div>
         <div className="isloading">Loading data please wait...</div>
@@ -135,111 +212,45 @@ function PackageInfo() {
           )}
         </div>
       </nav>
+
       <nav className="sidebar">
         <h2>Versions</h2>
         <ul>
           {versions.map((item) => (
             <li key={item[0]}>
-              <a href={`#${item[0].toLowerCase()}`}>{item[0]}</a>
+              <a href={`#${item[0].toLowerCase()}`} onClick={handleSideBar}>{item[0]}</a>
             </li>
           ))}
+          <li>
+            <a href="#" onClick={handleSideBar}>Delete All</a>
+          </li>
         </ul>
       </nav>
+
         
         <main className="main">
         <section className="about" id = "about"></section>
         <h1>Package information: {package_name}</h1>
         <h2>Version: {localStorage.getItem("version")}</h2>
           <div className="section-line"></div>
-        <h2>psd-export</h2>
+        <h2>Download</h2>
         <ul>
-          <li>Fast multi-threaded exporting of PSDs with <b>[tagged]</b> layers for variants.</li>
-          <li>Special named layers can be used to apply filters like mosaic or gaussian blur, or whatever else you can hook in.</li>
-          <li>This tool is primarily meant to be compatible with PSDs exported from PaintTool SAIv2 and Clip Studio Paint.</li>
+          <li>Download <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <button className = "download_button" onClick={createDownload} >Download</button>
         </ul>
         <div className="section-line"></div>
         
-        <h2>Why</h2>
+        <h2>Ratings</h2>
         <p>
          For my art workflow, I typically make a bunch variation layers and also need to apply mosaics to all of them. As a manual process, exporting every variant can take several minutes, with lots of clicking everywhere to turn layers on and off (potentially missing layers by accident) and then adding mosaics can be another 10 or 20 minutes of extra work. If I find I need to change something in my pictures and export again, I have to repeat this whole ordeal. This script puts this export process on the order of seconds, saving me a lot of time and pain.
         </p>
         <div className="section-line"></div>
-        <h2>Use Cases</h2>
-        <p>
-         Pretty much everyone who wants a quick-start into wasm can use Walt to get there. The use-cases are not specific to this project alone but more to WebAssembly in general. The fact that Walt does not require a stand-alone compiler and can integrate into any(almost?) build tool still makes certain projects better candidates over others.
-        </p>
 
-        <ul>
-          <li>Web/Node libraries, looking to improve performance.</li>
-          <li>Games</li>
-          <li>Projects depending on heavy real-time computation from complex UIs to 3D visualizations</li>
-          <li>Web VR/AR</li>
-          <li>Anyone interested in WebAssembly who is not familiar with system languages.</li>
-        </ul>
-        <div className="section-line"></div>
 
-        <section className="ratings" id = "ratings"></section>
-        <h1>Ratings</h1>
-        <p className="bus-factor">Bus Factor: <strong>4</strong></p>
-        <p className="correctness">Correctness: <strong>95%</strong></p>
-        <p className="pinned-dependency-ratio">Pinned Dependency Ratio: <strong>2.3</strong></p>
-        <p className="license">License: <strong>MIT</strong></p>
-        <p className="maintainers">Maintainers: <strong>John Doe, Jane Smith</strong></p>
-        <p className="ramp-up">Ramp Up: <strong>2 weeks</strong></p>
-        <p className="pull-requests">Pull Requests: <strong>34</strong></p>
-        <p className="net-score">Net Score: <strong>75</strong></p>
-        <p className="license-score">License Score: <strong>100%</strong></p>
-
+        <h2>Delete this package</h2>
+        We delete this package.
         <div className="section-line"></div>
-        
-        <section className="download" id = "download"></section>
-        <h1>Download</h1>
-        <p>
-          <ul>
-          <li>Install python: https://www.python.org/downloads/</li>
-          <li>Run pip install psd-export to install the script.</li>
-          <li>Run psd-export to export any PSD files in the current directory.</li>
-          <li>Run psd-export --help for more command line arguments.</li>
-        </ul>
-        </p>
-        <div className="section-line"></div>
-        <div className="section-line"></div>
-        
-        <h2>Installation</h2>
-        <p>
-          <ul>
-          <li>Install python: https://www.python.org/downloads/</li>
-          <li>Run pip install psd-export to install the script.</li>
-          <li>Run psd-export to export any PSD files in the current directory.</li>
-          <li>Run psd-export --help for more command line arguments.</li>
-        </ul>
-        </p>
-        <div className="section-line"></div>
-        <div className="section-line"></div>
-        <h2>Installation</h2>
-        
-        <p>
-          <ul>
-          <li>Install python: https://www.python.org/downloads/</li>
-          <li>Run pip install psd-export to install the script.</li>
-          <li>Run psd-export to export any PSD files in the current directory.</li>
-          <li>Run psd-export --help for more command line arguments.</li>
-        </ul>
-        </p>
-        <div className="section-line"></div>
-        <div className="section-line"></div>
-        <h2>Installation</h2>
-        <p>
-          <ul>
-          <li>Install python: https://www.python.org/downloads/</li>
-          <li>Run pip install psd-export to install the script.</li>
-          <li>Run psd-export to export any PSD files in the current directory.</li>
-          <li>Run psd-export --help for more command line arguments.</li>
-          </ul>
-        </p>
-        <div className="section-line"></div>
-
-          </main>
+        </main>
     </div>
   )
 }

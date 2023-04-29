@@ -7,6 +7,7 @@ function App() {
 
 
   useEffect(() => {
+    localStorage.removeItem("version");
     localStorage.setItem("loaded", "0");
     const check = (localStorage.getItem("login_token") === null);
     setLogIn(!check);
@@ -18,18 +19,21 @@ function App() {
 
   function redirectToPackages() {
     // window.location.href = '/Packages';
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/Packages")
     location.reload();
   }
 
   function redirectToAbout() {
     // window.location.href = '/App';
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/App")
     location.reload();
   }
 
   function redirectToSignUp() {
     // window.location.href = '/Signup';
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/Signup")
     location.reload();
   }
@@ -44,8 +48,7 @@ function App() {
 
   function redirectToCreatePage() {
     localStorage.setItem("loaded", "0");
-    localStorage.setItem("path_name", "/create_package");
-    alert("create package");
+    localStorage.setItem("path_name", "/CreatePackage");
     location.reload();
   }
 
@@ -74,7 +77,7 @@ function App() {
           )}
         </div>
       </nav>
-      <section className="about-us">
+      <div className="about-us">
         <h1>About Us</h1>
         <p>
           Kevin, the notorious ECE student, has gained quite the reputation as a rat on a boat. 
@@ -87,7 +90,8 @@ function App() {
           Kevin's willingness to help others, even at his own expense, speaks volumes about his character and dedication to his classmates. 
           His commitment to academic excellence, despite his occasional clumsy antics, makes him a truly outstanding student who is highly regarded by both his professors and fellow students alike.
         </p>
-      </section>
+
+      </div>
     </div>
   )
 }
