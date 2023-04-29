@@ -255,9 +255,36 @@ namespace IO.Swagger.CLI
                 if (line.Contains("\"repository\":"))
                 {
                     string[] splitLine = line.Split("\"");
-                    Console.WriteLine(splitLine[3]);
-                    baseURL = splitLine[3];
-                    return splitLine[3];
+                    if(splitLine[3] != null)
+                    {
+                        if (splitLine[3].Contains("github.com"))
+                        {
+                            Console.WriteLine(splitLine[3]);
+                            baseURL = splitLine[3];
+                            return splitLine[3];
+                        }
+                        else
+                        {
+                            Console.WriteLine("No github URL found in package.json (REPO)");
+                        }
+                    }
+                }
+                if (line.Contains("\"homepage\":"))
+                {
+                    string[] splitLine = line.Split("\"");
+                    if (splitLine[3] != null)
+                    {
+                        if (splitLine[3].Contains("github.com"))
+                        {
+                            Console.WriteLine(splitLine[3]);
+                            baseURL = splitLine[3];
+                            return splitLine[3];
+                        }
+                        else
+                        {
+                            Console.WriteLine("No github URL found in package.json (HOMEPAGE)");
+                        }
+                    }
                 }
 
                 line = sr.ReadLine();
