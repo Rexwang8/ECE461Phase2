@@ -148,7 +148,7 @@ def FormRetrievePackageRequest(token, packageid):
 
 def FormPackageUpdateRequest(token, id, filename):
     url = f"http://package-registry-461.appspot.com/package/{id}"
-    metaobj = PackageMetaData("fetcha", "4.2.3", id)
+    metaobj = PackageMetaData("fecha", "4.2.3", id)
     file = open(filename, 'r')
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
     packageData = PackageData(file.read(), "", prog)
