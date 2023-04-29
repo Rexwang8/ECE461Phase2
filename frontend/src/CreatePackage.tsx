@@ -4,6 +4,7 @@ import './CreatePackage.css';
 function CreatePackage() {
 
   localStorage.setItem("loaded", "0");
+  localStorage.removeItem("version");
   
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [loggedIn, setLogIn] = useState(false);
@@ -57,18 +58,42 @@ function CreatePackage() {
   }
 
   let ContentValue = "";
-  const urlArea = document.querySelector('#URLOption') as HTMLDivElement;
-  const contentArea = document.querySelector('#ContentOption') as HTMLDivElement;
+  const urlArea = document.getElementById('URLOption') as HTMLDivElement;
+  const contentArea = document.getElementById('ContentOption') as HTMLDivElement;
 
   const handleURLoption = () => {
     urlArea.style.backgroundColor = '#777';
     contentArea.style.backgroundColor = '#ccc';
+    ContentValue = "URL";
   };
 
   const handleContentoption = () => {
     urlArea.style.backgroundColor = '#ccc';
     contentArea.style.backgroundColor = '#777';
+    ContentValue = "Content";
   };
+
+  const handleClickCreateButton = () => {
+    if (ContentValue === "URL") {
+      const urlfile = document.getElementById('inputURL') as HTMLInputElement;
+      const selectedFile = urlfile.files;
+      if (selectedFile == null)
+      {
+        alert("Please enter an url");
+      }
+    }
+    else if (ContentValue === "Content"){
+      const contentfile = document.getElementById('inputContent') as HTMLInputElement;
+      const selectedFile = contentfile.files;
+      if (selectedFile?.length == 0)
+      {
+        alert("Please select a file");
+      }
+    }
+    else {
+      alert("Please select a package option");
+    }
+  }
 
   return (
     <div className="App">
@@ -89,7 +114,7 @@ function CreatePackage() {
               <button onClick={redirectToAbout}>About us</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button onClick={redirectToCreatePage}>Create Package</button>
-              <button>Other</button>
+              <button onClick={handleClickCreateButton}>Other</button>
             </div>
           )}
         </div>
@@ -99,17 +124,17 @@ function CreatePackage() {
           <h1>Create Package</h1>
           <div className="content-row">
             <div id="URLOption" onClick={handleURLoption}>
-              <input type="text" placeholder='Please Enter a NPM or Github Link' size={30}/>
+              <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
             </div>
             Or
             <div id="ContentOption" onClick={handleContentoption}>
-              <input type="file" placeholder="upload zipfile" accept=".zip, application/zip"></input>
+              <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
             </div>     
           </div>
           <div className='content-row'>
             <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
           </div>
-          <button >Create</button>
+          <button onClick={handleClickCreateButton}>Create</button>
         </div>
         
 
