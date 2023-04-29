@@ -745,8 +745,17 @@ namespace IO.Swagger.Controllers
                 }
                 Console.WriteLine("Package downloaded");
                 urlInfo.path = "/app/TempDirectory";
-                urlInfo.getJsonFile("/app/TempDirectory");
-                //urlInfo.returnGHURLfrompackagejson();
+                try
+                {
+                    urlInfo.getJsonFile("/app/TempDirectory");
+                    urlInfo.returnGHURLfrompackagejson();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("(/package/X-Debug) Package could not be downloaded");
+                    Response.Headers.Add("X-Debug", "Package could not be downloaded");
+                    return StatusCode(400);
+                }
                 urlInfo.initType();
                 urlInfo.initName();
 
@@ -842,8 +851,17 @@ namespace IO.Swagger.Controllers
 
                 //get Json file
                 urlInfo.setPath("/app/TempDirectory");
-                urlInfo.getJsonFile("/app/TempDirectory");
-                urlInfo.returnGHURLfrompackagejson();
+                try
+                {
+                    urlInfo.getJsonFile("/app/TempDirectory");
+                    urlInfo.returnGHURLfrompackagejson();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("(/package/X-Debug) Package could not be downloaded");
+                    Response.Headers.Add("X-Debug", "Package could not be downloaded");
+                    return StatusCode(400);
+                }
                 urlInfo.initType();
                 urlInfo.initName();
 
