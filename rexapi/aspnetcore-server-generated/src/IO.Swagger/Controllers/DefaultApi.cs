@@ -704,6 +704,13 @@ namespace IO.Swagger.Controllers
             string Name = "";
             string versionfromfile = "";
             Version ver = null;
+            string urltoinit = "";
+            if(body.URL != null && body.URL != "")
+            {
+                urltoinit = body.URL;
+            }
+            URLInfo urlInfo = new URLInfo(urltoinit);
+            urlInfo.setPath("/app/TempDirectory");
             string URL = "";
             Console.WriteLine("URL: " + body.URL);
             if (!flagBodyUrlEmpty)
@@ -722,7 +729,10 @@ namespace IO.Swagger.Controllers
 
                 Name = (body.URL).Split('/').Last();
                 Console.WriteLine("Name of package: " + Name);
-                URLInfo urlInfo = new URLInfo(body.URL);
+                urlInfo.getJsonFile("/app/TempDirectory");
+                urlInfo.returnGHURLfrompackagejson();
+                urlInfo.initType();
+                urlInfo.initName();
                 //Download Package
                 //await clonepackage to finish
                 var task = urlInfo.ClonePackage();
@@ -791,9 +801,6 @@ namespace IO.Swagger.Controllers
                 FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
                 bool ifzipexists = fileInfo.Exists;
 
-                Console.WriteLine("workingdir = " + workingdir);
-                Console.WriteLine("ifdirexists = " + ifdirexists);
-                Console.WriteLine("ifzipexists = " + ifzipexists);
                 Response.Headers.Add("Check", $"workingdir = {workingdir}, ifdirexists = {ifdirexists}, ifzipexists = {ifzipexists}");
                 //Clean up
                 if (Directory.Exists("/app/TempDirectory"))
@@ -826,11 +833,6 @@ namespace IO.Swagger.Controllers
                 //unzip the zip file
                 Directory.CreateDirectory("/app/TempDirectory");
                 //list all files in working directory
-                //string[] files = Directory.GetFiles("/app");
-                //foreach (string file in files)
-                //{
-                //    Console.WriteLine(file);
-                //}
                 try
                 {
                     System.IO.Compression.ZipFile.ExtractToDirectory("/app/TempPackage.zip", "/app/TempDirectory");
@@ -845,15 +847,11 @@ namespace IO.Swagger.Controllers
 
 
                 //get Json file
-                URLInfo urlInfo = new URLInfo(body.URL);
-                urlInfo.setPath("/app/TempDirectory");
                 urlInfo.getJsonFile("/app/TempDirectory");
-                
                 urlInfo.returnGHURLfrompackagejson();
                 urlInfo.initType();
                 urlInfo.initName();
-                
-                
+
                 //get name
                 Name = urlInfo.returnNameFromPackage();
                 //get version
@@ -867,24 +865,7 @@ namespace IO.Swagger.Controllers
                     return StatusCode(400);
                 }
 
-                //Get data for package Rating
-                APICalls.GetURLStatistics(urlInfo);
-                Console.WriteLine(urlInfo.getNPMInfo());
-                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
-                StaticAnalysis.Analyze(urlInfo);
-                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
-
-                string[] LicenseList = { "Academic Free", "Apache", "Artistic", "Boost", "BSD", "BSD", "BSD", "BSD", "CC0 1.0 Universal", "(CC0 1.0)", "CeCILL-2.1", "CeCILL-B", "Common Public license", "(CPL-1.0)", "Creative Commons Attribution No Derivatives 4.0 International", "Creative Commons Attribution 3.0 Unported", "(CC BY 3.0)", "Creative Commons Attribution Non Commercial Share Alike 4.0 International", "Creative Commons Attribution Share Alike 4.0 International", "Creative Commons Attribution 4.0 International", "(CC-BY-4.0)", "Deutsche Freie", "Eclipse", "European Union Public License", "(EUPL)", "GNU General Public License", "(GPL)", "GNU Affero", "ISC License", "LaTeX Project", "Microsoft Reciprocal", "MIT", "ODC Open Database", "(ODbL)", "ODC Public Domain Dedication", "(PDDL)", "Open Software license", "(OSL-3.0)", "Open Data Commons Attribution", "(ODC-BY)", "PostgreSQL", "The Universal Permissive", "Illinois", "NCSA", "Unlicense", "Do What The F*ck You Want To Public License", "WTFPL", "zlib", "libpng" };
-                //log out ratings
-                Console.WriteLine($"Maintainer Rating: {Grader.GetResponseMaintainerScore(urlInfo)}");
-                Console.WriteLine($"RampUp Rating: {Grader.GetRampupTimeScore(urlInfo)}");
-                Console.WriteLine($"Dependency Rating: {Grader.GetDependencyScore(urlInfo)}");
-                Console.WriteLine($"Correctness Rating: {Grader.GetCorrectnessScore(urlInfo)}");
-                Console.WriteLine($"BusFactor Rating: {Grader.GetBusFactorScore(urlInfo)}");
-                Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
-                Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
-                Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
-
+                
 
 
                 //Delete 
@@ -909,6 +890,28 @@ namespace IO.Swagger.Controllers
 
             Name = Sanitizer.SantizeRegex(Name);
             string ID = Guid.NewGuid().ToString();
+
+            //Get data for package Rating
+                APICalls.GetURLStatistics(urlInfo);
+                Console.WriteLine(urlInfo.getNPMInfo());
+                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+                StaticAnalysis.Analyze(urlInfo);
+                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+
+                string[] LicenseList = { "Academic Free", "Apache", "Artistic", "Boost", "BSD", "BSD", "BSD", "BSD", "CC0 1.0 Universal", "(CC0 1.0)", "CeCILL-2.1", "CeCILL-B", "Common Public license", "(CPL-1.0)", "Creative Commons Attribution No Derivatives 4.0 International", "Creative Commons Attribution 3.0 Unported", "(CC BY 3.0)", "Creative Commons Attribution Non Commercial Share Alike 4.0 International", "Creative Commons Attribution Share Alike 4.0 International", "Creative Commons Attribution 4.0 International", "(CC-BY-4.0)", "Deutsche Freie", "Eclipse", "European Union Public License", "(EUPL)", "GNU General Public License", "(GPL)", "GNU Affero", "ISC License", "LaTeX Project", "Microsoft Reciprocal", "MIT", "ODC Open Database", "(ODbL)", "ODC Public Domain Dedication", "(PDDL)", "Open Software license", "(OSL-3.0)", "Open Data Commons Attribution", "(ODC-BY)", "PostgreSQL", "The Universal Permissive", "Illinois", "NCSA", "Unlicense", "Do What The F*ck You Want To Public License", "WTFPL", "zlib", "libpng" };
+                //log out ratings
+                Console.WriteLine($"Maintainer Rating: {Grader.GetResponseMaintainerScore(urlInfo)}");
+                Console.WriteLine($"RampUp Rating: {Grader.GetRampupTimeScore(urlInfo)}");
+                Console.WriteLine($"Dependency Rating: {Grader.GetDependencyScore(urlInfo)}");
+                Console.WriteLine($"Correctness Rating: {Grader.GetCorrectnessScore(urlInfo)}");
+                Console.WriteLine($"BusFactor Rating: {Grader.GetBusFactorScore(urlInfo)}");
+                Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
+                Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
+                Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
+
+                Console.WriteLine("Net score is over 0.5? : " + (Grader.GetNetScore(urlInfo) > 0.5));
+                string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsiveness, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}')";
+
 
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{ver.ToString()}'";

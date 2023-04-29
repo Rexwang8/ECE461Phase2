@@ -59,7 +59,7 @@ namespace IO.Swagger.CLI
 
         }
 
-        public static async void callNPM(URLInfo urlInfo)
+        public static void callNPM(URLInfo urlInfo)
         {
             Console.WriteLine("Inside callNPM Function");
             //prevent double calls
@@ -68,7 +68,8 @@ namespace IO.Swagger.CLI
 
             //Execute the task and handle any errors
             Task<APIError> task = Task.Run(() => urlInfo.PullNpmInfo());
-            APIError err = await task;
+            task.Wait();
+            APIError err = task.Result;
             if (err.GetErrType() == APIError.errorType.none)
             {
                 Console.WriteLine("NPM Data Recieved for package: " + urlInfo.getName());
@@ -80,7 +81,7 @@ namespace IO.Swagger.CLI
             return;
         }
 
-        public static async void callGithub(URLInfo urlInfo, string githubToken)
+        public static void callGithub(URLInfo urlInfo, string githubToken)
         {
             Console.WriteLine("Inside callGithub Function");
             //prevent double calls
@@ -89,7 +90,8 @@ namespace IO.Swagger.CLI
 
             //Execute the task and handle any errors
             Task<APIError> task = Task.Run(() => urlInfo.PullGithubInfo(githubToken));
-            APIError err = await task;
+            task.Wait();
+            APIError err = task.Result;
             if (err.GetErrType() == APIError.errorType.none)
             {
                 Console.WriteLine("Github Data Recieved for package: " + urlInfo.getName());
