@@ -17,15 +17,18 @@ function FormPackageRegexSearchRequest(token: string, regex: string): [string, R
   return [url, header, body];
 }
 
-const versions: string[] = [];
+const versions: [string, boolean][] = [];
 
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
+  let ver = localStorage.getItem("version");  //the version the user selected
+
   const [isLoading, setIsLoading] = useState(true);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageName');
 
   useEffect(() => {
+    setIsLoading(true);
     const login_token = localStorage.getItem('login_token');
     let responseString: string; 
     if (!login_token) {
@@ -43,9 +46,17 @@ function PackageInfo() {
             console.log(data);
             // do something with the data
             for(let i = 0; i < data.length; i++) {
+              setIsLoading(true);
               console.log(data[i]);
-              versions.push(data[i].version);
+              if(!ver && i == 0) {
+                localStorage.setItem("version", data[i].version);
+                versions.push([data[i].version, true]);
+              }
+              else {
+                versions.push([data[i].version, false]);
+              }
             }
+            versions.push(["Delete All", false]);
             setIsLoading(false);
           });
         
@@ -102,6 +113,7 @@ function PackageInfo() {
     </div>);
   }
   else {
+    console.log(versions);
   return (
     <div className="package-info">
       <nav className="navbar">
@@ -124,16 +136,20 @@ function PackageInfo() {
         </div>
       </nav>
       <nav className="sidebar">
-            <ul>
-                <li><a href="#about">Readme</a></li>
-                <li><a href="#ratings">Ratings</a></li>
-                <li><a href="#download">Download</a></li>
-            </ul>
-        </nav>
+        <h2>Versions</h2>
+        <ul>
+          {versions.map((item) => (
+            <li key={item[0]}>
+              <a href={`#${item[0].toLowerCase()}`}>{item[0]}</a>
+            </li>
+          ))}
+        </ul>
+      </nav>
         
         <main className="main">
         <section className="about" id = "about"></section>
         <h1>Package information: {package_name}</h1>
+        <h2>Version: {localStorage.getItem("version")}</h2>
           <div className="section-line"></div>
         <h2>psd-export</h2>
         <ul>
