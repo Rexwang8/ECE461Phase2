@@ -36,6 +36,7 @@ function PackageInfo() {
       localStorage.setItem("path_name", "/Signup")
       location.reload();
     }
+    
     try {
       if(login_token != null) {
         const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
