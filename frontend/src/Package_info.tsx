@@ -51,9 +51,6 @@ function convertBinaryToZip(binaryData: Uint8Array, filename: string) {
 
 function PackageInfo() {
   localStorage.setItem("loaded", "0");
-  // localStorage.setItem("loaded1", "0");
-  // localStorage.setItem("loaded2", "0");
-  // localStorage.setItem("loaded3", "0");
 
   let ver = localStorage.getItem("version");  //the version the user selected
 
@@ -82,8 +79,6 @@ function PackageInfo() {
           .then(data => {
             // do something with the data
             for(let i = 0; i < data.length; i++) {
-              // setIsLoading(true);
-              // console.log(data[i]);
               if(!ver && i == 0) {
                 localStorage.setItem("version", data[i].version);
                 versions.push([data[i].version, true]);
@@ -258,10 +253,19 @@ function PackageInfo() {
           <li>Download <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
           <button className = "download_button" onClick={createDownload} >Download</button>
         </ul>
+         <div className="section-line"></div>
+        <h2>Update</h2>
+        <ul>
+          <li>Update <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <button className = "download_button" >Update</button>
+        </ul>
         <div className="section-line"></div>
         
         <h2>Ratings</h2>
         <ul>
+          <li>
+            <b>Net Score</b>: {localStorage.getItem("netScore")}
+          </li>
           <li>
             <b>BusFactor</b>: {localStorage.getItem("busFactor")}
           </li>
@@ -270,9 +274,6 @@ function PackageInfo() {
           </li>
           <li>
             <b>License Score</b>: {localStorage.getItem("licenseScore")}
-          </li>
-          <li>
-            <b>Net Score</b>: {localStorage.getItem("netScore")}
           </li>
           <li>
             <b>Pull Request</b>: {localStorage.getItem("pullRequest")}
@@ -285,10 +286,11 @@ function PackageInfo() {
           </li>
         </ul>
         <div className="section-line"></div>
-
-
-        <h2>Delete this package</h2>
-        We delete this package.
+        <h2>Delete</h2>
+        <ul>
+          <li>Delete <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <button className = "delete_button" >Delete</button>
+        </ul>
         <div className="section-line"></div>
         </main>
     </div>

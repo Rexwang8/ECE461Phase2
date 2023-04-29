@@ -79,6 +79,10 @@ body {
   background: green;
 }
 
+.delete_button {
+  background: red;
+}
+
 .profile-dropdown button {
   color: black;
   padding: 12px 16px;

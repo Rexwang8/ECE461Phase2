@@ -124,7 +124,7 @@ function CreatePackage() {
         const login_token = localStorage.getItem("login_token") as string;
         const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
         console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-        fetch(url, { method: 'POST', headers: header, body: body, mode: 'no-cors' })
+        fetch(url, { method: 'POST', headers: header, body: body})
           .then(response => response.json())
           .then(data => {
             console.log(data);
