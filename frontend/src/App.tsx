@@ -49,12 +49,6 @@ function App() {
     location.reload();
   }
 
-  function redirectToCreatePage() {
-    localStorage.setItem("loaded", "0");
-    localStorage.setItem("path_name", "/CreatePackage");
-    location.reload();
-  }
-
   return (
     <div className="App">
       <nav className="navbar">

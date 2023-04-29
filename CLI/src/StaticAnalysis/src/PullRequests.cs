@@ -23,10 +23,8 @@ public static class PullRequests
     {   
         int totalChanges = urlInfo.githubTotalChanges;
         Console.WriteLine(totalChanges);
-        Console.WriteLine("a hduiashdfioashdfiuoashdifaiosdhf uashodfuahsidofhaiusd fioas hdfiua hsuiofhasiudf hiaous hdfiuah sdfiua hsidfhauisd f");
         int prChanges = urlInfo.githubPRChanges;
         Console.WriteLine(prChanges);
-        Console.WriteLine("kasdh fiuasdiof hausiodfh uaoishdfiua hsdifuh aiusdfh oiushdciuansdiufhaosd fhoiuashdfiu");
         double fraction = (double)prChanges / totalChanges;
         fraction = CalculateScore((float)fraction);
         return (float)fraction;
