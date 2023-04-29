@@ -8,6 +8,7 @@ using System.IO;
 using System;
 using LibGit2Sharp;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace IO.Swagger.CLI
 {
@@ -67,13 +68,13 @@ namespace IO.Swagger.CLI
         public  string path { get; set; }
 
         public int license_score { get; set; } = -1;
-        float rampUp_score { get; set; } = -1;
-        float busFactor_score { get; set; } = -1;
+        public float rampUp_score { get; set; } = -1;
+        public float busFactor_score { get; set; } = -1;
         public float correctness_score { get; set; } = -1;
         public float responseMaintainer_score { get; set; } = -1;
-        float dependency_score { get; set; } = -1;
-        float pullreview_score { get; set; } = -1;
-        float net_score { get; set; } = -1;
+        public float dependency_score { get; set; } = -1;
+        public float pullreview_score { get; set; } = -1;
+        public float net_score { get; set; } = -1;
 
 
 
@@ -121,6 +122,10 @@ namespace IO.Swagger.CLI
         public int githubForks { get; set; } = -1;
         public int githubOpenIssues { get; set; } = -1;
         public int githubIssues { get; set; } = -1;
+        public int githubTotalChanges { get; set; } = -1;
+        public int githubPRChanges { get; set; } = -1;
+        //public List<QLMergedPullRequestNode> githubMergedPullRequests { get; set; } = new List<QLMergedPullRequestNode>();
+        //public int githubMergedPullRequestsCount { get; set; } = -1;
         public List<QLMergedPullRequestNode> githubMergedPullRequests { get; set; } = new List<QLMergedPullRequestNode>();
         public int githubMergedPullRequestsCount { get; set; } = -1;
 
@@ -225,6 +230,28 @@ namespace IO.Swagger.CLI
                 {
                     string[] splitLine = line.Split("\"");
                     Console.WriteLine(splitLine[3]);
+                    return splitLine[3];
+                }
+
+                line = sr.ReadLine();
+            }
+
+            return "none";
+        }
+
+        public string returnGHURLfrompackagejson()
+        {
+            Console.WriteLine("Inside returnGHURLfrompackagejson Function");
+            StreamReader sr = new StreamReader(packageJsonPath);
+            string line = sr.ReadLine();
+
+            while (line != null)
+            {
+                if (line.Contains("\"repository\":"))
+                {
+                    string[] splitLine = line.Split("\"");
+                    Console.WriteLine(splitLine[3]);
+                    baseURL = splitLine[3];
                     return splitLine[3];
                 }
 
@@ -465,14 +492,13 @@ namespace IO.Swagger.CLI
             return error;
         }
 
-        public async Task<APIError> PullGithubInfo(Logger logger, string token)
+        public async Task<APIError> PullGithubInfo(string token)
         {
             APIError error = new APIError();
 
             if (type != "github" && type != "both")
             {
                 error.SetError("Invalid URL for github pull or other issue with type " + baseURL, APIError.errorType.invalidtype);
-                logger.Log(error.ToString(), 2);
                 return error;
             }
 
@@ -480,7 +506,6 @@ namespace IO.Swagger.CLI
             {
                 error.SetError("Empty github url or invalid package." + baseURL, APIError.errorType.invalidtype);
                 Console.WriteLine("name: " + name);
-                logger.Log(error.ToString(), 2);
                 return error;
             }
 
@@ -572,14 +597,28 @@ namespace IO.Swagger.CLI
 
             // Get response
             var graphQLResponse = await graphQLClient.SendQueryAsync<QLResponse>(graphQLRequest);
+            dynamic responseAdditions = await graphQLClient.SendQueryAsync<JObject>(graphQLRequest);
             QLResponse resp = graphQLResponse.Data;
             if(graphQLResponse.Errors != null)
             //check response
             {
                 error.SetError("Response from github api: " + graphQLResponse.Errors[0].Message, APIError.errorType.badresponse);
-                logger.Log(error.ToString(), 2);
                 Console.WriteLine("Error Graphql response");
                 return error;
+            }
+
+            int totalChangedFiles = 0;
+            int prChangedFiles = 0;
+            foreach (var edge in responseAdditions.Data.repository.defaultBranchRef.target.history.edges)
+            {
+                totalChangedFiles += (int)edge.node.changedFiles;
+            }
+            foreach (var node in responseAdditions.Data.repository.pullRequests.nodes)
+            {
+                if (node.reviews.totalCount > 0)
+                {
+                    prChangedFiles += (int)node.changedFiles;
+                }
             }
             Console.WriteLine("Response from github api: " + resp);
 
@@ -633,6 +672,8 @@ namespace IO.Swagger.CLI
             githubIssues = resp.repository.issues.totalCount;
             githubOpenIssues = resp.repository.openIssues.totalCount;
             githubForks = resp.repository.forks.totalCount;
+            githubTotalChanges = totalChangedFiles;
+            githubPRChanges = prChangedFiles;
             githubMergedPullRequests = resp.repository.pullRequests.nodes;
             githubMergedPullRequestsCount = resp.repository.pullRequests.totalCount;
             githubOpenPullRequests = resp.repository.openPullRequests.totalCount;
@@ -754,7 +795,10 @@ namespace IO.Swagger.CLI
         {
             this.dependency_score = dependency;
         }
-
+        public void setPullRequestsScore(float pullRequests)
+        {
+            this.pullreview_score = pullRequests;
+        }
         public void setCorrectnessScore(float correctnessScore)
         {
             this.correctness_score = correctnessScore;
@@ -768,6 +812,10 @@ namespace IO.Swagger.CLI
         public void setLicenseScore(int licenseScore)
         {
             this.license_score = licenseScore;
+        }
+       public void setNetScore(float netScore)
+        {
+            this.net_score = netScore;
         }
         #endregion
         

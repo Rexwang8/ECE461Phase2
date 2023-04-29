@@ -757,9 +757,12 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public void Parse(string version)
         {
+            isvalidversion = true;
+            Console.WriteLine("Parsing version: " + version);
             //detect if range, and if so, parse min version and max version
             if (version.StartsWith("^"))
             {
+                Console.WriteLine("Major range detected");
                 //major range
                 IsMajorRange = true;
                 IsMinorRange = false;
@@ -771,15 +774,18 @@ namespace IO.Swagger.Controllers
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = int.Parse(versionSplit[2]);
+                    return;
                 }
                 else if (versionSplit.Length == 2)
                 {
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = 0;
+                    return;
                 }
                 else
                 {
+                    Console.WriteLine("Failed when testing length of version string 783");
                     isvalidversion = false;
                     Major = 1;
                     Minor = 0;
@@ -790,6 +796,7 @@ namespace IO.Swagger.Controllers
             }
             else if (version.StartsWith("~"))
             {
+                Console.WriteLine("Minor range detected");
                 //minor range
                 IsMajorRange = false;
                 IsMinorRange = true;
@@ -801,12 +808,14 @@ namespace IO.Swagger.Controllers
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = int.Parse(versionSplit[2]);
+                    return;
                 }
                 else if (versionSplit.Length == 2)
                 {
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = 0;
+                    return;
                 }
                 else
                 {
@@ -814,11 +823,13 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
+                    Console.WriteLine("Failed when testing length of version string 818");
                     return;
                 }
             }
             else if (version.Contains("-"))
             {
+                Console.WriteLine("Range detected");
                 //range
                 string[] versionRangeSplit = version.Split('-');
                 //max version
@@ -843,6 +854,7 @@ namespace IO.Swagger.Controllers
                 else
                 {
                     isvalidversion = false;
+                    Console.WriteLine("Failed when testing length of version string 848");
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
@@ -865,11 +877,13 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
+                    Console.WriteLine("Failed when testing version min string 868");
                     return;
                 }
             }
             else
             {
+                Console.WriteLine("Normal version detected");
                 //normal version
                 IsMajorRange = false;
                 IsMinorRange = false;
@@ -880,12 +894,14 @@ namespace IO.Swagger.Controllers
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = int.Parse(versionSplit[2]);
+                    return;
                 }
                 else if (versionSplit.Length == 2)
                 {
                     Major = int.Parse(versionSplit[0]);
                     Minor = int.Parse(versionSplit[1]);
                     Patch = 0;
+                    return;
                 }
                 else
                 {
@@ -893,6 +909,7 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
+                    Console.WriteLine("Failed when testing max version string 894");
                     return;
                 }
             }

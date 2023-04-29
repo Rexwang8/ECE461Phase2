@@ -63,7 +63,7 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             //generate runid
             int runid = new Random().Next(1000, 2000);
-            if(body.User != null)
+            if (body.User != null)
             {
                 Console.WriteLine($"(authenticate/{runid}) Received request to authenticate user: " + body.User.Name);
                 Response.Headers.Add($"X-Debug98032", $"authenticate/{runid} Received request to authenticate user: " + body.User.Name);
@@ -73,7 +73,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine($"(authenticate/{runid}) Received request to authenticate user: null");
                 Response.Headers.Add($"X-Debug12543", $"authenticate/{runid} Received request to authenticate user: null");
             }
-            if(body.User != null && body.Secret != null)
+            if (body.User != null && body.Secret != null)
             {
                 Console.WriteLine($"(authenticate/{runid}) args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
                 Response.Headers.Add($"X-Debug1231", $"authenticate/{runid} args: " + body.User.Name + " " + body.Secret.Password + " " + body.User.IsAdmin);
@@ -91,7 +91,7 @@ namespace IO.Swagger.Controllers
                     Response.Headers.Add($"X-Debug03948", $"authenticate/{runid} args: null " + body.Secret.Password + " null");
                 }
             }
-            
+
             Console.WriteLine("------END DEBUG INFO-----");
 
             //add cors
@@ -102,7 +102,7 @@ namespace IO.Swagger.Controllers
             bool? admin = body.User.IsAdmin;
             string password = body.Secret.Password;
 
-            if(body.User == null || body.Secret == null)
+            if (body.User == null || body.Secret == null)
             {
                 Response.Headers.Add("X-Debug", "Missing field(s) in the AuthenticationRequest or it is formed improperly");
                 Console.WriteLine("(authenticate/X-Debug) Missing field(s) in the AuthenticationRequest or it is formed improperly");
@@ -205,19 +205,19 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             int runid = new Random().Next(1000, 2000);
-            if(name != null && xAuthorization != null)
+            if (name != null && xAuthorization != null)
             {
                 Console.WriteLine($"(PackageByNameDelete/{runid}) Received request to delete package: " + name);
                 Console.WriteLine($"(PackageByNameDelete/{runid}) args: " + xAuthorization + ", " + name);
                 Response.Headers.Add("X-DebugAutograder", $"(PackageByNameDelete/{runid}) Received request to delete package: " + name);
                 Response.Headers.Add("X-DebugArgs", $"(PackageByNameDelete/{runid}) args: " + xAuthorization + ", " + name);
             }
-            
+
             Console.WriteLine("------END DEBUG INFO-----");
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-            if(xAuthorization == null)
+            if (xAuthorization == null)
             {
                 Response.Headers.Add("X-Debug", "Missing field(s) in the AuthenticationToken or it is formed improperly");
                 Console.WriteLine("(/package/byName/{name}/X-Debug) Missing field(s) in the AuthenticationToken or it is formed improperly");
@@ -260,7 +260,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if(name == null)
+            if (name == null)
             {
                 Response.Headers.Add("X-Debug", "Missing field(s) in the PackageName or it is formed improperly");
                 Console.WriteLine("(/package/byName/{name}/X-Debug) Missing field(s) in the PackageName or it is formed improperly");
@@ -411,8 +411,8 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            int runid = new Random().Next(1000,2000);
-            if(name != null && xAuthorization != null)
+            int runid = new Random().Next(1000, 2000);
+            if (name != null && xAuthorization != null)
             {
                 Console.WriteLine($"(PackageByNameGet/{runid}) args : " + name + ", " + xAuthorization);
                 Response.Headers.Add("X-DebugAutograder", "PackageByNameGet/" + runid + " args : " + name + ", " + xAuthorization);
@@ -424,7 +424,7 @@ namespace IO.Swagger.Controllers
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            if(xAuthorization == null || name == null)
+            if (xAuthorization == null || name == null)
             {
                 Console.WriteLine("(/package/byName/{name}/X-Debug) Missing field(s)");
                 Response.Headers.Add("X-Debug", "Missing field(s)");
@@ -525,8 +525,8 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            int runid = new Random().Next(1000,2000);
-            if(body.Regex != null || xAuthorization != null)
+            int runid = new Random().Next(1000, 2000);
+            if (body.Regex != null || xAuthorization != null)
             {
                 Console.WriteLine($"(PackageByRegExGet/{runid}) args : " + body.Regex + ", " + xAuthorization);
                 Response.Headers.Add("X-DebugAutograder", "PackageByRegExGet/" + runid + " args : " + body.Regex + ", " + xAuthorization);
@@ -625,9 +625,9 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            int runid = new Random().Next(1000,2000);
+            int runid = new Random().Next(1000, 2000);
             Console.WriteLine("(PackageCreate/" + runid + ") args : " + body + ", " + xAuthorization);
-            if(body.Content != null)
+            if (body.Content != null)
             {
                 Console.WriteLine($"(PackageCreate/{runid}) args : " + xAuthorization + ", " + body.URL + ", " + (body.Content.Length <= 100 ? body.Content : body.Content.Substring(0, 100)));
             }
@@ -641,12 +641,12 @@ namespace IO.Swagger.Controllers
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             bool flagBodyUrlEmpty = false;
-            if(body.URL == null || body.URL == "")
+            if (body.URL == null || body.URL == "")
             {
                 flagBodyUrlEmpty = true;
             }
             bool flagBodyContentEmpty = false;
-            if(body.Content == null || body.Content == "")
+            if (body.Content == null || body.Content == "")
             {
                 flagBodyContentEmpty = true;
             }
@@ -654,13 +654,13 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("(/package/X-Debug) flagBodyUrlEmpty: " + flagBodyUrlEmpty);
             Console.WriteLine("(/package/X-Debug) flagBodyContentEmpty: " + flagBodyContentEmpty);
 
-            if(flagBodyUrlEmpty && flagBodyContentEmpty)
+            if (flagBodyUrlEmpty && flagBodyContentEmpty)
             {
                 Console.WriteLine("(/package/X-Debug) Missing field(s)");
                 Response.Headers.Add("X-Debug", "Missing field(s)");
                 return StatusCode(400);
             }
-            if(flagBodyContentEmpty == false && flagBodyUrlEmpty == false)
+            if (flagBodyContentEmpty == false && flagBodyUrlEmpty == false)
             {
                 Console.WriteLine("(/package/X-Debug) Too many fields");
                 Response.Headers.Add("X-Debug", "Too many fields");
@@ -739,20 +739,20 @@ namespace IO.Swagger.Controllers
                 urlInfo.path = "/app/TempDirectory";
 
                 //check package downloaded properly
-                if(!Directory.Exists("/app/TempDirectory"))
+                if (!Directory.Exists("/app/TempDirectory"))
                 {
                     Response.Headers.Add("X-Debug", "Package download failed, can't find package");
                     Console.WriteLine("(/package/X-Debug) Package download failed, can't find package");
                     return StatusCode(400);
                 }
-                
+
 
                 //Get Json file
                 urlInfo.getJsonFile("/app/TempDirectory");
                 //Get the version
                 versionfromfile = urlInfo.returnVersionFromPackage();
                 ver = new Version(versionfromfile);
-                if(ver.getValidVersion() == false)
+                if (ver.getValidVersion() == false)
                 {
                     Response.Headers.Add("X-Debug", "Invalid version (Attempted to add package with version " + versionfromfile + ")");
                     Console.WriteLine("(/package/X-Debug) Invalid version (Attempted to add package with version " + versionfromfile + ")");
@@ -768,15 +768,10 @@ namespace IO.Swagger.Controllers
                 body.Content = Base64Encoder.Encode("/app/TempPackage.zip");
                 Console.WriteLine("Package was encoded");
 
-                //Get data for package Rating
-                APICalls.GetURLStatistics(urlInfo);
-                Console.WriteLine(urlInfo.getNPMInfo());
-                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
-                StaticAnalysis.Analyze(urlInfo);
-                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
-                
 
-                
+
+
+
                 //Delete the Package
                 Directory.Delete("/app/TempDirectory", true);
                 Console.WriteLine("Line 583");
@@ -824,9 +819,9 @@ namespace IO.Swagger.Controllers
                     Console.WriteLine("Exception: " + e.Message);
                 }
 
-                
-                
-                
+
+
+
 
                 //unzip the zip file
                 Directory.CreateDirectory("/app/TempDirectory");
@@ -836,19 +831,26 @@ namespace IO.Swagger.Controllers
                 //{
                 //    Console.WriteLine(file);
                 //}
-                try{
+                try
+                {
                     System.IO.Compression.ZipFile.ExtractToDirectory("/app/TempPackage.zip", "/app/TempDirectory");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine("Zip file is invalid or corrupted");
                     Response.Headers.Add("X-Debug", "Zip file is invalid or corrupted");
                     return StatusCode(400);
                 }
                 Console.WriteLine("Package was unzipped");
-                
+
+
                 //get Json file
-                URLInfo urlInfo = new URLInfo("");
+
+                URLInfo urlInfo = new URLInfo(body.URL);
+                urlInfo.returnGHURLfrompackagejson();
+                urlInfo.initType();
+                urlInfo.initName();
+                urlInfo.setPath("/app/TempDirectory");
                 urlInfo.getJsonFile("/app/TempDirectory");
                 //get name
                 Name = urlInfo.returnNameFromPackage();
@@ -858,10 +860,30 @@ namespace IO.Swagger.Controllers
                 ver = new Version(versionfromfile);
                 if (ver.getValidVersion() == false)
                 {
-                    Response.Headers.Add("X-Debug", "Invalid version");
+                    Response.Headers.Add("X-Debugversion", "Invalid version");
                     Console.WriteLine("(/package/X-Debug) Invalid version");
                     return StatusCode(400);
                 }
+
+                //Get data for package Rating
+                APICalls.GetURLStatistics(urlInfo);
+                Console.WriteLine(urlInfo.getNPMInfo());
+                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+                StaticAnalysis.Analyze(urlInfo);
+                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+
+                string[] LicenseList = { "Academic Free", "Apache", "Artistic", "Boost", "BSD", "BSD", "BSD", "BSD", "CC0 1.0 Universal", "(CC0 1.0)", "CeCILL-2.1", "CeCILL-B", "Common Public license", "(CPL-1.0)", "Creative Commons Attribution No Derivatives 4.0 International", "Creative Commons Attribution 3.0 Unported", "(CC BY 3.0)", "Creative Commons Attribution Non Commercial Share Alike 4.0 International", "Creative Commons Attribution Share Alike 4.0 International", "Creative Commons Attribution 4.0 International", "(CC-BY-4.0)", "Deutsche Freie", "Eclipse", "European Union Public License", "(EUPL)", "GNU General Public License", "(GPL)", "GNU Affero", "ISC License", "LaTeX Project", "Microsoft Reciprocal", "MIT", "ODC Open Database", "(ODbL)", "ODC Public Domain Dedication", "(PDDL)", "Open Software license", "(OSL-3.0)", "Open Data Commons Attribution", "(ODC-BY)", "PostgreSQL", "The Universal Permissive", "Illinois", "NCSA", "Unlicense", "Do What The F*ck You Want To Public License", "WTFPL", "zlib", "libpng" };
+                //log out ratings
+                Console.WriteLine($"Maintainer Rating: {Grader.GetResponseMaintainerScore(urlInfo)}");
+                Console.WriteLine($"RampUp Rating: {Grader.GetRampupTimeScore(urlInfo)}");
+                Console.WriteLine($"Dependency Rating: {Grader.GetDependencyScore(urlInfo)}");
+                Console.WriteLine($"Correctness Rating: {Grader.GetCorrectnessScore(urlInfo)}");
+                Console.WriteLine($"BusFactor Rating: {Grader.GetBusFactorScore(urlInfo)}");
+                Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
+                Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
+                Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
+                Console.WriteLine($"license name: {urlInfo.license}");
+
 
 
                 //Delete 
@@ -892,7 +914,7 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("Line 619" + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            if(result == null)
+            if (result == null)
             {
                 Response.Headers.Add("X-Debug", "Package already exists");
                 return StatusCode(409);
@@ -909,9 +931,22 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             //Add to package table
-            query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('{body.Content}', '{body.JSProgram.Replace("\n", "@").Replace("'", "$")}', '{URL}', '{ID}', '{Name}')";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery();
+
+
+            query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('@pkgcontent', '{body.JSProgram.Replace("\n", "@").Replace("'", "$")}', '{URL}', '{ID}', '{Name}')";
+            var parameters = new BigQueryParameter[]
+        {
+            new BigQueryParameter("pkgcontent", BigQueryDbType.String, body.Content)
+        };
+            var client = factory.GetClient();
+            var job = client.CreateQueryJob(
+                sql: query,
+                parameters: parameters,
+                options: new QueryOptions { UseQueryCache = false });
+            // Wait for the job to complete.
+            job = job.PollUntilCompleted().ThrowOnAnyError();
+
+            result = client.GetQueryResults(job.Reference);
             //Add to History table
             try
             {
@@ -1142,13 +1177,13 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            int runid = new Random().Next(1000,2000);
-            if(xAuthorization != null && id != null)
+            int runid = new Random().Next(1000, 2000);
+            if (xAuthorization != null && id != null)
             {
                 Console.WriteLine("(PackageRate) RunID: " + runid + " (GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
                 Response.Headers.Add("X-DebugAutograder", "(PackageRate)RunID: " + runid + " (GET) /package/{id}/rate) Received request with args: " + xAuthorization + ", " + id);
             }
-            
+
             Console.WriteLine("------END DEBUG INFO-----");
 
             //add cors
@@ -1183,7 +1218,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if(id == null)
+            if (id == null)
             {
                 Response.Headers.Add("X-Debug", "PackageID is null");
                 Console.WriteLine("(/package/{id}/rate/X-Debug) PackageID is null");
@@ -1249,15 +1284,15 @@ namespace IO.Swagger.Controllers
         {
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
-            int runid = new Random().Next(1000,2000);
+            int runid = new Random().Next(1000, 2000);
             if (xAuthorization != null && id != null)
             {
                 Console.WriteLine("(PackageRetrieve) RunID: " + runid + " (GET) /package/{id}) Received request with args: " + xAuthorization + ", " + id);
-            Response.Headers.Add("X-DebugAutograder", "(PackageRetrieve)RunID: " + runid + " (GET) /package/{id}) Received request with args: " + xAuthorization + ", " + id);
+                Response.Headers.Add("X-DebugAutograder", "(PackageRetrieve)RunID: " + runid + " (GET) /package/{id}) Received request with args: " + xAuthorization + ", " + id);
             }
-            
+
             Console.WriteLine("------END DEBUG INFO-----");
-           
+
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
@@ -1482,7 +1517,7 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             int runid = new Random().Next(1000, 2000);
-            if(xAuthorization != null && body != null && id != null)
+            if (xAuthorization != null && body != null && id != null)
             {
                 Console.WriteLine($"PackageUpdate/{runid}: Received request with args: {xAuthorization}, {id}, {body.Metadata.ID}, {body.Metadata.Name}, {body.Metadata.Version}, {(body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content)}, {body.Data.URL}");
                 Response.Headers.Add("X-DebugAutograder", $"((PUT) /package/{{id}}) Received request with args: {xAuthorization}, {id}, {body.Metadata.ID}, {body.Metadata.Name}, {body.Metadata.Version}, {(body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content)}, {body.Data.URL}");
@@ -1496,14 +1531,14 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/AuthenticationToken");
                 return StatusCode(400);
             }
-            if(body.Data == null || body.Metadata == null)
+            if (body.Data == null || body.Metadata == null)
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/AuthenticationToken");
                 Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/AuthenticationToken");
                 return StatusCode(400);
             }
-            if(body.Data.Content == null || body.Data.URL == null || body.Metadata.ID == null || body.Metadata.Name == null || body.Metadata.Version == null)
+            if (body.Data.Content == null || body.Data.URL == null || body.Metadata.ID == null || body.Metadata.Name == null || body.Metadata.Version == null)
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/AuthenticationToken");
@@ -1570,7 +1605,7 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Query failed");
                 return StatusCode(400);
             }
-            if(results.TotalRows == 0)
+            if (results.TotalRows == 0)
             {
                 Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
                 Response.Headers.Add("X-Debug", "Package does not exist");
@@ -1616,7 +1651,7 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             int runid = new Random().Next(1000, 2000);
-            if(offset == null)
+            if (offset == null)
             {
                 offset = "0";
             }
@@ -1626,24 +1661,24 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-DebugAutograder", $"(PackagesList) RunID: {runid} (X-Authorization: {xAuthorization}, offset: {offset}, body: {body[0].Name}, {body[0].Version})");
             }
             Console.WriteLine("------END DEBUG INFO-----");
-            
+
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-        
+
             if (xAuthorization == null || body == null)
             {
                 Console.WriteLine("(/packages/X-Debug) Missing field(s) in the PackageQuery/AuthenticationToken or it is formed improperly");
                 Response.Headers.Add("X-Debug", "Missing field(s) in the PackageQuery/AuthenticationToken or it is formed improperly");
                 return StatusCode(400);
             }
-            if(body.Count == 0)
+            if (body.Count == 0)
             {
                 Console.WriteLine("(/packages/X-Debug) No PackageQuery objects in body");
                 Response.Headers.Add("X-Debug", "No PackageQuery objects in body");
                 return StatusCode(400);
             }
-            if(body.Count > 100)
+            if (body.Count > 100)
             {
                 Console.WriteLine("(/packages/X-Debug) Too many PackageQuery objects in body");
                 Response.Headers.Add("X-Debug", "Too many PackageQuery objects in body");
@@ -1700,7 +1735,7 @@ namespace IO.Swagger.Controllers
             List<BigQueryResults> results = new List<BigQueryResults>();
             foreach (PackageQuery queryobj in body)
             {
-                
+
                 //determine if query is invalid (both null)
                 if ((queryobj.Name == null || queryobj.Name == "") && (queryobj.Version == null || queryobj.Version == ""))
                 {
@@ -1812,19 +1847,19 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             int runid = new Random().Next(1000, 2000);
-            if(xAuthorization != null)
+            if (xAuthorization != null)
             {
                 Console.WriteLine($"(reset/X-Debug) RunID: {runid} Token: {xAuthorization}");
                 Response.Headers.Add("X-Debug", $"RunID: {runid} Token: {xAuthorization}");
             }
             Console.WriteLine("------END DEBUG INFO-----");
-        
+
 
 
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            if(xAuthorization == null)
+            if (xAuthorization == null)
             {
                 Console.WriteLine("(reset/X-Debug) Token is null");
                 Response.Headers.Add("X-Debug", "Token is null");
@@ -1863,7 +1898,7 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
             var ghtoken = factory.GetGithubTokenStoredInBQ();
             Console.WriteLine("(reset/X-Debug) Registry reset + github token: " + ghtoken);
-            Response.Headers.Add("X-Debug", "Registry reset + github token: " + ghtoken);
+            Response.Headers.Add("X-Debug1", "Registry reset + github token: " + ghtoken);
 
 
             //make directory
