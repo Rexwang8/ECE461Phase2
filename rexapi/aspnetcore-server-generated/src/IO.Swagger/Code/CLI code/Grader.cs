@@ -327,7 +327,7 @@ namespace IO.Swagger.CLI
                     sr.Close();
                     Console.WriteLine("Pinned Dependencies: " + pinnedDependencies);
                     Console.WriteLine("Total Dependencies: " + totalDependencies);
-                    urlInfo.dependency_score = (float)(Math.Clamp(pinnedDependencies/totalDependencies, 0, 1)
+                    urlInfo.dependency_score = (float)(Math.Clamp(pinnedDependencies/totalDependencies, 0, 1));
                     return (Math.Clamp(pinnedDependencies/totalDependencies, 0, 1));
                 }
                 
