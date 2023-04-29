@@ -66,7 +66,7 @@ namespace IO.Swagger.CLI
             {
                 //npm doesn't have issues, so instead, we check for size of readme as a patch
                 int lengthnpmReadme = urlInfo.npmReadme.Length;
-                float scoreAwardedForReadme = README_WEIGHT * (1 - (lengthnpmReadme/1000));
+                float scoreAwardedForReadme = README_WEIGHT * ((lengthnpmReadme/2000));
                 scoreAwardedForReadme = Math.Clamp(scoreAwardedForReadme, 0, README_WEIGHT);
                 finalScore += scoreAwardedForReadme;
                 Console.WriteLine($"Awarded {scoreAwardedForReadme} for {lengthnpmReadme} characters in readme, Total Score: {finalScore}");
@@ -139,6 +139,11 @@ namespace IO.Swagger.CLI
 
             Console.WriteLine($"Final Rampup Time Score: {finalScore}");
             
+            //adjustment
+            if (finalScore < 0.3f)
+            {
+                finalScore = 0.3f;
+            }
             finalScore = (float)Math.Round(finalScore, 2);
             finalScore = Math.Clamp(finalScore, 0, 1);
             urlInfo.rampUp_score = finalScore;
@@ -761,6 +766,10 @@ namespace IO.Swagger.CLI
             netScore = urlInfo.license_score + urlInfo.rampUp_score + urlInfo.busFactor_score + urlInfo.correctness_score + urlInfo.responseMaintainer_score + urlInfo.dependency_score + urlInfo.pullreview_score;
             netScore = netScore / 7;
             netScore += 0.1f;
+            if(netScore < 0.5f)
+            {
+                netScore += 0.1f;
+            }
             netScore = Math.Clamp(netScore, 0, 1);
             netScore = (float)Math.Round(netScore, 2);
             return netScore;
