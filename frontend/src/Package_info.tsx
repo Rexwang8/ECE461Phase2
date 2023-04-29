@@ -173,10 +173,22 @@ function PackageInfo() {
   }
 
   function redirectToLogOut() {
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/Signup");
     localStorage.removeItem("login_token");
     localStorage.removeItem("loaded");
     localStorage.removeItem("packageID");
+    localStorage.removeItem("packageName");
+    localStorage.removeItem("busFactor");
+    localStorage.removeItem("correctness");
+    localStorage.removeItem("goodPinningPractice");
+    localStorage.removeItem("licenseScore");
+    localStorage.removeItem("netScore");
+    localStorage.removeItem("pullRequest");
+    localStorage.removeItem("rampUp");
+    localStorage.removeItem("responsiveMaintainer");
+    localStorage.removeItem("ver_id");
+    localStorage.removeItem("version");
     location.reload();
   }
 
