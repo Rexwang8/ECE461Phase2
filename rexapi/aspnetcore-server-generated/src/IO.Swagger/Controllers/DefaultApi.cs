@@ -891,7 +891,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("(/package/X-Debug) Net score is less than 0.5");
                 return StatusCode(424);
             }
-            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsive, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{urlInfo.license}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}')";
+            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsive, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', {Grader.GetBusFactorScore(urlInfo)}, {Grader.GetCorrectnessScore(urlInfo)}, {Grader.GetRampupTimeScore(urlInfo)}, {Grader.GetResponseMaintainerScore(urlInfo)}, {Grader.GetLicenseScore(urlInfo, LicenseList)}, '{urlInfo.license}', {Grader.GetDependencyScore(urlInfo)}, {Grader.GetPullRequestsScore(urlInfo)}, {Grader.GetNetScore(urlInfo)})";
             Console.WriteLine("Line 619 " + ratequery);
             factory.SetQuery(ratequery);
             result = factory.ExecuteQuery();
