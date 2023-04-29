@@ -748,6 +748,7 @@ namespace IO.Swagger.Controllers
                 try
                 {
                     urlInfo.getJsonFile("/app/TempDirectory");
+                    Console.WriteLine("JSON file was found at " + urlInfo.packageJsonPath);
                     urlInfo.returnGHURLfrompackagejson();
                 }
                 catch (Exception e)
@@ -854,6 +855,7 @@ namespace IO.Swagger.Controllers
                 try
                 {
                     urlInfo.getJsonFile("/app/TempDirectory");
+                    Console.WriteLine("JSON file was found at " + urlInfo.packageJsonPath);
                     urlInfo.returnGHURLfrompackagejson();
                 }
                 catch (Exception e)

@@ -254,10 +254,11 @@ namespace IO.Swagger.CLI
             {
                 if (line.Contains("\"repository\":"))
                 {
+                    Console.WriteLine("Found repository line: " + line);
                     string[] splitLine = line.Split("\"");
                     if(splitLine[3] != null)
                     {
-                        if (splitLine[3].Contains("github.com"))
+                        if (splitLine[3].Contains("https://github.com"))
                         {
                             Console.WriteLine(splitLine[3]);
                             baseURL = splitLine[3];
@@ -269,12 +270,13 @@ namespace IO.Swagger.CLI
                         }
                     }
                 }
-                if (line.Contains("\"homepage\":"))
+                if (line.Contains("homepage"))
                 {
+                    Console.WriteLine("Found homepage line: " + line);
                     string[] splitLine = line.Split("\"");
                     if (splitLine[3] != null)
                     {
-                        if (splitLine[3].Contains("github.com"))
+                        if (splitLine[3].Contains("https://github.com"))
                         {
                             Console.WriteLine(splitLine[3]);
                             baseURL = splitLine[3];
@@ -289,7 +291,7 @@ namespace IO.Swagger.CLI
 
                 line = sr.ReadLine();
             }
-
+            Console.WriteLine("No github URL found in package.json (FAILED)");
             return "none";
         }
         public void getJsonFile(string directoryPath)
@@ -333,6 +335,7 @@ namespace IO.Swagger.CLI
             foreach (string dir in dirs)
             {
                 searchJsonFile(dir);
+                Console.WriteLine("Applying searchJsonFile on {0}", dir);
             }
         }
 

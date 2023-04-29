@@ -40,6 +40,6 @@ if __name__ == '__main__':
     pwd = os.getcwd()
     print(pwd)
     #encode("rexapi/encoder/date-fns-2.29.3")
-    trimspace("rexapi/encoder/read")
-    decode("rexapi/encoder/read")
+    trimspace("rexapi/encoder/read2")
+    decode("rexapi/encoder/read2")
     #compare("rexapi/encoder/date-fns-2.29.3")

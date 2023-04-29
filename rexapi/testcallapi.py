@@ -214,10 +214,10 @@ def main():
     
 
     #Using Content  -- works with even
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/sample.txt", token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/sample.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
     #Using Content  -- works with date-fns 2.29.1
     #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.3_2.txt", token)
@@ -225,7 +225,11 @@ def main():
     #response = requests.post(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response, False)
     
-    
+    #Using Content  -- works with date-fns 2.29.1
+    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/read2.txt", token)
+    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    PrintResponse(response, True)
     
     
     #Get history of package by name -- works
