@@ -56,6 +56,20 @@ function CreatePackage() {
     location.reload();
   }
 
+  let ContentValue = "";
+  const urlArea = document.querySelector('#URLOption') as HTMLDivElement;
+  const contentArea = document.querySelector('#ContentOption') as HTMLDivElement;
+
+  const handleURLoption = () => {
+    urlArea.style.backgroundColor = '#777';
+    contentArea.style.backgroundColor = '#ccc';
+  };
+
+  const handleContentoption = () => {
+    urlArea.style.backgroundColor = '#ccc';
+    contentArea.style.backgroundColor = '#777';
+  };
+
   return (
     <div className="App">
       <nav className="navbar">
@@ -81,17 +95,24 @@ function CreatePackage() {
         </div>
       </nav>
       <section className="about-us">
-        <h1>Create Package</h1>
-        <div className="content-row">
-          <div id="URLOption">
-            <input type="text" placeholder='Please Enter a NPM or Github Link' size={30}/>
+        <div className="background">
+          <h1>Create Package</h1>
+          <div className="content-row">
+            <div id="URLOption" onClick={handleURLoption}>
+              <input type="text" placeholder='Please Enter a NPM or Github Link' size={30}/>
+            </div>
+            Or
+            <div id="ContentOption" onClick={handleContentoption}>
+              <input type="file" placeholder="upload zipfile" accept=".zip, application/zip"></input>
+            </div>     
           </div>
-          Or
-          <div id="ContentOption">
-            <input type="file" placeholder="upload zipfile"></input>
-          </div>     
+          <div className='content-row'>
+            <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
+          </div>
+          <button >Create</button>
         </div>
-               
+        
+
 
       </section>
     </div>
