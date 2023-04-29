@@ -53,14 +53,6 @@
 }
 
 /* About Us section styles */
-.about-us {
-  position: fixed;
-  padding: 20px;
-  text-align: center;
-  left: 1000px;
-  top: 100px;
-  transform: translate(-50%, -50%);
-}
 
 .about-us div {
   margin-top: 10px;
