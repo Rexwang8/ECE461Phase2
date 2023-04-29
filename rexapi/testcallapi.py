@@ -218,10 +218,10 @@ def main():
     #PrintResponse(response)
     
     #delete by name -- works
-    #Authurl, Authheader = DeletePackageRequestByName(token, "even")
-    #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    #response = requests.delete(Authurl, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader = DeletePackageRequestByName(token, "fecha")
+    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    response = requests.delete(Authurl, headers=Authheader)
+    PrintResponse(response, False)
     
     #delete by id -- works
     #Authurl, AuthHeader = DeletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262")
@@ -230,10 +230,10 @@ def main():
     #PrintResponse(response, False)
     
     #reset -- works but doesn't reset currently
-    url, header = FormResetRequest(token)
-    print(f"DELETE: {url} WITH HEADER: {header}")
-    response = requests.delete(url, headers=header)
-    PrintResponse(response, False)
+    #url, header = FormResetRequest(token)
+    #print(f"DELETE: {url} WITH HEADER: {header}")
+    #response = requests.delete(url, headers=header)
+    #PrintResponse(response, False)
     
     #create 
     #Using Link -- works using gh link, not with npm link
