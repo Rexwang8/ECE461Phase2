@@ -87,6 +87,19 @@ function CreatePackage() {
     ContentValue = "URL";
   };
 
+  function redirectToPackageInfo() {
+    // window.location.href = '/Package_info';
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/Package_info")
+    location.reload();
+  }
+
+  const doneCreating = (packageName: string) => {
+    // alert(`Clicked on package: ${packageName}`);
+    localStorage.setItem('packageName', packageName);
+    redirectToPackageInfo();
+  };
+
   const handleContentoption = () => {
     urlArea.style.backgroundColor = 'white';
     contentArea.style.backgroundColor = 'gray';
@@ -124,13 +137,26 @@ function CreatePackage() {
         const login_token = localStorage.getItem("login_token") as string;
         const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
         console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-        fetch(url, { method: 'POST', headers: header, body: body})
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            // do something with the data
-            setIsLoading(false);
-          });
+        try {
+          fetch(url, { method: 'POST', headers: header, body: body})
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+              // do something with the data
+              if(data.status == null) {
+                // do something with the data
+                setIsLoading(false);
+                doneCreating(data.metadata.name);
+              }
+              else {
+                setIsLoading(false);
+                alert("Failed to create due to Error " + data.status)
+              }
+            });
+        }
+        catch(error) {
+          alert(error);
+        }
         
       }
       else if (ContentValue === "Content"){
@@ -158,13 +184,28 @@ function CreatePackage() {
             const login_token = localStorage.getItem("login_token") as string;
             const [url, header, body] = FormPackageRequest(login_token, base64String, "", JSFile);
             console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-            fetch(url, { method: 'POST', headers: header, body: body })
+            try {
+              fetch(url, { method: 'POST', headers: header, body: body })
               .then(response => response.json())
               .then(data => {
                 console.log(data);
-                // do something with the data
-                setIsLoading(false);
+                // alert(data.status)
+                if(data.status == null) {
+                  // do something with the data
+                  setIsLoading(false);
+                  doneCreating(data.metadata.name);
+                }
+                else {
+                  setIsLoading(false);
+                  alert("Failed to create due to Error " + data.status)
+                }
+                
               });
+            }
+            catch(error) {
+              alert(error);
+            }
+            
           }).catch((error) => {
             alert("invalid file")
           });
@@ -181,7 +222,7 @@ function CreatePackage() {
   if (isLoading)
   {
     return (<div>
-              <div className="isloading">Loading data please wait...</div>
+              <div className="isloading">Creating package please wait...</div>
             </div>);
   }
   else
