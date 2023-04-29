@@ -1275,7 +1275,7 @@ namespace IO.Swagger.Controllers
             {
                 if (row["busfactor"] != null)
                 {
-                    rating.BusFactor = (float)row["bus_factor"];
+                    rating.BusFactor = (float)row["busfactor"];
                 }
                 else
                 {

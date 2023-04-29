@@ -219,11 +219,11 @@ def main():
     #response = requests.post(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response, False)
     
-    #Using Content  
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Using Content  -- works with date-fns 2.29.1
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.1_2.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
     
     
@@ -241,10 +241,10 @@ def main():
     #PrintResponse(response, True)
     
     #rating by id -- works but doesn't return actual rating
-    #url, header = FormRateRequest(token, "bfddf655-84d6-426c-9727-e51e01da83fd")
-    #print(f"Rating GET: {url} WITH HEADER: {header}")
-    #response = requests.get(url, headers=header)
-    #PrintResponse(response, True)
+    url, header = FormRateRequest(token, "d7f1b297-5070-42be-a14f-c89aaa91cb84")
+    print(f"Rating GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
     
     #packages list version/name query -- works with 1 query

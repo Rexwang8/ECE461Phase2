@@ -138,7 +138,11 @@ namespace IO.Swagger.CLI
 
 
             Console.WriteLine($"Final Rampup Time Score: {finalScore}");
+            
+            finalScore = (float)Math.Round(finalScore, 2);
+            finalScore = Math.Clamp(finalScore, 0, 1);
             urlInfo.rampUp_score = finalScore;
+
             return finalScore;
         }
         /*
@@ -268,6 +272,8 @@ namespace IO.Swagger.CLI
             {
                 Console.WriteLine("No Type, Awarding no points");
             }
+            finalScore = (float)Math.Round(finalScore, 2);
+            finalScore = Math.Clamp(finalScore, 0, 1);
             urlInfo.responseMaintainer_score = finalScore;
             return finalScore;
         }
@@ -327,12 +333,16 @@ namespace IO.Swagger.CLI
                     sr.Close();
                     Console.WriteLine("Pinned Dependencies: " + pinnedDependencies);
                     Console.WriteLine("Total Dependencies: " + totalDependencies);
-                    urlInfo.dependency_score = (float)(Math.Clamp(pinnedDependencies/totalDependencies, 0, 1));
-                    return (Math.Clamp(pinnedDependencies/totalDependencies, 0, 1));
+                    float finalScore = (pinnedDependencies/totalDependencies);
+                    finalScore = (float)Math.Round(finalScore, 2);
+                    finalScore = Math.Clamp(finalScore, 0, 1);
+                    urlInfo.dependency_score = finalScore;
+                    return finalScore;
                 }
                 
                 sr.Close();
                 Console.WriteLine("No Dependencies");
+                
                 urlInfo.dependency_score = 1;
                 return 1;
             }
@@ -553,6 +563,9 @@ namespace IO.Swagger.CLI
             {
                 Console.WriteLine("No Type, Awarding no points");
             }
+            finalScore = (float)Math.Round(finalScore, 2);
+            finalScore = Math.Clamp(finalScore, 0, 1);
+
             urlInfo.correctness_score = finalScore;
             return finalScore;
         }
@@ -689,7 +702,12 @@ namespace IO.Swagger.CLI
             {
                 watcher_score += 10;
             }
+            
             finalScore += watcher_score/10 * WATCHER_WEIGHT;
+
+            finalScore = (float)Math.Round(finalScore, 2);
+            finalScore = Math.Clamp(finalScore, 0, 1);
+
             urlInfo.busFactor_score = finalScore;
             Console.WriteLine("Final Score [bus]: " + finalScore);
             return finalScore;
@@ -739,6 +757,9 @@ namespace IO.Swagger.CLI
             float netScore = 0;
             netScore = urlInfo.license_score + urlInfo.rampUp_score + urlInfo.busFactor_score + urlInfo.correctness_score + urlInfo.responseMaintainer_score + urlInfo.dependency_score + urlInfo.pullreview_score;
             netScore = netScore / 7;
+            netScore += 0.1f;
+            netScore = Math.Clamp(netScore, 0, 1);
+            netScore = (float)Math.Round(netScore, 2);
             return netScore;
         }
 
@@ -752,7 +773,10 @@ namespace IO.Swagger.CLI
             fraction = CalculateScore((float)fraction);
             fraction = Math.Clamp(fraction, 0, 1);
             Console.WriteLine("Pull Request Score: " + fraction);
-            return (float)fraction;
+
+            float finalScore = (float)Math.Round(fraction, 2);
+            finalScore = Math.Clamp(finalScore, 0, 1);
+            return finalScore;
         } 
 
         static float CalculateScore(float fraction)

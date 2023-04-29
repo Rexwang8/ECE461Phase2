@@ -242,6 +242,11 @@ namespace IO.Swagger.CLI
         public string returnGHURLfrompackagejson()
         {
             Console.WriteLine("Inside returnGHURLfrompackagejson Function");
+            string path = packageJsonPath;
+            if (path == null)
+            {
+                path = "/app/TempDirectory";
+            }
             StreamReader sr = new StreamReader(packageJsonPath);
             string line = sr.ReadLine();
 
