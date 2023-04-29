@@ -37,6 +37,12 @@ function deletePackageRequestByID(token: string, id: string): [string, Record<st
   return [url, headers];
 }
 
+function DeleteNameRequest(token: string, name: string): [string, Record<string, string>] {
+    const url = `https://package-registry-461.appspot.com/package/byName/${name}`;
+    const header = {'X-Authorization': token, 'Accept': 'application/json'};
+    return [url, header];
+}
+
 const versions: [string, boolean][] = [];
 // const ratings: string[] = [];
 const binaryData2: Uint8Array[] = [];
@@ -61,6 +67,7 @@ function PackageInfo() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoading2, setIsLoading2] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageName');
 
@@ -181,7 +188,27 @@ function PackageInfo() {
 
   function handleSideBar(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if(event.currentTarget.textContent === "Delete All") {
-      alert(event.currentTarget.textContent);
+      // alert(event.currentTarget.textContent);
+      const [authUrl, authHeader] = DeleteNameRequest(localStorage.getItem("login_token"), localStorage.getItem("packageName"))
+      console.log(`DELETE ALL: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
+      setIsDeleting(true);
+      fetch(authUrl, { method: 'DELETE', headers: authHeader })
+        .then(response => {
+          if (!response.ok) {
+            console.log(response);
+            throw new Error('Network response was not ok');
+          }
+          // do something with successful response, like show a success message
+          console.log(response);
+          setIsDeleting(false);
+          localStorage.setItem("path_name", "/Packages")
+          location.reload();
+        })
+        .catch(error => {
+          setIsDeleting(false);
+          // handle error, like showing an error message to the user
+          alert('Please make sure you are an admin - There was a problem with the network request:', error);
+        });
     }
     else {
       if(event.currentTarget.textContent) {
@@ -216,16 +243,10 @@ function PackageInfo() {
   }
 
 
-  // const handleDelete = () => {
-  //   const [authUrl, authHeader] = deletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262");
-  //   console.log(`DELETE: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
-  //   const response = await fetch(authUrl, { method: 'DELETE', headers: authHeader });
-  // }
-
   const handleDelete = () => {
     const [authUrl, authHeader] = deletePackageRequestByID(localStorage.getItem("login_token"), localStorage.getItem("ver_id"));
     console.log(`DELETE: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
-
+    setIsDeleting(true);
     fetch(authUrl, { method: 'DELETE', headers: authHeader })
       .then(response => {
         if (!response.ok) {
@@ -234,20 +255,26 @@ function PackageInfo() {
         }
         // do something with successful response, like show a success message
         console.log(response);
+        setIsDeleting(false);
         localStorage.setItem("path_name", "/Packages")
         location.reload();
       })
       .catch(error => {
+        setIsDeleting(false);
         // handle error, like showing an error message to the user
         alert('Please make sure you are an admin - There was a problem with the network request:', error);
       });
-    
   }
 
 
   if(isLoading) {
     return(<div>
         <div className="isloading">Loading data please wait...</div>
+    </div>);
+  }
+  else if (isDeleting) {
+    return(<div>
+        <div className="isloading">Deleting package please wait...</div>
     </div>);
   }
   else {
