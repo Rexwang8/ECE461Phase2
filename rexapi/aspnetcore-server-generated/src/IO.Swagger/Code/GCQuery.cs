@@ -93,6 +93,11 @@ namespace IO.Swagger.Controllers
             return this.query;
         }
 
+        public BigQueryClient GetClient()
+        {
+            return this.client;
+        }
+
         /// <summary>
         /// Print results.
         /// </summary>
