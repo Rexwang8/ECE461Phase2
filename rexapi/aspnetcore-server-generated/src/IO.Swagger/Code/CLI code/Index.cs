@@ -19,7 +19,7 @@ namespace IO.Swagger.CLI
             List<URLInfo> urlInfos = new List<URLInfo>();
             urlInfos.Add(urlInfo);
             URLClass AllPackages = new URLClass(urlInfos);
-
+            Console.WriteLine("Getting URL statistics for some packages");
             //Call NPM 
             for (int i = 0; i < 3; i++)
             {
@@ -34,6 +34,7 @@ namespace IO.Swagger.CLI
                     if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
                     {
                         callNPM(pkg);
+                        Console.WriteLine("NPM info for " + pkg.getName() + " pulled successfully");
                         
                         //add built in delay to avoid rate limiting
                         System.Threading.Thread.Sleep(500);
@@ -55,6 +56,7 @@ namespace IO.Swagger.CLI
             //set gh token from bq
             BigQueryFactory factory = new BigQueryFactory();
             var ghtoken = factory.GetGithubTokenStoredInBQ();
+            Console.WriteLine("Github token is " + ghtoken);
 
             //Call github
             for (int i = 0; i < 3; i++)
@@ -72,6 +74,7 @@ namespace IO.Swagger.CLI
                     if ((pkg.getType() == "github" || pkg.getType() == "both") && pkg.getGHSuccess() == false)
                     {
                         callGithub(pkg, ghtoken);
+                        Console.WriteLine("Github info for " + pkg.getName() + " pulled successfully");
 
                         //add built in delay to avoid rate limiting
                         System.Threading.Thread.Sleep(500);

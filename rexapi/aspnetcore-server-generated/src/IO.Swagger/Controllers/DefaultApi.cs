@@ -845,7 +845,6 @@ namespace IO.Swagger.Controllers
 
 
                 //get Json file
-
                 URLInfo urlInfo = new URLInfo(body.URL);
                 urlInfo.setPath("/app/TempDirectory");
                 urlInfo.getJsonFile("/app/TempDirectory");
@@ -885,7 +884,6 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
                 Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
                 Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
-                Console.WriteLine($"license name: {urlInfo.license}");
 
 
 
@@ -914,12 +912,12 @@ namespace IO.Swagger.Controllers
 
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{ver.ToString()}'";
-            Console.WriteLine("Line 619" + query);
+            Console.WriteLine("Line 619 " + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             if (result == null)
             {
-                Response.Headers.Add("X-Debug", "Package already exists");
+                Response.Headers.Add("X-Debug", "Package already exists (null)");
                 return StatusCode(409);
             }
             if (result.TotalRows > 0)

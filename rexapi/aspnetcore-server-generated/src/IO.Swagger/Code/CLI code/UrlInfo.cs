@@ -280,7 +280,7 @@ namespace IO.Swagger.CLI
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = files[i].Replace("\\", "/");
-                Console.WriteLine(files[i]);
+                //Console.WriteLine(files[i]);
             }
 
             foreach (string file in files)
