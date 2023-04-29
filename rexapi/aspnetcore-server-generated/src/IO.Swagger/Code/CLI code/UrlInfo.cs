@@ -238,6 +238,28 @@ namespace IO.Swagger.CLI
 
             return "none";
         }
+
+        public string returnGHURLfrompackagejson()
+        {
+            Console.WriteLine("Inside returnGHURLfrompackagejson Function");
+            StreamReader sr = new StreamReader(packageJsonPath);
+            string line = sr.ReadLine();
+
+            while (line != null)
+            {
+                if (line.Contains("\"repository\":"))
+                {
+                    string[] splitLine = line.Split("\"");
+                    Console.WriteLine(splitLine[3]);
+                    baseURL = splitLine[3];
+                    return splitLine[3];
+                }
+
+                line = sr.ReadLine();
+            }
+
+            return "none";
+        }
         public void getJsonFile(string directoryPath)
         {
             Console.WriteLine("Inside getJsonFile Function");

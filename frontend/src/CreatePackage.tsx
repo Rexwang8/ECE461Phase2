@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import './App.css'
+import './CreatePackage.css';
 
 function CreatePackage() {
 
   localStorage.setItem("loaded", "0");
-
   
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [loggedIn, setLogIn] = useState(false);
@@ -82,18 +81,18 @@ function CreatePackage() {
         </div>
       </nav>
       <section className="about-us">
-        <h1>Create Packages</h1>
-        <p>
-          Kevin, the notorious ECE student, has gained quite the reputation as a rat on a boat. 
-          Always finding himself in precarious situations, he's known for missing ECE 404 lectures due to his uncanny ability to lock his key in his house. 
-          His clumsiness knows no bounds, and his peers often find themselves amused by his misadventures. 
-          However, despite his mishaps, Kevin managed to excel on exam 2 of ECE 404, showcasing his aptitude for the subject. 
-          His ability to bounce back from setbacks and perform well in academics is truly commendable, even if he occasionally resembles a rat navigating choppy waters.
-          In addition to his infamous mishaps, Kevin is also known for being a selfless and supportive fellow student. 
-          Despite his own challenges, he is always willing to lend a hand to his peers, even if it means putting himself at a disadvantage. 
-          Kevin's willingness to help others, even at his own expense, speaks volumes about his character and dedication to his classmates. 
-          His commitment to academic excellence, despite his occasional clumsy antics, makes him a truly outstanding student who is highly regarded by both his professors and fellow students alike.
-        </p>
+        <h1>Create Package</h1>
+        <div className="content-row">
+          <div id="URLOption">
+            <input type="text" placeholder='Please Enter a NPM or Github Link' size={30}/>
+          </div>
+          Or
+          <div id="ContentOption">
+            <input type="file" placeholder="upload zipfile"></input>
+          </div>     
+        </div>
+               
+
       </section>
     </div>
   )
