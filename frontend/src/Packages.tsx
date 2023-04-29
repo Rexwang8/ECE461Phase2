@@ -9,6 +9,7 @@ interface QueryRequest {
 type ListItem = {
   name: string;
   version: string[];
+  id: string;
 };
 
 function createPackagesListRequest(token: string, queries: QueryRequest[]): [string, Record<string, string>, string] {
@@ -85,16 +86,14 @@ function Packages() {
       .then(response => response.json())
       .then(json => {console.log(json)
         const parsedArray = JSON.parse(json);
-        
+
         for(let i = 0; i < parsedArray.length; i++) {
-          console.log("enter 3");
           addItem(parsedArray[i].Name, parsedArray[i].Version, parsedArray[i].ID);
         }
         setListItems(myList);
 
         setIsLoading(false);
-        console.log("here is my list");
-        console.log(myList);
+
       })
       .catch(error => console.error(error));
   }
@@ -102,9 +101,9 @@ function Packages() {
   const [searchQuery, setSearchQuery] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const handleMoreInfoClick = (packageName: string) => {
+  const handleMoreInfoClick = (packageName: string, packageID: string) => {
     // alert(`Clicked on package: ${packageName}`);
-    localStorage.setItem('packageID', packageName);
+    localStorage.setItem('packageName', packageName);
     redirectToPackageInfo();
   };
 
@@ -257,7 +256,7 @@ function Packages() {
                     <div className="item-version">{`Number of Versions: ${item.version.length}`}</div>
                   </div>
 
-                  <button className="button" onClick={() => handleMoreInfoClick(item.name)}>More Info</button>
+                  <button className="button" onClick={() => handleMoreInfoClick(item.name, item.id)}>More Info</button>
 
                   
                 </div>
