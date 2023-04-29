@@ -7,15 +7,9 @@ import Package_info from './Package_info';
 import CreatePackage from './CreatePackage';
 import './index.css';
 
-// Get the current URL path
-// const path = window.location.pathname;
-// alert(typeof path);
-// const path: string = "/Signup";
+
 const path = localStorage.getItem("path_name");
-// if(!path) {
-//   path
-// }
-// alert(path);
+
 ReactDOM.render(
   <React.StrictMode>
     {path === '/Packages' ? (

@@ -75,6 +75,10 @@ body {
   margin-top: 35px;
 }
 
+.download_button {
+  background: green;
+}
+
 .profile-dropdown button {
   color: black;
   padding: 12px 16px;
