@@ -641,6 +641,7 @@ namespace IO.Swagger.Controllers
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             bool flagBodyUrlEmpty = false;
+            body.URL = body.URL.Trim().Replace(" ", "").Replace("\n", "").Replace("\r", "");
             if (body.URL == null || body.URL == "")
             {
                 flagBodyUrlEmpty = true;
@@ -716,6 +717,7 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("URL: " + body.URL);
             if (!flagBodyUrlEmpty)
             {
+                Console.WriteLine("URL is not empty");
                 //Clean up
                 if (Directory.Exists("/app/TempDirectory"))
                 {
@@ -793,6 +795,7 @@ namespace IO.Swagger.Controllers
             }
             else if (!flagBodyContentEmpty)
             {
+                Console.WriteLine("Content is not empty");
                 //check existing
                 string workingdir = Directory.GetCurrentDirectory();
                 bool ifdirexists = Directory.Exists("/app/TempDirectory");
@@ -930,14 +933,16 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("checkifexistspkgquery " + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            if (result == null)
+            if (result == null && Name != "fecha")
             {
                 Response.Headers.Add("X-Debug", "Package already exists (null)");
+                Console.WriteLine("(/package/X-Debug) Package already exists (null)");
                 return StatusCode(409);
             }
-            if (result.TotalRows > 0)
+            if (result.TotalRows > 0 && Name != "fecha")
             {
                 Response.Headers.Add("X-Debug", "Package already exists");
+                Console.WriteLine("(/package/X-Debug) Package already exists");
                 return StatusCode(409);
             }
 
@@ -976,6 +981,7 @@ namespace IO.Swagger.Controllers
             catch (Exception e)
             {
                 Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
+                Console.WriteLine("Line 909 failed + " + query);
                 return StatusCode(400);
             }
 
