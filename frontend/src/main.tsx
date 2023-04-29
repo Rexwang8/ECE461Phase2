@@ -5,6 +5,7 @@ import Packages from './Packages';
 import Signup from './Signup';
 import Package_info from './Package_info';
 import CreatePackage from './CreatePackage';
+import UpdatePackage from './UpdatePackage'
 import './index.css';
 
 
@@ -18,6 +19,8 @@ ReactDOM.render(
       <Signup />
     ) : path === '/Package_info' ? (
       <Package_info />
+    ) : path === '/UpdatePackage' ? (
+      <UpdatePackage />
     ) : path === '/CreatePackage' ? (
       <CreatePackage />
     ) : (

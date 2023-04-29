@@ -200,6 +200,22 @@ function PackageInfo() {
     convertBinaryToZip(binaryData2[0], localStorage.getItem('packageName') + "_" + localStorage.getItem("version"));
   }
 
+  const handleUpdateClick = () => {
+    console.log(localStorage.getItem("ver_id"))
+    // localStorage.setItem("loaded", "0");
+    // localStorage.setItem("path_name", "/PackageUpdate")
+    // location.reload();
+    if (localStorage.getItem("ver_id"))
+    {
+      localStorage.setItem("packageID", localStorage.getItem("packageID")!);
+      localStorage.setItem("loaded", "0");
+      localStorage.setItem("path_name", "/PackageUpdate")
+      location.reload();
+    }
+    else {
+      alert("Error: Package ID not found.");
+    }
+  }
 
   if(isLoading) {
     return(<div>
@@ -257,7 +273,7 @@ function PackageInfo() {
         <h2>Update</h2>
         <ul>
           <li>Update <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
-          <button className = "download_button" >Update</button>
+          <button className = "download_button" onClick={handleUpdateClick}>Update</button>
         </ul>
         <div className="section-line"></div>
         
