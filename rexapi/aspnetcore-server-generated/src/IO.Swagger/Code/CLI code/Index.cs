@@ -20,37 +20,22 @@ namespace IO.Swagger.CLI
             urlInfos.Add(urlInfo);
             URLClass AllPackages = new URLClass(urlInfos);
             Console.WriteLine("Getting URL statistics for some packages");
-            //Call NPM 
-            for (int i = 0; i < 3; i++)
-            {
-                if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
-                {
-                    break;
-                }
+            Console.WriteLine("type: " + urlInfo.getType());
 
-                foreach (var pkg in AllPackages.GetAllPackages().Values)
+            if (urlInfo.getType() == "npm" || urlInfo.getType() == "both")
+            {
+                for(int i = 0; i < 3; i++)
                 {
-                    Console.WriteLine("Getting npm info for " + pkg.getName());
-                    if ((pkg.getType() == "npm" || pkg.getType() == "both") && pkg.getNPMSuccess() == false)
+                    callNPM(urlInfo);
+                    if (urlInfo.getNPMSuccess() == true)
                     {
-                        callNPM(pkg);
-                        Console.WriteLine("NPM info for " + pkg.getName() + " pulled successfully");
-                        
-                        //add built in delay to avoid rate limiting
-                        System.Threading.Thread.Sleep(500);
+                        Console.WriteLine("NPM info for " + urlInfo.getName() + " pulled successfully");
+                        break;
                     }
+                    Console.WriteLine("Retrying npm pulls(retry " + (i + 1) + " out of 3)");
                 }
-                //update total npm pulled
-                AllPackages.countNpmPulled();
-                if (AllPackages.getTotalNpmPulled() == AllPackages.getTotalNpm())
-                {
-                    Console.WriteLine("All npm packages pulled successfully( " + AllPackages.getTotalNpmPulled() + " out of " + AllPackages.getTotalNpm() + " )");
-                    break;
-                }
-                
-                Console.WriteLine("Retrying npm pulls(retry " + (i + 1) + " of 3)");
-                System.Threading.Thread.Sleep(2000);
             }
+           
 
 
             //set gh token from bq
@@ -58,40 +43,18 @@ namespace IO.Swagger.CLI
             var ghtoken = factory.GetGithubTokenStoredInBQ();
             Console.WriteLine("Github token is " + ghtoken);
 
-            //Call github
-            for (int i = 0; i < 3; i++)
+            if(urlInfo.getType() == "github" || urlInfo.getType() == "both")
             {
-                if (AllPackages.getTotalGithubPulled() == AllPackages.getTotalGithub())
+                for (int i = 0; i < 3; i++)
                 {
-
-                    break;
-                }
-
-                foreach (var pkg in AllPackages.GetAllPackages().Values)
-                {
-                    Console.WriteLine("Getting github info for " + pkg.getName());
-                    Console.WriteLine("pkg type is " + pkg.getType());
-                    if ((pkg.getType() == "github" || pkg.getType() == "both") && pkg.getGHSuccess() == false)
+                    callGithub(urlInfo, ghtoken);
+                    if (urlInfo.getGHSuccess() == true)
                     {
-                        callGithub(pkg, ghtoken);
-                        Console.WriteLine("Github info for " + pkg.getName() + " pulled successfully");
-
-                        //add built in delay to avoid rate limiting
-                        System.Threading.Thread.Sleep(500);
+                        Console.WriteLine("Github info for " + urlInfo.getName() + " pulled successfully");
+                        break;
                     }
+                    Console.WriteLine("Retrying github pulls(retry " + (i + 1) + " out of 3)");
                 }
-
-                //update total github pulled
-                AllPackages.countGithubPulled();
-                if (AllPackages.getTotalGithubPulled() == AllPackages.getTotalGithub())
-                {
-                    Console.WriteLine("All github packages pulled successfully( " + AllPackages.getTotalGithubPulled() + " out of " + AllPackages.getTotalGithub() + " )");
-                    break;
-                }
-
-
-                Console.WriteLine("Retrying github pulls(retry " + (i + 1) + " of 3)");
-                System.Threading.Thread.Sleep(2000);
             }
 
         }
@@ -119,6 +82,7 @@ namespace IO.Swagger.CLI
 
         public static async void callGithub(URLInfo urlInfo, string githubToken)
         {
+            Console.WriteLine("Inside callGithub Function");
             //prevent double calls
             if (urlInfo.getGHSuccess())
                 return;
