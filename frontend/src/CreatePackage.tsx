@@ -14,7 +14,7 @@ class PackageData {
 }
 
 function FormPackageRequest(token: string, content: string, urlpackage: string, jsprogram: string): [string, Record<string, string>, string] {
-  const url = "http://package-registry-461.appspot.com/package";
+  const url = "https://package-registry-461.appspot.com/package";
   const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
   const packageObj = new PackageData(content, urlpackage, jsprogram);
   const body = JSON.stringify(packageObj, null, 4);
