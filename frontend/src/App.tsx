@@ -89,7 +89,6 @@ function App() {
           Despite his own challenges, he is always willing to lend a hand to his peers, even if it means putting himself at a disadvantage. 
           Kevin's willingness to help others, even at his own expense, speaks volumes about his character and dedication to his classmates. 
           His commitment to academic excellence, despite his occasional clumsy antics, makes him a truly outstanding student who is highly regarded by both his professors and fellow students alike.
-          ewqeweqwe
         </p>
 
       </div>
