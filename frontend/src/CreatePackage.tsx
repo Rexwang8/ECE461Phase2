@@ -22,7 +22,7 @@ function FormPackageRequest(token: string, content: string, urlpackage: string, 
 }
 
 function CreatePackage() {
-
+  const [isLoading, setIsLoading] = useState(false);
   localStorage.setItem("loaded", "0");
   localStorage.removeItem("version");
   
@@ -108,6 +108,7 @@ function CreatePackage() {
   
 
   const handleClickCreateButton = () => {
+    setIsLoading(true);
     try {
       if (ContentValue === "URL") {
         const urlfile = document.getElementById('inputURL') as HTMLInputElement;
@@ -128,6 +129,7 @@ function CreatePackage() {
           .then(data => {
             console.log(data);
             // do something with the data
+            setIsLoading(false);
           });
         
       }
@@ -161,6 +163,7 @@ function CreatePackage() {
               .then(data => {
                 console.log(data);
                 // do something with the data
+                setIsLoading(false);
               });
           }).catch((error) => {
             alert("invalid file")
@@ -175,48 +178,57 @@ function CreatePackage() {
     }
   }
 
-  return (
-    <div className="App">
-      <nav className="navbar">
-        <div className="navbar-left">
-        </div>
-        <div className="navbar-right">
-          <button className="profile-button" onClick={handleProfileButtonClick}>
-            Menu
-          </button>
-          {isProfileOpen && (
-            <div className="profile-dropdown">
-              {loggedIn ? (
-                     <button onClick={redirectToLogOut}>Log out</button>
-                   ) : (
-                     <button onClick={redirectToSignUp}>Log in</button>
-                   )}
-              <button onClick={redirectToAbout}>About us</button>
-              <button onClick={redirectToPackages}>Packages</button>
-              <button onClick={redirectToCreatePage}>Create Package</button>
-              <button onClick={handleClickCreateButton}>Other</button>
-            </div>
-          )}
-        </div>
-      </nav>
-      <section className="create-main">
-          <h1>Create Package:</h1>
-          <div className="content-row">
-            <div id="URLOption" onClick={handleURLoption}>
-              <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
-            </div>
-            Or
-            <div id="ContentOption" onClick={handleContentoption}>
-              <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
-            </div>     
+  if (isLoading)
+  {
+    return (<div>
+              <div className="isloading">Loading data please wait...</div>
+            </div>);
+  }
+  else
+  {
+    return (
+      <div className="App">
+        <nav className="navbar">
+          <div className="navbar-left">
           </div>
-          <div>
-            <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
+          <div className="navbar-right">
+            <button className="profile-button" onClick={handleProfileButtonClick}>
+              Menu
+            </button>
+            {isProfileOpen && (
+              <div className="profile-dropdown">
+                {loggedIn ? (
+                       <button onClick={redirectToLogOut}>Log out</button>
+                     ) : (
+                       <button onClick={redirectToSignUp}>Log in</button>
+                     )}
+                <button onClick={redirectToAbout}>About us</button>
+                <button onClick={redirectToPackages}>Packages</button>
+                <button onClick={redirectToCreatePage}>Create Package</button>
+                <button onClick={handleClickCreateButton}>Other</button>
+              </div>
+            )}
           </div>
-          <button onClick={handleClickCreateButton}>Create</button>
-      </section>
-    </div>
-  )
+        </nav>
+        <section className="create-main">
+            <h1>Create Package:</h1>
+            <div className="content-row">
+              <div id="URLOption" onClick={handleURLoption}>
+                <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
+              </div>
+              Or
+              <div id="ContentOption" onClick={handleContentoption}>
+                <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
+              </div>     
+            </div>
+            <div>
+              <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
+            </div>
+            <button onClick={handleClickCreateButton}>Create</button>
+        </section>
+      </div>
+    )
+  }
 }
 
 export default CreatePackage;
