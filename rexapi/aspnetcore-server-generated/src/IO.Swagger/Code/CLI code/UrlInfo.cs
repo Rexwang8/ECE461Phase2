@@ -681,7 +681,11 @@ namespace IO.Swagger.CLI
             Console.WriteLine("Pull requests: " + resp.repository.pullRequests.totalCount);
             if(resp.repository.pullRequests.nodes.Count > 0)
             Console.WriteLine("Pull request comments: " + resp.repository.pullRequests.nodes[0].comments.totalCount);
-            Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+            if(resp.repository.pullRequests.nodes.Count > 1)
+            {
+                Console.WriteLine("Pull request committed line count: " + resp.repository.pullRequests.nodes[1].commits.number);
+            }
+            
 
             Console.WriteLine("Open pull requests: " + resp.repository.openPullRequests.totalCount);
             Console.WriteLine("Discussions: " + resp.repository.discussions.totalCount);

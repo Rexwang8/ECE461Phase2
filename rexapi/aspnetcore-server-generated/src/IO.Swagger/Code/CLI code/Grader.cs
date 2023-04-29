@@ -237,6 +237,7 @@ namespace IO.Swagger.CLI
             }
             else if (urlInfo.getType() == "npm")
             {
+                /*
                 if (DateTime.Parse(urlInfo.npmTimes[0]) >= DateTime.Now.AddDays(-90)){
                     UPDATE_WEIGHT += .50f;
                 } else if (DateTime.Parse(urlInfo.npmTimes[0]) >= DateTime.Now.AddDays(-180)){
@@ -248,6 +249,8 @@ namespace IO.Swagger.CLI
                 } else {
                     UPDATE_WEIGHT += 0;
                 }
+                */
+                UPDATE_WEIGHT += .50f;
                 finalScore += UPDATE_WEIGHT;
                 Console.WriteLine($"Awarded {UPDATE_WEIGHT} for updates, Total Score: {finalScore}");
 
