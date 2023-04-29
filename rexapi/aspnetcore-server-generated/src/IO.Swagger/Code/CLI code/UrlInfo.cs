@@ -509,7 +509,7 @@ namespace IO.Swagger.CLI
                             homepageUrl
                             isArchived
                             isDisabled
-                            isForkname
+                            isFork
                             isLocked
                             isPrivate
                             isEmpty
@@ -537,24 +537,29 @@ namespace IO.Swagger.CLI
                     forks {{
                         totalCount
                     }}
-                    pullRequests(states: MERGED, first: 100) {{
-                        totalCount
-                        nodes {{    
-                            title
-                            comments {{
-                                totalCount
-                            }}
-
-                            number
-                            commits(first: 100) {{
-                                nodes {{
-                                    commit {{
-                                        number
-                                    }}
+                    defaultBranchRef {{
+                      target {{
+                        ... on Commit {{
+                          history(first: 100) {{
+                            totalCount
+                            edges {{
+                              node {{
+                                ... on Commit {{
+                                    changedFiles
                                 }}
+                              }}
                             }}
-
+                          }}
                         }}
+                      }}
+                    }}
+                    pullRequests(first: 100, states: MERGED) {{
+                      nodes {{
+                        reviews(first: 1) {{
+                          totalCount
+                        }}
+                        changedFiles
+                      }}
                     }}
                     openPullRequests: pullRequests(states: OPEN) {{
                         totalCount
