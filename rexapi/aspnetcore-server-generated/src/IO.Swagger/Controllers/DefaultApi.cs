@@ -847,11 +847,14 @@ namespace IO.Swagger.Controllers
                 //get Json file
 
                 URLInfo urlInfo = new URLInfo(body.URL);
+                urlInfo.setPath("/app/TempDirectory");
+                urlInfo.getJsonFile("/app/TempDirectory");
+                
                 urlInfo.returnGHURLfrompackagejson();
                 urlInfo.initType();
                 urlInfo.initName();
-                urlInfo.setPath("/app/TempDirectory");
-                urlInfo.getJsonFile("/app/TempDirectory");
+                
+                
                 //get name
                 Name = urlInfo.returnNameFromPackage();
                 //get version
@@ -1190,6 +1193,12 @@ namespace IO.Swagger.Controllers
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             //VERIFY TOKEN
+            if(xAuthorization == null)
+            {
+                Response.Headers.Add("X-Debug", "Token is null");
+                Console.WriteLine("(/package/{id}/rate/X-Debug) Token is null");
+                return StatusCode(400);
+            }
             string token = xAuthorization;
             bool isSantized = Sanitizer.VerifyTokenSanitized(token);
             if (!isSantized)
@@ -1225,11 +1234,28 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            if(id == "" || id == null)
+            {
+                Response.Headers.Add("X-Debug", "PackageID is empty");
+                Console.WriteLine("(/package/{id}/rate/X-Debug) PackageID is empty");
+                return StatusCode(400);
+            }
+
+            bool isidguid = Guid.TryParse(id, out Guid guid);
+            if (!isidguid)
+            {
+                Response.Headers.Add("X-Debug", "PackageID is not a guid");
+                Console.WriteLine("(/package/{id}/rate/X-Debug) PackageID is not a guid");
+                return StatusCode(400);
+            }
+
             //Check if the package exist 
 
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
-            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{id}'";
+            string query = $"SELECT * FROM `package-registry-461.packages.package-ratings` WHERE metaid = '{id}' LIMIT 1";
+            
+
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
@@ -1238,20 +1264,89 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
-
-            //Get the Content Data 
-            query = $"SELECT * FROM `package-registry-461.packages.packagesData` WHERE metaid = '{id}'";
-
-
+            if(result == null)
+            {
+                Response.Headers.Add("X-Debug", "Package does not exist");
+                return StatusCode(404);
+            }
             PackageRating rating = new PackageRating();
-            rating.BusFactor = 2;
-            rating.Correctness = 3;
-            rating.RampUp = 2;
-            rating.ResponsiveMaintainer = 3;
-            rating.LicenseScore = 2;
-            rating.GoodPinningPractice = 2;
-            rating.PullRequest = 2;
-            rating.NetScore = 2;
+
+            foreach(BigQueryRow row in result)
+            {
+                if(row["busfactor"] != null)
+                {
+                    rating.BusFactor = (float)row["bus_factor"];
+                }
+                else 
+                {
+                    rating.BusFactor = 0;
+                }
+
+                if (row["correctness"] != null)
+                {
+                    rating.Correctness = (float)row["correctness"];
+                }
+                else
+                {
+                    rating.Correctness = 0;
+                }
+
+                if (row["rampup"] != null)
+                {
+                    rating.RampUp = (float)row["rampup"];
+                }
+                else
+                {
+                    rating.RampUp = 0;
+                }
+
+                if (row["responsive"] != null)
+                {
+                    rating.ResponsiveMaintainer = (float)row["responsive"];
+                }
+                else
+                {
+                    rating.ResponsiveMaintainer = 0;
+                }
+
+                if (row["licensescore"] != null)
+                {
+                    rating.LicenseScore = (float)row["licensescore"];
+                }
+                else
+                {
+                    rating.LicenseScore = 0;
+                }
+
+                if (row["goodpin"] != null)
+                {
+                    rating.GoodPinningPractice = (float)row["goodpin"];
+                }
+                else
+                {
+                    rating.GoodPinningPractice = 0;
+                }
+
+                if (row["pullreq"] != null)
+                {
+                    rating.PullRequest = (float)row["pullreq"];
+                }
+                else
+                {
+                    rating.PullRequest = 0;
+                }
+
+                if (row["netscore"] != null)
+                {
+                    rating.NetScore = (float)row["netscore"];
+                }
+                else
+                {
+                    rating.NetScore = 0;
+                }
+
+            }
+
 
             //Download the Package
             //Perform 
