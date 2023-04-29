@@ -1722,42 +1722,44 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults results = null;
 
+            string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
             try
             {
-                string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
                 factory.SetQuery(query);
                 results = factory.ExecuteQuery();
             }
             catch (Exception e)
             {
-                Console.WriteLine("(/package/{id}/X-Debug) Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
-                Response.Headers.Add("X-Debug", "Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed: " + query);
+                Response.Headers.Add("X-Debug", "Query failed: " + query);
                 return StatusCode(400);
             }
             if (results == null)
             {
-                Console.WriteLine("(/package/{id}/X-Debug) Query failed");
-                Response.Headers.Add("X-Debug", "Query failed");
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed" + query);
+                Response.Headers.Add("X-Debug", "Query failed" + query);
                 return StatusCode(400);
             }
             if (results.TotalRows == 0)
             {
-                Console.WriteLine("(/package/{id}/X-Debug) Package does not exist");
-                Response.Headers.Add("X-Debug", "Package does not exist");
+                Console.WriteLine("(/package/{id}/X-Debug) Package does not exist" + query);
+                Response.Headers.Add("X-Debug", "Package does not exist" + query);
                 return StatusCode(404);
             }
 
+
+            query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE metaid = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
             //update package
             try
             {
-                string query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE id = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+                
                 factory.SetQuery(query);
                 results = factory.ExecuteQuery();
             }
             catch (Exception e)
             {
-                Console.WriteLine("(/package/{id}/X-Debug) Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
-                Response.Headers.Add("X-Debug", "Query failed: " + e.ToString().Replace("\n", "").Replace("\r", "").Replace("\t", ""));
+                Console.WriteLine("(/package/{id}/X-Debug) Query failed: " + query);
+                Response.Headers.Add("X-Debug", "Query failed: " + query);
                 return StatusCode(400);
             }
 
@@ -2029,31 +2031,42 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            Response.Headers.Add("X-Debug", "Registry reset");
+            Console.WriteLine("(reset/X-Debug) Registry reset");
+
+            return StatusCode(200);
+
             //get bigquery
             BigQueryFactory factory = new BigQueryFactory();
-            var ghtoken = factory.GetGithubTokenStoredInBQ();
-            Console.WriteLine("(reset/X-Debug) Registry reset + github token: " + ghtoken);
-            Response.Headers.Add("X-Debug1", "Registry reset + github token: " + ghtoken);
+            //reset metadata
+            string query = "DELETE FROM `package-registry-461.packages.packagesMetadata` WHERE 1=1";
+            factory.SetQuery(query);
+            BigQueryResults result = factory.ExecuteQuery();
+
+            //reset data
+            query = "DELETE FROM `package-registry-461.packages.packagesData` WHERE 1=1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+
+            //reset users
+            query = "DELETE FROM `package-registry-461.userData.users` WHERE 1=1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+
+            //reset history
+            query = "DELETE FROM `package-registry-461.packages.packagesHistory` WHERE 1=1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
+
+            //reset ratings
+            query = "DELETE FROM `package-registry-461.packages.package-ratings` WHERE 1=1";
+            factory.SetQuery(query);
+            result = factory.ExecuteQuery();
 
 
-            //make directory
 
 
-            //var co = new CloneOptions();
-            //co.CredentialsProvider = (_url, _user, _cred) =>
-            //    new UsernamePasswordCredentials { Username = "KingRex212", Password = "3tH')>bGp]}D_S" };
-            //
-            //Repository.Clone("https://github.com/Rexwang8/fast-epubtotxt", "./test", co);
-            //
-            ////wait 2s
-            //Thread.Sleep(2000);
-            ////check if repo file exists
-            //if (!System.IO.File.Exists("./test/README.md"))
-            //{
-            //    Response.Headers.Add("X-Debug", "Repo does not exist");
-            //    return StatusCode(400);
-            //}
-
+            
 
             return StatusCode(200);
 
