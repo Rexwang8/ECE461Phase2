@@ -230,10 +230,10 @@ def main():
     #PrintResponse(response, False)
     
     #reset -- works but doesn't reset currently
-    #url, header = FormResetRequest(token)
-    #print(f"DELETE: {url} WITH HEADER: {header}")
-    #response = requests.delete(url, headers=header)
-    #PrintResponse(response, False)
+    url, header = FormResetRequest(token)
+    print(f"DELETE: {url} WITH HEADER: {header}")
+    response = requests.delete(url, headers=header)
+    PrintResponse(response, False)
     
     #create 
     #Using Link -- works using gh link, not with npm link
@@ -298,10 +298,10 @@ def main():
     #PrintResponse(response, True)
     
     #update package 
-    url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
-    print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.put(url, headers=header, data=body)
-    PrintResponse(response, False)
+    #url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
+    #print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.put(url, headers=header, data=body)
+    #PrintResponse(response, False)
     
     
 

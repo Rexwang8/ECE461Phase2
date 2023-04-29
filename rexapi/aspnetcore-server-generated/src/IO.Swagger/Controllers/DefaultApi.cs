@@ -657,13 +657,13 @@ namespace IO.Swagger.Controllers
             if (flagBodyUrlEmpty && flagBodyContentEmpty)
             {
                 Console.WriteLine("(/package/X-Debug) Missing field(s)");
-                Response.Headers.Add("X-Debug", "Missing field(s)");
+                Response.Headers.Add("X-Debug", "Missing field(s), returning 400");
                 return StatusCode(400);
             }
             if (flagBodyContentEmpty == false && flagBodyUrlEmpty == false)
             {
                 Console.WriteLine("(/package/X-Debug) Too many fields");
-                Response.Headers.Add("X-Debug", "Too many fields");
+                Response.Headers.Add("X-Debug", "Too many fields, returning 400");
                 return StatusCode(400);
             }
 
@@ -1987,7 +1987,7 @@ namespace IO.Swagger.Controllers
             if (xAuthorization != null)
             {
                 Console.WriteLine($"(reset/X-Debug) RunID: {runid} Token: {xAuthorization}");
-                Response.Headers.Add("X-Debug", $"RunID: {runid} Token: {xAuthorization}");
+                Response.Headers.Add("X-Debug1231", $"RunID: {runid} Token: {xAuthorization}");
             }
             Console.WriteLine("------END DEBUG INFO-----");
 
