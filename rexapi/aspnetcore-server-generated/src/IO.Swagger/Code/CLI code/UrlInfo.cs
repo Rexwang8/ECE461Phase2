@@ -252,42 +252,31 @@ namespace IO.Swagger.CLI
 
             while (line != null)
             {
-                if (line.Contains("\"repository\":"))
-                {
-                    Console.WriteLine("Found repository line: " + line);
-                    string[] splitLine = line.Split("\"");
-                    if(splitLine[3] != null)
-                    {
-                        if (splitLine[3].Contains("https://github.com"))
-                        {
-                            Console.WriteLine(splitLine[3]);
-                            baseURL = splitLine[3];
-                            return splitLine[3];
-                        }
-                        else
-                        {
-                            Console.WriteLine("No github URL found in package.json (REPO)");
-                        }
-                    }
-                }
-                if (line.Contains("homepage"))
+                if (line.Contains("homepage") && line.Contains("https://github.com"))
                 {
                     Console.WriteLine("Found homepage line: " + line);
                     string[] splitLine = line.Split("\"");
                     if (splitLine[3] != null)
                     {
-                        if (splitLine[3].Contains("https://github.com"))
-                        {
+
                             Console.WriteLine(splitLine[3]);
                             baseURL = splitLine[3];
                             return splitLine[3];
-                        }
-                        else
-                        {
-                            Console.WriteLine("No github URL found in package.json (HOMEPAGE)");
-                        }
                     }
                 }
+                if (line.Contains("\"repository\":") && line.Contains("https://github.com"))
+                {
+                    Console.WriteLine("Found repository line: " + line);
+                    string[] splitLine = line.Split("\"");
+                    if(splitLine[3] != null)
+                    {
+                            Console.WriteLine(splitLine[3]);
+                            baseURL = splitLine[3];
+                            return splitLine[3];
+
+                    }
+                }
+                
 
                 line = sr.ReadLine();
             }
