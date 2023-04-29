@@ -31,10 +31,10 @@ function FormPackageRegexSearchRequest(token: string, regex: string): [string, R
   return [url, header, body];
 }
 
-function DeleteIDRequest(token: string, id: string): [string, Record<string, string>] {
-    const url = `https://package-registry-461.appspot.com/package/${id}`;
-    const header = {'X-Authorization': token, 'Accept': 'application/json'};
-    return [url, header];
+function deletePackageRequestByID(token: string, id: string): [string, Record<string, string>] {
+  const url = `https://package-registry-461.appspot.com/package/${id}`;
+  const headers = {'X-Authorization': token, 'Accept': 'application/json'};
+  return [url, headers];
 }
 
 const versions: [string, boolean][] = [];
@@ -215,10 +215,35 @@ function PackageInfo() {
     }
   }
 
-  const handleDelete = () => {
-    console.log("deleting individual package");
 
+  // const handleDelete = () => {
+  //   const [authUrl, authHeader] = deletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262");
+  //   console.log(`DELETE: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
+  //   const response = await fetch(authUrl, { method: 'DELETE', headers: authHeader });
+  // }
+
+  const handleDelete = () => {
+    const [authUrl, authHeader] = deletePackageRequestByID(localStorage.getItem("login_token"), localStorage.getItem("ver_id"));
+    console.log(`DELETE: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
+
+    fetch(authUrl, { method: 'DELETE', headers: authHeader })
+      .then(response => {
+        if (!response.ok) {
+          console.log(response);
+          throw new Error('Network response was not ok');
+        }
+        // do something with successful response, like show a success message
+        console.log(response);
+        localStorage.setItem("path_name", "/Packages")
+        location.reload();
+      })
+      .catch(error => {
+        // handle error, like showing an error message to the user
+        alert('Please make sure you are an admin - There was a problem with the network request:', error);
+      });
+    
   }
+
 
   if(isLoading) {
     return(<div>
@@ -269,6 +294,7 @@ function PackageInfo() {
           <div className="section-line"></div>
         <h2>Download</h2>
         <ul>
+          
           <li>Download <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
           <button className = "download_button" onClick={createDownload} >Download</button>
         </ul>
@@ -308,7 +334,7 @@ function PackageInfo() {
         <h2>Delete</h2>
         <ul>
           <li>Delete <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
-          <button className = "delete_button" >Delete</button>
+          <button className = "delete_button" onClick={handleDelete}>Delete</button>
         </ul>
         <div className="section-line"></div>
         </main>

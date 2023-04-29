@@ -150,6 +150,7 @@ function CreatePackage() {
             else {
               setIsLoading(false);
               alert("Failed to create due to Error " + data.status)
+              location.reload();
             }
           });
 
@@ -192,6 +193,7 @@ function CreatePackage() {
               else {
                 setIsLoading(false);
                 alert("Failed to create due to Error " + data.status)
+                location.reload();
               }
               
             });
