@@ -891,7 +891,7 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("(/package/X-Debug) Net score is less than 0.5");
                 return StatusCode(424);
             }
-            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsiveness, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{urlInfo.license}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}')";
+            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsive, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{urlInfo.license}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}')";
             Console.WriteLine("Line 619 " + ratequery);
             factory.SetQuery(ratequery);
             result = factory.ExecuteQuery();
@@ -899,7 +899,7 @@ namespace IO.Swagger.Controllers
 
             //check if package exists 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE name = '{Name}' AND version = '{ver.ToString()}'";
-            Console.WriteLine("Line 619 " + query);
+            Console.WriteLine("checkifexistspkgquery " + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
             if (result == null)
@@ -921,12 +921,14 @@ namespace IO.Swagger.Controllers
             //Add to package table
 
 
-            query = $"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES ('@pkgcontent', '{body.JSProgram.Replace("\n", "@").Replace("'", "$")}', '{URL}', '{ID}', '{Name}')";
+            query = @$"INSERT INTO `package-registry-461.packages.packagesData` (content, jsprogram, url, metaid, name) VALUES (@pkgcontent, '{body.JSProgram.Replace("\n", "@").Replace("'", "$")}', '{URL}', '{ID}', '{Name}')";
+            Console.WriteLine("Length of content: " + body.Content.Length);
             var parameters = new BigQueryParameter[]
         {
             new BigQueryParameter("pkgcontent", BigQueryDbType.String, body.Content)
         };
-            var client = factory.GetClient();
+            var credentials = GoogleCredential.GetApplicationDefault();
+            var client = BigQueryClient.Create("package-registry-461", credentials);
             var job = client.CreateQueryJob(
                 sql: query,
                 parameters: parameters,
