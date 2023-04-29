@@ -705,7 +705,8 @@ namespace IO.Swagger.Controllers
             string versionfromfile = "";
             Version ver = null;
             string urltoinit = "";
-            if(body.URL != null && body.URL != "")
+            FileInfo fileinfo = null;
+            if (body.URL != null && body.URL != "")
             {
                 urltoinit = body.URL;
             }
@@ -721,10 +722,10 @@ namespace IO.Swagger.Controllers
                     Directory.Delete("/app/TempDirectory", true);
                 }
 
-                FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
-                if (fileInfo.Exists)
+                fileinfo = new FileInfo("/app/TempPackage.zip");
+                if (fileinfo.Exists)
                 {
-                    fileInfo.Delete();
+                    fileinfo.Delete();
                 }
 
                 Name = (body.URL).Split('/').Last();
@@ -777,20 +778,6 @@ namespace IO.Swagger.Controllers
                 Console.WriteLine("Package was zipped");
                 body.Content = Base64Encoder.Encode("/app/TempPackage.zip");
                 Console.WriteLine("Package was encoded");
-
-
-
-
-
-                //Delete the Package
-                Directory.Delete("/app/TempDirectory", true);
-                Console.WriteLine("Line 583");
-
-                fileInfo = new FileInfo("/app/TempPackage.zip");
-                if (fileInfo.Exists)
-                {
-                    fileInfo.Delete();
-                }
                 Console.WriteLine("Line 605");
             }
             else if (!flagBodyContentEmpty)
@@ -798,8 +785,8 @@ namespace IO.Swagger.Controllers
                 //check existing
                 string workingdir = Directory.GetCurrentDirectory();
                 bool ifdirexists = Directory.Exists("/app/TempDirectory");
-                FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
-                bool ifzipexists = fileInfo.Exists;
+                fileinfo = new FileInfo("/app/TempPackage.zip");
+                bool ifzipexists = fileinfo.Exists;
 
                 Response.Headers.Add("Check", $"workingdir = {workingdir}, ifdirexists = {ifdirexists}, ifzipexists = {ifzipexists}");
                 //Clean up
@@ -808,10 +795,10 @@ namespace IO.Swagger.Controllers
                     Directory.Delete("/app/TempDirectory", true);
                 }
 
-                fileInfo = new FileInfo("/app/TempPackage.zip");
-                if (fileInfo.Exists)
+                fileinfo = new FileInfo("/app/TempPackage.zip");
+                if (fileinfo.Exists)
                 {
-                    fileInfo.Delete();
+                    fileinfo.Delete();
                 }
 
 
@@ -819,7 +806,7 @@ namespace IO.Swagger.Controllers
                 {
                     //convert base64 into zip
                     Base64Encoder.Decode(body.Content, "/app/TempPackage.zip");
-                    fileInfo = new FileInfo("/app/TempPackage.zip");
+                    fileinfo = new FileInfo("/app/TempPackage.zip");
                 }
                 catch (Exception e)
                 {
@@ -865,19 +852,6 @@ namespace IO.Swagger.Controllers
                     return StatusCode(400);
                 }
 
-                
-
-
-                //Delete 
-                fileInfo = new FileInfo("/app/TempPackage.zip");
-                if (fileInfo.Exists)
-                {
-                    fileInfo.Delete();
-                }
-                if (Directory.Exists("/app/TempDirectory"))
-                {
-                    Directory.Delete("/app/TempDirectory", true);
-                }
                 Console.WriteLine("Content finished for name: " + Name + " and version: " + ver.ToString());
             }
             else
@@ -892,25 +866,25 @@ namespace IO.Swagger.Controllers
             string ID = Guid.NewGuid().ToString();
 
             //Get data for package Rating
-                APICalls.GetURLStatistics(urlInfo);
-                Console.WriteLine(urlInfo.getNPMInfo());
-                StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
-                StaticAnalysis.Analyze(urlInfo);
-                Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
+            APICalls.GetURLStatistics(urlInfo);
+            Console.WriteLine(urlInfo.getNPMInfo());
+            StaticAnalysisLibrary StaticAnalysis = new StaticAnalysisLibrary();
+            StaticAnalysis.Analyze(urlInfo);
+            Console.WriteLine("Line 647 " + urlInfo.codeCharCount);
 
-                string[] LicenseList = { "Academic Free", "Apache", "Artistic", "Boost", "BSD", "BSD", "BSD", "BSD", "CC0 1.0 Universal", "(CC0 1.0)", "CeCILL-2.1", "CeCILL-B", "Common Public license", "(CPL-1.0)", "Creative Commons Attribution No Derivatives 4.0 International", "Creative Commons Attribution 3.0 Unported", "(CC BY 3.0)", "Creative Commons Attribution Non Commercial Share Alike 4.0 International", "Creative Commons Attribution Share Alike 4.0 International", "Creative Commons Attribution 4.0 International", "(CC-BY-4.0)", "Deutsche Freie", "Eclipse", "European Union Public License", "(EUPL)", "GNU General Public License", "(GPL)", "GNU Affero", "ISC License", "LaTeX Project", "Microsoft Reciprocal", "MIT", "ODC Open Database", "(ODbL)", "ODC Public Domain Dedication", "(PDDL)", "Open Software license", "(OSL-3.0)", "Open Data Commons Attribution", "(ODC-BY)", "PostgreSQL", "The Universal Permissive", "Illinois", "NCSA", "Unlicense", "Do What The F*ck You Want To Public License", "WTFPL", "zlib", "libpng" };
-                //log out ratings
-                Console.WriteLine($"Maintainer Rating: {Grader.GetResponseMaintainerScore(urlInfo)}");
-                Console.WriteLine($"RampUp Rating: {Grader.GetRampupTimeScore(urlInfo)}");
-                Console.WriteLine($"Dependency Rating: {Grader.GetDependencyScore(urlInfo)}");
-                Console.WriteLine($"Correctness Rating: {Grader.GetCorrectnessScore(urlInfo)}");
-                Console.WriteLine($"BusFactor Rating: {Grader.GetBusFactorScore(urlInfo)}");
-                Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
-                Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
-                Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
+            string[] LicenseList = { "Academic Free", "Apache", "Artistic", "Boost", "BSD", "BSD", "BSD", "BSD", "CC0 1.0 Universal", "(CC0 1.0)", "CeCILL-2.1", "CeCILL-B", "Common Public license", "(CPL-1.0)", "Creative Commons Attribution No Derivatives 4.0 International", "Creative Commons Attribution 3.0 Unported", "(CC BY 3.0)", "Creative Commons Attribution Non Commercial Share Alike 4.0 International", "Creative Commons Attribution Share Alike 4.0 International", "Creative Commons Attribution 4.0 International", "(CC-BY-4.0)", "Deutsche Freie", "Eclipse", "European Union Public License", "(EUPL)", "GNU General Public License", "(GPL)", "GNU Affero", "ISC License", "LaTeX Project", "Microsoft Reciprocal", "MIT", "ODC Open Database", "(ODbL)", "ODC Public Domain Dedication", "(PDDL)", "Open Software license", "(OSL-3.0)", "Open Data Commons Attribution", "(ODC-BY)", "PostgreSQL", "The Universal Permissive", "Illinois", "NCSA", "Unlicense", "Do What The F*ck You Want To Public License", "WTFPL", "zlib", "libpng" };
+            //log out ratings
+            Console.WriteLine($"Maintainer Rating: {Grader.GetResponseMaintainerScore(urlInfo)}");
+            Console.WriteLine($"RampUp Rating: {Grader.GetRampupTimeScore(urlInfo)}");
+            Console.WriteLine($"Dependency Rating: {Grader.GetDependencyScore(urlInfo)}");
+            Console.WriteLine($"Correctness Rating: {Grader.GetCorrectnessScore(urlInfo)}");
+            Console.WriteLine($"BusFactor Rating: {Grader.GetBusFactorScore(urlInfo)}");
+            Console.WriteLine($"License Rating: {Grader.GetLicenseScore(urlInfo, LicenseList)}");
+            Console.WriteLine($"Pull Requests Rating: {Grader.GetPullRequestsScore(urlInfo)}");
+            Console.WriteLine($"Net Rating: {Grader.GetNetScore(urlInfo)}");
 
-                Console.WriteLine("Net score is over 0.5? : " + (Grader.GetNetScore(urlInfo) > 0.5));
-                string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsiveness, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}')";
+            Console.WriteLine("Net score is over 0.5? : " + (Grader.GetNetScore(urlInfo) > 0.5));
+            string ratequery = $"INSERT INTO `package-registry-461.packages.package-ratings` (metaid, busfactor, correctness, rampup, responsiveness, licensescore, license, goodpin, pullreq, netscore) VALUES ('{ID}', '{Grader.GetBusFactorScore(urlInfo)}', '{Grader.GetCorrectnessScore(urlInfo)}', '{Grader.GetDependencyScore(urlInfo)}', '{Grader.GetLicenseScore(urlInfo, LicenseList)}', '{Grader.GetResponseMaintainerScore(urlInfo)}', '{Grader.GetNetScore(urlInfo)}', '{Grader.GetPullRequestsScore(urlInfo)}', '{Grader.GetRampupTimeScore(urlInfo)}')";
 
 
             //check if package exists 
@@ -963,6 +937,17 @@ namespace IO.Swagger.Controllers
             {
                 Response.Headers.Add("X-DebugQuery", "Query failed: Result: " + result.ToString() + "error" + e.ToString());
                 return StatusCode(400);
+            }
+
+            //Delete the Package
+            if (Directory.Exists("/app/TempDirectory"))
+            {
+                Directory.Delete("/app/TempDirectory", true);
+            }
+            FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
+            if (fileInfo.Exists)
+            {
+                fileInfo.Delete();
             }
 
             return StatusCode(201);
@@ -1194,7 +1179,7 @@ namespace IO.Swagger.Controllers
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             //VERIFY TOKEN
-            if(xAuthorization == null)
+            if (xAuthorization == null)
             {
                 Response.Headers.Add("X-Debug", "Token is null");
                 Console.WriteLine("(/package/{id}/rate/X-Debug) Token is null");
@@ -1235,7 +1220,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if(id == "" || id == null)
+            if (id == "" || id == null)
             {
                 Response.Headers.Add("X-Debug", "PackageID is empty");
                 Console.WriteLine("(/package/{id}/rate/X-Debug) PackageID is empty");
@@ -1255,7 +1240,7 @@ namespace IO.Swagger.Controllers
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults result = null;
             string query = $"SELECT * FROM `package-registry-461.packages.package-ratings` WHERE metaid = '{id}' LIMIT 1";
-            
+
 
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
@@ -1265,20 +1250,20 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
-            if(result == null)
+            if (result == null)
             {
                 Response.Headers.Add("X-Debug", "Package does not exist");
                 return StatusCode(404);
             }
             PackageRating rating = new PackageRating();
 
-            foreach(BigQueryRow row in result)
+            foreach (BigQueryRow row in result)
             {
-                if(row["busfactor"] != null)
+                if (row["busfactor"] != null)
                 {
                     rating.BusFactor = (float)row["bus_factor"];
                 }
-                else 
+                else
                 {
                     rating.BusFactor = 0;
                 }
