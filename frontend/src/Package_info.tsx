@@ -32,6 +32,12 @@ function FormPackageRegexSearchRequest(token: string, regex: string): [string, R
   return [url, header, body];
 }
 
+function DeleteIDRequest(token: string, id: string): [string, Record<string, string>] {
+    const url = `https://package-registry-461.appspot.com/package/${id}`;
+    const header = {'X-Authorization': token, 'Accept': 'application/json'};
+    return [url, header];
+}
+
 const versions: [string, boolean][] = [];
 // const ratings: string[] = [];
 const binaryData2: Uint8Array[] = [];
@@ -126,16 +132,10 @@ function PackageInfo() {
                   console.log(error);
                 });
               }
-              
-
             }            
-           
           });
-        
-        
       }
     } catch (error) {
-      // console.log("we got some error LMAO");
       console.log(error);
     }
   }, []);
@@ -207,14 +207,18 @@ function PackageInfo() {
     // location.reload();
     if (localStorage.getItem("ver_id"))
     {
-      localStorage.setItem("packageID", localStorage.getItem("packageID")!);
       localStorage.setItem("loaded", "0");
-      localStorage.setItem("path_name", "/PackageUpdate")
+      localStorage.setItem("path_name", "/UpdatePackage")
       location.reload();
     }
     else {
       alert("Error: Package ID not found.");
     }
+  }
+
+  const handleDelete = () => {
+    console.log("deleting individual package");
+
   }
 
   if(isLoading) {
