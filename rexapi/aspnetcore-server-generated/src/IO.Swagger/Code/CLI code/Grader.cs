@@ -51,9 +51,10 @@ namespace IO.Swagger.CLI
                     //award less points for more issues
                     int numissues = urlInfo.githubIssues;
                     float scoreAwardedForIssues = ISSUE_WEIGHT * (1 - (numissues/100));
-                    finalScore += Math.Clamp(scoreAwardedForIssues, 0, ISSUE_WEIGHT);
+                    scoreAwardedForIssues = Math.Clamp(scoreAwardedForIssues, 0, ISSUE_WEIGHT);
+                    finalScore += scoreAwardedForIssues;
 
-                    Console.WriteLine($"Awarded {scoreAwardedForIssues} for {numissues} issues");
+                    Console.WriteLine($"Awarded {scoreAwardedForIssues} for {numissues} issues, Total Score: {finalScore}");
                 }
                 else
                 {
@@ -66,8 +67,9 @@ namespace IO.Swagger.CLI
                 //npm doesn't have issues, so instead, we check for size of readme as a patch
                 int lengthnpmReadme = urlInfo.npmReadme.Length;
                 float scoreAwardedForReadme = README_WEIGHT * (1 - (lengthnpmReadme/1000));
-                finalScore += Math.Clamp(scoreAwardedForReadme, 0, README_WEIGHT);
-                Console.WriteLine($"Awarded {scoreAwardedForReadme} for {lengthnpmReadme} characters in readme");
+                scoreAwardedForReadme = Math.Clamp(scoreAwardedForReadme, 0, README_WEIGHT);
+                finalScore += scoreAwardedForReadme;
+                Console.WriteLine($"Awarded {scoreAwardedForReadme} for {lengthnpmReadme} characters in readme, Total Score: {finalScore}");
             }
             else
             {
@@ -79,8 +81,9 @@ namespace IO.Swagger.CLI
             //If it is, we award less points
             int numLinesCode = urlInfo.codeLineCount;
             float scoreAwardedForSize = SIZE_WEIGHT * (1 - (numLinesCode/10000));
-            finalScore += Math.Clamp(scoreAwardedForSize, 0, SIZE_WEIGHT);
-            Console.WriteLine($"Awarded {scoreAwardedForSize} for {numLinesCode} lines of code");
+            scoreAwardedForSize = Math.Clamp(scoreAwardedForSize, 0, SIZE_WEIGHT);
+            finalScore += scoreAwardedForSize;
+            Console.WriteLine($"Awarded {scoreAwardedForSize} for {numLinesCode} lines of code, Total Score: {finalScore}");
 
             //Ratio of comments to code
             //We check with static analysis to see if the repo has a lot of comments
@@ -88,7 +91,7 @@ namespace IO.Swagger.CLI
             int numLinesComments = urlInfo.commentLineCount;
             float scoreAwardedForComments = COMMENT_WEIGHT * ((3.0f * numLinesComments)/numLinesCode);
             finalScore += Math.Clamp(scoreAwardedForComments, 0, COMMENT_WEIGHT);
-            Console.WriteLine($"Awarded {scoreAwardedForComments} for {numLinesComments} lines of comments");
+            Console.WriteLine($"Awarded {scoreAwardedForComments} for {numLinesComments} lines of comments, Total Score: {finalScore}");
 
             //Number of stargazers
             if(urlInfo.getType() == "github" || urlInfo.getType() == "both")
@@ -100,7 +103,7 @@ namespace IO.Swagger.CLI
                     float scoreAwardedForContributors = CONTRIBUTOR_WEIGHT * (2 * numStargazers/100);
                     finalScore += Math.Clamp(scoreAwardedForContributors, 0, CONTRIBUTOR_WEIGHT);
 
-                    Console.WriteLine($"Awarded {scoreAwardedForContributors} for {numStargazers} Stargazers");
+                    Console.WriteLine($"Awarded {scoreAwardedForContributors} for {numStargazers} Stargazers, Total Score: {finalScore}");
                 }
                 else
                 {
@@ -113,7 +116,7 @@ namespace IO.Swagger.CLI
                 int numMaintainers = urlInfo.npmMaintainers.Length / 2;
                 float scoreAwardedForMaintainers = CONTRIBUTOR_WEIGHT * (numMaintainers/30);
                 finalScore += Math.Clamp(scoreAwardedForMaintainers, 0, CONTRIBUTOR_WEIGHT);
-                Console.WriteLine($"Awarded {scoreAwardedForMaintainers} for {numMaintainers} Maintainers");
+                Console.WriteLine($"Awarded {scoreAwardedForMaintainers} for {numMaintainers} Maintainers, Total Score: {finalScore}");
             }
             else
             {
@@ -130,11 +133,12 @@ namespace IO.Swagger.CLI
                 health_score += 1;
             }
             finalScore += HEALTH_WEIGHT * health_score/2;
-            Console.WriteLine($"Awarded {HEALTH_WEIGHT * health_score/2} for health score of {health_score}/2");
+            Console.WriteLine($"Awarded {HEALTH_WEIGHT * health_score/2} for health score of {health_score}/2, Total Score: {finalScore}");
 
 
 
-
+            Console.WriteLine($"Final Rampup Time Score: {finalScore}");
+            urlInfo.rampUp_score = finalScore;
             return finalScore;
         }
         /*
@@ -189,6 +193,8 @@ namespace IO.Swagger.CLI
                 }else{
                     ISSUES_WEIGHT += 0;
                 }
+                finalScore += ISSUES_WEIGHT;
+                Console.WriteLine($"Awarded {ISSUES_WEIGHT} for {numissues} issues, Total Score: {finalScore}");
 
 
                 //Checking Status
@@ -204,37 +210,43 @@ namespace IO.Swagger.CLI
                     STATUS_WEIGHT += .30f;
                 }
 
+                finalScore += STATUS_WEIGHT;
+                Console.WriteLine($"Awarded {STATUS_WEIGHT} for status, Total Score: {finalScore}");
 
-                /*
+
+                
                 //Checking Updates
-                if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-90)){
+                if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-90)){
                     UPDATE_WEIGHT += .20f;
-                } else if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-80)){
+                } else if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-180)){
                     UPDATE_WEIGHT += .15f;
-                } else if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-365)){
+                } else if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-365)){
                     UPDATE_WEIGHT += .10f;
-                } else if (urlInfo.githubUpdatedAt >= DateTime.Now - DateTime.Now.AddDays(-730)){
+                } else if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-730)){
                     UPDATE_WEIGHT += .5f;
                 } else {
                     UPDATE_WEIGHT += 0;
-                }*/
-                UPDATE_WEIGHT += 0.15f;
+                }
+                finalScore += UPDATE_WEIGHT;
+                Console.WriteLine($"Awarded {UPDATE_WEIGHT} for updates, Total Score: {finalScore}");
 
             }
             else if (urlInfo.getType() == "npm")
             {
-                /*if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-90)){
+                if (DateTime.Parse(urlInfo.npmTimes[0]) >= DateTime.Now.AddDays(-90)){
                     UPDATE_WEIGHT += .50f;
-                } else if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-80)){
+                } else if (DateTime.Parse(urlInfo.npmTimes[0]) >= DateTime.Now.AddDays(-180)){
                     UPDATE_WEIGHT += .40f;
-                } else if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-365)){
+                } else if (DateTime.Parse(urlInfo.npmTimes[0]) >= DateTime.Now.AddDays(-365)){
                     UPDATE_WEIGHT += .30f;
-                } else if (urlInfo.npmTimes >= DateTime.Now - DateTime.Now.AddDays(-730)){
+                } else if (DateTime.Parse(urlInfo.npmTimes[0]) >= DateTime.Now.AddDays(-730)){
                     UPDATE_WEIGHT += .20f;
                 } else {
                     UPDATE_WEIGHT += 0;
-                }*/
-                UPDATE_WEIGHT += 0.4f;
+                }
+                finalScore += UPDATE_WEIGHT;
+                Console.WriteLine($"Awarded {UPDATE_WEIGHT} for updates, Total Score: {finalScore}");
+
             
                 if ((urlInfo.npmMaintainers).Count() == 0){
                     MAINTAINER_WEIGHT += 0;
@@ -249,12 +261,13 @@ namespace IO.Swagger.CLI
                 } else if ((urlInfo.npmMaintainers).Count() >= 51){
                     MAINTAINER_WEIGHT += .50f;
                 }
+                finalScore += MAINTAINER_WEIGHT;
+                Console.WriteLine($"Awarded {MAINTAINER_WEIGHT} for maintainers, Total Score: {finalScore}");
             }
             else
             {
                 Console.WriteLine("No Type, Awarding no points");
             }
-            finalScore = MAINTAINER_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT + UPDATE_WEIGHT;
             urlInfo.responseMaintainer_score = finalScore;
             return finalScore;
         }
@@ -268,10 +281,11 @@ namespace IO.Swagger.CLI
             float totalDependencies = 0;
             float pinnedDependencies = 0;
 
-            if (urlInfo.packageJsonPath == "" | urlInfo.packageJsonPath == "none")
+            if (urlInfo.packageJsonPath == "" || urlInfo.packageJsonPath == "none")
             {
                 Console.WriteLine("**WARNING** Package does not have a package.json file");
-                return -1;
+                urlInfo.dependency_score = 0;
+                return 0;
             }
 
             try
@@ -313,15 +327,19 @@ namespace IO.Swagger.CLI
                     sr.Close();
                     Console.WriteLine("Pinned Dependencies: " + pinnedDependencies);
                     Console.WriteLine("Total Dependencies: " + totalDependencies);
-                    return pinnedDependencies/totalDependencies;
+                    urlInfo.dependency_score = (float)(Math.Clamp(pinnedDependencies/totalDependencies, 0, 1)
+                    return (Math.Clamp(pinnedDependencies/totalDependencies, 0, 1));
                 }
                 
                 sr.Close();
+                Console.WriteLine("No Dependencies");
+                urlInfo.dependency_score = 1;
                 return 1;
             }
             catch (Exception e)
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
+                urlInfo.dependency_score = 0;
                 return 0;
             }
 
@@ -463,6 +481,8 @@ namespace IO.Swagger.CLI
                 }else{
                     ISSUES_WEIGHT += 0;
                 }
+                finalScore += ISSUES_WEIGHT;
+                Console.WriteLine("Issues: " + ISSUES_WEIGHT, "Final Score: " + finalScore);
 
 
                 //Checking Status
@@ -478,6 +498,9 @@ namespace IO.Swagger.CLI
                     STATUS_WEIGHT += .30f;
                 }
 
+                finalScore += STATUS_WEIGHT;
+                Console.WriteLine("Status: " + STATUS_WEIGHT, "Final Score: " + finalScore);
+
                 if (urlInfo.githubStargazers <= 10){
                     STARGAZERS_WEIGHT += 0;
                 } else if (urlInfo.githubStargazers <= 50){
@@ -487,6 +510,9 @@ namespace IO.Swagger.CLI
                 } else {
                     STARGAZERS_WEIGHT += .20f;
                 }
+
+                finalScore += STARGAZERS_WEIGHT;
+                Console.WriteLine("Stargazers: " + STARGAZERS_WEIGHT, "Final Score: " + finalScore);
 
             }
             else if (urlInfo.getType() == "npm")
@@ -504,6 +530,10 @@ namespace IO.Swagger.CLI
                 } else if ((urlInfo.npmMaintainers).Count() >= 51){
                     MAINTAINERS_WEIGHT += .50f;
                 }
+
+                finalScore += MAINTAINERS_WEIGHT;
+                Console.WriteLine("Maintainers: " + MAINTAINERS_WEIGHT, "Final Score: " + finalScore);
+
                 if (urlInfo.npmVersions.Length == 0){
                     VERSIONS_WEIGHT += 0;
                 } else if (urlInfo.npmVersions.Length <= 10){
@@ -515,12 +545,14 @@ namespace IO.Swagger.CLI
                 } else if (urlInfo.npmVersions.Length >= 80){
                     VERSIONS_WEIGHT += .40f;
                 }
+
+                finalScore += VERSIONS_WEIGHT;
+                Console.WriteLine("Versions: " + VERSIONS_WEIGHT, "Final Score: " + finalScore);
             }
             else
             {
                 Console.WriteLine("No Type, Awarding no points");
             }
-            finalScore = MAINTAINERS_WEIGHT + STATUS_WEIGHT + ISSUES_WEIGHT + VERSIONS_WEIGHT + STARGAZERS_WEIGHT;
             urlInfo.correctness_score = finalScore;
             return finalScore;
         }
@@ -658,12 +690,14 @@ namespace IO.Swagger.CLI
                 watcher_score += 10;
             }
             finalScore += watcher_score/10 * WATCHER_WEIGHT;
-
+            urlInfo.busFactor_score = finalScore;
+            Console.WriteLine("Final Score [bus]: " + finalScore);
             return finalScore;
         }
 
         public static int GetLicenseScore(URLInfo urlInfo, string []LicenseList)
         {
+            urlInfo.CalcValidLicense();
             /*if (urlInfo.licensePath == "" || urlInfo.licensePath == null)
             {
                 urlInfo.license = "Not Available";
@@ -675,6 +709,7 @@ namespace IO.Swagger.CLI
             }
             //string License = File.ReadLines(urlInfo.licensePath).First(); // gets the first line from file.
             string License = urlInfo.license;
+            Console.WriteLine("License: " + License);
             var allLicenses = LicenseList;
             var allLicensesArr = allLicenses;
             List<string> allLicensesArrCleaned = new List<string>();
@@ -715,6 +750,8 @@ namespace IO.Swagger.CLI
             Console.WriteLine(prChanges);
             double fraction = (double)prChanges / totalChanges;
             fraction = CalculateScore((float)fraction);
+            fraction = Math.Clamp(fraction, 0, 1);
+            Console.WriteLine("Pull Request Score: " + fraction);
             return (float)fraction;
         } 
 

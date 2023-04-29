@@ -950,6 +950,8 @@ namespace IO.Swagger.Controllers
                 fileInfo.Delete();
             }
 
+            Console.WriteLine("Sucessfully added package to database");
+
             return StatusCode(201);
         }
 

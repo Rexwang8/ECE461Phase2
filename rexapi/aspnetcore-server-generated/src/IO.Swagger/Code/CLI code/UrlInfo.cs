@@ -474,7 +474,11 @@ namespace IO.Swagger.CLI
             }
 
             //write to urlinfo
-            license = licensetype;
+            if(licensetype != null && licensetype != "")
+            {
+                Console.WriteLine("License type: " + licensetype);
+                license = licensetype;
+            }
             npmDescription = description;
             npmReadme = readme;
             npmHomepage = homepage;
@@ -665,7 +669,10 @@ namespace IO.Swagger.CLI
             githubIsLocked = resp.repository.isLocked;
             githubIsPrivate = resp.repository.isPrivate;
             githubIsEmpty = resp.repository.isEmpty;
-            //githubLicense = resp.repository.licenseInfo.name;
+            if(resp.repository.licenseInfo != null)
+            {
+                githubLicense = resp.repository.licenseInfo.name;
+            }
             if(resp.repository.releases.nodes.Count > 0)
             {
                 githubReleaseName = resp.repository.releases.nodes[0].name;
