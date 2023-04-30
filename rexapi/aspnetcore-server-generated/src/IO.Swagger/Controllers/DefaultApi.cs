@@ -1656,7 +1656,7 @@ namespace IO.Swagger.Controllers
             }
 
 
-            query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('RETRIEVE', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
+            query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('DOWNLOAD', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
             factory.SetQuery(query);
             factory.ExecuteQuery();
 
@@ -2144,8 +2144,15 @@ namespace IO.Swagger.Controllers
 
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
+                if (result == null)
+                {
+                    Response.Headers.Add("X-Debug", "Query failed");
+                    Console.WriteLine("(packages/X-Debug) Query failed");
+                    return StatusCode(400);
+                }
 
                 results.Add(result);
+
                 if (result.TotalRows > 100)
                 {
                     //too many packages
