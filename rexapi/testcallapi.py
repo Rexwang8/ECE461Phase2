@@ -263,10 +263,10 @@ def main():
     
     
     #Get history of package by name -- works
-    #url, header = FormPackageHistoryRequest(token, "even")
-    #print(f"History GET: {url} WITH HEADER: {header}")
-    #response = requests.get(url, headers=header)
-    #PrintResponse(response, True)
+    url, header = FormPackageHistoryRequest(token, "even")
+    print(f"History GET: {url} WITH HEADER: {header}")
+    response = requests.get(url, headers=header)
+    PrintResponse(response, True)
     
     #get metadata by regex/name -- works
     #url, header, body = FormPackageRegexSearchRequest(token, "(.*)")
@@ -275,23 +275,23 @@ def main():
     #PrintResponse(response, True)
     
     #rating by id -- works but doesn't return actual rating
-    #url, header = FormRateRequest(token, "8b7061cd-e0a7-46a9-990d-5768d796c7f5")
+    #url, header = FormRateRequest(token, "ed235e78-69ce-4ecc-b241-938ae1f6ef1e")
     #print(f"Rating GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
     
     
     #packages list version/name query -- works with 1 query
-    QueryRequestObj = list()
-    QueryRequestObj.append(QueryRequest("fecha", ""))
-    QueryRequestObj.append(QueryRequest("fecha", ""))
-    url, header, body = PackagesListRequest(token, QueryRequestObj)
-    print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.post(url, headers=header, data=body)
-    PrintResponse(response, True)
+    #QueryRequestObj = list()
+    #QueryRequestObj.append(QueryRequest("fecha", ""))
+    #QueryRequestObj.append(QueryRequest("fecha", ""))
+    #url, header, body = PackagesListRequest(token, QueryRequestObj)
+    #print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.post(url, headers=header, data=body)
+    #PrintResponse(response, True)
         
     #retrieve package -- works
-    #url, header = FormRetrievePackageRequest(token, "8b7061cd-e0a7-46a9-990d-5768d796c7f5")
+    #url, header = FormRetrievePackageRequest(token, "ed235e78-69ce-4ecc-b241-938ae1f6ef1e")
     #print(f"Retrieve GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)

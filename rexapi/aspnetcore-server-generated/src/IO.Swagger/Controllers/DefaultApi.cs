@@ -504,7 +504,12 @@ namespace IO.Swagger.Controllers
             //return list of package history entries in response body, formatted as ndjson [{},{}]
             Console.WriteLine("(/package/byName/{name}/X-Debug) Package history returned");
             Response.Headers.Add("X-Debug", "Package history returned");
-            return StatusCode(200, packageHistoryEntries);
+
+            string historyobj = JsonConvert.SerializeObject(packageHistoryEntries);
+            historyobj = historyobj.Replace("'id'", "\"ID\"").Replace("'packageMetadata': {'name':", "\"PackageMetadata\": {\"Name\":").Replace("'version'", "\"Version\"")
+            .Replace("'user'", "\"User\"")
+            .Replace("'action'", "\"ACTION\"").Replace("'date'", "\"DATE\"");
+            return StatusCode(200, historyobj);
         }
 
         /// <summary>
@@ -604,7 +609,9 @@ namespace IO.Swagger.Controllers
             //return list of package metadata in response body, formatted as ndjson [{},{}]
             Console.WriteLine("(/package/byRegEx/X-Debug) Package metadata returned");
             Response.Headers.Add("X-Debug", "Package metadata returned");
-            return StatusCode(200, packageMetadata);
+            string regexrespobj = JsonConvert.SerializeObject(packageMetadata);
+            regexrespobj = regexrespobj.Replace("'name'", "\"Name\"").Replace("'version'", "\"Version\"");
+            return StatusCode(200, regexrespobj);
         }
 
         /// <summary>
@@ -1019,7 +1026,9 @@ namespace IO.Swagger.Controllers
 
             string responseobj = JsonConvert.SerializeObject(pkg);
             //ensure stuff is capitalized
-            responseobj = responseobj.Replace("'id'", "'ID'").Replace("'name'", "'Name'").Replace("'version'", "'Version'").Replace("'content'", "'Content'").Replace("'jsprogram'", "'JSProgram'").Replace("'url'", "'URL'");
+            responseobj = responseobj.Replace("'id'", "\"ID\"").Replace("'name'", "\"Name\"")
+            .Replace("'version'", "\"Version\"").Replace("'content'", "\"Content\"")
+            .Replace("'jsprogram'", "\"JSProgram\"").Replace("'url'", "\"URL\"");
 
             return StatusCode(201, responseobj);
         }
@@ -1411,7 +1420,10 @@ namespace IO.Swagger.Controllers
 
             Response.Headers.Add("X-Debug", "Token is valid --- " + id);
             Console.WriteLine("(/package/{id}/rate/X-Debug) Token is valid --- " + id);
-
+            string rateobj = JsonConvert.SerializeObject(rating);
+            rateobj = rateobj.Replace("'busFactor'", "\"BusFactor\"").Replace("'correctness'", "\"Correctness\"").Replace("'rampUp'", "\"RampUp\"")
+            .Replace("'responsiveMaintainer'", "\"ResponsiveMaintainer\"").Replace("'licenseScore'", "\"LicenseScore\"").Replace("'pullRequest'", "\"PullRequest\"")
+            .Replace("'goodPinningPractice'", "\"GoodPinningPractice\"").Replace("'netScore'", "\"NetScore\"");
 
             return StatusCode(200, rating);
         }
@@ -1653,7 +1665,10 @@ namespace IO.Swagger.Controllers
             Package package = new Package();
             package.Metadata = metadata;
             package.Data = data;
-            return StatusCode(200, package);
+            string pkgobj = JsonConvert.SerializeObject(package);
+            pkgobj = pkgobj.Replace("'id'", "\"ID\"").Replace("'name'", "\"Name\"").Replace("'version'", "\"Version\"")
+            .Replace("'content'", "\"Content\"").Replace("'jsprogram'", "\"JSProgram\"").Replace("'url'", "\"URL\"");
+            return StatusCode(200, pkgobj);
         }
 
         /// <summary>
