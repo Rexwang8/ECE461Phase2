@@ -641,7 +641,10 @@ namespace IO.Swagger.Controllers
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             bool flagBodyUrlEmpty = false;
-            body.URL = body.URL.Trim().Replace(" ", "").Replace("\n", "").Replace("\r", "");
+            if(body.URL != null)
+            {
+                body.URL = body.URL.Trim().Replace(" ", "").Replace("\n", "").Replace("\r", "");
+            }
             if (body.URL == null || body.URL == "")
             {
                 flagBodyUrlEmpty = true;
@@ -973,7 +976,11 @@ namespace IO.Swagger.Controllers
             //Add to History table
             try
             {
-                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('POST', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{ver.ToString()}')";
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('CREATE', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{ver.ToString()}')";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('RATE', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{ID}', '{Name}', '{ver.ToString()}')";
                 factory.SetQuery(query);
                 result = factory.ExecuteQuery();
                 Console.WriteLine("Line 904");
@@ -1475,10 +1482,13 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            //Get metadata for package, most recent version
+            
 
+            //Get metadata for package, most recent version
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults results = null;
+
+            
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id='{id}' ORDER BY version DESC LIMIT 1";
             factory.SetQuery(query);
             try
@@ -1629,6 +1639,12 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+
+            query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('RETRIEVE', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{metadata.ID}', '{metadata.Name}', '{metadata.Version}')";
+            factory.SetQuery(query);
+            factory.ExecuteQuery();
+
+
             //returns package with 200
             Package package = new Package();
             package.Metadata = metadata;
@@ -1668,24 +1684,43 @@ namespace IO.Swagger.Controllers
             if (xAuthorization == null || body == null || id == null)
             {
                 //append debug message to header
-                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/AuthenticationToken");
-                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/AuthenticationToken");
+                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/Update");
+                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/Update");
                 return StatusCode(400);
             }
             if (body.Data == null || body.Metadata == null)
             {
                 //append debug message to header
-                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/AuthenticationToken");
-                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/AuthenticationToken");
+                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/Update");
+                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/Update");
                 return StatusCode(400);
             }
-            if (body.Data.Content == null || body.Data.URL == null || body.Metadata.ID == null || body.Metadata.Name == null || body.Metadata.Version == null)
+            if (body.Metadata.ID == null || body.Metadata.Name == null || body.Metadata.Version == null)
             {
                 //append debug message to header
-                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/AuthenticationToken");
-                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/AuthenticationToken");
+                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/Update");
+                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/Update");
                 return StatusCode(400);
             }
+
+            //either body.content or body.url must be present and not both
+            if (body.Data.Content == null && body.Data.URL == null)
+            {
+                //append debug message to header
+                Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/Update");
+                Response.Headers.Add("X-Debug", "Missing field(s) in the PackageID/Update");
+                return StatusCode(400);
+            }
+
+            if (body.Data.Content != null && body.Data.URL != null)
+            {
+                //append debug message to header
+                Console.WriteLine("(/package/{id}/X-Debug) Too many field(s) in the PackageID/Update");
+                Response.Headers.Add("X-Debug", "Too many field(s) in the PackageID/Update");
+                return StatusCode(400);
+            }
+
+
             string token = xAuthorization;
             //Validate token
             bool isSanitized = Sanitizer.VerifyTokenSanitized(token);
@@ -1723,12 +1758,25 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
+            //flag if package is in form content or url
+            bool isContent = false;
+            if (body.Data.Content != null)
+            {
+                isContent = true;
+            }
+            bool isURL = false;
+            if (body.Data.URL != null)
+            {
+                isURL = true;
+            }
+
 
             //check if package exists
             BigQueryFactory factory = new BigQueryFactory();
             BigQueryResults results = null;
 
             string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE id = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+            Console.WriteLine("(/package/{id}/X-Debug) Query: " + query);
             try
             {
                 factory.SetQuery(query);
@@ -1752,6 +1800,164 @@ namespace IO.Swagger.Controllers
                 Response.Headers.Add("X-Debug", "Package does not exist" + query);
                 return StatusCode(404);
             }
+
+
+            //if url, clone and extract content from url else use content
+            string urltoinit = "";
+            if(isURL)
+            {
+                urltoinit = body.Data.URL;
+            }
+            else
+            {
+                urltoinit = "";
+            }
+            URLInfo urlinfo = new URLInfo(urltoinit);
+            FileInfo fileinfo = null;
+            string versionfromfile = "";
+            Version ver = null;
+            string URL = "";
+            string content = "";
+
+            if(isURL)
+            {
+
+                //Clean up
+                if (Directory.Exists("/app/TempDirectory"))
+                {
+                    Directory.Delete("/app/TempDirectory", true);
+                }
+
+                fileinfo = new FileInfo("/app/TempPackage.zip");
+                if (fileinfo.Exists)
+                {
+                    fileinfo.Delete();
+                }
+
+                //Download Package
+                //await clonepackage to finish
+                var task = urlinfo.ClonePackage();
+                task.Wait();
+
+                if (!urlinfo.SuccessClone)
+                {
+                    //append debug message to header
+                    Response.Headers.Add("X-Debug", "Package could not be downloaded");
+                    Console.WriteLine("(/package/X-Debug) Package could not be downloaded");
+                    return StatusCode(400);
+                }
+                Console.WriteLine("Package downloaded");
+                urlinfo.path = "/app/TempDirectory";
+                try
+                {
+                    urlinfo.getJsonFile("/app/TempDirectory");
+                    Console.WriteLine("JSON file was found at " + urlinfo.packageJsonPath);
+                    urlinfo.returnGHURLfrompackagejson();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("(/package/X-Debug) Package could not be downloaded");
+                    Response.Headers.Add("X-Debug", "Package could not be downloaded");
+                    return StatusCode(400);
+                }
+                urlinfo.initType();
+                urlinfo.initName();
+
+                //check package downloaded properly
+                if (!Directory.Exists("/app/TempDirectory"))
+                {
+                    Response.Headers.Add("X-Debug", "Package download failed, can't find package");
+                    Console.WriteLine("(/package/X-Debug) Package download failed, can't find package");
+                    return StatusCode(400);
+                }
+
+
+                //Get Json file
+                urlinfo.getJsonFile("/app/TempDirectory");
+                //Get the version
+                versionfromfile = urlinfo.returnVersionFromPackage();
+                ver = new Version(versionfromfile);
+                if (ver.getValidVersion() == false)
+                {
+                    Response.Headers.Add("X-Debug", "Invalid version (Attempted to add package with version " + versionfromfile + ")");
+                    Console.WriteLine("(/package/X-Debug) Invalid version (Attempted to add package with version " + versionfromfile + ")");
+                    return StatusCode(400);
+                }
+                URL = body.Data.URL;
+
+                Response.Headers.Add("Check", $"Name = {body.Metadata.Name}, Version = {ver.ToString()}");
+                Console.WriteLine($"(/package/X-Debug) Name = {body.Metadata.Name}, Version = {ver.ToString()}");
+                //get Body Content
+                System.IO.Compression.ZipFile.CreateFromDirectory("/app/TempDirectory", "/app/TempPackage.zip");
+                Console.WriteLine("Package was zipped");
+                content = Base64Encoder.Encode("/app/TempPackage.zip");
+                Console.WriteLine("Package was encoded");
+            }
+            else if(isContent)
+            {
+                content = body.Data.Content;
+                URL = "";
+                ver = new Version(body.Metadata.Version);
+                if (ver.getValidVersion() == false)
+                {
+                    Response.Headers.Add("X-Debug", "Invalid version (Attempted to add package with version " + body.Metadata.Version + ")");
+                    Console.WriteLine("(/package/X-Debug) Invalid version (Attempted to add package with version " + body.Metadata.Version + ")");
+                    return StatusCode(400);
+                }
+            }
+            else
+            {
+                Response.Headers.Add("X-Debug", "No content or url");
+                Console.WriteLine("(/package/X-Debug) No content or url");
+                return StatusCode(400);
+            }
+
+            BigQueryResults result = null;
+            query = @$"UPDATE `package-registry-461.packages.packagesData` SET content = @pkgcontent, url = @pkgurl WHERE metaid = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}')";
+            Console.WriteLine("Length of content: " + content);
+            var parameters = new BigQueryParameter[]
+        {
+            new BigQueryParameter("pkgcontent", BigQueryDbType.String, content)
+            new BigQueryParameter("pkgurl", BigQueryDbType.String, URL)
+        };
+
+            var credentials = GoogleCredential.GetApplicationDefault();
+            var client = BigQueryClient.Create("package-registry-461", credentials);
+            var job = client.CreateQueryJob(
+                sql: query,
+                parameters: parameters,
+                options: new QueryOptions { UseQueryCache = false });
+            // Wait for the job to complete.
+            job = job.PollUntilCompleted().ThrowOnAnyError();
+
+            result = client.GetQueryResults(job.Reference);
+            //Add to History table
+            try
+            {
+                query = $"INSERT INTO `package-registry-461.packages.packagesHistory` (action, date, user_isadmin, user_name, packagemetadata_id, packagemetadata_name, packagemetadata_version) VALUES ('UPDATE', DATETIME(CURRENT_TIMESTAMP()), {authenticator.getAdmin()}, '{authenticator.getUsername()}', '{body.Metadata.ID}', '{body.Metadata.Name}', '{ver.ToString()}')";
+                factory.SetQuery(query);
+                result = factory.ExecuteQuery();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Line 909 failed + " + query);
+                return StatusCode(400);
+            }
+
+            //Delete the Package
+            if (Directory.Exists("/app/TempDirectory"))
+            {
+                Directory.Delete("/app/TempDirectory", true);
+            }
+            FileInfo fileInfo = new FileInfo("/app/TempPackage.zip");
+            if (fileInfo.Exists)
+            {
+                fileInfo.Delete();
+            }
+
+            Console.WriteLine("Sucessfully added package to database");
+
+
 
 
             query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE metaid = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
