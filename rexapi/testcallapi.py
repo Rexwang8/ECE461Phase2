@@ -256,10 +256,10 @@ def main():
     #PrintResponse(response, False)
     
     #Using Content  -- works with date-fns 2.29.1
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/read2.txt", token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, True)
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/read2.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, True)
     
     
     #Get history of package by name -- works
@@ -282,15 +282,14 @@ def main():
     
     
     #packages list version/name query -- works with 1 query
-    #QueryRequestObj = list()
-    #QueryRequestObj.append(QueryRequest("fecha", ""))
-    #QueryRequestObj.append(QueryRequest("fecha", ""))
-    #url, header, body = PackagesListRequest(token, QueryRequestObj)
-    #print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
-    #response = requests.post(url, headers=header, data=body)
-    #PrintResponse(response, True)
-    
-    
+    QueryRequestObj = list()
+    QueryRequestObj.append(QueryRequest("fecha", ""))
+    QueryRequestObj.append(QueryRequest("fecha", ""))
+    url, header, body = PackagesListRequest(token, QueryRequestObj)
+    print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    response = requests.post(url, headers=header, data=body)
+    PrintResponse(response, True)
+        
     #retrieve package -- works
     #url, header = FormRetrievePackageRequest(token, "8b7061cd-e0a7-46a9-990d-5768d796c7f5")
     #print(f"Retrieve GET: {url} WITH HEADER: {header}")
