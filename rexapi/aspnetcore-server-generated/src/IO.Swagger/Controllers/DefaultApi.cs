@@ -1017,7 +1017,11 @@ namespace IO.Swagger.Controllers
             pkgdata.URL = URL;
             pkg.Data = pkgdata;
 
-            return StatusCode(201, pkg);
+            string responseobj = JsonConvert.SerializeObject(pkg);
+            //ensure stuff is capitalized
+            responseobj = responseobj.Replace("'id'", "'ID'").Replace("'name'", "'Name'").Replace("'version'", "'Version'").Replace("'content'", "'Content'").Replace("'jsprogram'", "'JSProgram'").Replace("'url'", "'URL'");
+
+            return StatusCode(201, responseobj);
         }
 
         /// <summary>
