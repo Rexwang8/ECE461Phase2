@@ -22,7 +22,7 @@ function FormPackageRequest(token: string, content: string, urlpackage: string, 
 }
 
 function CreatePackage() {
-
+  const [isLoading, setIsLoading] = useState(false);
   localStorage.setItem("loaded", "0");
   localStorage.removeItem("version");
   
@@ -64,10 +64,22 @@ function CreatePackage() {
   }
 
   function redirectToLogOut() {
+    localStorage.setItem("loaded", "0");
     localStorage.setItem("path_name", "/Signup");
     localStorage.removeItem("login_token");
     localStorage.removeItem("loaded");
     localStorage.removeItem("packageID");
+    localStorage.removeItem("packageName");
+    localStorage.removeItem("busFactor");
+    localStorage.removeItem("correctness");
+    localStorage.removeItem("goodPinningPractice");
+    localStorage.removeItem("licenseScore");
+    localStorage.removeItem("netScore");
+    localStorage.removeItem("pullRequest");
+    localStorage.removeItem("rampUp");
+    localStorage.removeItem("responsiveMaintainer");
+    localStorage.removeItem("ver_id");
+    localStorage.removeItem("version");
     location.reload();
   }
 
@@ -85,6 +97,19 @@ function CreatePackage() {
     urlArea.style.backgroundColor = 'gray';
     contentArea.style.backgroundColor = 'white';
     ContentValue = "URL";
+  };
+
+  function redirectToPackageInfo() {
+    // window.location.href = '/Package_info';
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/Package_info")
+    location.reload();
+  }
+
+  const doneCreating = (packageName: string) => {
+    // alert(`Clicked on package: ${packageName}`);
+    localStorage.setItem('packageName', packageName);
+    redirectToPackageInfo();
   };
 
   const handleContentoption = () => {
@@ -108,6 +133,7 @@ function CreatePackage() {
   
 
   const handleClickCreateButton = () => {
+    setIsLoading(true);
     try {
       if (ContentValue === "URL") {
         const urlfile = document.getElementById('inputURL') as HTMLInputElement;
@@ -123,13 +149,23 @@ function CreatePackage() {
         const login_token = localStorage.getItem("login_token") as string;
         const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
         console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-        fetch(url, { method: 'POST', headers: header, body: body, mode: 'no-cors' })
+        fetch(url, { method: 'POST', headers: header, body: body})
           .then(response => response.json())
           .then(data => {
             console.log(data);
             // do something with the data
+            if(data.status == null) {
+              // do something with the data
+              setIsLoading(false);
+              doneCreating(data.metadata.name);
+            }
+            else {
+              setIsLoading(false);
+              alert("Failed to create due to Error " + data.status)
+              location.reload();
+            }
           });
-        
+
       }
       else if (ContentValue === "Content"){
         const contentfile = document.getElementById('inputContent') as HTMLInputElement;
@@ -157,11 +193,22 @@ function CreatePackage() {
             const [url, header, body] = FormPackageRequest(login_token, base64String, "", JSFile);
             console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
             fetch(url, { method: 'POST', headers: header, body: body })
-              .then(response => response.json())
-              .then(data => {
-                console.log(data);
+            .then(response => response.json())
+            .then(data => {
+              console.log(data);
+              // alert(data.status)
+              if(data.status == null) {
                 // do something with the data
-              });
+                setIsLoading(false);
+                doneCreating(data.metadata.name);
+              }
+              else {
+                setIsLoading(false);
+                alert("Failed to create due to Error " + data.status)
+                location.reload();
+              }
+              
+            });
           }).catch((error) => {
             alert("invalid file")
           });
@@ -175,48 +222,57 @@ function CreatePackage() {
     }
   }
 
-  return (
-    <div className="App">
-      <nav className="navbar">
-        <div className="navbar-left">
-        </div>
-        <div className="navbar-right">
-          <button className="profile-button" onClick={handleProfileButtonClick}>
-            Menu
-          </button>
-          {isProfileOpen && (
-            <div className="profile-dropdown">
-              {loggedIn ? (
-                     <button onClick={redirectToLogOut}>Log out</button>
-                   ) : (
-                     <button onClick={redirectToSignUp}>Log in</button>
-                   )}
-              <button onClick={redirectToAbout}>About us</button>
-              <button onClick={redirectToPackages}>Packages</button>
-              <button onClick={redirectToCreatePage}>Create Package</button>
-              <button onClick={handleClickCreateButton}>Other</button>
-            </div>
-          )}
-        </div>
-      </nav>
-      <section className="create-main">
-          <h1>Create Package:</h1>
-          <div className="content-row">
-            <div id="URLOption" onClick={handleURLoption}>
-              <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
-            </div>
-            Or
-            <div id="ContentOption" onClick={handleContentoption}>
-              <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
-            </div>     
+  if (isLoading)
+  {
+    return (<div>
+              <div className="isloading">Creating package please wait...</div>
+            </div>);
+  }
+  else
+  {
+    return (
+      <div className="App">
+        <nav className="navbar">
+          <div className="navbar-left">
           </div>
-          <div>
-            <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
+          <div className="navbar-right">
+            <button className="profile-button" onClick={handleProfileButtonClick}>
+              Menu
+            </button>
+            {isProfileOpen && (
+              <div className="profile-dropdown">
+                {loggedIn ? (
+                       <button onClick={redirectToLogOut}>Log out</button>
+                     ) : (
+                       <button onClick={redirectToSignUp}>Log in</button>
+                     )}
+                <button onClick={redirectToAbout}>About us</button>
+                <button onClick={redirectToPackages}>Packages</button>
+                <button onClick={redirectToCreatePage}>Create Package</button>
+                <button onClick={handleClickCreateButton}>Other</button>
+              </div>
+            )}
           </div>
-          <button onClick={handleClickCreateButton}>Create</button>
-      </section>
-    </div>
-  )
+        </nav>
+        <section className="create-main">
+            <h1>Create Package:</h1>
+            <div className="content-row">
+              <div id="URLOption" onClick={handleURLoption}>
+                <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
+              </div>
+              Or
+              <div id="ContentOption" onClick={handleContentoption}>
+                <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
+              </div>     
+            </div>
+            <div>
+              <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
+            </div>
+            <button onClick={handleClickCreateButton}>Create</button>
+        </section>
+      </div>
+    )
+  }
 }
 
 export default CreatePackage;

@@ -218,10 +218,10 @@ def main():
     #PrintResponse(response)
     
     #delete by name -- works
-    #Authurl, Authheader = DeletePackageRequestByName(token, "fecha")
-    #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    #response = requests.delete(Authurl, headers=Authheader)
-    #PrintResponse(response, False)
+    Authurl, Authheader = DeletePackageRequestByName(token, "even")
+    print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    response = requests.delete(Authurl, headers=Authheader)
+    PrintResponse(response, False)
     
     #delete by id -- works
     #Authurl, AuthHeader = DeletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262")
@@ -249,11 +249,11 @@ def main():
     #response = requests.post(Authurl, data=Authbody, headers=Authheader)
     #PrintResponse(response, False)
     
-    #Using Content  -- works with date-fns 2.29.1 and 2.29.2 and 2.29.3
-    Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.3_2.txt", token)
-    print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
-    response = requests.post(Authurl, data=Authbody, headers=Authheader)
-    PrintResponse(response, False)
+    #Using Content  -- works with date-fns 2.29.1
+    #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/date-fns-2.29.3_2.txt", token)
+    #print(f"POST: {Authurl} WITH BODY: {Authbody} AND HEADER: {Authheader}")
+    #response = requests.post(Authurl, data=Authbody, headers=Authheader)
+    #PrintResponse(response, False)
     
     #Using Content  -- works with date-fns 2.29.1
     #Authurl, Authheader, Authbody = CreatePackageContent("rexapi/encoder/read2.txt", token)
