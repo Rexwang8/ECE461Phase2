@@ -1917,7 +1917,7 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("Length of content: " + content);
             var parameters = new BigQueryParameter[]
         {
-            new BigQueryParameter("pkgcontent", BigQueryDbType.String, content)
+            new BigQueryParameter("pkgcontent", BigQueryDbType.String, content),
             new BigQueryParameter("pkgurl", BigQueryDbType.String, URL)
         };
 
