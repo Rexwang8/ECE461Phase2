@@ -1,8 +1,52 @@
 import React, { useState, useEffect } from 'react';
-import JSZip from 'jszip';
-import { saveAs } from 'file-saver';
+// import JSZip from 'jszip';
+// import { saveAs } from 'file-saver';
 import './PackageInfo.css';
 import axios from 'axios';
+
+class PackageData {
+  Content: string;
+  URL: string;
+  JSProgram: string;
+
+  constructor(Content: string, URL: string, JSProgram: string) {
+      this.Content = Content;
+      this.URL = URL;
+      this.JSProgram = JSProgram;
+  }
+}
+
+class PackageMeta {
+  Name: string;
+  Version: string;
+  ID: string;
+
+  constructor(Name: string, Version: string, ID: string) {
+      this.Name = Name;
+      this.Version = Version;
+      this.ID = ID;
+  }
+}
+
+class PackageRequest {
+  metadata: PackageMeta;
+  data: PackageData;
+
+  constructor (metadata: PackageMeta, data: PackageData) {
+      this.metadata = metadata;
+      this.data = data;
+  }
+}
+
+function UpdatePackageRequest(token: string, content: string, urlpackage: string, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
+  const url = `https://package-registry-461.appspot.com/package/${id}`;
+  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
+  const packageData = new PackageData(content, urlpackage, jsprogram);
+  const packageMeta = new PackageMeta(name, version, id);
+  const packageObj = new PackageRequest(packageMeta, packageData);
+  const body = JSON.stringify(packageObj, null, 4);
+  return [url, header, body];
+}
 
 class Regex {
   RegEx: string;
@@ -239,21 +283,58 @@ function PackageInfo() {
     convertBinaryToZip(binaryData2[0], localStorage.getItem('packageName') + "_" + localStorage.getItem("version"));
   }
 
+  function getBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  }
+
   const handleUpdateClick = () => {
-    alert("CHECK THE FUNCTION HANDLEUPDATECLICK IN PACKAGE_INFO.TSX -- THX CUZ WE DON'T NEED THIS NO MORE?")
-    // console.log(localStorage.getItem("ver_id"))
-    // // localStorage.setItem("loaded", "0");
-    // // localStorage.setItem("path_name", "/PackageUpdate")
-    // // location.reload();
-    // if (localStorage.getItem("ver_id"))
-    // {
-    //   localStorage.setItem("loaded", "0");
-    //   localStorage.setItem("path_name", "/UpdatePackage")
-    //   location.reload();
-    // }
-    // else {
-    //   alert("Error: Package ID not found.");
-    // }
+    const zipFile = document.getElementById('newContent') as HTMLInputElement;
+    const selectedFile = zipFile.files ? zipFile.files[0] : null;
+
+    if (selectedFile == null)
+    {
+      alert("Please select a file to upload");
+      return;
+    }
+    
+    const confirmed: boolean = confirm("Are you sure you want to perform this action?");
+    if (!confirmed) {
+      return;
+    }
+
+    var reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onload = function () {
+      reader.result;
+    };
+    reader.onerror = function (error) {
+      alert("invalid file");
+    };
+    
+    getBase64(selectedFile).then((result) => {
+      var base64String = result.split('base64,')[1];
+      const login_token = localStorage.getItem("login_token") as string;
+
+      const [url, header, body] = UpdatePackageRequest(login_token, "", "", "", "", "", "");
+  
+      console.log(`CreatePackage PUT: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
+      fetch(url, { method: 'PUT', headers: header, body: body })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+    }).catch((error) => {
+      alert("invalid file")
+    });
   }
 
 
@@ -335,14 +416,15 @@ function PackageInfo() {
           <div className="section-line"></div>
         <h2>Download</h2>
         <ul>
-          
           <li>Download <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
           <button className = "download_button" onClick={createDownload} >Download</button>
         </ul>
          <div className="section-line"></div>
         <h2>Update</h2>
         <ul>
-          <li>Update <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <li>Update the package of <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <li>Please upload the new zip file</li>
+          <input type="file" id="newContent" placeholder="upload zipfile" accept=".zip, application/zip"/>
           <button className = "download_button" onClick={handleUpdateClick}>Update</button>
         </ul>
         <div className="section-line"></div>
@@ -375,6 +457,7 @@ function PackageInfo() {
         <h2>Delete</h2>
         <ul>
           <li>Delete <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <li>Option is useable only to Admins</li>
           <button className = "delete_button" onClick={handleDelete}>Delete</button>
         </ul>
         <div className="section-line"></div>
