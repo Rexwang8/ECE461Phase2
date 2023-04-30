@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-// import JSZip from 'jszip';
-// import { saveAs } from 'file-saver';
+import JSZip from 'jszip';
+import { saveAs } from 'file-saver';
 import './PackageInfo.css';
 import axios from 'axios';
 
@@ -243,6 +243,12 @@ function PackageInfo() {
     location.reload();
   }
 
+  function redirectToHistory() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/HistoryInfo");
+    location.reload();
+  }
+
   function handleSideBar(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if(event.currentTarget.textContent === "Delete All") {
       // alert(event.currentTarget.textContent);
@@ -267,6 +273,9 @@ function PackageInfo() {
           alert('Please make sure you are an admin - There was a problem with the network request:' + error);
         });
     }
+    else if(event.currentTarget.textContent === "Package History") {
+      redirectToHistory();
+    }
     else {
       if(event.currentTarget.textContent) {
         localStorage.setItem("version", event.currentTarget.textContent);
@@ -276,7 +285,6 @@ function PackageInfo() {
       }
       location.reload();
     }
-    
   }
   function createDownload() {
     console.log("attempting to download")
@@ -406,6 +414,9 @@ function PackageInfo() {
           ))}
           <li>
             <a href="#" onClick={handleSideBar}>Delete All</a>
+          </li>
+          <li>
+            <a href="#" onClick={handleSideBar}>Package History</a>
           </li>
         </ul>
       </nav>        
