@@ -1755,6 +1755,7 @@ namespace IO.Swagger.Controllers
 
 
             query = $"UPDATE `package-registry-461.packages.packagesData` SET content = '{body.Data.Content}', url = '{body.Data.URL}' WHERE metaid = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+            Response.Headers.Add("X-Debugquery234", "Query: " + query);
             //update package
             try
             {
