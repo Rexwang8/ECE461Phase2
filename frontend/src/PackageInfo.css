@@ -187,3 +187,59 @@ body {
     color: green;
   }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.history-box {
+  display: flex;
+  align-items: center;
+  background-color: #e6f3ff;
+  border: 1px solid #80bfff;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 800px;
+}
+
+.dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.dot.green {
+  background-color: #3CB371;
+  color: white;
+}
+
+.dot.red {
+  background-color: #FF5733;
+  color: white;
+}
+
+li {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  margin-right: 5px;
+}
+
+
+
+
+
