@@ -33,6 +33,18 @@ function createNewHistory(action: string, date: string, version: string, user: s
   myPackages.push(newObject);
 }
 
+function extractVersions(jsonString: string): { Version: string, ID: string }[] {
+  const objects = JSON.parse(jsonString);
+  const versions: { Version: string, ID: string }[] = [];
+
+  objects.forEach((object: { Version: string, ID: string }) => {
+    versions.push({ Version: object.Version, ID: object.ID });
+  });
+
+  return versions;
+}
+
+
 function FormRetrievePackageRequest(token: string, packageid: string): [string, {[key: string]: string}] {
   const header: {[key: string]: string} = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
   const url: string = `https://package-registry-461.appspot.com/package/${packageid}`;
@@ -69,7 +81,7 @@ function parseDate(dateStr: string): string {
   return `${year}-${month}-${day}`;
 }
 
-const versions: [string, boolean][] = [];
+const versions_list: [string, boolean][] = [];
 // const ratings: string[] = [];
 let vers: string;
 let admin: boolean;
@@ -106,18 +118,21 @@ function HistoryInfo() {
           .then(response => response.json())
           .then(data => {
             // do something with the data
-            for(let i = 0; i < data.length; i++) {
+            // console.log(data);
+            const versions = extractVersions(data);
+            // console.log(versions);
+            for(let i = 0; i < versions.length; i++) {
               if(!ver && i == 0) {
-                localStorage.setItem("version", data[i].version);
-                versions.push([data[i].version, true]);
+                localStorage.setItem("version", versions[i].Version);
+                versions_list.push([versions[i].Version, true]);
               }
               else {
-                versions.push([data[i].version, false]);
+                versions_list.push([versions[i].Version, false]);
               }
-              if(data[i].version === localStorage.getItem("version")) {
+              if(versions[i].Version === localStorage.getItem("version")) {
                 //check if we are on our current version
-                localStorage.setItem("ver_id", data[i].id);
-                vers = data[i].id;
+                localStorage.setItem("ver_id", versions[i].ID);
+                vers = versions[i].ID
               }
             }
             setIsLoading2(false);            
@@ -127,19 +142,20 @@ function HistoryInfo() {
           console.log(`History GET: ${url_hist} WITH HEADER: ${JSON.stringify(header_hist)}`);
           axios.get(url_hist, { headers: header_hist })
             .then(response => {
-              console.log(response.data); //response.data.date
-
-              for(let i = 0; i < response.data.length; i++) {
-                if(response.data[i].user.isAdmin === true) {
+              //console.log(response.data); //response.data.date
+              const myArray = JSON.parse(response.data)
+              //console.log(myArray);
+              for(let i = 0; i < myArray.length; i++) {
+                if(myArray[i].User.isAdmin === true) {
                   admin = true;
                 }
                 else {
                   admin = false;
                 }
-                createNewHistory(response.data[i].action,
-                  parseDate(response.data[i].date), 
-                  response.data[i].packageMetadata.version,
-                  response.data[i].user.name,
+                createNewHistory(myArray[i].Action,
+                  parseDate(myArray[i].Date), 
+                  myArray[i].PackageMetadata.Version,
+                  myArray[i].User.name,
                   admin);
               }
               setIsLoading(false);
@@ -323,7 +339,7 @@ function HistoryInfo() {
       <nav className="sidebar">
         <h2>Versions</h2>
         <ul>
-          {versions.map((item) => (
+          {versions_list.map((item) => (
             <li key={item[0]}>
               <a href={`#${item[0].toLowerCase()}`} onClick={handleSideBar}>{item[0]}</a>
             </li>

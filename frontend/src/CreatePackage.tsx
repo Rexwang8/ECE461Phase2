@@ -157,7 +157,9 @@ function CreatePackage() {
             if(data.status == null) {
               // do something with the data
               setIsLoading(false);
-              doneCreating(data.metadata.name);
+              const parsedObject = JSON.parse(data);
+              const name = parsedObject.metadata.Name;
+              doneCreating(name);
             }
             else {
               setIsLoading(false);
