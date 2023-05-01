@@ -38,6 +38,24 @@ class PackageRequest {
   }
 }
 
+/////////////////////////
+//Joseph's code for creating download request
+interface Data {
+  Content: string;
+}
+
+interface Metadata {
+  Name: string;
+  Version: string;
+  ID: string;
+}
+
+interface MyObject {
+  metadata: Metadata;
+  data: Data;
+}
+//////////////////////
+
 function UpdatePackageRequest(token: string, content: string, urlpackage: string, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
   const url = `https://package-registry-461.appspot.com/package/${id}`;
   const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
@@ -88,10 +106,21 @@ function DeleteNameRequest(token: string, name: string): [string, Record<string,
     return [url, header];
 }
 
-const versions: [string, boolean][] = [];
+const versions_list: [string, boolean][] = [];
 // const ratings: string[] = [];
 const binaryData2: Uint8Array[] = [];
 let vers: string;
+
+function extractVersions(jsonString: string): { Version: string, ID: string }[] {
+  const objects = JSON.parse(jsonString);
+  const versions: { Version: string, ID: string }[] = [];
+
+  objects.forEach((object: { Version: string, ID: string }) => {
+    versions.push({ Version: object.Version, ID: object.ID });
+  });
+
+  return versions;
+}
 
 function convertBinaryToZip(binaryData: Uint8Array, filename: string) {
 
@@ -112,6 +141,7 @@ function PackageInfo() {
 
   const [isLoading, setIsLoading] = useState(true);
   const [isLoading2, setIsLoading2] = useState(true);
+  const [isLoading3, setIsLoading3] = useState(true);
   const [isDeleting, setIsDeleting] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const package_name = localStorage.getItem('packageName');
@@ -119,6 +149,7 @@ function PackageInfo() {
   useEffect(() => {
     setIsLoading(true);
     setIsLoading2(true);
+    setIsLoading3(true);
     const login_token = localStorage.getItem('login_token');
     let responseString: string; 
     if (!login_token) {
@@ -135,41 +166,42 @@ function PackageInfo() {
           .then(response => response.json())
           .then(data => {
             // do something with the data
-            for(let i = 0; i < data.length; i++) {
+            console.log(data);
+            const versions = extractVersions(data);
+            console.log(versions);
+            for(let i = 0; i < versions.length; i++) {
               if(!ver && i == 0) {
-                localStorage.setItem("version", data[i].version);
-                versions.push([data[i].version, true]);
+                localStorage.setItem("version", versions[i].Version);
+                versions_list.push([versions[i].Version, true]);
               }
               else {
-                versions.push([data[i].version, false]);
+                versions_list.push([versions[i].Version, false]);
               }
-              if(data[i].version === localStorage.getItem("version")) {
+              if(versions[i].Version === localStorage.getItem("version")) {
                 //check if we are on our current version
-                localStorage.setItem("ver_id", data[i].id);
-                vers = data[i].id;
+                localStorage.setItem("ver_id", versions[i].ID);
+                vers = versions[i].ID
                 const [retrieve_url, retrieve_header] = FormRetrievePackageRequest(login_token, vers);
                 // console.log(`Retrieve GET: ${retrieve_url} WITH HEADER: ${JSON.stringify(retrieve_header)}`);
                 fetch(retrieve_url, { method: 'GET', headers: retrieve_header})
                   .then(response => response.json())
                   .then(data => {
-                    // console.log(data);
-                    // console.log(data.data.content);
-                    const binaryData = atob(data.data.content).split('').map(function (char) { return char.charCodeAt(0); });
-                    // console.log(binaryData);
+                    const myObject: MyObject = JSON.parse(data);
+                    const content: string = myObject.data.Content;
+                    const binaryData = atob(content).split('').map(function (char) { return char.charCodeAt(0); });
                     const binaryDataUint8Array: Uint8Array = new Uint8Array(binaryData); // create new Uint8Array from binaryData
-                    // console.log(binaryDataUint8Array);
                     binaryData2.push(binaryDataUint8Array);
-                    // setIsLoading2(true);
-                    // setIsLoading(true);
+                    console.log("completed download setup");
+                    setIsLoading2(false);
                   });
               }
-              if(isLoading && isLoading2 && vers) {
+              if(isLoading && isLoading3 && vers) {
                 const [rate_url, rate_header] = formRateRequest(login_token, vers);
                 // console.log(`Rating GET: ${rate_url} WITH HEADER: ${rate_header}`);
                 axios.get(rate_url, { headers: rate_header }).then((response) => {
-                  setIsLoading2(false);
+                  setIsLoading3(false);
                   console.log(response.data);
-                  // console.log(response.data.length);
+                  
                   localStorage.setItem("busFactor", response.data.busFactor);
                   localStorage.setItem("correctness", response.data.correctness);
                   localStorage.setItem("goodPinningPractice", response.data.goodPinningPractice);
@@ -179,6 +211,7 @@ function PackageInfo() {
                   localStorage.setItem("rampUp", response.data.rampUp);
                   localStorage.setItem("responsiveMaintainer", response.data.responsiveMaintainer);
                   setIsLoading(false);
+                  console.log("rate setup");
                 }).catch((error) => {
                   console.log(error);
                 });
@@ -370,7 +403,7 @@ function PackageInfo() {
   }
 
 
-  if(isLoading) {
+  if(isLoading || isLoading2) {
     return(<div>
         <div className="isloading">Loading data please wait...</div>
     </div>);
@@ -407,7 +440,7 @@ function PackageInfo() {
       <nav className="sidebar">
         <h2>Versions</h2>
         <ul>
-          {versions.map((item) => (
+          {versions_list.map((item) => (
             <li key={item[0]}>
               <a href={`#${item[0].toLowerCase()}`} onClick={handleSideBar}>{item[0]}</a>
             </li>
@@ -428,6 +461,7 @@ function PackageInfo() {
         <h2>Download</h2>
         <ul>
           <li>Download <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
+          <li>Note that the package will be contained in an addional zipped folder inside the zip</li>
           <button className = "download_button" onClick={createDownload} >Download</button>
         </ul>
          <div className="section-line"></div>
