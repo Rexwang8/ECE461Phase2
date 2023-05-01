@@ -225,7 +225,14 @@ namespace IO.Swagger.CLI
 
                 
                 //Checking Updates
-                if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-90)){
+                DateTime timetocheck;
+                bool isValiddt =  DateTime.TryParse(urlInfo.githubUpdatedAt, out timetocheck);
+                if (!isValiddt){
+                    UPDATE_WEIGHT += 0;
+                } 
+                else
+                {
+                    if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-90)){
                     UPDATE_WEIGHT += .20f;
                 } else if (DateTime.Parse(urlInfo.githubUpdatedAt) >= DateTime.Now.AddDays(-180)){
                     UPDATE_WEIGHT += .15f;
@@ -236,6 +243,9 @@ namespace IO.Swagger.CLI
                 } else {
                     UPDATE_WEIGHT += 0;
                 }
+                }
+
+                
                 finalScore += UPDATE_WEIGHT;
                 Console.WriteLine($"Awarded {UPDATE_WEIGHT} for updates, Total Score: {finalScore}");
 

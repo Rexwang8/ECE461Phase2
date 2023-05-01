@@ -324,7 +324,7 @@ namespace IO.Swagger.CLI
             foreach (string dir in dirs)
             {
                 searchJsonFile(dir);
-                Console.WriteLine("Applying searchJsonFile on {0}", dir);
+                //Console.WriteLine("Applying searchJsonFile on {0}", dir);
             }
         }
 
@@ -539,6 +539,7 @@ namespace IO.Swagger.CLI
 
 
             string owner = githubURL.Split("/")[3];
+            owner = owner.Replace("#readme", "");
             string repo = githubURL.Split("/")[4];
             Console.WriteLine("Calling github api with owner: " + owner + " and repo: " + repo);
 
