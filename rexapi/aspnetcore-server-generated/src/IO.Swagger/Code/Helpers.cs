@@ -760,6 +760,14 @@ namespace IO.Swagger.Controllers
         /// </summary>
         public void Parse(string version)
         {
+            version = version.Replace("_", ".");
+            version = version.Replace("\\", "");
+            if (version == "invalid")
+            {
+                isvalidversion = false;
+                return;
+            }
+
             isvalidversion = true;
             Console.WriteLine("Parsing version: " + version);
             //detect if range, and if so, parse min version and max version
@@ -912,7 +920,7 @@ namespace IO.Swagger.Controllers
                     Major = 1;
                     Minor = 0;
                     Patch = 0;
-                    Console.WriteLine("Failed when testing max version string 894");
+                    Console.WriteLine("Failed when testing normal version string 915");
                     return;
                 }
             }
