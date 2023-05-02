@@ -163,7 +163,14 @@ function PackageInfo() {
         const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
         console.log(`Regex POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
         fetch(url, { method: 'POST', headers: header, body: body })
-          .then(response => response.json())
+          // .then(response => response.json())
+          .then(response => {
+             if(response.status != 201 && response.status != 200) {
+                alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
+                redirectToPackages();
+             }
+             return response.json();
+           })
           .then(data => {
             // do something with the data
             console.log(data);
@@ -181,10 +188,17 @@ function PackageInfo() {
                 //check if we are on our current version
                 localStorage.setItem("ver_id", versions[i].ID);
                 vers = versions[i].ID
+                console.log(vers);
                 const [retrieve_url, retrieve_header] = FormRetrievePackageRequest(login_token, vers);
-                // console.log(`Retrieve GET: ${retrieve_url} WITH HEADER: ${JSON.stringify(retrieve_header)}`);
+                console.log(`Retrieve GET: ${retrieve_url} WITH HEADER: ${JSON.stringify(retrieve_header)}`);
                 fetch(retrieve_url, { method: 'GET', headers: retrieve_header})
-                  .then(response => response.json())
+                  .then(response => {
+                   if(response.status != 201 && response.status != 200) {
+                      alert("Error " + response.status + " in ID search request package. Redirecting back to package list.");
+                      redirectToPackages();
+                   }
+                   return response.json();
+                 })
                   .then(data => {
                     const myObject: MyObject = JSON.parse(data);
                     const content: string = myObject.data.Content;
@@ -193,34 +207,38 @@ function PackageInfo() {
                     binaryData2.push(binaryDataUint8Array);
                     console.log("completed download setup");
                     setIsLoading2(false);
-                  });
+                  })
               }
               if(isLoading && isLoading3 && vers) {
                 const [rate_url, rate_header] = formRateRequest(login_token, vers);
                 // console.log(`Rating GET: ${rate_url} WITH HEADER: ${rate_header}`);
-                axios.get(rate_url, { headers: rate_header }).then((response) => {
-                  setIsLoading3(false);
-                  console.log(response.data);
-                  
-                  localStorage.setItem("busFactor", response.data.busFactor);
-                  localStorage.setItem("correctness", response.data.correctness);
-                  localStorage.setItem("goodPinningPractice", response.data.goodPinningPractice);
-                  localStorage.setItem("licenseScore", response.data.licenseScore);
-                  localStorage.setItem("netScore", response.data.netScore);
-                  localStorage.setItem("pullRequest", response.data.pullRequest);
-                  localStorage.setItem("rampUp", response.data.rampUp);
-                  localStorage.setItem("responsiveMaintainer", response.data.responsiveMaintainer);
-                  setIsLoading(false);
-                  console.log("rate setup");
-                }).catch((error) => {
-                  console.log(error);
-                });
+                    axios.get(rate_url, { headers: rate_header }).then((response) => {
+                      console.log(response.data);
+                      if(response.status != 201 && response.status != 200) {
+                         alert("Error " + response.status + " in RATE request package. Redirecting back to package list.");
+                         redirectToPackages();
+                      }
+                      setIsLoading3(false);
+                      localStorage.setItem("busFactor", response.data.busFactor);
+                      localStorage.setItem("correctness", response.data.correctness);
+                      localStorage.setItem("goodPinningPractice", response.data.goodPinningPractice);
+                      localStorage.setItem("licenseScore", response.data.licenseScore);
+                      localStorage.setItem("netScore", response.data.netScore);
+                      localStorage.setItem("pullRequest", response.data.pullRequest);
+                      localStorage.setItem("rampUp", response.data.rampUp);
+                      localStorage.setItem("responsiveMaintainer", response.data.responsiveMaintainer);
+                      setIsLoading(false);
+                      console.log("rate setup");
+                    }).catch((error) => {
+                      console.log(error);
+                    });
               }
             }            
           });
       }
     } catch (error) {
       console.log(error);
+      console.log(error.status);
     }
   }, []);
 
