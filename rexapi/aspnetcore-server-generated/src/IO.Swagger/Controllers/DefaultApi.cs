@@ -1786,17 +1786,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            //flag if package is in form content or url
-            isContent = false;
-            if (body.Data.Content != null || body.Data.Content != "")
-            {
-                isContent = true;
-            }
-            isURL = false;
-            if (body.Data.URL != null || body.Data.URL != "")
-            {
-                isURL = true;
-            }
+        
 
 
             //check if package exists
