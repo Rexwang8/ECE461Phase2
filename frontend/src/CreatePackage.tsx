@@ -250,10 +250,9 @@ function CreatePackage() {
                      ) : (
                        <button onClick={redirectToSignUp}>Log in</button>
                      )}
-                <button onClick={redirectToAbout}>About us</button>
+                <button onClick={redirectToAbout}>About</button>
                 <button onClick={redirectToPackages}>Packages</button>
                 <button onClick={redirectToCreatePage}>Create Package</button>
-                <button onClick={handleClickCreateButton}>Other</button>
               </div>
             )}
           </div>

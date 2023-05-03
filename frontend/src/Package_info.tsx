@@ -453,10 +453,9 @@ function PackageInfo() {
           {isProfileOpen && (
             <div className="profile-dropdown">
               <button onClick = {redirectToLogOut}>Log out</button>
-              <button onClick={redirectToAbout}>About us</button>
+              <button onClick={redirectToAbout}>About</button>
               <button onClick={redirectToPackages}>Packages</button>
               <button onClick={redirectToCreatePage}>Create Package</button>
-              <button>Other</button>
             </div>
           )}
         </div>
