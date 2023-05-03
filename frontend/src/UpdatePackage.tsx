@@ -38,7 +38,7 @@ function UpdatePackageRequest(token: string, content: string, urlpackage: string
   
 //function UpdatePackageRequest(token: string, content: string | null, urlpackage: string | null, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
   const url = `http://package-registry-461.appspot.com/package/${id}`;
-  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
+  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json', 'X-Debug': ''};
   const packageData = new PackageData(content, urlpackage, jsprogram);
   const packageMeta = new PackageMeta(name, version, id);
   const packageObj = new PackageRequest(packageMeta, packageData);
@@ -207,6 +207,7 @@ function UpdatePackage() {
           .then(response => {
             console.log(response);
             console.log(response.status);
+            console.log(response.headers.get('X-Debug'));
              if(response.status != 201 && response.status != 200) {
                 alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
                 // redirectToPackages();
@@ -225,7 +226,7 @@ function UpdatePackage() {
             }
             else {
               setIsLoading(false);
-              alert("Failed to create due to Error " + data.status)
+              alert("Failed to create due to Error 1" + data.status)
               location.reload();
             }
           });
@@ -258,20 +259,28 @@ function UpdatePackage() {
             const [url, header, body] = UpdatePackageRequest(login_token, base64String, "", JSFile, localStorage.getItem("packageName"), localStorage.getItem("version"), localStorage.getItem("ver_id"));
             console.log(`UpdatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
             fetch(url, { method: 'PUT', headers: header, body: body })
-            .then(response => response.json())
+            .then(response => {
+              console.log(response);
+              console.log(response.status);
+               if(response.status != 201 && response.status != 200) {
+                  alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
+                  // redirectToPackages();
+               }
+               return response.json();
+             })
             .then(data => {
               console.log(data);
               // alert(data.status)
-              if(data.status == null) {
-                // do something with the data
-                setIsLoading(false);
-                doneCreating(data.metadata.name);
-              }
-              else {
-                setIsLoading(false);
-                alert("Failed to create due to Error " + data.status)
-                // location.reload();
-              }
+              // if(data.status == null) {
+              //   // do something with the data
+              //   setIsLoading(false);
+              //   doneCreating(data.metadata.name);
+              // }
+              // else {
+              //   setIsLoading(false);
+              //   alert("Failed to create due to Error2 " + data.status)
+              //   // location.reload();
+              // }
               
             });
           }).catch((error) => {
