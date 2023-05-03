@@ -1693,7 +1693,7 @@ namespace IO.Swagger.Controllers
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             int runid = new Random().Next(1000, 2000);
-            if (xAuthorization != null && body != null && id != null)
+            if ((xAuthorization != null || xAuthorization != "") && (body != null) && (id != null || id != ""))
             {
                 Console.WriteLine($"PackageUpdate/{runid}: Received request with args: {xAuthorization}, {id}, {body.Metadata.ID}, {body.Metadata.Name}, {body.Metadata.Version}, {(body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content)}, {body.Data.URL}");
                 Response.Headers.Add("X-DebugAutograder", $"((PUT) /package/{{id}}) Received request with args: {xAuthorization}, {id}, {body.Metadata.ID}, {body.Metadata.Name}, {body.Metadata.Version}, {(body.Data.Content.Length > 100 ? body.Data.Content.Substring(0, 100) : body.Data.Content)}, {body.Data.URL}");
@@ -1723,7 +1723,7 @@ namespace IO.Swagger.Controllers
             }
 
             //either body.content or body.url must be present and not both
-            if (body.Data.Content == null && body.Data.URL == null)
+            if ((body.Data.Content == null | body.Data.Content == "") && (body.Data.URL == null || body.Data.URL == ""))
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/Update");
@@ -1731,7 +1731,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if (body.Data.Content != null && body.Data.URL != null)
+            if ((body.Data.Content != null | body.Data.Content != "") && (body.Data.Content != null | body.Data.Content != ""))
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Too many field(s) in the PackageID/Update");
@@ -1779,12 +1779,12 @@ namespace IO.Swagger.Controllers
 
             //flag if package is in form content or url
             bool isContent = false;
-            if (body.Data.Content != null)
+            if (body.Data.Content != null || body.Data.Content != "")
             {
                 isContent = true;
             }
             bool isURL = false;
-            if (body.Data.URL != null)
+            if (body.Data.URL != null || body.Data.URL != "")
             {
                 isURL = true;
             }
