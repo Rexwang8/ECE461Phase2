@@ -1689,7 +1689,16 @@ namespace IO.Swagger.Controllers
         {
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
-
+            bool isContent = false;
+            if (body.Data.Content != null || body.Data.Content != "")
+            {
+                isContent = true;
+            }
+            bool isURL = false;
+            if (body.Data.URL != null || body.Data.URL != "")
+            {
+                isURL = true;
+            }
             // Debug for autograder
             Console.WriteLine("------BEGIN DEBUG INFO-----");
             int runid = new Random().Next(1000, 2000);
@@ -1723,7 +1732,7 @@ namespace IO.Swagger.Controllers
             }
 
             //either body.content or body.url must be present and not both
-            if ((body.Data.Content == null | body.Data.Content == "") && (body.Data.URL == null || body.Data.URL == ""))
+            if ((body.Data.Content == null || body.Data.Content == "") && (body.Data.URL == null || body.Data.URL == ""))
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Missing field(s) in the PackageID/Update");
@@ -1731,12 +1740,12 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if ((body.Data.Content != null | body.Data.Content != "") && (body.Data.URL != null | body.Data.URL != ""))
+            if ((body.Data.Content != null || isContent) && (body.Data.URL != null || isURL))
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Too many field(s) in the PackageID/Update");
                 Response.Headers.Add("X-Debug", "Too many field(s) in the PackageID/Update");
-                //return StatusCode(400);
+                return StatusCode(400);
             }
 
 
@@ -1778,12 +1787,12 @@ namespace IO.Swagger.Controllers
             }
 
             //flag if package is in form content or url
-            bool isContent = false;
+            isContent = false;
             if (body.Data.Content != null || body.Data.Content != "")
             {
                 isContent = true;
             }
-            bool isURL = false;
+            isURL = false;
             if (body.Data.URL != null || body.Data.URL != "")
             {
                 isURL = true;
