@@ -116,7 +116,22 @@ function UpdatePackage() {
         const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
         console.log(`Regex POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
         fetch(url, { method: 'POST', headers: header, body: body })
-          .then(response => response.json())
+          .then(response => {
+             if(response.status != 201 && response.status != 200) {
+              alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
+              if(response.status == 400) {
+                alert("There is missing field(s) in the PackageData/AuthenticationToken or it is formed improperly (e.g. Content and URL are both set), or the AuthenticationToken is invalid.")
+              }
+              else if (response.status == 409) {
+                alert("Package exists already.");
+              }
+              else if (response.status == 424) {
+                alert("Package is not uploaded due to the disqualified rating.");
+              }
+                redirectToPackages();
+             }
+             return response.json();
+           })
           .then(data => {
             // do something with the data
             // console.log(data);
@@ -316,27 +331,40 @@ function UpdatePackage() {
             console.log(response);
             console.log(response.status);
 
-             if(response.status != 201 && response.status != 200) {
+             if(response.status !== 201 && response.status !== 200) {
+              if(response.status == 400) {
+                alert("There is missing field(s) in the PackageID/AuthenticationToken or it is formed improperly, or the AuthenticationToken is invalid");
+              }
+              else if(response.status == 404) {
+                alert("Package does not exist.");
+              }
                 alert("Error " + response.status + " in update package request. Reloading page. Please try again..");
                 location.reload();
              }
              setIsLoading(false);
-             doneUpdating();
-             return response.json();
+             // doneUpdating();
+             // console.log(response.json());
+             const contentType = response.headers.get("Content-Type");
+              if (contentType && contentType.includes("application/json")) {
+                return response.json();
+              }
+              else {
+                return null;
+              }
            })
           .then(data => {
             console.log(data);
             // do something with the data
-            if(data.status == null) {
+            if(data == null) {
               // do something with the data
               setIsLoading(false);
-              const parsedObject = JSON.parse(data);
-              const name = parsedObject.metadata.Name;
+              // const parsedObject = JSON.parse(data);
+              // const name = parsedObject.metadata.Name;
               doneUpdating();
             }
             else {
               setIsLoading(false);
-              alert("Failed to create due to Error 1" + data.status)
+              // alert("Failed to create due to Error 1" + data.status)
               location.reload();
             }
           });
@@ -374,23 +402,34 @@ function UpdatePackage() {
               console.log(response.status);
                if(response.status != 201 && response.status != 200) {
                   alert("Error " + response.status + "in update package request. Reloading page. Please try again..");
+                  if(response.status == 400) {
+                    alert("There is missing field(s) in the PackageData/AuthenticationToken or it is formed improperly (e.g. Content and URL are both set), or the AuthenticationToken is invalid.")
+                  }
+                  else if (response.status == 409) {
+                    alert("Package exists already.");
+                  }
+                  else if (response.status == 424) {
+                    alert("Package is not uploaded due to the disqualified rating.");
+                  }
                   // redirectToPackages();
                }
                
              })
             .then(data => {
-              console.log(data);
-              // alert(data.status)
-              // if(data.status == null) {
-              //   // do something with the data
-              //   setIsLoading(false);
-              //   doneCreating(data.metadata.name);
-              // }
-              // else {
-              //   setIsLoading(false);
-              //   alert("Failed to create due to Error2 " + data.status)
-              //   // location.reload();
-              // }
+            console.log(data);
+            // do something with the data
+            if(data == null) {
+              // do something with the data
+              setIsLoading(false);
+              // const parsedObject = JSON.parse(data);
+              // const name = parsedObject.metadata.Name;
+              doneUpdating();
+            }
+            else {
+              setIsLoading(false);
+              // alert("Failed to create due to Error 1" + data.status)
+              location.reload();
+            }
               
             });
           }).catch((error) => {
@@ -417,6 +456,11 @@ function UpdatePackage() {
     return (<div>
               <div className="isloading">Updating {localStorage.getItem("packageName")} please wait...</div>
             </div>);
+  }
+  else if (isDeleting) {
+    return(<div>
+        <div className="isloading">Deleting package please wait...</div>
+    </div>);
   }
   else
   {

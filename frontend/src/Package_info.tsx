@@ -166,7 +166,16 @@ function PackageInfo() {
           // .then(response => response.json())
           .then(response => {
              if(response.status != 201 && response.status != 200) {
-                alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
+              alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
+              if(response.status == 400) {
+                alert("There is missing field(s) in the PackageData/AuthenticationToken or it is formed improperly (e.g. Content and URL are both set), or the AuthenticationToken is invalid.")
+              }
+              else if (response.status == 409) {
+                alert("Package exists already.");
+              }
+              else if (response.status == 424) {
+                alert("Package is not uploaded due to the disqualified rating.");
+              }
                 redirectToPackages();
              }
              return response.json();
