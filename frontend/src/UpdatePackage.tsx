@@ -34,8 +34,9 @@ class PackageRequest {
         this.data = data;
     }
 }
-
 function UpdatePackageRequest(token: string, content: string, urlpackage: string, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
+  
+//function UpdatePackageRequest(token: string, content: string | null, urlpackage: string | null, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
   const url = `http://package-registry-461.appspot.com/package/${id}`;
   const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
   const packageData = new PackageData(content, urlpackage, jsprogram);
@@ -196,7 +197,8 @@ function UpdatePackage() {
         {
           alert("Please enter an url");
         }
-        
+          //function UpdatePackageRequest(token: string, content: string, urlpackage: string, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
+
         const [url, header, body] = UpdatePackageRequest(login_token, "", selectedFile, JSFile, localStorage.getItem("packageName") as string, localStorage.getItem("version") as string, localStorage.getItem("ver_id") as string);
         // const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
 
