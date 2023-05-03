@@ -2203,7 +2203,6 @@ namespace IO.Swagger.Controllers
             }
             response += "]";
             return StatusCode(200, response);
-
         }
 
         /// <summary>
