@@ -149,9 +149,8 @@ def FormRetrievePackageRequest(token, packageid):
 def FormPackageUpdateRequest(token, id, filename):
     url = f"http://package-registry-461.appspot.com/package/{id}"
     metaobj = PackageMetaData("fecha", "4.2.3", id)
-    file = open(filename, 'r')
     prog = "if (process.argv.length === 7) {\nconsole.log('Success')\nprocess.exit(0)\n} else {\nconsole.log('Failed')\nprocess.exit(1)\n}\n"
-    packageData = PackageData(file.read(), "", prog)
+    packageData = PackageData("","https://github.com/jonschlinkert/even", prog)
     #packageData = PackageData("1", "", "prog")
     pkg = Package(metaobj, packageData)
     body = json.dumps(pkg.__dict__, default=lambda o: o.__dict__, indent=4)
@@ -218,16 +217,23 @@ def main():
     #PrintResponse(response)
     
     #delete by name -- works
+<<<<<<< Updated upstream
     #Authurl, Authheader = DeletePackageRequestByName(token, "fecha")
     #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
     #response = requests.delete(Authurl, headers=Authheader)
     #PrintResponse(response, False)
+=======
+    # Authurl, Authheader = DeletePackageRequestByName(token, "lodash")
+    # print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
+    # response = requests.delete(Authurl, headers=Authheader)
+    # PrintResponse(response, False)
+>>>>>>> Stashed changes
     
     #delete by id -- works
-    #Authurl, AuthHeader = DeletePackageRequestByID(token, "0562f8fc-d583-4106-9a87-258257cf0262")
-    #print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
-    #response = requests.delete(Authurl, headers=AuthHeader)
-    #PrintResponse(response, False)
+    # Authurl, AuthHeader = DeletePackageRequestByID(token, "0e51c62c-b0e5-4212-a262-c611a6fc9579")
+    # print(f"DELETE: {Authurl} WITH HEADER: {AuthHeader}")
+    # response = requests.delete(Authurl, headers=AuthHeader)
+    # PrintResponse(response, False)
     
     #reset -- works but doesn't reset currently
     #url, header = FormResetRequest(token)
@@ -291,16 +297,23 @@ def main():
     PrintResponse(response, True)
         
     #retrieve package -- works
+<<<<<<< Updated upstream
     #url, header = FormRetrievePackageRequest(token, "ed235e78-69ce-4ecc-b241-938ae1f6ef1e")
     #print(f"Retrieve GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
+=======
+    # url, header = FormRetrievePackageRequest(token, "0e51c62c-b0e5-4212-a262-c611a6fc9579")
+    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
+    # response = requests.get(url, headers=header)
+    # PrintResponse(response, True)
+>>>>>>> Stashed changes
     
     #update package 
-    #url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
-    #print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
-    #response = requests.put(url, headers=header, data=body)
-    #PrintResponse(response, False)
+    url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
+    print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
+    response = requests.put(url, headers=header, data=body)
+    PrintResponse(response, False)
     
     
 
