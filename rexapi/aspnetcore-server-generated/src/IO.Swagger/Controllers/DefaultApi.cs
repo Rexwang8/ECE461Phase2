@@ -1736,7 +1736,7 @@ namespace IO.Swagger.Controllers
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Too many field(s) in the PackageID/Update");
                 Response.Headers.Add("X-Debug", "Too many field(s) in the PackageID/Update");
-                return StatusCode(400);
+                //return StatusCode(400);
             }
 
 
