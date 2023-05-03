@@ -6,6 +6,7 @@ import Signup from './Signup';
 import Package_info from './Package_info';
 import CreatePackage from './CreatePackage';
 import HistoryInfo from './HistoryInfo';
+import UpdatePackage from './UpdatePackage';
 import './index.css';
 
 
@@ -23,7 +24,9 @@ ReactDOM.render(
       <CreatePackage />
     ) : path === '/HistoryInfo' ? (
       <HistoryInfo />
-    ): (
+    ) : path === '/UpdatePackage' ? (
+      <UpdatePackage />
+    ) : (
       <App />
     )}
   </React.StrictMode>,

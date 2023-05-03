@@ -173,7 +173,6 @@ function PackageInfo() {
            })
           .then(data => {
             // do something with the data
-            console.log(data);
             const versions = extractVersions(data);
             console.log(versions);
             for(let i = 0; i < versions.length; i++) {
@@ -188,7 +187,6 @@ function PackageInfo() {
                 //check if we are on our current version
                 localStorage.setItem("ver_id", versions[i].ID);
                 vers = versions[i].ID
-                console.log(vers);
                 const [retrieve_url, retrieve_header] = FormRetrievePackageRequest(login_token, vers);
                 console.log(`Retrieve GET: ${retrieve_url} WITH HEADER: ${JSON.stringify(retrieve_header)}`);
                 fetch(retrieve_url, { method: 'GET', headers: retrieve_header})
@@ -302,6 +300,10 @@ function PackageInfo() {
 
   function handleSideBar(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     if(event.currentTarget.textContent === "Delete All") {
+      const confirmed: boolean = confirm("Are you sure you want to perform this action?");
+      if (!confirmed) {
+        return;
+      }
       // alert(event.currentTarget.textContent);
       const [authUrl, authHeader] = DeleteNameRequest(localStorage.getItem("login_token") as string, localStorage.getItem("packageName") as string)
       console.log(`DELETE ALL: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
@@ -356,48 +358,54 @@ function PackageInfo() {
   }
 
   const handleUpdateClick = () => {
-    const zipFile = document.getElementById('newContent') as HTMLInputElement;
-    const selectedFile = zipFile.files ? zipFile.files[0] : null;
+    // const zipFile = document.getElementById('newContent') as HTMLInputElement;
+    // const selectedFile = zipFile.files ? zipFile.files[0] : null;
 
-    if (selectedFile == null)
-    {
-      alert("Please select a file to upload");
-      return;
-    }
+    // if (selectedFile == null)
+    // {
+    //   alert("Please select a file to upload");
+    //   return;
+    // }
     
-    const confirmed: boolean = confirm("Are you sure you want to perform this action?");
-    if (!confirmed) {
-      return;
-    }
+    // const confirmed: boolean = confirm("Are you sure you want to perform this action?");
+    // if (!confirmed) {
+    //   return;
+    // }
 
-    var reader = new FileReader();
-    reader.readAsDataURL(selectedFile);
-    reader.onload = function () {
-      reader.result;
-    };
-    reader.onerror = function (error) {
-      alert("invalid file");
-    };
+    // var reader = new FileReader();
+    // reader.readAsDataURL(selectedFile);
+    // reader.onload = function () {
+    //   reader.result;
+    // };
+    // reader.onerror = function (error) {
+    //   alert("invalid file");
+    // };
     
-    getBase64(selectedFile).then((result) => {
-      var base64String = result.split('base64,')[1];
-      const login_token = localStorage.getItem("login_token") as string;
+    // getBase64(selectedFile).then((result) => {
+    //   var base64String = result.split('base64,')[1];
+    //   const login_token = localStorage.getItem("login_token") as string;
 
-      const [url, header, body] = UpdatePackageRequest(login_token, "", "", "", "", "", "");
+    //   const [url, header, body] = UpdatePackageRequest(login_token, "", "", "", "", "", "");
   
-      console.log(`CreatePackage PUT: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
-      fetch(url, { method: 'PUT', headers: header, body: body })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
-    }).catch((error) => {
-      alert("invalid file")
-    });
+    //   console.log(`CreatePackage PUT: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
+    //   fetch(url, { method: 'PUT', headers: header, body: body })
+    //   .then(response => response.json())
+    //   .then(data => {
+    //     console.log(data);
+    //   });
+    // }).catch((error) => {
+    //   alert("invalid file")
+    // });
+    localStorage.setItem('path_name', "/UpdatePackage");
+    location.reload();
   }
 
 
   const handleDelete = () => {
+    const confirmed: boolean = confirm("Are you sure you want to perform this action?");
+    if (!confirmed) {
+      return;
+    }
     const [authUrl, authHeader] = deletePackageRequestByID(localStorage.getItem("login_token") as string, localStorage.getItem("ver_id") as string);
     console.log(`DELETE: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
     setIsDeleting(true);
@@ -486,8 +494,8 @@ function PackageInfo() {
         <h2>Update</h2>
         <ul>
           <li>Update the package of <b>{package_name}</b> Version: <b>{localStorage.getItem("version")}</b></li>
-          <li>Please upload the new zip file</li>
-          <input type="file" id="newContent" placeholder="upload zipfile" accept=".zip, application/zip"/>
+          {/*<li>Please upload the new zip file</li>*/}
+          {/*<input type="file" id="newContent" placeholder="upload zipfile" accept=".zip, application/zip"/>*/}
           <button className = "download_button" onClick={handleUpdateClick}>Update</button>
         </ul>
         <div className="section-line"></div>
