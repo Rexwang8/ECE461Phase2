@@ -217,17 +217,10 @@ def main():
     #PrintResponse(response)
     
     #delete by name -- works
-<<<<<<< Updated upstream
     #Authurl, Authheader = DeletePackageRequestByName(token, "fecha")
     #print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
     #response = requests.delete(Authurl, headers=Authheader)
     #PrintResponse(response, False)
-=======
-    # Authurl, Authheader = DeletePackageRequestByName(token, "lodash")
-    # print(f"DELETE: {Authurl} WITH HEADER: {Authheader}")
-    # response = requests.delete(Authurl, headers=Authheader)
-    # PrintResponse(response, False)
->>>>>>> Stashed changes
     
     #delete by id -- works
     # Authurl, AuthHeader = DeletePackageRequestByID(token, "0e51c62c-b0e5-4212-a262-c611a6fc9579")
@@ -269,10 +262,10 @@ def main():
     
     
     #Get history of package by name -- works
-    url, header = FormPackageHistoryRequest(token, "even")
-    print(f"History GET: {url} WITH HEADER: {header}")
-    response = requests.get(url, headers=header)
-    PrintResponse(response, True)
+    #url, header = FormPackageHistoryRequest(token, "even")
+    #print(f"History GET: {url} WITH HEADER: {header}")
+    #response = requests.get(url, headers=header)
+    #PrintResponse(response, True)
     
     #get metadata by regex/name -- works
     #url, header, body = FormPackageRegexSearchRequest(token, "(.*)")
@@ -297,23 +290,16 @@ def main():
     PrintResponse(response, True)
         
     #retrieve package -- works
-<<<<<<< Updated upstream
     #url, header = FormRetrievePackageRequest(token, "ed235e78-69ce-4ecc-b241-938ae1f6ef1e")
     #print(f"Retrieve GET: {url} WITH HEADER: {header}")
     #response = requests.get(url, headers=header)
     #PrintResponse(response, True)
-=======
-    # url, header = FormRetrievePackageRequest(token, "0e51c62c-b0e5-4212-a262-c611a6fc9579")
-    # print(f"Retrieve GET: {url} WITH HEADER: {header}")
-    # response = requests.get(url, headers=header)
-    # PrintResponse(response, True)
->>>>>>> Stashed changes
     
     #update package 
-    url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
-    print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.put(url, headers=header, data=body)
-    PrintResponse(response, False)
+    #url, header, body = FormPackageUpdateRequest(token, "534889cf-ae38-4bcf-9d5f-dd87aafa2f0e", "rexapi/encoder/read2.txt")
+    #print(f"Update PUT: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.put(url, headers=header, data=body)
+    #PrintResponse(response, False)
     
     
 

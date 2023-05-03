@@ -2138,7 +2138,6 @@ namespace IO.Swagger.Controllers
 
                 //search matching metadata
                 string query = $"SELECT * FROM `package-registry-461.packages.packagesMetadata` WHERE REGEXP_CONTAINS(name, '{queryobj.Name}') AND REGEXP_CONTAINS(version, '{verregex}') LIMIT 101 OFFSET {offsetInt}";
-                Response.Headers.Add("X-Debugquery5y2395", query);
                 Console.WriteLine("(packages/X-Debugquery1) " + query);
 
                 factory.SetQuery(query);
