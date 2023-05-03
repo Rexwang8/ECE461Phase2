@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './CreatePackage.css';
 
+class Regex {
+  RegEx: string;
+
+  constructor(RegEx: string) {
+    this.RegEx = RegEx;
+  }
+}
+
 class PackageData {
   Content: string;
   URL: string;
@@ -34,11 +42,42 @@ class PackageRequest {
         this.data = data;
     }
 }
+
+const versions_list: [string, boolean][] = [];
+let vers: string;
+
+function DeleteNameRequest(token: string, name: string): [string, Record<string, string>] {
+    const url = `https://package-registry-461.appspot.com/package/byName/${name}`;
+    const header = {'X-Authorization': token, 'Accept': 'application/json'};
+    return [url, header];
+}
+
+function extractVersions(jsonString: string): { Version: string, ID: string }[] {
+  const objects = JSON.parse(jsonString);
+  const versions: { Version: string, ID: string }[] = [];
+
+  objects.forEach((object: { Version: string, ID: string }) => {
+    versions.push({ Version: object.Version, ID: object.ID });
+  });
+
+  return versions;
+}
+
+function FormPackageRegexSearchRequest(token: string, regex: string): [string, Record<string, string>, string] {
+  console.log(regex);
+  const url = "https://package-registry-461.appspot.com/package/byRegEx";
+  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
+  const regexobj = new Regex(regex);
+  const body = JSON.stringify(regexobj, null, 4);
+  console.log("done attempting");
+  return [url, header, body];
+}
+
 function UpdatePackageRequest(token: string, content: string, urlpackage: string, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
   
 //function UpdatePackageRequest(token: string, content: string | null, urlpackage: string | null, jsprogram: string, name: string, version: string, id: string): [string, Record<string, string>, string] {
   const url = `http://package-registry-461.appspot.com/package/${id}`;
-  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json', 'X-Debug': ''};
+  const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
   const packageData = new PackageData(content, urlpackage, jsprogram);
   const packageMeta = new PackageMeta(name, version, id);
   const packageObj = new PackageRequest(packageMeta, packageData);
@@ -46,30 +85,23 @@ function UpdatePackageRequest(token: string, content: string, urlpackage: string
   return [url, header, body];
 }
 
-// function FormPackageUpdateRequest(token: string, id: string, filename: string) {
-//   const url = `https://package-registry-461.appspot.com/package/${id}`;
-//   const metaobj = new PackageMetaData(localStorage.getItem("packageName")!, localStorage.getItem("ver_id")!, id);
-//   const file = Deno.readTextFileSync(filename);
-//   const prog = "if (Deno.args.length === 7) {\nconsole.log('Success')\nDeno.exit(0)\n} else {\nconsole.log('Failed')\nDeno.exit(1)\n}\n";
-//   const packageData = new PackageData(file, "", prog);
-//   const pkg = new Package(metaobj, packageData);
-//   const body = JSON.stringify(pkg, null, 4);
-//   const header = {'X-Authorization': token, 'Accept': 'application/json', 'Content-Type': 'application/json'};
-//   return {url, header, body};
-// }
-
-
 
 function UpdatePackage() {
+
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(true);
+  // const [isUpdating, setIsUpdating] = useState()
+  const [isDeleting, setIsDeleting] = useState(false);
   localStorage.setItem("loaded", "0");
-  
+  const package_name = localStorage.getItem('packageName');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [loggedIn, setLogIn] = useState(false);
 
 
   useEffect(() => {
     localStorage.setItem("loaded", "0");
+    let ver = localStorage.getItem("version");  //the version the user selected
+    const login_token = localStorage.getItem("login_token")
     const check = (localStorage.getItem("login_token") === null);
     setLogIn(!check);
     if (check) {
@@ -77,7 +109,42 @@ function UpdatePackage() {
       localStorage.setItem("path_name", "/Signup")
       location.reload();
     }
+
+    try {
+      if(login_token != null) {
+
+        const [url, header, body] = FormPackageRegexSearchRequest(login_token, "(" + package_name + ")");
+        console.log(`Regex POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
+        fetch(url, { method: 'POST', headers: header, body: body })
+          .then(response => response.json())
+          .then(data => {
+            // do something with the data
+            // console.log(data);
+            const versions = extractVersions(data);
+            // console.log(versions);
+            for(let i = 0; i < versions.length; i++) {
+              if(!ver && i == 0) {
+                localStorage.setItem("version", versions[i].Version);
+                versions_list.push([versions[i].Version, true]);
+              }
+              else {
+                versions_list.push([versions[i].Version, false]);
+              }
+              if(versions[i].Version === localStorage.getItem("version")) {
+                //check if we are on our current version
+                localStorage.setItem("ver_id", versions[i].ID);
+                vers = versions[i].ID
+              }
+            }
+            setIsLoading2(false);            
+          });
+        }
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
+
+
 
   const handleProfileButtonClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -126,12 +193,57 @@ function UpdatePackage() {
     localStorage.setItem("path_name", "/create_package");
     location.reload();
   }
+  function redirectToHistory() {
+    localStorage.setItem("loaded", "0");
+    localStorage.setItem("path_name", "/HistoryInfo");
+    location.reload();
+  }
+
+  function handleSideBar(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
+    if(event.currentTarget.textContent === "Delete All") {
+      
+      const [authUrl, authHeader] = DeleteNameRequest(localStorage.getItem("login_token") as string, localStorage.getItem("packageName") as string)
+      console.log(`DELETE ALL: ${authUrl} WITH HEADER: ${JSON.stringify(authHeader)}`);
+      setIsDeleting(true);
+      fetch(authUrl, { method: 'DELETE', headers: authHeader })
+        .then(response => {
+          if (!response.ok) {
+            console.log(response);
+            throw new Error('Network response was not ok');
+          }
+          // do something with successful response, like show a success message
+          console.log(response);
+          setIsDeleting(false);
+          localStorage.setItem("path_name", "/Packages")
+          location.reload();
+        })
+        .catch(error => {
+          setIsDeleting(false);
+          // handle error, like showing an error message to the user
+          alert('Please make sure you are an admin - There was a problem with the network request:' + error);
+        });
+    }
+    else if(event.currentTarget.textContent === "Package History") {
+      redirectToHistory();
+    }
+    else {
+      if(event.currentTarget.textContent) {
+        localStorage.setItem("version", event.currentTarget.textContent);
+        redirectToPackageInfo();
+      }
+      else {
+        alert("error");
+      }
+      location.reload();
+    }
+    
+  }
 
   let ContentValue = "";
-  const urlArea = document.getElementById('URLOption') as HTMLDivElement;
-  const contentArea = document.getElementById('ContentOption') as HTMLDivElement;
 
   const handleURLoption = () => {
+    const urlArea = document.getElementById('URLOption2') as HTMLDivElement;
+    const contentArea = document.getElementById('ContentOption2') as HTMLDivElement;
     urlArea.style.backgroundColor = 'gray';
     contentArea.style.backgroundColor = 'white';
     ContentValue = "URL";
@@ -144,13 +256,20 @@ function UpdatePackage() {
     location.reload();
   }
 
-  const doneCreating = (packageName: string) => {
-    // alert(`Clicked on package: ${packageName}`);
-    localStorage.setItem('packageName', packageName);
+  // const doneCreating = (packageName: string) => {
+  //   // alert(`Clicked on package: ${packageName}`);
+  //   localStorage.setItem('packageName', packageName);
+  //   redirectToPackageInfo();
+  // };
+
+  const doneUpdating = () => {
+    alert("Package updated");
     redirectToPackageInfo();
-  };
+  }
 
   const handleContentoption = () => {
+    const urlArea = document.getElementById('URLOption2') as HTMLDivElement;
+    const contentArea = document.getElementById('ContentOption2') as HTMLDivElement;
     urlArea.style.backgroundColor = 'white';
     contentArea.style.backgroundColor = 'gray';
     ContentValue = "Content";
@@ -170,27 +289,16 @@ function UpdatePackage() {
   }
   
 
-  const handleClickCreateButton = () => {
+  const handleClickUpdateButton = () => {
+    setIsLoading(true);
     const login_token = localStorage.getItem("login_token") as string;
-  //   setIsLoading(true);
-  //   const {url, header, body} = FormPackageUpdateRequest(localStorage.getItem("login_token"), localStorage.getItem("ver_id"), "rexapi/encoder/read2.txt");
-  //   console.log(`Update PUT: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`);
-  //   fetch(url, {method: 'PUT', headers: header, body})
-  //     .then(response => {
-  //       // handle response here
-  //       console.log(response);
-  //     })
-  //     .catch(error => {
-  //       // handle error here
-  //     });
-  // }
 
     try {
       console.log("check");
       if (ContentValue === "URL") {
-        const urlfile = document.getElementById('inputURL') as HTMLInputElement;
+        const urlfile = document.getElementById('inputURL2') as HTMLInputElement;
         const selectedFile = urlfile.value;
-        const jsprogramfile = document.getElementById('JSProgam') as HTMLInputElement;
+        const jsprogramfile = document.getElementById('JSProgram2') as HTMLInputElement;
         const JSFile = jsprogramfile.value;
 
         if (selectedFile == "")
@@ -207,11 +315,13 @@ function UpdatePackage() {
           .then(response => {
             console.log(response);
             console.log(response.status);
-            console.log(response.headers.get('X-Debug'));
+
              if(response.status != 201 && response.status != 200) {
-                alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
-                // redirectToPackages();
+                alert("Error " + response.status + " in update package request. Reloading page. Please try again..");
+                location.reload();
              }
+             setIsLoading(false);
+             doneUpdating();
              return response.json();
            })
           .then(data => {
@@ -222,7 +332,7 @@ function UpdatePackage() {
               setIsLoading(false);
               const parsedObject = JSON.parse(data);
               const name = parsedObject.metadata.Name;
-              doneCreating(name);
+              doneUpdating();
             }
             else {
               setIsLoading(false);
@@ -233,10 +343,10 @@ function UpdatePackage() {
 
       }
       else if (ContentValue === "Content"){
-        const contentfile = document.getElementById('inputContent') as HTMLInputElement;
+        const contentfile = document.getElementById('inputContent2') as HTMLInputElement;
         const selectedFile = contentfile.files ? contentfile.files[0] : null;
 
-        const jsprogramfile = document.getElementById('JSProgam') as HTMLInputElement;
+        const jsprogramfile = document.getElementById('JSProgram2') as HTMLInputElement;
         const JSFile = jsprogramfile.value;
         if (selectedFile == null)
         {
@@ -256,17 +366,17 @@ function UpdatePackage() {
             var base64String = result.split('base64,')[1];
             const login_token = localStorage.getItem("login_token") as string;
             // const [url, header, body] = FormPackageRequest(login_token, base64String, "", JSFile);
-            const [url, header, body] = UpdatePackageRequest(login_token, base64String, "", JSFile, localStorage.getItem("packageName"), localStorage.getItem("version"), localStorage.getItem("ver_id"));
-            console.log(`UpdatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
+            const [url, header, body] = UpdatePackageRequest(login_token, base64String, "", JSFile, localStorage.getItem("packageName") as string, localStorage.getItem("version") as string, localStorage.getItem("ver_id") as string);
+            console.log(`UpdatePackage PUT: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
             fetch(url, { method: 'PUT', headers: header, body: body })
             .then(response => {
               console.log(response);
               console.log(response.status);
                if(response.status != 201 && response.status != 200) {
-                  alert("Error " + response.status + " in REGEX search request package. Redirecting back to package list.");
+                  alert("Error " + response.status + "in update package request. Reloading page. Please try again..");
                   // redirectToPackages();
                }
-               return response.json();
+               
              })
             .then(data => {
               console.log(data);
@@ -297,10 +407,15 @@ function UpdatePackage() {
     }
   }
 
-  if (isLoading)
+  if (isLoading2)
   {
     return (<div>
-              <div className="isloading">Creating package please wait...</div>
+              <div className="isloading">Loading update page please wait...</div>
+            </div>);
+  }
+  else if (isLoading) {
+    return (<div>
+              <div className="isloading">Updating {localStorage.getItem("packageName")} please wait...</div>
             </div>);
   }
   else
@@ -329,21 +444,39 @@ function UpdatePackage() {
             )}
           </div>
         </nav>
+
+        <nav className="sidebar">
+        <h2>Versions</h2>
+        <ul>
+          {versions_list.map((item) => (
+            <li key={item[0]}>
+              <a href={`#${item[0].toLowerCase()}`} onClick={handleSideBar}>{item[0]}</a>
+            </li>
+          ))}
+          <li>
+            <a href="#" onClick={handleSideBar}>Delete All</a>
+          </li>
+          <li>
+            <a href="#" onClick={handleSideBar}>Package History</a>
+          </li>
+        </ul>
+      </nav>        
+
         <section className="create-main">
             <h1>Update Package: {localStorage.getItem('packageName')} -version {localStorage.getItem("version")}</h1>
             <div className="content-row">
-              <div id="URLOption" onClick={handleURLoption}>
-                <input type="text" id="inputURL" placeholder='Please Enter a NPM or Github Link' size={30}/>
+              <div id="URLOption2" onClick={handleURLoption}>
+                <input type="text" id="inputURL2" placeholder='Please Enter a NPM or Github Link' size={30}/>
               </div>
               Or
-              <div id="ContentOption" onClick={handleContentoption}>
-                <input type="file" id="inputContent" placeholder="upload zipfile" accept=".zip, application/zip"></input>
+              <div id="ContentOption2" onClick={handleContentoption}>
+                <input type="file" id="inputContent2" placeholder="upload zipfile" accept=".zip, application/zip"></input>
               </div>     
             </div>
             <div>
-              <input type="text" id="JSProgam" placeholder='Enter JSProgram (optional)'/>
+              <input type="text" id="JSProgram2" placeholder='Enter JSProgram (optional)'/>
             </div>
-            <button onClick={handleClickCreateButton}>Update</button>
+            <button onClick={handleClickUpdateButton}>Update</button>
         </section>
       </div>
     )

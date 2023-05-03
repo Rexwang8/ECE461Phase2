@@ -236,7 +236,6 @@ function PackageInfo() {
       }
     } catch (error) {
       console.log(error);
-      console.log(error.status);
     }
   }, []);
 
