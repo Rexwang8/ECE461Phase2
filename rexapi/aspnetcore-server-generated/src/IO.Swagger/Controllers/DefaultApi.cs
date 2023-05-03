@@ -1941,7 +1941,7 @@ namespace IO.Swagger.Controllers
             }
 
             BigQueryResults result = null;
-            query = @$"UPDATE `package-registry-461.packages.packagesData` SET content = @pkgcontent, url = @pkgurl WHERE metaid = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}' AND version = '{body.Metadata.Version}'";
+            query = @$"UPDATE `package-registry-461.packages.packagesData` SET content = @pkgcontent, url = @pkgurl WHERE metaid = '{body.Metadata.ID}' AND name = '{body.Metadata.Name}'";
             Console.WriteLine("Length of content: " + content);
             var parameters = new BigQueryParameter[]
         {
