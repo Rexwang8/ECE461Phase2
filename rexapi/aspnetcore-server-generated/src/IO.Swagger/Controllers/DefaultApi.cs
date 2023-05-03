@@ -1690,12 +1690,12 @@ namespace IO.Swagger.Controllers
             //add cors
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
             bool isContent = false;
-            if (body.Data.Content != null || body.Data.Content != "")
+            if (body.Data.Content != null && body.Data.Content != "")
             {
                 isContent = true;
             }
             bool isURL = false;
-            if (body.Data.URL != null || body.Data.URL != "")
+            if (body.Data.URL != null && body.Data.URL != "")
             {
                 isURL = true;
             }
@@ -1740,7 +1740,7 @@ namespace IO.Swagger.Controllers
                 return StatusCode(400);
             }
 
-            if ((body.Data.Content != null || isContent) && (body.Data.URL != null || isURL))
+            if (isContent && isURL)
             {
                 //append debug message to header
                 Console.WriteLine("(/package/{id}/X-Debug) Too many field(s) in the PackageID/Update");
