@@ -755,6 +755,30 @@ namespace IO.Swagger.Controllers
             Parse(version);
         }
 
+        public int[] DecomposeVersion(string verstring)
+        {
+            string[] versionSplit = verstring.Split('.');
+            foreach (string s in versionSplit)
+                {
+                    if (!int.TryParse(s, out int i))
+                    {
+                        return new int[] { 1, 0, 0 };
+                    }
+                }
+            int major = int.Parse(versionSplit[0]);
+            int minor = int.Parse(versionSplit[1]);
+            if (versionSplit.Length == 3)
+            {
+                int patch = int.Parse(versionSplit[2]);
+                return new int[] { major, minor, patch };
+                
+            }
+            else
+            {
+                return new int[] { major, minor, 0 };
+            }
+        }
+
         /// <summary>
         ///parses a version string into a version object
         /// </summary>
@@ -779,30 +803,19 @@ namespace IO.Swagger.Controllers
                 IsMinorRange = false;
                 IsRange = false;
                 version = version.Replace("^", "");
-                string[] versionSplit = version.Split('.');
+
+                int[] versionSplit = DecomposeVersion(version);
+                Major = versionSplit[0];
+                Minor = versionSplit[1];
                 if (versionSplit.Length == 3)
                 {
-                    Major = int.Parse(versionSplit[0]);
-                    Minor = int.Parse(versionSplit[1]);
-                    Patch = int.Parse(versionSplit[2]);
-                    return;
-                }
-                else if (versionSplit.Length == 2)
-                {
-                    Major = int.Parse(versionSplit[0]);
-                    Minor = int.Parse(versionSplit[1]);
-                    Patch = 0;
-                    return;
+                    Patch = versionSplit[2];
                 }
                 else
                 {
-                    Console.WriteLine("Failed when testing length of version string 783");
-                    isvalidversion = false;
-                    Major = 1;
-                    Minor = 0;
                     Patch = 0;
-                    return;
                 }
+                return;
 
             }
             else if (version.StartsWith("~"))
@@ -812,31 +825,18 @@ namespace IO.Swagger.Controllers
                 IsMajorRange = false;
                 IsMinorRange = true;
                 IsRange = false;
-                version = version.Replace("~", "");
-                string[] versionSplit = version.Split('.');
+                int[] versionSplit = DecomposeVersion(version);
+                Major = versionSplit[0];
+                Minor = versionSplit[1];
                 if (versionSplit.Length == 3)
                 {
-                    Major = int.Parse(versionSplit[0]);
-                    Minor = int.Parse(versionSplit[1]);
-                    Patch = int.Parse(versionSplit[2]);
-                    return;
-                }
-                else if (versionSplit.Length == 2)
-                {
-                    Major = int.Parse(versionSplit[0]);
-                    Minor = int.Parse(versionSplit[1]);
-                    Patch = 0;
-                    return;
+                    Patch = versionSplit[2];
                 }
                 else
                 {
-                    isvalidversion = false;
-                    Major = 1;
-                    Minor = 0;
                     Patch = 0;
-                    Console.WriteLine("Failed when testing length of version string 818");
-                    return;
                 }
+                return;
             }
             else if (version.Contains("-"))
             {
@@ -849,48 +849,31 @@ namespace IO.Swagger.Controllers
                 string minVersion = versionRangeSplit[0];
 
                 //parse max version
-                string[] versionSplit = maxVersion.Split('.');
+                int[] versionSplit = DecomposeVersion(version);
+                Major = versionSplit[0];
+                Minor = versionSplit[1];
                 if (versionSplit.Length == 3)
                 {
-                    Major = int.Parse(versionSplit[0]);
-                    Minor = int.Parse(versionSplit[1]);
-                    Patch = int.Parse(versionSplit[2]);
-                }
-                else if (versionSplit.Length == 2)
-                {
-                    Major = int.Parse(versionSplit[0]);
-                    Minor = int.Parse(versionSplit[1]);
-                    Patch = 0;
+                    Patch = versionSplit[2];
                 }
                 else
                 {
-                    isvalidversion = false;
-                    Console.WriteLine("Failed when testing length of version string 848");
-                    Major = 1;
-                    Minor = 0;
                     Patch = 0;
-                    return;
                 }
 
+                int[] minversionSplit = DecomposeVersion(minVersion);
+                int minMajor = versionSplit[0];
+                int minMinor = versionSplit[1];
+                int minPatch = 0;
+                if (versionSplit.Length == 3)
+                {
+                    Patch = versionSplit[2];
+                }
+                MinVersion = new Version(minMajor, minMinor, minPatch);
+
+
+
                 //parse min version
-                string[] minVersionSplit = minVersion.Split('.');
-                if (minVersionSplit.Length == 3)
-                {
-                    MinVersion = new Version(int.Parse(minVersionSplit[0]), int.Parse(minVersionSplit[1]), int.Parse(minVersionSplit[2]));
-                }
-                else if (minVersionSplit.Length == 2)
-                {
-                    MinVersion = new Version(int.Parse(minVersionSplit[0]), int.Parse(minVersionSplit[1]), 0, isSubRange: true);
-                }
-                else
-                {
-                    isvalidversion = false;
-                    Major = 1;
-                    Minor = 0;
-                    Patch = 0;
-                    Console.WriteLine("Failed when testing version min string 868");
-                    return;
-                }
             }
             else
             {

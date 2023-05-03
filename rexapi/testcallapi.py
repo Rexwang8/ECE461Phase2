@@ -281,13 +281,13 @@ def main():
     
     
     #packages list version/name query -- works with 1 query
-    QueryRequestObj = list()
-    QueryRequestObj.append(QueryRequest("fecha", ""))
-    QueryRequestObj.append(QueryRequest("fecha", ""))
-    url, header, body = PackagesListRequest(token, QueryRequestObj)
-    print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
-    response = requests.post(url, headers=header, data=body)
-    PrintResponse(response, True)
+    #QueryRequestObj = list()
+    #QueryRequestObj.append(QueryRequest("fecha", ""))
+    #QueryRequestObj.append(QueryRequest("even", ""))
+    #url, header, body = PackagesListRequest(token, QueryRequestObj)
+    #print(f"List POST: {url} WITH HEADER: {header} AND BODY: {body}")
+    #response = requests.post(url, headers=header, data=body)
+    #PrintResponse(response, True)
         
     #retrieve package -- works
     #url, header = FormRetrievePackageRequest(token, "ed235e78-69ce-4ecc-b241-938ae1f6ef1e")
