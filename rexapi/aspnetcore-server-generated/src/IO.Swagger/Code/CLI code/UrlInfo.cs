@@ -350,6 +350,11 @@ namespace IO.Swagger.CLI
                     Directory.Delete("/app/TempDirectory", true);
                 }
 
+                if(!baseURL.Contains("https://"))
+                {
+                    baseURL = "https://" + baseURL;
+                }
+
                 Console.WriteLine("deleted temp folder");
                 if (baseURL.Contains("https://github.com"))
                 {
@@ -486,7 +491,7 @@ namespace IO.Swagger.CLI
             string description = jsoncontent.description.ToString();
             string readme = jsoncontent.readme.ToString();
             string homepage = jsoncontent.homepage.ToString();
-            string repository = jsoncontent.repository.url.ToString().Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");
+            string repository = jsoncontent.repository.url.ToString().Replace(",", "").Replace(".git", "").Replace("git+", "").Replace("git://", "https://").Replace("git+ssh://", "https://").Replace("ssh://", "https://").Replace("git+http://", "https://").Replace("git+https://", "https://");
             string licensetype = "";
             try
             {

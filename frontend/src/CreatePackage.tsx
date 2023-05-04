@@ -152,24 +152,39 @@ function CreatePackage() {
         const [url, header, body] = FormPackageRequest(login_token, "", selectedFile, JSFile);
         console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
         fetch(url, { method: 'POST', headers: header, body: body})
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            // do something with the data
-            if(data.status == null) {
-              // do something with the data
-              setIsLoading(false);
-              // const parsedObject = JSON.parse(data);
-              // const name = parsedObject.metadata.Name;
-              doneCreating(localStorage.getItem("packageName") as string);
+          .then(response => {
+            if (!response.status)
+            {
+              setIsLoading(true);
             }
             else {
-              setIsLoading(false);
-              alert("Failed to create due to Error " + data.status)
-              location.reload();
+              if (response.status == 201)
+              {
+                setIsLoading(false);
+                doneCreating(localStorage.getItem("packageName") as string);
+              }
+              else if (response.status == 400)
+              {
+                alert("Error " + response.status + ": There is missing field(s) in the PackageData/AuthenticationToken or it is formed improperly (e.g. Content and URL are both set), or the AuthenticationToken is invalid.");
+                location.reload();
+              }
+              else if (response.status == 409)
+              {
+                alert("Error " + response.status + ": Package exists already.");
+                location.reload();
+              }
+              else if (response.status == 424)
+              {
+                alert("Error " + response.status + ": Package is not uploaded due to the disqualified rating.");
+                location.reload();
+              }
+              else
+              {
+                alert("Error " + response.status + ": Internal Server Error.");
+                location.reload();
+              }
             }
           });
-
       }
       else if (ContentValue === "Content"){
         const contentfile = document.getElementById('inputContent') as HTMLInputElement;
@@ -197,21 +212,38 @@ function CreatePackage() {
             const [url, header, body] = FormPackageRequest(login_token, base64String, "", JSFile);
             console.log(`CreatePackage POST: ${url} WITH HEADER: ${JSON.stringify(header)} AND BODY: ${body}`)
             fetch(url, { method: 'POST', headers: header, body: body })
-            .then(response => response.json())
-            .then(data => {
-              console.log(data);
-              // alert(data.status)
-              if(data.status == null) {
-                // do something with the data
-                setIsLoading(false);
-                doneCreating(localStorage.getItem("packageName") as string);
+            .then(response => {
+              if (!response.status)
+              {
+                setIsLoading(true);
               }
               else {
-                setIsLoading(false);
-                alert("Failed to create due to Error " + data.status)
-                location.reload();
+                if (response.status == 201)
+                {
+                  setIsLoading(false);
+                  doneCreating(localStorage.getItem("packageName") as string);
+                }
+                else if (response.status == 400)
+                {
+                  alert("Error " + response.status + ": There is missing field(s) in the PackageData/AuthenticationToken or it is formed improperly (e.g. Content and URL are both set), or the AuthenticationToken is invalid.");
+                  location.reload();
+                }
+                else if (response.status == 409)
+                {
+                  alert("Error " + response.status + ": Package exists already.");
+                  location.reload();
+                }
+                else if (response.status == 424)
+                {
+                  alert("Error " + response.status + ": Package is not uploaded due to the disqualified rating.");
+                  location.reload();
+                }
+                else
+                {
+                  alert("Error " + response.status + ": Internal Server Error.");
+                  location.reload();
+                }
               }
-              
             });
           }).catch((error) => {
             alert("invalid file")
