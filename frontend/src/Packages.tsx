@@ -43,7 +43,9 @@ function Packages() {
           .then(response => response.json())
           .then(json => {console.log(json)
             const parsedArray = JSON.parse(json);
-
+            if(parsedArray.length == 0) {
+              alert("There are no packages at the moment.")
+            }
             for(let i = 0; i < parsedArray.length; i++) {
 
               addItem(parsedArray[i].Name, parsedArray[i].Version, parsedArray[i].ID);

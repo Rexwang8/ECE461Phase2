@@ -159,9 +159,9 @@ function CreatePackage() {
             if(data.status == null) {
               // do something with the data
               setIsLoading(false);
-              const parsedObject = JSON.parse(data);
-              const name = parsedObject.metadata.Name;
-              doneCreating(name);
+              // const parsedObject = JSON.parse(data);
+              // const name = parsedObject.metadata.Name;
+              doneCreating(localStorage.getItem("packageName") as string);
             }
             else {
               setIsLoading(false);
@@ -204,7 +204,7 @@ function CreatePackage() {
               if(data.status == null) {
                 // do something with the data
                 setIsLoading(false);
-                doneCreating(data.metadata.name);
+                doneCreating(localStorage.getItem("packageName") as string);
               }
               else {
                 setIsLoading(false);
