@@ -128,6 +128,7 @@ function Signup() {
     <div className="App">
     <nav className="navbar">
         <div className="navbar-left">
+        <img src="Rats.png" alt="Logo" className="navbar-logo" />
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>

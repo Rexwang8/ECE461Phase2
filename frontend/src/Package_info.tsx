@@ -453,7 +453,7 @@ function PackageInfo() {
     <div className="package-info">
       <nav className="navbar">
         <div className="navbar-left">
-
+        <img src="Rats.png" alt="Logo" className="navbar-logo" />
         </div>
         <div className="navbar-right">
           <button className="profile-button" onClick={handleProfileButtonClick}>
