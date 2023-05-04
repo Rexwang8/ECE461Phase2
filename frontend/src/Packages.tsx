@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './my_package.css';
 
 interface QueryRequest {
   Name: string;
@@ -208,7 +208,7 @@ function Packages() {
 
   if (isLoading) {
   return (<div>
-        <div className="isloading">Loading data please wait...</div>
+        <div className="isloading2">Loading data please wait...</div>
         </div>);
 }
 
@@ -238,10 +238,10 @@ function Packages() {
           )}
         </div>
       </nav>
-      <h1 className="title">Packages</h1>
-      <section className="more-info">
-        <div className="list-container">
-          <ul className="list">
+      <h1 className="title2">Packages</h1>
+      <section className="more-info2">
+        <div className="list-container2">
+          <ul className="list2">
 
 
               {listItems
@@ -258,14 +258,14 @@ function Packages() {
               .map((item, index) => (
                 <li
                   key={index}
-                  className={`list-item ${!item.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'invisible' : ''}`}
+                  className={`list-item2 ${!item.name.toLowerCase().includes(searchQuery.toLowerCase()) ? 'invisible' : ''}`}
                 >
-                <div className="list-item-box">
+                <div className="list-item-box2">
                   
-                  <div className="item-details">
-                    <div className="item-name">{item.name}</div>
-                    <div className="item-version">{`Latest version: ${findHighestVersion(item.version)}`}</div>
-                    <div className="item-version">{`Number of Versions: ${item.version.length}`}</div>
+                  <div className="item-details2">
+                    <div className="item-name2">{item.name}</div>
+                    <div className="item-version2">{`Latest version: ${findHighestVersion(item.version)}`}</div>
+                    <div className="item-version2">{`Number of Versions: ${item.version.length}`}</div>
                   </div>
 
                   <button className="button" onClick={() => handleMoreInfoClick(item.name, item.id)}>More Info</button>

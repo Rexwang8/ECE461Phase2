@@ -99,62 +99,51 @@ function App() {
          <li>Learn more</li>
          <li>CLI reference documentation</li>
          </ul>
-         <b>Getting started</b>&nbsp;<br/>
 
-         To get started with package-registry-461, you can create an account, which will be available at http://www.package-registry-461.appspot.com/authenticate&nbsp;<br/>&nbsp;<br/>
+         Package-registry-461 is the world's largest software registry. Open source developers from every continent use package-registry-461 to share and borrow packages, and many organizations use package-registry-461 to manage private development as well.
+         &nbsp;<br/>&nbsp;<br/>
+         <b>Package-registry-461 consists of three distinct components:</b>
+         <ul>
+         <li>The website - Use the website to discover packages, set up profiles, and manage other aspects of your package-registry-461 experience. For example, you can set up organizations to manage access to public or private packages.</li>
+         <li>The Command Line Interface (CLI) - The CLI runs from a terminal, and is how most developers interact with package-registry-461.</li>
+         <li>The registry - The registry is a large public database of JavaScript software and the meta-information surrounding it.Use package-registry-461 to . . .</li>
+         </ul>
+         
+         <b>Use package-registry-461 to . . .</b>
+         <ul>
+         <li>Adapt packages of code for your apps, or incorporate packages as they are.</li>
+         <li>Download standalone tools you can use right away.</li>
+         <li>Run packages without downloading using npx.</li>
+         <li>Share code with any package-registry-461 user, anywhere.</li>
+         <li>Restrict code to specific developers.</li>
+         <li>Create organizations to coordinate package maintenance, coding, and developers.</li>
+         <li>Form virtual teams by using organizations.</li>
+         <li>Manage multiple versions of code and code dependencies.</li>
+         <li>Update applications easily when underlying code is updated.</li>
+         <li>Discover multiple ways to solve the same puzzle.</li>
+         <li>Find other developers who are working on similar problems and projects.</li>
+         </ul>
+        &nbsp;<br/><b>Getting started</b>&nbsp;<br/>&nbsp;<br/>
+        To get started with package-registry-461, you can create an account, which will be available at http://www.package-registry-461.appspot.com/authenticate&nbsp;<br/>&nbsp;<br/>
 
-         After you set up an package-registry-461 account, the next step is to use the command line interface (CLI) to install package-registry-461. We look forward to seeing what you create!
-         Sharing packages and collaborating with others&nbsp;<br/>&nbsp;<br/>
+        After you set up an package-registry-461 account, the next step is to use the command line interface (CLI) to install package-registry-461. We look forward to seeing what you create!
+        Sharing packages and collaborating with others&nbsp;<br/>&nbsp;<br/>
 
-         If you choose to share your packages publicly, there is no cost. To use and share private packages, you need to upgrade your account. To share with others, create organizations, called package-registry-461 organizations, and invite others to work with you, privately (for a fee) or publicly (for free).&nbsp;<br/>&nbsp;<br/>
+        &nbsp;<br/><b>Sharing packages and collaborating with others</b>&nbsp;<br/>&nbsp;<br/>
 
-         You can also use a private package-registry-461 package registry like GitHub Packages or the open source Verdaccio project. This lets you develop packages internally that are not shared publicly.&nbsp;<br/>&nbsp;<br/>
-         Learn more
+        If you choose to share your packages publicly, there is no cost. To use and share private packages, you need to upgrade your account. To share with others, create organizations, called package-registry-461 organizations, and invite others to work with you, privately (for a fee) or publicly (for free).&nbsp;<br/>&nbsp;<br/>
+        
+        You can also use a private package-registry-461 package registry like GitHub Packages or the open source Verdaccio project. This lets you develop packages internally that are not shared publicly.&nbsp;<br/>&nbsp;<br/>
 
-         To learn more about package-registry-461 as a product, upcoming new features, and interesting uses of package-registry-461 be sure to follow @package-registry-461 on Twitter.&nbsp;<br/>&nbsp;<br/>
+        &nbsp;<br/><b>Learn more</b>&nbsp;<br/>&nbsp;<br/>
+        To learn more about package-registry-461 as a product, upcoming new features, and interesting uses of package-registry-461 be sure to follow @package-registry-461 on Twitter.&nbsp;<br/>&nbsp;<br/>
 
-         For mentoring, tutorials, and learning, visit node school. Consider attending or hosting a nodeschool event (usually free!) at a site near you, or use the self-help tools you can find on the site.&nbsp;<br/>&nbsp;<br/>
-         CLI reference documentation:
+        For mentoring, tutorials, and learning, visit node school. Consider attending or hosting a nodeschool event (usually free!) at a site near you, or use the self-help tools you can find on the site.
+        CLI reference documentation
 
-         While relevant CLI commands are covered throughout this user documentation, the CLI includes command line help, its own documentation section, and instant help (man pages).&nbsp;<br/>&nbsp;<br/>
-         <b>Table of contents</b>&nbsp;<br/>
+        &nbsp;<br/>&nbsp;<br/><b>CLI reference documentation</b>&nbsp;<br/>&nbsp;<br/>
 
-             Use package-registry-461 to . . .
-             <ul>
-             <li>Getting started</li>
-             <li>Sharing packages and collaborating with others</li>
-             <li>Learn more</li>
-             <li>CLI reference documentation</li>
-             </ul>
-
-         package-registry-461 is the world's largest software registry. Open source developers from every continent use package-registry-461 to share and borrow packages, and many organizations use package-registry-461 to manage private development as well.
-
-         package-registry-461 consists of three distinct components:
-
-             the website
-             the Command Line Interface (CLI)
-             the registry
-
-         Use the website to discover packages, set up profiles, and manage other aspects of your package-registry-461 experience. For example, you can set up organizations to manage access to public or private packages.
-
-         The CLI runs from a terminal, and is how most developers interact with package-registry-461.
-
-         The registry is a large public database of JavaScript software and the meta-information surrounding it.
-         Use package-registry-461 to . . .
-
-             Adapt packages of code for your apps, or incorporate packages as they are.
-             Download standalone tools you can use right away.
-             Run packages without downloading using npx.
-             Share code with any package-registry-461 user, anywhere.
-             Restrict code to specific developers.
-             Create organizations to coordinate package maintenance, coding, and developers.
-             Form virtual teams by using organizations.
-             Manage multiple versions of code and code dependencies.
-             Update applications easily when underlying code is updated.
-             Discover multiple ways to solve the same puzzle.
-             Find other developers who are working on similar problems and projects. 
-
-       
+        While relevant CLI commands are covered throughout this user documentation, the CLI includes command line help, its own documentation section, and instant help (man pages).
         </p>
 
       </div>
