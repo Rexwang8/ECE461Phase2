@@ -2270,8 +2270,6 @@ namespace IO.Swagger.Controllers
             Response.Headers.Add("X-Debug", "Registry reset");
             Console.WriteLine("(reset/X-Debug) Registry reset");
 
-            return StatusCode(200);
-
             //get bigquery
             BigQueryFactory factory = new BigQueryFactory();
             //reset metadata
