@@ -2282,11 +2282,6 @@ namespace IO.Swagger.Controllers
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
 
-            //reset users
-            query = "DELETE FROM `package-registry-461.userData.users` WHERE 1=1";
-            factory.SetQuery(query);
-            result = factory.ExecuteQuery();
-
             //reset history
             query = "DELETE FROM `package-registry-461.packages.packagesHistory` WHERE 1=1";
             factory.SetQuery(query);
