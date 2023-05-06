@@ -943,13 +943,13 @@ namespace IO.Swagger.Controllers
             Console.WriteLine("checkifexistspkgquery " + query);
             factory.SetQuery(query);
             result = factory.ExecuteQuery();
-            if (result == null && Name != "fecha")
+            if (result == null)
             {
                 Response.Headers.Add("X-Debug", "Package already exists (null)");
                 Console.WriteLine("(/package/X-Debug) Package already exists (null)");
                 return StatusCode(409);
             }
-            if (result.TotalRows > 0 && Name != "fecha")
+            if (result.TotalRows > 0)
             {
                 Response.Headers.Add("X-Debug", "Package already exists");
                 Console.WriteLine("(/package/X-Debug) Package already exists");
@@ -1425,7 +1425,7 @@ namespace IO.Swagger.Controllers
             .Replace("'responsiveMaintainer'", "\"ResponsiveMaintainer\"").Replace("'licenseScore'", "\"LicenseScore\"").Replace("'pullRequest'", "\"PullRequest\"")
             .Replace("'goodPinningPractice'", "\"GoodPinningPractice\"").Replace("'netScore'", "\"NetScore\"");
 
-            return StatusCode(200, rating);
+            return StatusCode(200, rateobj);
         }
 
         /// <summary>
@@ -1516,7 +1516,7 @@ namespace IO.Swagger.Controllers
             {
                 Response.Headers.Add("X-Debug", "Query failed" + "error" + e.ToString());
                 Console.WriteLine("(/package/{id}/X-Debug) Query failed" + "error" + e.ToString());
-                return StatusCode(400);
+                return StatusCode(404);
             }
 
 
@@ -1525,7 +1525,7 @@ namespace IO.Swagger.Controllers
             {
                 Response.Headers.Add("X-Debug", "Query failed");
                 Console.WriteLine("(/package/{id}/X-Debug) Query failed");
-                return StatusCode(400);
+                return StatusCode(404);
             }
             if (results.TotalRows == 0)
             {
@@ -2255,7 +2255,7 @@ namespace IO.Swagger.Controllers
                 //append debug message to header
                 Console.WriteLine("(reset/X-Debug) Token is invalid");
                 Response.Headers.Add("X-Debug", "Token is invalid");
-                return StatusCode(400);
+                return StatusCode(401);
             }
 
             //decrement token
@@ -2264,7 +2264,7 @@ namespace IO.Swagger.Controllers
             {
                 Console.WriteLine("(reset/X-Debug) Token decrement failed");
                 Response.Headers.Add("X-Debug", "Token decrement failed");
-                return StatusCode(400);
+                return StatusCode(401);
             }
 
             Response.Headers.Add("X-Debug", "Registry reset");
