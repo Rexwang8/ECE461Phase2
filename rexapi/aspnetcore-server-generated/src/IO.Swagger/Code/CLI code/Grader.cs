@@ -775,11 +775,11 @@ namespace IO.Swagger.CLI
             float netScore = 0;
             netScore = urlInfo.license_score + urlInfo.rampUp_score + urlInfo.busFactor_score + urlInfo.correctness_score + urlInfo.responseMaintainer_score + urlInfo.dependency_score + urlInfo.pullreview_score;
             netScore = netScore / 7;
-            netScore += 0.1f;
-            if(netScore < 0.5f)
-            {
-                netScore += 0.1f;
-            }
+            //netScore += 0.1f;
+            //if(netScore < 0.5f)
+            //{
+            //    netScore += 0.1f;
+            //}
             netScore = Math.Clamp(netScore, 0, 1);
             netScore = (float)Math.Round(netScore, 2);
             return netScore;
